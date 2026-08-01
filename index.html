@@ -1,144 +1,724 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aver Engine — a modular 3D engine built from the metal up</title>
+<meta name="description" content="Aver Engine is a modular C++/C# 3D game engine with a DirectX 12 renderer, Jolt physics, in-process CoreCLR scripting with hot reload, and an editor that is the runtime.">
+<meta name="theme-color" content="#0C0E12">
 
-        /* Navigation Bar */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        nav .logo {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #24292e;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #586069;
-            transition: color 0.2s;
-        }
-        nav ul li a:hover {
-            color: #0366d6;
-        }
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aver Engine">
+<meta property="og:description" content="A modular 3D engine built from the metal up. DirectX 12, Jolt physics, C# on .NET 10 with hot reload.">
+<meta property="og:url" content="https://github.com/hydrogen-isotope/aver-engine">
 
-        /* Hero Section */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 5rem 1rem;
-            background: linear-gradient(135deg, #6f42c1, #0366d6);
-            color: #fff;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-        .hero .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: #fff;
-            color: #0366d6;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            transition: background-color 0.2s;
-        }
-        .hero .btn:hover {
-            background-color: #f1f1f1;
-        }
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpolygon points='30,78 128,134 128,234 30,178' fill='%23EAEDF2'/%3E%3Cpolygon points='128,134 226,78 226,178 128,234' fill='%23EAEDF2' opacity='.72'/%3E%3Cpolygon points='128,22 226,78 128,134 30,78' fill='%23F26522'/%3E%3C/svg%3E">
 
-        /* Main Content */
-        .container {
-            max-width: 800px;
-            margin: 3rem auto;
-            padding: 0 1rem;
-        }
-        .container h2 {
-            margin-bottom: 1rem;
-            color: #24292e;
-        }
-        .container p {
-            margin-bottom: 1.5rem;
-            color: #586069;
-        }
+<style>
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root{
+  --bg:        #0C0E12;
+  --bg-raise:  #12151B;
+  --bg-card:   #151920;
+  --line:      #232936;
+  --line-soft: #1B2029;
+  --ink:       #EAEDF2;
+  --ink-dim:   #A6AEBC;
+  --ink-faint: #6E7789;
+  --orange:    #F26522;
+  --orange-hi: #FF7A3D;
+  --steel:     #5B8DEF;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+  --sans: "Segoe UI Variable Display", "Segoe UI", Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --maxw: 1180px;
+  --r: 14px;
+}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #fff;
-            color: #6a737d;
-            border-top: 1px solid #e1e4e8;
-        }
-    </style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{line-height:1.15; margin:0; font-weight:650; letter-spacing:-.02em}
+p{margin:0}
+img,svg{display:block; max-width:100%}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+code{
+  font-family:var(--mono); font-size:.88em;
+  background:rgba(255,255,255,.055); border:1px solid var(--line-soft);
+  border-radius:5px; padding:1px 5px; color:#C6CEDC;
+}
+td code, .ticks code{background:rgba(255,255,255,.05)}
+.eyebrow{
+  font-family:var(--mono); font-size:12px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:14px;
+}
+.lede{color:var(--ink-dim); font-size:18px; max-width:62ch}
+
+/* ============================================================
+   Nav
+   ============================================================ */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(12,14,18,.72);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s ease, background .25s ease;
+}
+header.stuck{border-bottom-color:var(--line-soft)}
+nav{
+  max-width:var(--maxw); margin:0 auto; padding:14px 28px;
+  display:flex; align-items:center; gap:30px;
+}
+.brand{display:flex; align-items:center; gap:11px; font-weight:650; letter-spacing:-.01em; font-size:17px}
+.brand svg{width:28px; height:28px; flex:none}
+.navlinks{display:flex; gap:26px; margin-left:auto; align-items:center}
+.navlinks a{
+  font-size:14.5px; color:var(--ink-dim);
+  transition:color .18s ease;
+}
+.navlinks a:hover{color:var(--ink)}
+.navlinks .btn{margin-left:6px}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:11px 20px; border-radius:9px;
+  font-size:15px; font-weight:600; letter-spacing:-.01em;
+  border:1px solid transparent; cursor:pointer;
+  transition:transform .16s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  white-space:nowrap;
+}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-primary{
+  background:var(--orange); color:#12100E;
+  box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 8px 24px -10px rgba(242,101,34,.85);
+}
+.btn-primary:hover{background:var(--orange-hi); transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line); color:var(--ink); background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:#39414F; background:rgba(255,255,255,.05); transform:translateY(-1px)}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{position:relative; padding:104px 0 84px; overflow:hidden}
+.hero::before{ /* radial glow */
+  content:""; position:absolute; inset:-30% -10% auto -10%; height:760px;
+  background:radial-gradient(58% 52% at 68% 34%, rgba(242,101,34,.16), transparent 68%),
+             radial-gradient(46% 40% at 22% 12%, rgba(91,141,239,.11), transparent 70%);
+  pointer-events:none;
+}
+.hero::after{ /* grid floor */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(72% 62% at 50% 34%, #000 0%, transparent 78%);
+  -webkit-mask-image:radial-gradient(72% 62% at 50% 34%, #000 0%, transparent 78%);
+  opacity:.7;
+}
+.hero .wrap{position:relative; z-index:1}
+.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center}
+
+.tag{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+  color:var(--ink-dim); background:rgba(255,255,255,.035);
+  border:1px solid var(--line); border-radius:999px; padding:6px 14px 6px 10px;
+  margin-bottom:26px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(242,101,34,.16)}
+
+h1{font-size:clamp(40px, 5.6vw, 66px); letter-spacing:-.035em; font-weight:700}
+h1 .accent{
+  background:linear-gradient(96deg, var(--orange) 10%, #FFA366 90%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero p.lede{margin-top:22px; font-size:19.5px}
+.hero-cta{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap}
+.hero-note{margin-top:20px; font-size:13.5px; color:var(--ink-faint); font-family:var(--mono)}
+
+/* rotating cube */
+.cube-stage{display:grid; place-items:center; perspective:900px}
+.cube-stage svg{
+  width:min(300px, 72vw); height:auto;
+  filter:drop-shadow(0 26px 60px rgba(242,101,34,.28));
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(-9px) rotate(-1.2deg)}
+  50%{transform:translateY(9px) rotate(1.2deg)}
+}
+@media (prefers-reduced-motion:reduce){
+  .cube-stage svg{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============================================================
+   Spec strip
+   ============================================================ */
+.strip{border-block:1px solid var(--line-soft); background:var(--bg-raise)}
+.strip-inner{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  max-width:var(--maxw); margin:0 auto;
+}
+.spec{padding:26px 28px; border-left:1px solid var(--line-soft)}
+.spec:first-child{border-left:none}
+.spec b{display:block; font-family:var(--mono); font-size:19px; font-weight:600; letter-spacing:-.01em}
+.spec span{display:block; font-size:13px; color:var(--ink-faint); margin-top:4px}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+section{padding:96px 0}
+.sec-head{max-width:64ch; margin-bottom:52px}
+.sec-head h2{font-size:clamp(29px,3.6vw,42px)}
+.sec-head p{margin-top:16px; color:var(--ink-dim)}
+
+/* feature cards */
+.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--line-soft);
+  border-radius:var(--r);
+  padding:28px 26px 30px;
+  position:relative; overflow:hidden;
+  transition:border-color .22s ease, transform .22s ease, background .22s ease;
+}
+.card::after{
+  content:""; position:absolute; inset:0 0 auto 0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(242,101,34,.55), transparent);
+  opacity:0; transition:opacity .25s ease;
+}
+.card:hover{border-color:#2E3644; transform:translateY(-3px); background:#171C24}
+.card:hover::after{opacity:1}
+.card .ic{
+  width:38px;height:38px;border-radius:10px;
+  display:grid;place-items:center; margin-bottom:18px;
+  background:rgba(242,101,34,.11); border:1px solid rgba(242,101,34,.24);
+}
+.card .ic svg{width:19px;height:19px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:18.5px; margin-bottom:9px}
+.card p{color:var(--ink-dim); font-size:15px; line-height:1.62}
+
+/* split rows */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center}
+.split + .split{margin-top:84px}
+.split h3{font-size:26px; margin-bottom:16px}
+.split p{color:var(--ink-dim); margin-bottom:14px}
+.ticks{list-style:none; padding:0; margin:22px 0 0}
+.ticks li{
+  position:relative; padding-left:26px; margin-bottom:11px;
+  font-size:15.5px; color:var(--ink-dim);
+}
+.ticks li::before{
+  content:""; position:absolute; left:2px; top:9px;
+  width:9px;height:9px; border-radius:2px;
+  background:var(--orange); transform:rotate(45deg);
+}
+.ticks li b{color:var(--ink); font-weight:600}
+
+/* DAG diagram */
+.dag{
+  background:var(--bg-card); border:1px solid var(--line-soft);
+  border-radius:var(--r); padding:26px; font-family:var(--mono); font-size:13.5px;
+}
+.dag-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px}
+.dag-row:last-child{margin-bottom:0}
+.node{
+  padding:7px 13px; border-radius:7px; border:1px solid var(--line);
+  background:rgba(255,255,255,.03); color:var(--ink);
+}
+.node.hot{border-color:rgba(242,101,34,.45); background:rgba(242,101,34,.10); color:#FFC49E}
+.node.cool{border-color:rgba(91,141,239,.38); background:rgba(91,141,239,.09); color:#B9CCF7}
+.arrow{color:var(--ink-faint)}
+
+/* code block */
+.code{
+  background:#0A0C10; border:1px solid var(--line-soft); border-radius:var(--r);
+  overflow:hidden;
+}
+.code-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:11px 16px; border-bottom:1px solid var(--line-soft); background:#0E1116;
+}
+.code-bar i{width:10px;height:10px;border-radius:50%;background:#2A313D;display:block}
+.code-bar span{margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--ink-faint)}
+.code pre{
+  margin:0; padding:20px 22px; overflow-x:auto;
+  font-family:var(--mono); font-size:13.5px; line-height:1.85; color:var(--ink-dim);
+}
+.c-cmd{color:var(--ink)}
+.c-flag{color:var(--steel)}
+.c-com{color:#59617200; color:#5E6779}
+.c-pr{color:var(--orange)}
+
+/* table */
+.tablewrap{
+  border:1px solid var(--line-soft); border-radius:var(--r);
+  overflow:hidden; background:var(--bg-card);
+}
+.scroller{overflow-x:auto}
+table{border-collapse:collapse; width:100%; min-width:660px; font-size:15px}
+th,td{text-align:left; padding:14px 20px; border-bottom:1px solid var(--line-soft); vertical-align:top}
+thead th{
+  background:#101419; font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-faint); font-weight:600;
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr{transition:background .16s ease}
+tbody tr:hover{background:rgba(255,255,255,.022)}
+td.mod{font-family:var(--mono); font-size:13.5px; color:var(--orange); white-space:nowrap}
+td.tgt{font-family:var(--mono); font-size:13px; color:var(--ink-dim); white-space:nowrap}
+td.desc{color:var(--ink-dim); min-width:280px}
+
+/* CTA */
+.cta{
+  position:relative; overflow:hidden;
+  border:1px solid var(--line); border-radius:20px;
+  background:linear-gradient(150deg, #16191F 0%, #101319 60%, #14100D 100%);
+  padding:64px 56px; text-align:center;
+}
+.cta::before{
+  content:""; position:absolute; inset:auto -20% -60% -20%; height:420px;
+  background:radial-gradient(50% 60% at 50% 100%, rgba(242,101,34,.24), transparent 70%);
+  pointer-events:none;
+}
+.cta > *{position:relative}
+.cta h2{font-size:clamp(28px,3.4vw,40px)}
+.cta p{color:var(--ink-dim); margin:18px auto 0; max-width:56ch}
+.cta .hero-cta{justify-content:center}
+
+/* footer */
+footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:var(--bg-raise)}
+.foot{display:flex; gap:40px; justify-content:space-between; flex-wrap:wrap}
+.foot .brand{margin-bottom:14px}
+.foot p{font-size:13.5px; color:var(--ink-faint); max-width:44ch; line-height:1.7}
+.footcols{display:flex; gap:64px; flex-wrap:wrap}
+.footcol h4{font-size:12px; font-family:var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px; font-weight:600}
+.footcol a{display:block; font-size:14.5px; color:var(--ink-dim); margin-bottom:9px; transition:color .16s ease}
+.footcol a:hover{color:var(--orange)}
+.legal{
+  margin-top:44px; padding-top:24px; border-top:1px solid var(--line-soft);
+  font-size:12.5px; color:var(--ink-faint); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+}
+
+/* reveal on scroll */
+.rv{opacity:0; transform:translateY(18px); transition:opacity .6s cubic-bezier(.2,.7,.3,1), transform .6s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr; gap:44px}
+  .cube-stage{order:-1}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .strip-inner{grid-template-columns:repeat(2,1fr)}
+  .spec:nth-child(3){border-left:none}
+  .spec:nth-child(n+3){border-top:1px solid var(--line-soft)}
+  .split{grid-template-columns:1fr; gap:34px}
+  .navlinks a:not(.btn){display:none}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  nav{padding:12px 20px}
+  section{padding:68px 0}
+  .hero{padding:64px 0 56px}
+  .cards{grid-template-columns:1fr}
+  .strip-inner{grid-template-columns:1fr}
+  .spec{border-left:none; border-top:1px solid var(--line-soft)}
+  .spec:first-child{border-top:none}
+  .cta{padding:44px 26px}
+  .btn{padding:11px 17px; font-size:14.5px}
+}
+</style>
 </head>
 <body>
 
-    <!-- Navigation Header -->
-    <nav>
-        <div class="logo">MySite</div>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+<!-- ══════════════════════════ NAV ══════════════════════════ -->
+<header id="hdr">
+  <nav>
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 256 256" aria-label="Aver Engine">
+        <polygon points="30,78 128,134 128,234 30,178" fill="#EAEDF2"/>
+        <polygon points="128,134 226,78 226,178 128,234" fill="#EAEDF2" opacity=".72"/>
+        <polygon points="128,22 226,78 128,134 30,78" fill="#F26522"/>
+      </svg>
+      Aver Engine
+    </a>
+    <div class="navlinks">
+      <a href="#features">Features</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#modules">Modules</a>
+      <a href="#build">Build</a>
+      <a class="btn btn-primary" href="https://github.com/hydrogen-isotope/Aver-Launcher">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+        Launcher
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="tag"><span class="dot"></span> Aver Engine · Windows · DirectX 12</div>
+        <h1>A modular 3D engine,<br>built <span class="accent">from the metal up</span>.</h1>
+        <p class="lede">
+          C++ where it counts, C# where it's comfortable. A DirectX&nbsp;12 renderer, Jolt rigid bodies,
+          an in-process CoreCLR host with hot reload, and an editor that <em>is</em> the runtime —
+          all on permissively-licensed foundations, with no engine object model to inherit from.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://github.com/hydrogen-isotope/Aver-Launcher">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            Get the Launcher
+          </a>
+          <a class="btn btn-ghost" href="#architecture">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+            How it's built
+          </a>
+        </div>
+        <p class="hero-note">Engine source is private · the launcher is open</p>
+      </div>
+
+      <div class="cube-stage">
+        <svg viewBox="0 0 256 256" role="img" aria-label="Aver Engine AE monogram">
+          <defs>
+            <mask id="aeCut" maskUnits="userSpaceOnUse" x="0" y="0" width="256" height="256">
+              <rect width="256" height="256" fill="#fff"/>
+              <g fill="none" stroke="#000" stroke-width="15" stroke-linejoin="round" stroke-linecap="butt">
+                <g transform="matrix(0.98,0.56,0,1,30,78)">
+                  <path d="M26,84 L50,22 L74,84"/><path d="M36,58 L64,58"/>
+                </g>
+                <g transform="matrix(0.98,-0.56,0,1,128,134)">
+                  <path d="M28,16 L28,82"/><path d="M28,16 L66,16"/>
+                  <path d="M28,49 L60,49"/><path d="M28,82 L66,82"/>
+                </g>
+              </g>
+            </mask>
+            <linearGradient id="topFace" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FF8A45"/><stop offset="100%" stop-color="#E4551A"/>
+            </linearGradient>
+          </defs>
+          <g mask="url(#aeCut)">
+            <polygon points="30,78 128,134 128,234 30,178" fill="#E7EAF0"/>
+            <polygon points="128,134 226,78 226,178 128,234" fill="#E7EAF0" opacity="0.72"/>
+            <polygon points="128,22 226,78 128,134 30,78" fill="url(#topFace)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ SPEC STRIP ══════════════════════════ -->
+<div class="strip">
+  <div class="strip-inner">
+    <div class="spec"><b>C++ &amp; C#</b><span>Native core, .NET 10 gameplay</span></div>
+    <div class="spec"><b>DirectX 12</b><span>PBR, GI, mesh shaders, MSAA</span></div>
+    <div class="spec"><b>Jolt</b><span>Rigid bodies behind a plain-C seam</span></div>
+    <div class="spec"><b>MIT / BSD / zlib</b><span>Permissive dependencies only</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ FEATURES ══════════════════════════ -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">What's inside</div>
+      <h2>Everything a runtime needs. Nothing it doesn't.</h2>
+      <p>Every subsystem is a module behind its own switch, with its own versioned C seam. Turn one off and
+        the engine still builds, still runs, and still passes its headless tests.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg></div>
+        <h3>Modular by construction</h3>
+        <p>A strict dependency DAG from <code>core</code> up to <code>runtime</code>. No god object, no
+          <code>UObject</code>, no reflection tax you didn't ask for — you pay only for the modules you compile in.</p>
+      </div>
+
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 18v3"/></svg></div>
+        <h3>DirectX 12 renderer</h3>
+        <p>Physically-based shading, a procedural sky, RayQuery global illumination and shadows, a mesh-shader
+          geometry path, wireframe and line passes, and MSAA as a runtime setting — not a rebuild.</p>
+      </div>
+
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
+        <h3>C# gameplay, hot reloaded</h3>
+        <p>An in-process CoreCLR host with a collectible load context. Write actors, pawns, HUDs and materials
+          in C#, hit <b>Reload Scripts</b>, and the result swaps into the running editor without a restart.</p>
+      </div>
+
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M3.6 8h16.8"/><path d="M3.6 16h16.8"/></svg></div>
+        <h3>Physics you can trust</h3>
+        <p>Jolt is vendored as the rigid-body backend, wrapped in the engine's own plain-C interface — so the
+          solver is swappable and the gameplay layer never sees a third-party type.</p>
+      </div>
+
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 18V9a2 2 0 0 1 2-2h3l2-3h4l2 3h3a2 2 0 0 1 2 2v9"/><circle cx="12" cy="13" r="3.2"/></svg></div>
+        <h3>The editor is the runtime</h3>
+        <p>One executable. A docked ImGui shell composited straight over the live D3D12 viewport, with a
+          project browser, asset and actor editors, a Details panel and one-key script compilation.</p>
+      </div>
+
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg></div>
+        <h3>Audio down to the buffer</h3>
+        <p>A Core-only mixer — voices, buses, 3D pan and distance attenuation — that fills a buffer you supply,
+          with a WASAPI device behind a separate seam. Testable with no sound card in the machine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ ARCHITECTURE ══════════════════════════ -->
+<section id="architecture" style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Architecture</div>
+      <h2>A dependency graph you can hold in your head.</h2>
+      <p>Modules point one direction only. Nothing above the RHI is allowed to reach down past it, and the
+        scripting host never meets a graphics type at all.</p>
+    </div>
+
+    <div class="split rv">
+      <div>
+        <h3>Layers, not spaghetti</h3>
+        <p>Each module declares what it may depend on and the build enforces it. That constraint is what makes
+          the headless tests meaningful: nine of them stand up their own mock device and assert on recorded
+          draw calls, so correctness doesn't need a GPU.</p>
+        <ul class="ticks">
+          <li><b>One seam per module</b> — not one flat ABI for everything, so each versions independently.</li>
+          <li><b>Core-only where possible</b> — the UI, mixer and scene layers link nothing device-specific.</li>
+          <li><b>Compile-time switches</b> — <code>AVER_MODULE_*</code> turns any optional subsystem off entirely.</li>
         </ul>
-    </nav>
+      </div>
+      <div class="dag">
+        <div class="dag-row"><span class="node hot">core</span><span class="arrow">→</span><span class="node">platform</span><span class="arrow">→</span><span class="node">rhi</span><span class="arrow">→</span><span class="node cool">rhi.d3d12</span></div>
+        <div class="dag-row"><span class="node hot">core</span><span class="arrow">→</span><span class="node">assets</span><span class="arrow">→</span><span class="node">formats</span><span class="arrow">→</span><span class="node cool">render.pbr</span></div>
+        <div class="dag-row"><span class="node hot">core</span><span class="arrow">→</span><span class="node">scene</span><span class="arrow">→</span><span class="node">framework</span><span class="arrow">→</span><span class="node cool">runtime</span></div>
+        <div class="dag-row"><span class="node hot">core</span><span class="arrow">→</span><span class="node">physics</span><span class="arrow">→</span><span class="node cool">physics.jolt</span></div>
+        <div class="dag-row"><span class="node hot">core</span><span class="arrow">→</span><span class="node">audio</span><span class="arrow">→</span><span class="node cool">audio.wasapi</span></div>
+        <div class="dag-row"><span class="node hot">core</span><span class="arrow">→</span><span class="node">ui</span><span class="arrow">→</span><span class="node cool">render.ui</span></div>
+        <div class="dag-row" style="margin-top:18px"><span style="color:var(--ink-faint)">// scripting → core + platform only. Never the RHI.</span></div>
+      </div>
+    </div>
 
-    <!-- Hero Showcase -->
-    <header class="hero">
-        <h1>Welcome to My Website</h1>
-        <p>This page is successfully hosted on GitHub Pages! Feel free to customize this layout to showcase your work or projects.</p>
-        <a href="#projects" class="btn">View My Work</a>
-    </header>
+    <div class="split rv">
+      <div class="dag">
+        <div class="dag-row"><span style="color:var(--ink-faint)">// coordinate contract</span></div>
+        <div class="dag-row"><span class="node">units</span><span class="arrow">=</span><span class="node hot">centimetres</span></div>
+        <div class="dag-row"><span class="node">up</span><span class="arrow">=</span><span class="node hot">+Z</span><span class="node">forward</span><span class="arrow">=</span><span class="node hot">+X</span><span class="node">right</span><span class="arrow">=</span><span class="node hot">+Y</span></div>
+        <div class="dag-row"><span class="node">handedness</span><span class="arrow">=</span><span class="node cool">left-handed</span></div>
+        <div class="dag-row"><span class="node">matrices</span><span class="arrow">=</span><span class="node cool">row-major, row vectors (v * M)</span></div>
+      </div>
+      <div>
+        <h3>One convention, written down</h3>
+        <p>Half the pain in engine work is arguing about axes. Aver settles it once, at the top of the tree, and
+          every module — renderer, physics, scene graph, importer — is held to it.</p>
+        <p>The same discipline applies to storage: a single <code>AVR1</code> container underneath, with typed
+          readers and writers for meshes, materials, maps and audio, plus glTF import on the way in.</p>
+        <ul class="ticks">
+          <li><b>Materials are C# source</b> — compiled to <code>.ocmat</code>, so the source of truth is code you can diff.</li>
+          <li><b>Actors round-trip</b> — drag a gizmo and the editor rewrites the placement in the actual <code>.cs</code>.</li>
+          <li><b>Content lives outside</b> — the engine ships no game data; a project is a sibling folder.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Main Text Section -->
-    <main class="container" id="about">
-        <h2>About This Project</h2>
-        <p>This is a starter static web page built entirely with HTML and CSS embedded directly into the head. By hosting it on GitHub Pages, you can share it with anyone around the world using your unique repository URL.</p>
-        
-        <h2>Next Steps</h2>
-        <p>To update your content, just modify this file, commit the changes to your main branch, and check your live website link after a few seconds.</p>
-    </main>
+<!-- ══════════════════════════ MODULES ══════════════════════════ -->
+<section id="modules">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Modules</div>
+      <h2>The tree, module by module.</h2>
+      <p>Every directory below is its own target, its own tests, and its own switch.</p>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 My Website. Powered by GitHub Pages.</p>
-    </footer>
+    <div class="tablewrap rv">
+      <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>Directory</th><th>Target</th><th>What it is</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mod">core</td><td class="tgt">Aver.Core</td><td class="desc">Maths, log, time, hashing, types. Depends on nothing engine-specific.</td></tr>
+          <tr><td class="mod">platform</td><td class="tgt">Aver.Platform</td><td class="desc">Win32 window and input, splash, filesystem, image decode, a debounced directory watcher.</td></tr>
+          <tr><td class="mod">assets</td><td class="tgt">Aver.Assets</td><td class="desc">Asset ids and the decode-to-GPU texture step.</td></tr>
+          <tr><td class="mod">formats</td><td class="tgt">Aver.Formats</td><td class="desc">The AVR1 container, the <code>.oc*</code> readers/writers, glTF import, JSON, and the C# source rewriters.</td></tr>
+          <tr><td class="mod">rhi</td><td class="tgt">Aver.RHI</td><td class="desc">Device and swapchain interface, the generic render-feature surface, the shared shader prelude.</td></tr>
+          <tr><td class="mod">rhi.d3d12</td><td class="tgt">Aver.RHI.D3D12</td><td class="desc">The backend: PBR, procedural sky, lines, wireframe, runtime MSAA, a mesh-shader path, the ImGui host, capture.</td></tr>
+          <tr><td class="mod">render.pbr</td><td class="tgt">Aver.Render.PBR</td><td class="desc">The material system and its C seam — the surface BRDF and the GPU binding half.</td></tr>
+          <tr><td class="mod">render.voxi</td><td class="tgt">Aver.Render.Voxi</td><td class="desc">Render-feature settings plus the GI / shadow / RayQuery feature that drives the RHI.</td></tr>
+          <tr><td class="mod">render.ui</td><td class="tgt">Aver.Render.UI</td><td class="desc">Turns a draw list into calls in the overlay pass, after the camera post chain — a HUD is never tonemapped with the world.</td></tr>
+          <tr><td class="mod">render.actorpreview</td><td class="tgt">Aver.Render.ActorPreview</td><td class="desc">The actor editor's 3D preview: its own colour and depth target, pipeline, mesh registry and camera.</td></tr>
+          <tr><td class="mod">scene</td><td class="tgt">Aver.Scene</td><td class="desc">Entities, packed component pools, hierarchy, and fields addressed by name.</td></tr>
+          <tr><td class="mod">framework</td><td class="tgt">Aver.Framework</td><td class="desc">The gameplay vocabulary — class registry, defaults, spawn, possess, begin/end play — as data, not an inheritance tree.</td></tr>
+          <tr><td class="mod">physics</td><td class="tgt">Aver.Physics</td><td class="desc">Jolt behind the engine's own plain-C seam.</td></tr>
+          <tr><td class="mod">scripting</td><td class="tgt">Aver.Scripting.Host</td><td class="desc">In-process CoreCLR via nethost/hostfxr; collectible load context, reflection discovery, hot reload.</td></tr>
+          <tr><td class="mod">ui</td><td class="tgt">Aver.UI</td><td class="desc">The retained game UI draw list — layers, batching, clip intersection, premultiplied alpha. Core-only.</td></tr>
+          <tr><td class="mod">audio</td><td class="tgt">Aver.Audio</td><td class="desc">The mixer — voices, buses, 3D pan and attenuation. Fills a buffer the caller supplies.</td></tr>
+          <tr><td class="mod">audio.wasapi</td><td class="tgt">Aver.Audio.Wasapi</td><td class="desc">The device layer, guarded the same way the D3D12 backend is.</td></tr>
+          <tr><td class="mod">runtime</td><td class="tgt">Aver.Runtime</td><td class="desc">The engine loop, <code>Application</code>, and the entry point that wires the compiled-in modules.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══════════════════════════ BUILD ══════════════════════════ -->
+<section id="build" style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Build</div>
+      <h2>Two commands to a running editor.</h2>
+      <p>CMake and Ninja come from the Visual Studio C++ workload. <code>dotnet</code> is optional — configure
+        without it and the managed half is simply skipped.</p>
+    </div>
+
+    <div class="split rv">
+      <div class="code">
+        <div class="code-bar"><i></i><i></i><i></i><span>PowerShell — repo root</span></div>
+<pre><span class="c-com"># configure + build (Debug)</span>
+<span class="c-pr">&gt;</span> <span class="c-cmd">./scripts/build.ps1</span>
+
+<span class="c-com"># ...or Release, into a separate tree</span>
+<span class="c-pr">&gt;</span> <span class="c-cmd">./scripts/build.ps1</span> <span class="c-flag">-Release</span>
+
+<span class="c-com"># build, then launch the editor</span>
+<span class="c-pr">&gt;</span> <span class="c-cmd">./scripts/run.ps1</span>
+
+<span class="c-com"># run with no window at all</span>
+<span class="c-pr">&gt;</span> <span class="c-cmd">./scripts/run.ps1</span> <span class="c-flag">--headless --frames 5</span>
+
+<span class="c-com"># draw a HUD through the C seam</span>
+<span class="c-pr">&gt;</span> <span class="c-cmd">./scripts/run.ps1</span> <span class="c-flag">--ui-demo</span>
+
+<span class="c-com"># probe frames against a recorded baseline</span>
+<span class="c-pr">&gt;</span> <span class="c-cmd">./scripts/gates.ps1</span> <span class="c-flag">-Config baseline</span>
+</pre>
+      </div>
+      <div>
+        <h3>Debug and Release, side by side</h3>
+        <p>The two build trees coexist on purpose. Each carries its own image-gate baseline, because
+          optimisation changes floating-point codegen — comparing one build against the other's numbers is
+          exactly the mistake the pairing exists to prevent.</p>
+        <ul class="ticks">
+          <li><b>Standalone tests</b> — fourteen executables land beside the editor and run directly.</li>
+          <li><b>No GPU required</b> — the renderer tests supply their own mock device.</li>
+          <li><b>Tests ship with modules</b> — switch a module off and its suite goes with it.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ CTA ══════════════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="cta rv">
+      <div class="eyebrow" style="margin-bottom:16px">Get started</div>
+      <h2>Install the Aver Launcher.</h2>
+      <p>The launcher handles installs, updates and project creation. The engine source itself lives in a
+        private repository — the launcher is public, and it's where everything begins.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="https://github.com/hydrogen-isotope/Aver-Launcher">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+          hydrogen-isotope/Aver-Launcher
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top">
+          <svg viewBox="0 0 256 256" aria-hidden="true">
+            <polygon points="30,78 128,134 128,234 30,178" fill="#EAEDF2"/>
+            <polygon points="128,134 226,78 226,178 128,234" fill="#EAEDF2" opacity=".72"/>
+            <polygon points="128,22 226,78 128,134 30,78" fill="#F26522"/>
+          </svg>
+          Aver Engine
+        </a>
+        <p>A modular 3D engine built exclusively on permissively-licensed foundations. Windows, DirectX 12,
+          C++ and .NET 10.</p>
+      </div>
+
+      <div class="footcols">
+        <div class="footcol">
+          <h4>Engine</h4>
+          <a href="#features">Features</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#modules">Modules</a>
+          <a href="#build">Build</a>
+        </div>
+        <div class="footcol">
+          <h4>Project</h4>
+          <a href="https://github.com/hydrogen-isotope/Aver-Launcher">Launcher</a>
+          <a href="https://github.com/hydrogen-isotope">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Hydrogen-Isotope. All rights reserved.</span>
+      <span>Engine source distributed under an evaluation licence.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// sticky header hairline
+var hdr = document.getElementById('hdr');
+addEventListener('scroll', function(){
+  hdr.classList.toggle('stuck', scrollY > 8);
+}, {passive:true});
+
+// reveal on scroll
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+}
+</script>
 </body>
 </html>
