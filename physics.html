@@ -6,6 +6,8 @@
 <title>Jolt, behind a plain-C seam — Aver Engine</title>
 <meta name="description" content="Rigid bodies, a swept character controller and broadphase queries — wrapped so completely that nothing above the seam has ever seen a third-party type.">
 <meta name="theme-color" content="#0C0E12">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta name="build" content="20260801-0755">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jolt, behind a plain-C seam — Aver Engine">
 <meta property="og:description" content="Rigid bodies, a swept character controller and broadphase queries — wrapped so completely that nothing above the seam has ever seen a third-party type.">
@@ -506,12 +508,28 @@ kbd{font-family:var(--mono); font-size:.84em; background:rgba(255,255,255,.07);
 .nextcard em{display:block; font-style:normal; font-size:14px; color:var(--ink-faint); line-height:1.55}
 
 /* clickable feature cards on the landing page */
-a.card{display:block; color:inherit}
+a.card{display:block; color:inherit; cursor:pointer;
+  -webkit-tap-highlight-color:transparent; touch-action:manipulation}
+/* Nothing inside a card can swallow the click: the <code>, <b> and <svg>
+   children are decoration, so the whole surface hits the anchor itself. */
+a.card > *{pointer-events:none}
 a.card .more{display:inline-flex; align-items:center; gap:7px; margin-top:16px;
   font-size:14px; font-weight:600; color:var(--orange)}
 a.card .more svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;
   transition:transform .2s ease}
 a.card:hover .more svg{transform:translateX(3px)}
+a.card:active{transform:translateY(0) scale(.995)}
+
+/* Visible keyboard focus on every interactive element. */
+a:focus-visible, .btn:focus-visible{
+  outline:2px solid var(--orange); outline-offset:3px; border-radius:8px}
+
+/* The reveal animation must never leave anything unclickable: if the observer
+   somehow does not fire, this brings the element back after the transition. */
+@media (prefers-reduced-motion:no-preference){
+  .rv{animation:rvFallback 0s linear 2.5s forwards}
+}
+@keyframes rvFallback{to{opacity:1; transform:none}}
 
 @media (max-width:1000px){
   .layout{grid-template-columns:1fr; gap:34px}
