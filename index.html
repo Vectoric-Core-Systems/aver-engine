@@ -438,6 +438,97 @@ footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:va
   .dl-req{padding:30px 24px}
   .req b{width:88px}
 }
+
+/* ============================================================
+   Detail-page additions
+   ============================================================ */
+.subhero{position:relative; padding:64px 0 52px; overflow:hidden;
+  border-bottom:1px solid var(--line-soft); background:var(--bg-raise)}
+.subhero::before{content:""; position:absolute; inset:-40% -10% auto -10%; height:560px;
+  background:radial-gradient(50% 50% at 72% 30%, rgba(242,101,34,.14), transparent 70%);
+  pointer-events:none}
+.subhero::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(70% 70% at 40% 40%, #000 0%, transparent 80%);
+  -webkit-mask-image:radial-gradient(70% 70% at 40% 40%, #000 0%, transparent 80%); opacity:.55}
+.subhero .wrap{position:relative; z-index:1}
+.subhero h1{font-size:clamp(33px,4.6vw,54px); letter-spacing:-.032em; max-width:19ch}
+.subhero .lede{margin-top:20px; font-size:18.5px}
+
+.crumb{display:flex; align-items:center; gap:9px; font-family:var(--mono);
+  font-size:12px; color:var(--ink-faint); margin-bottom:20px}
+.crumb a{color:var(--ink-dim)} .crumb a:hover{color:var(--orange)}
+
+.stats{display:flex; gap:44px; flex-wrap:wrap; margin-top:38px;
+  padding-top:30px; border-top:1px solid var(--line-soft)}
+.stat b{display:block; font-size:29px; font-weight:680; letter-spacing:-.03em;
+  font-family:var(--mono); color:var(--orange)}
+.stat span{display:block; font-size:13.5px; color:var(--ink-faint); margin-top:5px}
+
+/* prose */
+.prose{max-width:74ch}
+.prose h2{font-size:clamp(23px,2.7vw,30px); margin:0 0 18px; scroll-margin-top:90px}
+.prose p{color:var(--ink-dim); font-size:16.5px; line-height:1.75; margin-bottom:16px}
+.prose p:last-child{margin-bottom:0}
+.prose b{color:var(--ink); font-weight:620}
+.prose i{color:var(--ink-dim)}
+.block{padding:38px 0; border-top:1px solid var(--line-soft)}
+.block:first-child{border-top:none; padding-top:0}
+
+kbd{font-family:var(--mono); font-size:.84em; background:rgba(255,255,255,.07);
+  border:1px solid var(--line); border-bottom-width:2px; border-radius:5px;
+  padding:1px 6px; color:var(--ink)}
+
+/* two-column body with a sticky table of contents */
+.layout{display:grid; grid-template-columns:210px 1fr; gap:56px; align-items:start}
+.toc{position:sticky; top:88px}
+.toc h4{font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-faint); font-weight:600; margin-bottom:14px}
+.toc a{display:block; font-size:14px; color:var(--ink-faint); padding:6px 0 6px 13px;
+  border-left:2px solid var(--line-soft); transition:color .16s ease, border-color .16s ease}
+.toc a:hover{color:var(--ink-dim); border-color:#39414F}
+.toc a.on{color:var(--orange); border-color:var(--orange)}
+
+.tcap{font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:16px}
+.facts td:first-child{width:230px; color:var(--ink); font-weight:560}
+.facts td:last-child{color:var(--ink-dim)}
+.facts table{min-width:520px}
+
+.nextnav{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px}
+.nextcard{display:block; padding:22px 24px; border:1px solid var(--line-soft);
+  border-radius:var(--r); background:var(--bg-card);
+  transition:border-color .2s ease, transform .2s ease, background .2s ease}
+.nextcard:hover{border-color:#2E3644; transform:translateY(-2px); background:#171C24}
+.nextcard span{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:8px}
+.nextcard b{display:block; font-size:16.5px; font-weight:620; margin-bottom:5px}
+.nextcard em{display:block; font-style:normal; font-size:14px; color:var(--ink-faint); line-height:1.55}
+
+/* clickable feature cards on the landing page */
+a.card{display:block; color:inherit}
+a.card .more{display:inline-flex; align-items:center; gap:7px; margin-top:16px;
+  font-size:14px; font-weight:600; color:var(--orange)}
+a.card .more svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;
+  transition:transform .2s ease}
+a.card:hover .more svg{transform:translateX(3px)}
+
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr; gap:34px}
+  .toc{position:static; padding-bottom:8px; border-bottom:1px solid var(--line-soft)}
+  .toc a{display:inline-block; border-left:none; border-bottom:2px solid var(--line-soft);
+    padding:4px 14px 6px 0; margin-right:10px}
+  .nextnav{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .subhero{padding:44px 0 38px}
+  .stats{gap:28px}
+  .stat b{font-size:24px}
+  .facts td:first-child{width:150px}
+}
+
 </style>
 </head>
 <body>
@@ -450,11 +541,7 @@ footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:va
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="#features">Features</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#modules">Modules</a>
-      <a href="#build">Build</a>
-      <a href="#download">Download</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a>
       <a class="btn btn-primary" href="#download">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
         Launcher
@@ -516,47 +603,48 @@ footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:va
     </div>
 
     <div class="cards">
-      <div class="card rv">
+      <a class="card rv" href="architecture.html">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg></div>
         <h3>Modular by construction</h3>
         <p>A strict dependency DAG from <code>core</code> up to <code>runtime</code>. No god object, no
           <code>UObject</code>, no reflection tax you didn't ask for — you pay only for the modules you compile in.</p>
-      </div>
+      <span class="more">The dependency DAG <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
-      <div class="card rv">
+      <a class="card rv" href="rendering.html">
         <div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 18v3"/></svg></div>
         <h3>DirectX 12 renderer</h3>
-        <p>Physically-based shading, a procedural sky, RayQuery global illumination and shadows, a mesh-shader
-          geometry path, wireframe and line passes, and MSAA as a runtime setting — not a rebuild.</p>
-      </div>
+        <p>Cook-Torrance shading, a physically computed
+          sky, voxel cone-traced global illumination, inline ray-traced sun shadows, four cascades of
+          shadow map, and MSAA as a runtime setting — not a rebuild.</p>
+      <span class="more">Inside the renderer <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
-      <div class="card rv">
+      <a class="card rv" href="scripting.html">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
         <h3>C# gameplay, hot reloaded</h3>
         <p>An in-process CoreCLR host with a collectible load context. Write actors, pawns, HUDs and materials
           in C#, hit <b>Reload Scripts</b>, and the result swaps into the running editor without a restart.</p>
-      </div>
+      <span class="more">How hot reload works <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
-      <div class="card rv">
+      <a class="card rv" href="physics.html">
         <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M3.6 8h16.8"/><path d="M3.6 16h16.8"/></svg></div>
         <h3>Physics you can trust</h3>
         <p>Jolt is vendored as the rigid-body backend, wrapped in the engine's own plain-C interface — so the
           solver is swappable and the gameplay layer never sees a third-party type.</p>
-      </div>
+      <span class="more">The physics seam <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
-      <div class="card rv">
+      <a class="card rv" href="editor.html">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 18V9a2 2 0 0 1 2-2h3l2-3h4l2 3h3a2 2 0 0 1 2 2v9"/><circle cx="12" cy="13" r="3.2"/></svg></div>
         <h3>The editor is the runtime</h3>
         <p>One executable. A docked ImGui shell composited straight over the live D3D12 viewport, with a
           project browser, asset and actor editors, a Details panel and one-key script compilation.</p>
-      </div>
+      <span class="more">Tour the editor <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
-      <div class="card rv">
+      <a class="card rv" href="audio.html">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg></div>
         <h3>Audio down to the buffer</h3>
         <p>A Core-only mixer — voices, buses, 3D pan and distance attenuation — that fills a buffer you supply,
           with a WASAPI device behind a separate seam. Testable with no sound card in the machine.</p>
-      </div>
+      <span class="more">Inside the mixer <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -574,9 +662,9 @@ footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:va
     <div class="split rv">
       <div>
         <h3>Layers, not spaghetti</h3>
-        <p>Each module declares what it may depend on and the build enforces it. That constraint is what makes
-          the headless tests meaningful: nine of them stand up their own mock device and assert on recorded
-          draw calls, so correctness doesn't need a GPU.</p>
+        <p>Each module declares what it may depend on and the build enforces it. That constraint is what makes the headless tests
+          meaningful: the renderer-facing suites stand up their own mock device and assert on
+          recorded draw calls, so correctness never needs a GPU.</p>
         <ul class="ticks">
           <li><b>One seam per module</b> — not one flat ABI for everything, so each versions independently.</li>
           <li><b>Core-only where possible</b> — the UI, mixer and scene layers link nothing device-specific.</li>
@@ -639,7 +727,7 @@ footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:va
           <tr><td class="mod">assets</td><td class="tgt">Aver.Assets</td><td class="desc">Asset ids and the decode-to-GPU texture step.</td></tr>
           <tr><td class="mod">formats</td><td class="tgt">Aver.Formats</td><td class="desc">The AVR1 container, the <code>.oc*</code> readers/writers, glTF import, JSON, and the C# source rewriters.</td></tr>
           <tr><td class="mod">rhi</td><td class="tgt">Aver.RHI</td><td class="desc">Device and swapchain interface, the generic render-feature surface, the shared shader prelude.</td></tr>
-          <tr><td class="mod">rhi.d3d12</td><td class="tgt">Aver.RHI.D3D12</td><td class="desc">The backend: PBR, procedural sky, lines, wireframe, runtime MSAA, a mesh-shader path, the ImGui host, capture.</td></tr>
+          <tr><td class="mod">rhi.d3d12</td><td class="tgt">Aver.RHI.D3D12</td><td class="desc">The backend: PBR, a physically computed sky, lines, wireframe, runtime MSAA, a mesh-shader path, the ImGui host, capture.</td></tr>
           <tr><td class="mod">render.pbr</td><td class="tgt">Aver.Render.PBR</td><td class="desc">The material system and its C seam — the surface BRDF and the GPU binding half.</td></tr>
           <tr><td class="mod">render.voxi</td><td class="tgt">Aver.Render.Voxi</td><td class="desc">Render-feature settings plus the GI / shadow / RayQuery feature that drives the RHI.</td></tr>
           <tr><td class="mod">render.ui</td><td class="tgt">Aver.Render.UI</td><td class="desc">Turns a draw list into calls in the overlay pass, after the camera post chain — a HUD is never tonemapped with the world.</td></tr>
@@ -651,6 +739,10 @@ footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:va
           <tr><td class="mod">ui</td><td class="tgt">Aver.UI</td><td class="desc">The retained game UI draw list — layers, batching, clip intersection, premultiplied alpha. Core-only.</td></tr>
           <tr><td class="mod">audio</td><td class="tgt">Aver.Audio</td><td class="desc">The mixer — voices, buses, 3D pan and attenuation. Fills a buffer the caller supplies.</td></tr>
           <tr><td class="mod">audio.wasapi</td><td class="tgt">Aver.Audio.Wasapi</td><td class="desc">The device layer, guarded the same way the D3D12 backend is.</td></tr>
+          <tr><td class="mod">anim</td><td class="tgt">Aver.Anim</td><td class="desc">Skeletal animation — the first real consumer of the <code>.ocskel</code> and <code>.ocanim</code> formats.</td></tr>
+          <tr><td class="mod">deform</td><td class="tgt">Aver.Deform</td><td class="desc">Sub-bone vertex deformation: a cage finer than the skeleton, over its rest pose. CPU only.</td></tr>
+          <tr><td class="mod">landscape</td><td class="tgt">Aver.Landscape</td><td class="desc">Chunked heightfield terrain — quadtree, LOD selection, culling and chunk geometry.</td></tr>
+          <tr><td class="mod">mcp</td><td class="tgt">Aver.Mcp</td><td class="desc">An editor control channel over loopback, for debugging. Off by default; listens only with <code>--mcp</code>.</td></tr>
           <tr><td class="mod">runtime</td><td class="tgt">Aver.Runtime</td><td class="desc">The engine loop, <code>Application</code>, and the entry point that wires the compiled-in modules.</td></tr>
         </tbody>
       </table>
@@ -697,8 +789,10 @@ footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:va
           optimisation changes floating-point codegen — comparing one build against the other's numbers is
           exactly the mistake the pairing exists to prevent.</p>
         <ul class="ticks">
-          <li><b>Standalone tests</b> — fourteen executables land beside the editor and run directly.</li>
-          <li><b>No GPU required</b> — the renderer tests supply their own mock device.</li>
+          <li><b>Standalone tests</b> — each suite is its own executable, landing
+            beside the editor and run directly.</li>
+          <li><b>No GPU required</b> — renderer suites supply their own mock device
+            and assert on what was recorded.</li>
           <li><b>Tests ship with modules</b> — switch a module off and its suite goes with it.</li>
         </ul>
       </div>
@@ -790,15 +884,14 @@ footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:va
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="#features">Features</a>
-          <a href="#architecture">Architecture</a>
-          <a href="#modules">Modules</a>
-          <a href="#build">Build</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>
+          <a href="#download">Download</a>
           <a href="https://github.com/hydrogen-isotope/Aver-Launcher">Launcher</a>
-          <a href="https://github.com/hydrogen-isotope">GitHub</a>
+          <a href="https://github.com/hydrogen-isotope/aver-engine">GitHub</a>
+          <a href="https://github.com/hydrogen-isotope/aver-engine/edit/main/index.html">Edit this page</a>
         </div>
       </div>
     </div>

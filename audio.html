@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A mixer you can test without a speaker — Aver Engine</title>
+<meta name="description" content="Core-only mixing that fills a buffer you supply, a real-time boundary enforced from the first commit, and a WASAPI device kept behind its own seam.">
+<meta name="theme-color" content="#0C0E12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A mixer you can test without a speaker — Aver Engine">
+<meta property="og:description" content="Core-only mixing that fills a buffer you supply, a real-time boundary enforced from the first commit, and a WASAPI device kept behind its own seam.">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+
+<style>
+
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root{
+  --bg:        #0C0E12;
+  --bg-raise:  #12151B;
+  --bg-card:   #151920;
+  --line:      #232936;
+  --line-soft: #1B2029;
+  --ink:       #EAEDF2;
+  --ink-dim:   #A6AEBC;
+  --ink-faint: #6E7789;
+  --orange:    #F26522;
+  --orange-hi: #FF7A3D;
+  --steel:     #5B8DEF;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+  --sans: "Segoe UI Variable Display", "Segoe UI", Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --maxw: 1180px;
+  --r: 14px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{line-height:1.15; margin:0; font-weight:650; letter-spacing:-.02em}
+p{margin:0}
+img,svg{display:block; max-width:100%}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+code{
+  font-family:var(--mono); font-size:.88em;
+  background:rgba(255,255,255,.055); border:1px solid var(--line-soft);
+  border-radius:5px; padding:1px 5px; color:#C6CEDC;
+}
+td code, .ticks code{background:rgba(255,255,255,.05)}
+.eyebrow{
+  font-family:var(--mono); font-size:12px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:14px;
+}
+.lede{color:var(--ink-dim); font-size:18px; max-width:62ch}
+
+/* ============================================================
+   Nav
+   ============================================================ */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(12,14,18,.72);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s ease, background .25s ease;
+}
+header.stuck{border-bottom-color:var(--line-soft)}
+nav{
+  max-width:var(--maxw); margin:0 auto; padding:14px 28px;
+  display:flex; align-items:center; gap:30px;
+}
+.brand{
+  display:flex; align-items:center; gap:11px;
+  /* matches the master lockup's geometric wordmark, with graceful fallbacks */
+  font-family:"Century Gothic","Gill Sans MT",Poppins,Futura,var(--sans);
+  font-weight:650; letter-spacing:.005em; font-size:17.5px;
+}
+.brand img{width:29px; height:auto; flex:none}
+.navlinks{display:flex; gap:26px; margin-left:auto; align-items:center}
+.navlinks a{
+  font-size:14.5px; color:var(--ink-dim);
+  transition:color .18s ease;
+}
+.navlinks a:hover{color:var(--ink)}
+.navlinks .btn{margin-left:6px}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:11px 20px; border-radius:9px;
+  font-size:15px; font-weight:600; letter-spacing:-.01em;
+  border:1px solid transparent; cursor:pointer;
+  transition:transform .16s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  white-space:nowrap;
+}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-primary{
+  background:var(--orange); color:#12100E;
+  box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 8px 24px -10px rgba(242,101,34,.85);
+}
+.btn-primary:hover{background:var(--orange-hi); transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line); color:var(--ink); background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:#39414F; background:rgba(255,255,255,.05); transform:translateY(-1px)}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{position:relative; padding:104px 0 84px; overflow:hidden}
+.hero::before{ /* radial glow */
+  content:""; position:absolute; inset:-30% -10% auto -10%; height:760px;
+  background:radial-gradient(58% 52% at 68% 34%, rgba(242,101,34,.16), transparent 68%),
+             radial-gradient(46% 40% at 22% 12%, rgba(91,141,239,.11), transparent 70%);
+  pointer-events:none;
+}
+.hero::after{ /* grid floor */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(72% 62% at 50% 34%, #000 0%, transparent 78%);
+  -webkit-mask-image:radial-gradient(72% 62% at 50% 34%, #000 0%, transparent 78%);
+  opacity:.7;
+}
+.hero .wrap{position:relative; z-index:1}
+.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center}
+
+.tag{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+  color:var(--ink-dim); background:rgba(255,255,255,.035);
+  border:1px solid var(--line); border-radius:999px; padding:6px 14px 6px 10px;
+  margin-bottom:26px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(242,101,34,.16)}
+
+h1{font-size:clamp(40px, 5.6vw, 66px); letter-spacing:-.035em; font-weight:700}
+h1 .accent{
+  background:linear-gradient(96deg, var(--orange) 10%, #FFA366 90%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero p.lede{margin-top:22px; font-size:19.5px}
+.hero-cta{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap}
+.hero-note{margin-top:20px; font-size:13.5px; color:var(--ink-faint); font-family:var(--mono)}
+
+/* rotating cube */
+.cube-stage{display:grid; place-items:center; perspective:900px}
+.cube-stage img{
+  width:min(290px, 68vw); height:auto;
+  filter:drop-shadow(0 26px 60px rgba(242,101,34,.28));
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(-9px) rotate(-1.2deg)}
+  50%{transform:translateY(9px) rotate(1.2deg)}
+}
+@media (prefers-reduced-motion:reduce){
+  .cube-stage img{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============================================================
+   Spec strip
+   ============================================================ */
+.strip{border-block:1px solid var(--line-soft); background:var(--bg-raise)}
+.strip-inner{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  max-width:var(--maxw); margin:0 auto;
+}
+.spec{padding:26px 28px; border-left:1px solid var(--line-soft)}
+.spec:first-child{border-left:none}
+.spec b{display:block; font-family:var(--mono); font-size:19px; font-weight:600; letter-spacing:-.01em}
+.spec span{display:block; font-size:13px; color:var(--ink-faint); margin-top:4px}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+section{padding:96px 0}
+.sec-head{max-width:64ch; margin-bottom:52px}
+.sec-head h2{font-size:clamp(29px,3.6vw,42px)}
+.sec-head p{margin-top:16px; color:var(--ink-dim)}
+
+/* feature cards */
+.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--line-soft);
+  border-radius:var(--r);
+  padding:28px 26px 30px;
+  position:relative; overflow:hidden;
+  transition:border-color .22s ease, transform .22s ease, background .22s ease;
+}
+.card::after{
+  content:""; position:absolute; inset:0 0 auto 0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(242,101,34,.55), transparent);
+  opacity:0; transition:opacity .25s ease;
+}
+.card:hover{border-color:#2E3644; transform:translateY(-3px); background:#171C24}
+.card:hover::after{opacity:1}
+.card .ic{
+  width:38px;height:38px;border-radius:10px;
+  display:grid;place-items:center; margin-bottom:18px;
+  background:rgba(242,101,34,.11); border:1px solid rgba(242,101,34,.24);
+}
+.card .ic svg{width:19px;height:19px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:18.5px; margin-bottom:9px}
+.card p{color:var(--ink-dim); font-size:15px; line-height:1.62}
+
+/* split rows */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center}
+.split + .split{margin-top:84px}
+.split h3{font-size:26px; margin-bottom:16px}
+.split p{color:var(--ink-dim); margin-bottom:14px}
+.ticks{list-style:none; padding:0; margin:22px 0 0}
+.ticks li{
+  position:relative; padding-left:26px; margin-bottom:11px;
+  font-size:15.5px; color:var(--ink-dim);
+}
+.ticks li::before{
+  content:""; position:absolute; left:2px; top:9px;
+  width:9px;height:9px; border-radius:2px;
+  background:var(--orange); transform:rotate(45deg);
+}
+.ticks li b{color:var(--ink); font-weight:600}
+
+/* DAG diagram */
+.dag{
+  background:var(--bg-card); border:1px solid var(--line-soft);
+  border-radius:var(--r); padding:26px; font-family:var(--mono); font-size:13.5px;
+}
+.dag-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px}
+.dag-row:last-child{margin-bottom:0}
+.node{
+  padding:7px 13px; border-radius:7px; border:1px solid var(--line);
+  background:rgba(255,255,255,.03); color:var(--ink);
+}
+.node.hot{border-color:rgba(242,101,34,.45); background:rgba(242,101,34,.10); color:#FFC49E}
+.node.cool{border-color:rgba(91,141,239,.38); background:rgba(91,141,239,.09); color:#B9CCF7}
+.arrow{color:var(--ink-faint)}
+
+/* code block */
+.code{
+  background:#0A0C10; border:1px solid var(--line-soft); border-radius:var(--r);
+  overflow:hidden;
+}
+.code-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:11px 16px; border-bottom:1px solid var(--line-soft); background:#0E1116;
+}
+.code-bar i{width:10px;height:10px;border-radius:50%;background:#2A313D;display:block}
+.code-bar span{margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--ink-faint)}
+.code pre{
+  margin:0; padding:20px 22px; overflow-x:auto;
+  font-family:var(--mono); font-size:13.5px; line-height:1.85; color:var(--ink-dim);
+}
+.c-cmd{color:var(--ink)}
+.c-flag{color:var(--steel)}
+.c-com{color:#59617200; color:#5E6779}
+.c-pr{color:var(--orange)}
+
+/* table */
+.tablewrap{
+  border:1px solid var(--line-soft); border-radius:var(--r);
+  overflow:hidden; background:var(--bg-card);
+}
+.scroller{overflow-x:auto}
+table{border-collapse:collapse; width:100%; min-width:660px; font-size:15px}
+th,td{text-align:left; padding:14px 20px; border-bottom:1px solid var(--line-soft); vertical-align:top}
+thead th{
+  background:#101419; font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-faint); font-weight:600;
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr{transition:background .16s ease}
+tbody tr:hover{background:rgba(255,255,255,.022)}
+td.mod{font-family:var(--mono); font-size:13.5px; color:var(--orange); white-space:nowrap}
+td.tgt{font-family:var(--mono); font-size:13px; color:var(--ink-dim); white-space:nowrap}
+td.desc{color:var(--ink-dim); min-width:280px}
+
+/* ============================================================
+   Download panel
+   ============================================================ */
+.dl{
+  display:grid; grid-template-columns:1.05fr .95fr; gap:0;
+  border:1px solid var(--line); border-radius:20px; overflow:hidden;
+  background:var(--bg-card);
+}
+.dl-main{
+  position:relative; padding:44px 44px 40px;
+  background:linear-gradient(150deg, #171B22 0%, #12151B 55%, #17110C 100%);
+}
+.dl-main::before{
+  content:""; position:absolute; inset:auto -30% -70% -30%; height:340px;
+  background:radial-gradient(50% 60% at 50% 100%, rgba(242,101,34,.20), transparent 72%);
+  pointer-events:none;
+}
+.dl-main > *{position:relative}
+
+.os-badge{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.05em;
+  border:1px solid var(--line); border-radius:999px;
+  padding:6px 14px; margin-bottom:20px; color:var(--ink-dim);
+  background:rgba(255,255,255,.035);
+}
+.os-badge svg{width:14px;height:14px;fill:currentColor}
+.os-badge.ok{color:#9BE3B0; border-color:rgba(80,200,120,.3); background:rgba(80,200,120,.08)}
+.os-badge.no{color:#FFC49E; border-color:rgba(242,101,34,.32); background:rgba(242,101,34,.08)}
+
+.dl h3{font-size:clamp(24px,2.8vw,31px); margin-bottom:12px}
+.dl-sub{color:var(--ink-dim); font-size:15.5px; max-width:44ch}
+
+.btn-dl{
+  margin-top:26px; font-size:16px; padding:14px 26px;
+  min-height:50px;
+}
+.btn-dl[aria-disabled="true"]{
+  background:rgba(255,255,255,.05); color:var(--ink-faint);
+  border-color:var(--line); box-shadow:none; cursor:not-allowed;
+}
+.btn-dl[aria-disabled="true"]:hover{transform:none; background:rgba(255,255,255,.05)}
+
+.dl-meta{
+  margin-top:14px; font-family:var(--mono); font-size:12.5px;
+  color:var(--ink-faint); min-height:19px;
+}
+.dl-meta a{color:var(--ink-dim); border-bottom:1px solid var(--line); padding-bottom:1px}
+.dl-meta a:hover{color:var(--orange); border-color:var(--orange)}
+.dl-alt{margin-top:18px; font-size:13.5px; color:var(--ink-faint)}
+.dl-alt a{color:var(--ink-dim); text-decoration:underline; text-underline-offset:3px}
+.dl-alt a:hover{color:var(--orange)}
+
+/* spinner while the release lookup is in flight */
+.spin{
+  width:15px;height:15px;border-radius:50%; flex:none;
+  border:2px solid rgba(255,255,255,.25); border-top-color:currentColor;
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:2s}}
+
+/* requirements side panel */
+.dl-req{padding:40px 40px 38px; border-left:1px solid var(--line-soft); background:#12161C}
+.dl-req h4{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-faint); font-weight:600; margin-bottom:18px;
+}
+.req{list-style:none; margin:0; padding:0}
+.req li{
+  display:flex; gap:14px; padding:11px 0; border-bottom:1px solid var(--line-soft);
+  font-size:14.5px; color:var(--ink-dim);
+}
+.req li:last-child{border-bottom:none}
+.req b{
+  flex:none; width:104px; color:var(--ink-faint); font-family:var(--mono);
+  font-size:12px; letter-spacing:.03em; padding-top:2px; font-weight:500;
+}
+
+/* CTA */
+.cta{
+  position:relative; overflow:hidden;
+  border:1px solid var(--line); border-radius:20px;
+  background:linear-gradient(150deg, #16191F 0%, #101319 60%, #14100D 100%);
+  padding:64px 56px; text-align:center;
+}
+.cta::before{
+  content:""; position:absolute; inset:auto -20% -60% -20%; height:420px;
+  background:radial-gradient(50% 60% at 50% 100%, rgba(242,101,34,.24), transparent 70%);
+  pointer-events:none;
+}
+.cta > *{position:relative}
+.cta h2{font-size:clamp(28px,3.4vw,40px)}
+.cta p{color:var(--ink-dim); margin:18px auto 0; max-width:56ch}
+.cta .hero-cta{justify-content:center}
+
+/* footer */
+footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:var(--bg-raise)}
+.foot{display:flex; gap:40px; justify-content:space-between; flex-wrap:wrap}
+.foot .brand{margin-bottom:14px}
+.foot p{font-size:13.5px; color:var(--ink-faint); max-width:44ch; line-height:1.7}
+.footcols{display:flex; gap:64px; flex-wrap:wrap}
+.footcol h4{font-size:12px; font-family:var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px; font-weight:600}
+.footcol a{display:block; font-size:14.5px; color:var(--ink-dim); margin-bottom:9px; transition:color .16s ease}
+.footcol a:hover{color:var(--orange)}
+.legal{
+  margin-top:44px; padding-top:24px; border-top:1px solid var(--line-soft);
+  font-size:12.5px; color:var(--ink-faint); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+}
+
+/* reveal on scroll */
+.rv{opacity:0; transform:translateY(18px); transition:opacity .6s cubic-bezier(.2,.7,.3,1), transform .6s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr; gap:44px}
+  .cube-stage{order:-1}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .strip-inner{grid-template-columns:repeat(2,1fr)}
+  .spec:nth-child(3){border-left:none}
+  .spec:nth-child(n+3){border-top:1px solid var(--line-soft)}
+  .split{grid-template-columns:1fr; gap:34px}
+  .dl{grid-template-columns:1fr}
+  .dl-req{border-left:none; border-top:1px solid var(--line-soft)}
+  .navlinks a:not(.btn){display:none}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  nav{padding:12px 20px}
+  section{padding:68px 0}
+  .hero{padding:64px 0 56px}
+  .cards{grid-template-columns:1fr}
+  .strip-inner{grid-template-columns:1fr}
+  .spec{border-left:none; border-top:1px solid var(--line-soft)}
+  .spec:first-child{border-top:none}
+  .cta{padding:44px 26px}
+  .btn{padding:11px 17px; font-size:14.5px}
+  .dl-main{padding:32px 24px 30px}
+  .dl-req{padding:30px 24px}
+  .req b{width:88px}
+}
+
+
+/* ============================================================
+   Detail-page additions
+   ============================================================ */
+.subhero{position:relative; padding:64px 0 52px; overflow:hidden;
+  border-bottom:1px solid var(--line-soft); background:var(--bg-raise)}
+.subhero::before{content:""; position:absolute; inset:-40% -10% auto -10%; height:560px;
+  background:radial-gradient(50% 50% at 72% 30%, rgba(242,101,34,.14), transparent 70%);
+  pointer-events:none}
+.subhero::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(70% 70% at 40% 40%, #000 0%, transparent 80%);
+  -webkit-mask-image:radial-gradient(70% 70% at 40% 40%, #000 0%, transparent 80%); opacity:.55}
+.subhero .wrap{position:relative; z-index:1}
+.subhero h1{font-size:clamp(33px,4.6vw,54px); letter-spacing:-.032em; max-width:19ch}
+.subhero .lede{margin-top:20px; font-size:18.5px}
+
+.crumb{display:flex; align-items:center; gap:9px; font-family:var(--mono);
+  font-size:12px; color:var(--ink-faint); margin-bottom:20px}
+.crumb a{color:var(--ink-dim)} .crumb a:hover{color:var(--orange)}
+
+.stats{display:flex; gap:44px; flex-wrap:wrap; margin-top:38px;
+  padding-top:30px; border-top:1px solid var(--line-soft)}
+.stat b{display:block; font-size:29px; font-weight:680; letter-spacing:-.03em;
+  font-family:var(--mono); color:var(--orange)}
+.stat span{display:block; font-size:13.5px; color:var(--ink-faint); margin-top:5px}
+
+/* prose */
+.prose{max-width:74ch}
+.prose h2{font-size:clamp(23px,2.7vw,30px); margin:0 0 18px; scroll-margin-top:90px}
+.prose p{color:var(--ink-dim); font-size:16.5px; line-height:1.75; margin-bottom:16px}
+.prose p:last-child{margin-bottom:0}
+.prose b{color:var(--ink); font-weight:620}
+.prose i{color:var(--ink-dim)}
+.block{padding:38px 0; border-top:1px solid var(--line-soft)}
+.block:first-child{border-top:none; padding-top:0}
+
+kbd{font-family:var(--mono); font-size:.84em; background:rgba(255,255,255,.07);
+  border:1px solid var(--line); border-bottom-width:2px; border-radius:5px;
+  padding:1px 6px; color:var(--ink)}
+
+/* two-column body with a sticky table of contents */
+.layout{display:grid; grid-template-columns:210px 1fr; gap:56px; align-items:start}
+.toc{position:sticky; top:88px}
+.toc h4{font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-faint); font-weight:600; margin-bottom:14px}
+.toc a{display:block; font-size:14px; color:var(--ink-faint); padding:6px 0 6px 13px;
+  border-left:2px solid var(--line-soft); transition:color .16s ease, border-color .16s ease}
+.toc a:hover{color:var(--ink-dim); border-color:#39414F}
+.toc a.on{color:var(--orange); border-color:var(--orange)}
+
+.tcap{font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:16px}
+.facts td:first-child{width:230px; color:var(--ink); font-weight:560}
+.facts td:last-child{color:var(--ink-dim)}
+.facts table{min-width:520px}
+
+.nextnav{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px}
+.nextcard{display:block; padding:22px 24px; border:1px solid var(--line-soft);
+  border-radius:var(--r); background:var(--bg-card);
+  transition:border-color .2s ease, transform .2s ease, background .2s ease}
+.nextcard:hover{border-color:#2E3644; transform:translateY(-2px); background:#171C24}
+.nextcard span{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:8px}
+.nextcard b{display:block; font-size:16.5px; font-weight:620; margin-bottom:5px}
+.nextcard em{display:block; font-style:normal; font-size:14px; color:var(--ink-faint); line-height:1.55}
+
+/* clickable feature cards on the landing page */
+a.card{display:block; color:inherit}
+a.card .more{display:inline-flex; align-items:center; gap:7px; margin-top:16px;
+  font-size:14px; font-weight:600; color:var(--orange)}
+a.card .more svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;
+  transition:transform .2s ease}
+a.card:hover .more svg{transform:translateX(3px)}
+
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr; gap:34px}
+  .toc{position:static; padding-bottom:8px; border-bottom:1px solid var(--line-soft)}
+  .toc a{display:inline-block; border-left:none; border-bottom:2px solid var(--line-soft);
+    padding:4px 14px 6px 0; margin-right:10px}
+  .nextnav{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .subhero{padding:44px 0 38px}
+  .stats{gap:28px}
+  .stat b{font-size:24px}
+  .facts td:first-child{width:150px}
+}
+
+</style>
+</head>
+<body>
+<header id="hdr">
+  <nav>
+    <a class="brand" href="index.html">
+      <img src="data:image/png;base64,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" alt="" width="29" height="30">
+      Aver Engine
+    </a>
+    <div class="navlinks">
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html" class="on">Audio</a>
+      <a class="btn btn-primary" href="index.html#download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        Download
+      </a>
+    </div>
+  </nav>
+</header>
+
+<div class="subhero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span> <span>Audio</span></div>
+    <div class="eyebrow">Audio</div>
+    <h1>A mixer you can test without a speaker</h1>
+    <p class="lede">Core-only mixing that fills a buffer you supply, a real-time boundary enforced from the first commit, and a WASAPI device kept behind its own seam.</p>
+    <div class="stats"><div class="stat"><b>64</b><span>voices, fixed at init</span></div><div class="stat"><b>10 ms</b><span>period at 48 kHz</span></div><div class="stat"><b>70</b><span>headless checks</span></div></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="layout">
+      <aside class="toc">
+        <h4>On this page</h4>
+        <a href="#three-targets-one-hard-rule">Three targets, one hard rule</a><a href="#the-real-time-boundary">The real-time boundary</a><a href="#constant-power-and-boundaries-that-do-not-pop">Constant power, and boundaries that do not pop</a><a href="#wasapi-chosen-for-the-one-number-that-matters">WASAPI, chosen for the one number that matters</a><a href="#the-ocaudio-container">The .ocaudio container</a>
+      </aside>
+      <div class="prose">
+        <div class="block rv" id="three-targets-one-hard-rule"><h2>Three targets, one hard rule</h2><p>The audio stack mirrors the split the engine already uses for its UI renderer: a Core-only logic layer that never touches hardware, and a thin device layer bolted on afterwards. <code>Aver.Audio</code> depends on <code>Aver.Core</code> and nothing else — its mix function fills a caller-supplied float buffer, never opens a device, never allocates on the hot path, and never calls anything platform-specific.</p><p><code>Aver.Audio.Wasapi</code> is the only piece that knows a sound card exists; it owns the client, the render thread and the ring buffer feeding it. <code>Aver.Audio.Abi</code> is the C seam a game calls, and it links the device rather than just the mixer — because “play a sound” only means something once something is driving hardware.</p><p>The reasoning for building it in that order is blunt: a wrong pan law and a correct one produce the same waveform to someone reading source, and the same silence to a screenshot. Without a way to run the mixer headlessly and assert on individual samples, an audio bug is effectively unfindable by inspection. So the mixer was built and tested before any device code existed.</p></div><div class="block rv" id="the-real-time-boundary"><h2>The real-time boundary</h2><p>The rule governing the audio thread is absolute rather than aspirational: the mix callback never allocates, never locks, never blocks, never logs, and never calls managed code. A single allocation there is an audible click on hardware the developer does not own — and the boundary between “logic that can allocate and log” and “code that runs on the audio thread” was treated as impossible to retrofit, so it was enforced from the first commit.</p><p>Every consequence follows from that. Commands — play, stop, set volume, set position — cross from gameplay to the audio thread over a lock-free single-producer ring buffer rather than as direct calls into mixer state, and a full ring drops the newest command rather than blocking the writer. Voices are a fixed pool sized at initialisation; running out doesn't fail or allocate, it steals the quietest, oldest voice, and the stolen handle reads as dead.</p><p>The listener — position and orientation — is nine atomics rather than a struct behind a lock, written once per frame by whatever owns the camera. A torn read costs very slightly wrong panning, which is inaudible; a lock would risk a priority inversion on a real-time thread. Underruns are counted and surfaced as a hard failure, not tolerated the way a dropped render frame might be.</p></div><div class="block rv" id="constant-power-and-boundaries-that-do-not-pop"><h2>Constant power, and boundaries that do not pop</h2><p>Panning uses a constant-power law, so a source swept across the stereo field holds its total energy constant rather than dipping about 3 dB in the middle the way a naive linear pan does — a defect the engine's own docs describe as audible while looking fine on paper.</p><p>Distance attenuation runs over an authored curve bounded by an inner radius at full volume and an outer radius at silence, hitting exactly 1.0 and exactly 0.0 at those boundaries with no discontinuity at either — because the failure mode is a sound audibly popping as the listener crosses a radius. Doppler uses a speed of sound of 34300 cm/s, written in the engine's own units so the constant does not get converted at every call site.</p><p>The 3D model uses the engine's standard coordinate contract, stated explicitly in the design document because a sign error here shows up as a pan-law bug rather than as what it actually is. HRTF is deliberately out of scope: stereo panning came first, on the reasoning that convolution-based binaural rendering is a poor use of effort before the mixer makes any sound at all.</p></div><div class="block rv" id="wasapi-chosen-for-the-one-number-that-matters"><h2>WASAPI, chosen for the one number that matters</h2><p>The device backend is WASAPI rather than XAudio2, specifically because XAudio2 would own the mixing, 3D and DSP itself — and the point of owning the mixer is that the mixer is the part with the bugs in it. It runs in shared mode, using the newer client interface where available to negotiate a smaller period.</p><p>That was a build-versus-vendor decision consistent with the rest of the engine, which already hand-writes its own D3D12 backend and its own JSON reader. The backend is roughly four hundred lines, in exchange for exact control over buffer size — the one number that determines latency.</p><p>The budget is 48 kHz with a 10 ms period, 480 frames per buffer, triple-buffered. The render thread joins Windows' Pro Audio scheduling class, because an ordinary thread preempted mid-callback for 10 ms produces an audible gap.</p></div><div class="block rv" id="the-ocaudio-container"><h2>The .ocaudio container</h2><p>Audio ships in the same AVR1 container every other native format uses — the shared 64-byte file header, chunk directory, 16-byte chunk alignment, a CRC32C over the header and an xxHash64 over each chunk payload. Audio adds two chunks: a header chunk carrying sample rate and channel count, and a sample payload chunk.</p><p>Import covers a hand-written WAV reader plus Windows Media Foundation for mp3, m4a, aac, wma and flac — chosen so those formats do not require vendoring a decoder under the engine's permissive-licence-only rule. The Media Foundation libraries are linked by the audio format target alone, so no other module in the tree pays for that dependency.</p><p>Whether a sound is resident or streamed is recorded in the file at import time rather than decided at run time, and resampling to the device rate happens once at import — never per frame, and never on the audio thread.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:44px"><div class="code"><div class="code-bar"><i></i><i></i><i></i><span>audio_abi.h — the shape of the seam</span></div><pre>int32_t aver_audio_play(const char* path, float volume, float pitch);   // returns a voice
+int32_t aver_audio_play_at(const char* path, float x, float y, float z, float volume, float pitch);
+void    aver_audio_stop(int32_t voice);
+int32_t aver_audio_playing(int32_t voice);
+void    aver_audio_set_voice_volume(int32_t voice, float v);
+void    aver_audio_set_voice_position(int32_t voice, float x, float y, float z);
+void    aver_audio_set_listener(const float* pos3, const float* forward3, const float* up3);
+void    aver_audio_set_bus_volume(int32_t bus, float v);   // master / sfx / music / voice
+int32_t aver_audio_underruns(void);                        // 0 is the only acceptable value</pre></div></div>
+    <div class="rv" style="margin-bottom:44px"><div class="tcap">What the mixer guarantees</div><div class="tablewrap "><div class="scroller"><table><thead><tr><th>Property</th><th>Guarantee</th></tr></thead><tbody><tr><td>Allocation on the audio thread</td><td>None, ever</td></tr><tr><td>Locking on the audio thread</td><td>None — commands cross a lock-free SPSC ring</td></tr><tr><td>Ring buffer overflow</td><td>Drops the newest command; never blocks the writer</td></tr><tr><td>Voice pool exhaustion</td><td>Steals the quietest, oldest voice; the stolen handle reads dead</td></tr><tr><td>Pan law</td><td>Constant power — l² + r² = 1 across the sweep</td></tr><tr><td>Attenuation at the inner radius</td><td>Exactly 1.0, no discontinuity</td></tr><tr><td>Attenuation at the outer radius</td><td>Exactly 0.0, no discontinuity</td></tr><tr><td>Listener updates</td><td>Nine atomics, lock-free, written once per frame</td></tr><tr><td>Underruns</td><td>Counted and surfaced — zero is the only acceptable value</td></tr><tr><td>Handles</td><td>Generational <code>int32_t</code>, 0 invalid, matching every other seam</td></tr></tbody></table></div></div></div>
+    <div class="rv"><div class="tcap">At a glance</div><div class="tablewrap facts"><div class="scroller"><table><tbody><tr><td>Mixer</td><td><code>Aver.Audio</code> — Core-only, fills a caller-supplied buffer, never opens a device</td></tr><tr><td>Device</td><td><code>Aver.Audio.Wasapi</code> — shared mode, Pro Audio thread scheduling</td></tr><tr><td>Seam</td><td><code>Aver.Audio.Abi</code> — 24 exports; links the device, not just the mixer</td></tr><tr><td>Voices</td><td>64 by default, fixed at init, with quietest-and-oldest stealing</td></tr><tr><td>Buses</td><td>Four fixed — master, sfx, music, voice — addressed as constants, not handles</td></tr><tr><td>Latency budget</td><td>48 kHz, 10 ms period, 480 frames per buffer, triple-buffered</td></tr><tr><td>Pan</td><td>Constant power; HRTF explicitly out of scope for this pass</td></tr><tr><td>Doppler</td><td>Speed of sound fixed at 34300 cm/s, in engine units</td></tr><tr><td>Container</td><td><code>.ocaudio</code> — AVR1, with a header chunk and a sample payload chunk</td></tr><tr><td>Import</td><td>Hand-written WAV reader, plus Media Foundation for mp3, m4a, aac, wma and flac</td></tr><tr><td>Resampling</td><td>Once, at import — never per frame, never on the audio thread</td></tr><tr><td>Tests</td><td><code>AudioTest</code> — 70 headless checks, plus a container round-trip suite</td></tr></tbody></table></div></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv" style="margin-bottom:30px">
+      <div class="eyebrow">Keep reading</div>
+      <h2 style="font-size:clamp(24px,3vw,32px)">The rest of the engine.</h2>
+    </div>
+    <div class="nextnav rv"><a class="nextcard" href="architecture.html"><span>Architecture</span><b>Modular by construction</b><em>A strict dependency DAG, no universal base object, and one C seam per module.</em></a><a class="nextcard" href="rendering.html"><span>Renderer</span><b>A DirectX 12 renderer, measured</b><em>Voxel cone-traced global illumination, inline ray-traced sun shadows, four-cascade shadow maps and a physical sky.</em></a><a class="nextcard" href="scripting.html"><span>Scripting</span><b>C# that reloads into a running editor</b><em>An in-process CoreCLR host with a collectible load context, two independently versioned contracts, and an exception boundary that disables one misbehaving actor instead of the process.</em></a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="data:image/png;base64,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" alt="" width="29" height="30">
+          Aver Engine
+        </a>
+        <p>A modular 3D engine built exclusively on permissively-licensed foundations.
+          Windows, DirectX 12, C++ and .NET 10.</p>
+      </div>
+      <div class="footcols">
+        <div class="footcol">
+          <h4>Engine</h4>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a>
+        </div>
+        <div class="footcol">
+          <h4>Project</h4>
+          <a href="index.html#download">Download</a>
+          <a href="https://github.com/hydrogen-isotope/Aver-Launcher">Launcher</a>
+          <a href="https://github.com/hydrogen-isotope/aver-engine">GitHub</a>
+          <a href="https://github.com/hydrogen-isotope/aver-engine/edit/main/audio.html">Edit this page</a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 Hydrogen-Isotope. All rights reserved.</span>
+      <span>Engine source distributed under an evaluation licence.</span>
+    </div>
+  </div>
+</footer>
+<script>
+
+var hdr = document.getElementById('hdr');
+addEventListener('scroll', function(){ hdr.classList.toggle('stuck', scrollY > 8); }, {passive:true});
+
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+}
+
+/* Highlight the table-of-contents entry for whichever section is in view. */
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.toc a'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){ var t = document.querySelector(a.getAttribute('href')); if (t) map[t.id] = a; });
+  var seen = {};
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
+    var first = Object.keys(map).filter(function(id){ return seen[id]; })[0];
+    links.forEach(function(a){ a.classList.remove('on'); });
+    if (first) map[first].classList.add('on');
+  }, {rootMargin:'-84px 0px -62% 0px', threshold:0});
+  Object.keys(map).forEach(function(id){ spy.observe(document.getElementById(id)); });
+})();
+
+</script>
+</body>
+</html>

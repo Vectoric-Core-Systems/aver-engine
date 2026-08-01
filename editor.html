@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The editor is the runtime — Aver Engine</title>
+<meta name="description" content="One executable. A Dear ImGui shell composited straight over the live D3D12 back buffer — and edits that land as diffs in your own C# source.">
+<meta name="theme-color" content="#0C0E12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The editor is the runtime — Aver Engine">
+<meta property="og:description" content="One executable. A Dear ImGui shell composited straight over the live D3D12 back buffer — and edits that land as diffs in your own C# source.">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+
+<style>
+
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root{
+  --bg:        #0C0E12;
+  --bg-raise:  #12151B;
+  --bg-card:   #151920;
+  --line:      #232936;
+  --line-soft: #1B2029;
+  --ink:       #EAEDF2;
+  --ink-dim:   #A6AEBC;
+  --ink-faint: #6E7789;
+  --orange:    #F26522;
+  --orange-hi: #FF7A3D;
+  --steel:     #5B8DEF;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+  --sans: "Segoe UI Variable Display", "Segoe UI", Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --maxw: 1180px;
+  --r: 14px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{line-height:1.15; margin:0; font-weight:650; letter-spacing:-.02em}
+p{margin:0}
+img,svg{display:block; max-width:100%}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+code{
+  font-family:var(--mono); font-size:.88em;
+  background:rgba(255,255,255,.055); border:1px solid var(--line-soft);
+  border-radius:5px; padding:1px 5px; color:#C6CEDC;
+}
+td code, .ticks code{background:rgba(255,255,255,.05)}
+.eyebrow{
+  font-family:var(--mono); font-size:12px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:14px;
+}
+.lede{color:var(--ink-dim); font-size:18px; max-width:62ch}
+
+/* ============================================================
+   Nav
+   ============================================================ */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(12,14,18,.72);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s ease, background .25s ease;
+}
+header.stuck{border-bottom-color:var(--line-soft)}
+nav{
+  max-width:var(--maxw); margin:0 auto; padding:14px 28px;
+  display:flex; align-items:center; gap:30px;
+}
+.brand{
+  display:flex; align-items:center; gap:11px;
+  /* matches the master lockup's geometric wordmark, with graceful fallbacks */
+  font-family:"Century Gothic","Gill Sans MT",Poppins,Futura,var(--sans);
+  font-weight:650; letter-spacing:.005em; font-size:17.5px;
+}
+.brand img{width:29px; height:auto; flex:none}
+.navlinks{display:flex; gap:26px; margin-left:auto; align-items:center}
+.navlinks a{
+  font-size:14.5px; color:var(--ink-dim);
+  transition:color .18s ease;
+}
+.navlinks a:hover{color:var(--ink)}
+.navlinks .btn{margin-left:6px}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:11px 20px; border-radius:9px;
+  font-size:15px; font-weight:600; letter-spacing:-.01em;
+  border:1px solid transparent; cursor:pointer;
+  transition:transform .16s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  white-space:nowrap;
+}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-primary{
+  background:var(--orange); color:#12100E;
+  box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 8px 24px -10px rgba(242,101,34,.85);
+}
+.btn-primary:hover{background:var(--orange-hi); transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line); color:var(--ink); background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:#39414F; background:rgba(255,255,255,.05); transform:translateY(-1px)}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{position:relative; padding:104px 0 84px; overflow:hidden}
+.hero::before{ /* radial glow */
+  content:""; position:absolute; inset:-30% -10% auto -10%; height:760px;
+  background:radial-gradient(58% 52% at 68% 34%, rgba(242,101,34,.16), transparent 68%),
+             radial-gradient(46% 40% at 22% 12%, rgba(91,141,239,.11), transparent 70%);
+  pointer-events:none;
+}
+.hero::after{ /* grid floor */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(72% 62% at 50% 34%, #000 0%, transparent 78%);
+  -webkit-mask-image:radial-gradient(72% 62% at 50% 34%, #000 0%, transparent 78%);
+  opacity:.7;
+}
+.hero .wrap{position:relative; z-index:1}
+.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center}
+
+.tag{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+  color:var(--ink-dim); background:rgba(255,255,255,.035);
+  border:1px solid var(--line); border-radius:999px; padding:6px 14px 6px 10px;
+  margin-bottom:26px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(242,101,34,.16)}
+
+h1{font-size:clamp(40px, 5.6vw, 66px); letter-spacing:-.035em; font-weight:700}
+h1 .accent{
+  background:linear-gradient(96deg, var(--orange) 10%, #FFA366 90%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero p.lede{margin-top:22px; font-size:19.5px}
+.hero-cta{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap}
+.hero-note{margin-top:20px; font-size:13.5px; color:var(--ink-faint); font-family:var(--mono)}
+
+/* rotating cube */
+.cube-stage{display:grid; place-items:center; perspective:900px}
+.cube-stage img{
+  width:min(290px, 68vw); height:auto;
+  filter:drop-shadow(0 26px 60px rgba(242,101,34,.28));
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(-9px) rotate(-1.2deg)}
+  50%{transform:translateY(9px) rotate(1.2deg)}
+}
+@media (prefers-reduced-motion:reduce){
+  .cube-stage img{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============================================================
+   Spec strip
+   ============================================================ */
+.strip{border-block:1px solid var(--line-soft); background:var(--bg-raise)}
+.strip-inner{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  max-width:var(--maxw); margin:0 auto;
+}
+.spec{padding:26px 28px; border-left:1px solid var(--line-soft)}
+.spec:first-child{border-left:none}
+.spec b{display:block; font-family:var(--mono); font-size:19px; font-weight:600; letter-spacing:-.01em}
+.spec span{display:block; font-size:13px; color:var(--ink-faint); margin-top:4px}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+section{padding:96px 0}
+.sec-head{max-width:64ch; margin-bottom:52px}
+.sec-head h2{font-size:clamp(29px,3.6vw,42px)}
+.sec-head p{margin-top:16px; color:var(--ink-dim)}
+
+/* feature cards */
+.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--line-soft);
+  border-radius:var(--r);
+  padding:28px 26px 30px;
+  position:relative; overflow:hidden;
+  transition:border-color .22s ease, transform .22s ease, background .22s ease;
+}
+.card::after{
+  content:""; position:absolute; inset:0 0 auto 0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(242,101,34,.55), transparent);
+  opacity:0; transition:opacity .25s ease;
+}
+.card:hover{border-color:#2E3644; transform:translateY(-3px); background:#171C24}
+.card:hover::after{opacity:1}
+.card .ic{
+  width:38px;height:38px;border-radius:10px;
+  display:grid;place-items:center; margin-bottom:18px;
+  background:rgba(242,101,34,.11); border:1px solid rgba(242,101,34,.24);
+}
+.card .ic svg{width:19px;height:19px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:18.5px; margin-bottom:9px}
+.card p{color:var(--ink-dim); font-size:15px; line-height:1.62}
+
+/* split rows */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center}
+.split + .split{margin-top:84px}
+.split h3{font-size:26px; margin-bottom:16px}
+.split p{color:var(--ink-dim); margin-bottom:14px}
+.ticks{list-style:none; padding:0; margin:22px 0 0}
+.ticks li{
+  position:relative; padding-left:26px; margin-bottom:11px;
+  font-size:15.5px; color:var(--ink-dim);
+}
+.ticks li::before{
+  content:""; position:absolute; left:2px; top:9px;
+  width:9px;height:9px; border-radius:2px;
+  background:var(--orange); transform:rotate(45deg);
+}
+.ticks li b{color:var(--ink); font-weight:600}
+
+/* DAG diagram */
+.dag{
+  background:var(--bg-card); border:1px solid var(--line-soft);
+  border-radius:var(--r); padding:26px; font-family:var(--mono); font-size:13.5px;
+}
+.dag-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px}
+.dag-row:last-child{margin-bottom:0}
+.node{
+  padding:7px 13px; border-radius:7px; border:1px solid var(--line);
+  background:rgba(255,255,255,.03); color:var(--ink);
+}
+.node.hot{border-color:rgba(242,101,34,.45); background:rgba(242,101,34,.10); color:#FFC49E}
+.node.cool{border-color:rgba(91,141,239,.38); background:rgba(91,141,239,.09); color:#B9CCF7}
+.arrow{color:var(--ink-faint)}
+
+/* code block */
+.code{
+  background:#0A0C10; border:1px solid var(--line-soft); border-radius:var(--r);
+  overflow:hidden;
+}
+.code-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:11px 16px; border-bottom:1px solid var(--line-soft); background:#0E1116;
+}
+.code-bar i{width:10px;height:10px;border-radius:50%;background:#2A313D;display:block}
+.code-bar span{margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--ink-faint)}
+.code pre{
+  margin:0; padding:20px 22px; overflow-x:auto;
+  font-family:var(--mono); font-size:13.5px; line-height:1.85; color:var(--ink-dim);
+}
+.c-cmd{color:var(--ink)}
+.c-flag{color:var(--steel)}
+.c-com{color:#59617200; color:#5E6779}
+.c-pr{color:var(--orange)}
+
+/* table */
+.tablewrap{
+  border:1px solid var(--line-soft); border-radius:var(--r);
+  overflow:hidden; background:var(--bg-card);
+}
+.scroller{overflow-x:auto}
+table{border-collapse:collapse; width:100%; min-width:660px; font-size:15px}
+th,td{text-align:left; padding:14px 20px; border-bottom:1px solid var(--line-soft); vertical-align:top}
+thead th{
+  background:#101419; font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-faint); font-weight:600;
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr{transition:background .16s ease}
+tbody tr:hover{background:rgba(255,255,255,.022)}
+td.mod{font-family:var(--mono); font-size:13.5px; color:var(--orange); white-space:nowrap}
+td.tgt{font-family:var(--mono); font-size:13px; color:var(--ink-dim); white-space:nowrap}
+td.desc{color:var(--ink-dim); min-width:280px}
+
+/* ============================================================
+   Download panel
+   ============================================================ */
+.dl{
+  display:grid; grid-template-columns:1.05fr .95fr; gap:0;
+  border:1px solid var(--line); border-radius:20px; overflow:hidden;
+  background:var(--bg-card);
+}
+.dl-main{
+  position:relative; padding:44px 44px 40px;
+  background:linear-gradient(150deg, #171B22 0%, #12151B 55%, #17110C 100%);
+}
+.dl-main::before{
+  content:""; position:absolute; inset:auto -30% -70% -30%; height:340px;
+  background:radial-gradient(50% 60% at 50% 100%, rgba(242,101,34,.20), transparent 72%);
+  pointer-events:none;
+}
+.dl-main > *{position:relative}
+
+.os-badge{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.05em;
+  border:1px solid var(--line); border-radius:999px;
+  padding:6px 14px; margin-bottom:20px; color:var(--ink-dim);
+  background:rgba(255,255,255,.035);
+}
+.os-badge svg{width:14px;height:14px;fill:currentColor}
+.os-badge.ok{color:#9BE3B0; border-color:rgba(80,200,120,.3); background:rgba(80,200,120,.08)}
+.os-badge.no{color:#FFC49E; border-color:rgba(242,101,34,.32); background:rgba(242,101,34,.08)}
+
+.dl h3{font-size:clamp(24px,2.8vw,31px); margin-bottom:12px}
+.dl-sub{color:var(--ink-dim); font-size:15.5px; max-width:44ch}
+
+.btn-dl{
+  margin-top:26px; font-size:16px; padding:14px 26px;
+  min-height:50px;
+}
+.btn-dl[aria-disabled="true"]{
+  background:rgba(255,255,255,.05); color:var(--ink-faint);
+  border-color:var(--line); box-shadow:none; cursor:not-allowed;
+}
+.btn-dl[aria-disabled="true"]:hover{transform:none; background:rgba(255,255,255,.05)}
+
+.dl-meta{
+  margin-top:14px; font-family:var(--mono); font-size:12.5px;
+  color:var(--ink-faint); min-height:19px;
+}
+.dl-meta a{color:var(--ink-dim); border-bottom:1px solid var(--line); padding-bottom:1px}
+.dl-meta a:hover{color:var(--orange); border-color:var(--orange)}
+.dl-alt{margin-top:18px; font-size:13.5px; color:var(--ink-faint)}
+.dl-alt a{color:var(--ink-dim); text-decoration:underline; text-underline-offset:3px}
+.dl-alt a:hover{color:var(--orange)}
+
+/* spinner while the release lookup is in flight */
+.spin{
+  width:15px;height:15px;border-radius:50%; flex:none;
+  border:2px solid rgba(255,255,255,.25); border-top-color:currentColor;
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:2s}}
+
+/* requirements side panel */
+.dl-req{padding:40px 40px 38px; border-left:1px solid var(--line-soft); background:#12161C}
+.dl-req h4{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-faint); font-weight:600; margin-bottom:18px;
+}
+.req{list-style:none; margin:0; padding:0}
+.req li{
+  display:flex; gap:14px; padding:11px 0; border-bottom:1px solid var(--line-soft);
+  font-size:14.5px; color:var(--ink-dim);
+}
+.req li:last-child{border-bottom:none}
+.req b{
+  flex:none; width:104px; color:var(--ink-faint); font-family:var(--mono);
+  font-size:12px; letter-spacing:.03em; padding-top:2px; font-weight:500;
+}
+
+/* CTA */
+.cta{
+  position:relative; overflow:hidden;
+  border:1px solid var(--line); border-radius:20px;
+  background:linear-gradient(150deg, #16191F 0%, #101319 60%, #14100D 100%);
+  padding:64px 56px; text-align:center;
+}
+.cta::before{
+  content:""; position:absolute; inset:auto -20% -60% -20%; height:420px;
+  background:radial-gradient(50% 60% at 50% 100%, rgba(242,101,34,.24), transparent 70%);
+  pointer-events:none;
+}
+.cta > *{position:relative}
+.cta h2{font-size:clamp(28px,3.4vw,40px)}
+.cta p{color:var(--ink-dim); margin:18px auto 0; max-width:56ch}
+.cta .hero-cta{justify-content:center}
+
+/* footer */
+footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:var(--bg-raise)}
+.foot{display:flex; gap:40px; justify-content:space-between; flex-wrap:wrap}
+.foot .brand{margin-bottom:14px}
+.foot p{font-size:13.5px; color:var(--ink-faint); max-width:44ch; line-height:1.7}
+.footcols{display:flex; gap:64px; flex-wrap:wrap}
+.footcol h4{font-size:12px; font-family:var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px; font-weight:600}
+.footcol a{display:block; font-size:14.5px; color:var(--ink-dim); margin-bottom:9px; transition:color .16s ease}
+.footcol a:hover{color:var(--orange)}
+.legal{
+  margin-top:44px; padding-top:24px; border-top:1px solid var(--line-soft);
+  font-size:12.5px; color:var(--ink-faint); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+}
+
+/* reveal on scroll */
+.rv{opacity:0; transform:translateY(18px); transition:opacity .6s cubic-bezier(.2,.7,.3,1), transform .6s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr; gap:44px}
+  .cube-stage{order:-1}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .strip-inner{grid-template-columns:repeat(2,1fr)}
+  .spec:nth-child(3){border-left:none}
+  .spec:nth-child(n+3){border-top:1px solid var(--line-soft)}
+  .split{grid-template-columns:1fr; gap:34px}
+  .dl{grid-template-columns:1fr}
+  .dl-req{border-left:none; border-top:1px solid var(--line-soft)}
+  .navlinks a:not(.btn){display:none}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  nav{padding:12px 20px}
+  section{padding:68px 0}
+  .hero{padding:64px 0 56px}
+  .cards{grid-template-columns:1fr}
+  .strip-inner{grid-template-columns:1fr}
+  .spec{border-left:none; border-top:1px solid var(--line-soft)}
+  .spec:first-child{border-top:none}
+  .cta{padding:44px 26px}
+  .btn{padding:11px 17px; font-size:14.5px}
+  .dl-main{padding:32px 24px 30px}
+  .dl-req{padding:30px 24px}
+  .req b{width:88px}
+}
+
+
+/* ============================================================
+   Detail-page additions
+   ============================================================ */
+.subhero{position:relative; padding:64px 0 52px; overflow:hidden;
+  border-bottom:1px solid var(--line-soft); background:var(--bg-raise)}
+.subhero::before{content:""; position:absolute; inset:-40% -10% auto -10%; height:560px;
+  background:radial-gradient(50% 50% at 72% 30%, rgba(242,101,34,.14), transparent 70%);
+  pointer-events:none}
+.subhero::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(70% 70% at 40% 40%, #000 0%, transparent 80%);
+  -webkit-mask-image:radial-gradient(70% 70% at 40% 40%, #000 0%, transparent 80%); opacity:.55}
+.subhero .wrap{position:relative; z-index:1}
+.subhero h1{font-size:clamp(33px,4.6vw,54px); letter-spacing:-.032em; max-width:19ch}
+.subhero .lede{margin-top:20px; font-size:18.5px}
+
+.crumb{display:flex; align-items:center; gap:9px; font-family:var(--mono);
+  font-size:12px; color:var(--ink-faint); margin-bottom:20px}
+.crumb a{color:var(--ink-dim)} .crumb a:hover{color:var(--orange)}
+
+.stats{display:flex; gap:44px; flex-wrap:wrap; margin-top:38px;
+  padding-top:30px; border-top:1px solid var(--line-soft)}
+.stat b{display:block; font-size:29px; font-weight:680; letter-spacing:-.03em;
+  font-family:var(--mono); color:var(--orange)}
+.stat span{display:block; font-size:13.5px; color:var(--ink-faint); margin-top:5px}
+
+/* prose */
+.prose{max-width:74ch}
+.prose h2{font-size:clamp(23px,2.7vw,30px); margin:0 0 18px; scroll-margin-top:90px}
+.prose p{color:var(--ink-dim); font-size:16.5px; line-height:1.75; margin-bottom:16px}
+.prose p:last-child{margin-bottom:0}
+.prose b{color:var(--ink); font-weight:620}
+.prose i{color:var(--ink-dim)}
+.block{padding:38px 0; border-top:1px solid var(--line-soft)}
+.block:first-child{border-top:none; padding-top:0}
+
+kbd{font-family:var(--mono); font-size:.84em; background:rgba(255,255,255,.07);
+  border:1px solid var(--line); border-bottom-width:2px; border-radius:5px;
+  padding:1px 6px; color:var(--ink)}
+
+/* two-column body with a sticky table of contents */
+.layout{display:grid; grid-template-columns:210px 1fr; gap:56px; align-items:start}
+.toc{position:sticky; top:88px}
+.toc h4{font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-faint); font-weight:600; margin-bottom:14px}
+.toc a{display:block; font-size:14px; color:var(--ink-faint); padding:6px 0 6px 13px;
+  border-left:2px solid var(--line-soft); transition:color .16s ease, border-color .16s ease}
+.toc a:hover{color:var(--ink-dim); border-color:#39414F}
+.toc a.on{color:var(--orange); border-color:var(--orange)}
+
+.tcap{font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:16px}
+.facts td:first-child{width:230px; color:var(--ink); font-weight:560}
+.facts td:last-child{color:var(--ink-dim)}
+.facts table{min-width:520px}
+
+.nextnav{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px}
+.nextcard{display:block; padding:22px 24px; border:1px solid var(--line-soft);
+  border-radius:var(--r); background:var(--bg-card);
+  transition:border-color .2s ease, transform .2s ease, background .2s ease}
+.nextcard:hover{border-color:#2E3644; transform:translateY(-2px); background:#171C24}
+.nextcard span{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:8px}
+.nextcard b{display:block; font-size:16.5px; font-weight:620; margin-bottom:5px}
+.nextcard em{display:block; font-style:normal; font-size:14px; color:var(--ink-faint); line-height:1.55}
+
+/* clickable feature cards on the landing page */
+a.card{display:block; color:inherit}
+a.card .more{display:inline-flex; align-items:center; gap:7px; margin-top:16px;
+  font-size:14px; font-weight:600; color:var(--orange)}
+a.card .more svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;
+  transition:transform .2s ease}
+a.card:hover .more svg{transform:translateX(3px)}
+
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr; gap:34px}
+  .toc{position:static; padding-bottom:8px; border-bottom:1px solid var(--line-soft)}
+  .toc a{display:inline-block; border-left:none; border-bottom:2px solid var(--line-soft);
+    padding:4px 14px 6px 0; margin-right:10px}
+  .nextnav{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .subhero{padding:44px 0 38px}
+  .stats{gap:28px}
+  .stat b{font-size:24px}
+  .facts td:first-child{width:150px}
+}
+
+</style>
+</head>
+<body>
+<header id="hdr">
+  <nav>
+    <a class="brand" href="index.html">
+      <img src="data:image/png;base64,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" alt="" width="29" height="30">
+      Aver Engine
+    </a>
+    <div class="navlinks">
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html" class="on">Editor</a><a href="audio.html">Audio</a>
+      <a class="btn btn-primary" href="index.html#download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        Download
+      </a>
+    </div>
+  </nav>
+</header>
+
+<div class="subhero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span> <span>Editor</span></div>
+    <div class="eyebrow">Editor</div>
+    <h1>The editor is the runtime</h1>
+    <p class="lede">One executable. A Dear ImGui shell composited straight over the live D3D12 back buffer — and edits that land as diffs in your own C# source.</p>
+    <div class="stats"><div class="stat"><b>1</b><span>binary, no launcher</span></div><div class="stat"><b>b4</b><span>where the preview camera lives</span></div><div class="stat"><b>0</b><span>bytes of your hand-written code rewritten</span></div></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="layout">
+      <aside class="toc">
+        <h4>On this page</h4>
+        <a href="#one-binary-no-separate-editor-process">One binary, no separate editor process</a><a href="#the-shell-docking-panels-and-a-passthrough-viewp">The shell: docking, panels and a passthrough viewport</a><a href="#two-menus-because-c-and-c-are-not-the-same-promi">Two menus, because C# and C++ are not the same promise</a><a href="#save-to-c-never-to-the-build-artefact">Save to C#, never to the build artefact</a><a href="#the-actor-editor-and-a-gizmo-that-edits-source">The actor editor, and a gizmo that edits source</a><a href="#a-drag-rewrites-nine-numbers-and-nothing-else">A drag rewrites nine numbers, and nothing else</a><a href="#live-edits-and-the-one-thing-it-refuses-to-do">Live edits, and the one thing it refuses to do</a>
+      </aside>
+      <div class="prose">
+        <div class="block rv" id="one-binary-no-separate-editor-process"><h2>One binary, no separate editor process</h2><p>There is no <code>Aver.Editor</code> target and no editor build flag. The editor <i>is</i> <code>Sandbox.exe</code>. ImGui reaches the executable transitively through <code>Aver.RHI.D3D12</code>, which links it publicly and defines <code>AVER_WITH_IMGUI=1</code> — every editor source file guards on that macro rather than on a separate target.</p><p>ImGuizmo was never vendored. Every gizmo in the tree, in the level viewport and the actor preview alike, is hand-built line and overlay geometry.</p><p>Because it is one binary, the same executable a person clicks also runs the automated pixel-probe gates. The project browser is deliberately suppressed whenever <code>--frames</code> is present, a project path is given on the command line, or <code>--headless</code> is passed — a full-screen chooser sitting in front of the probe would fail every gate at once.</p></div><div class="block rv" id="the-shell-docking-panels-and-a-passthrough-viewp"><h2>The shell: docking, panels and a passthrough viewport</h2><p>The dockspace holds a menu bar, a main toolbar, the dockspace itself and a status bar. World Outliner and Details stack on the right at roughly 22% width. The 3D viewport occupies the transparent central node, so the already-drawn D3D12 back buffer shows through the hole the panels dock around.</p><p>Dock layout deliberately does not persist between runs — the ImGui ini file is disabled by design and the layout is rebuilt from the dock builder every launch, with <b>Window ▸ Reset Layout</b> available on demand.</p><p>Camera control is free-fly rather than orbit: right-mouse look with WASD and QE, wheel to dolly, middle-mouse to pan, <kbd>F</kbd> to focus the selection. Selection picks against each object's local bounding box transformed by its inverse world matrix. Transform tools live as an overlay bar inside the viewport itself, and the gizmos draw always-on-top: arrows for move, three rings for rotate, axis lines with end boxes for scale, with the hovered axis highlighting amber.</p></div><div class="block rv" id="two-menus-because-c-and-c-are-not-the-same-promi"><h2>Two menus, because C# and C++ are not the same promise</h2><p>The Tools menu is split into two labelled groups, a deliberate departure from Unreal and the thing most likely to surprise a new user. Under <b>Project — C#</b>, new scripts and classes write into the project's own <code>Content/Scripts/</code> and need no rebuild. Under <b>Engine — C++</b>, new modules and classes write into the engine's <code>modules/</code> tree and require a full engine rebuild, because a project manifest carries no build integration — a game project has nowhere of its own to put C++.</p><p>Neither CMakeLists is auto-edited. Wiring a new module into the top-level build, or adding a source file to an existing module's explicit source list, is a deliberate manual step — and both dialogs name the exact line to add.</p><p>Below those sit two separate actions, kept separate because they fail differently. <b>Compile Scripts</b> only builds, and the editor keeps running whatever it already loaded; its diagnostics render as clickable rows that jump to file, line and column in a detected IDE — Visual Studio, VS Code or Rider. <b>Reload Scripts</b> builds, then unloads and reloads live, firing the lifecycle hooks with no editor restart.</p></div><div class="block rv" id="save-to-c-never-to-the-build-artefact"><h2>Save to C#, never to the build artefact</h2><p>The Details panel exposes the live material — metallic, roughness, normal scale, occlusion, reflectance capped at 0.2 because anything above it is gemstone, grazing reflectance, emissive, UV mapping mode and per-slot texture paths. Every control edits the live material description and marks it dirty, so the viewport updates the same frame and objects sharing a material change together.</p><p><b>Save to C# writes the <code>.cs</code> and never the <code>.ocmat</code>.</b> The <code>.ocmat</code> is a build artefact the next compile regenerates, so writing there would appear to work and then silently vanish. Instead the panel walks the project's material sources, and rewrites only the body of <code>Configure</code> — usings, namespace, other classes, hand-authored comment prose and indentation all survive, and only values that differ from the defaults are written.</p><p>A file it cannot parse is declined rather than half-written. Compiling then bakes the result back to <code>.ocmat</code> in the same build step; a bake failure keeps the previous file and logs the error rather than turning a bad <code>Configure</code> into a red build light.</p></div><div class="block rv" id="the-actor-editor-and-a-gizmo-that-edits-source"><h2>The actor editor, and a gizmo that edits source</h2><p>A <code>.cs</code> file that declares a mesh, camera or point light in <code>Configure</code>, or carries a generated designer region, opens as its own asset editor tab. Everything else is declined — a plain behaviour script is not an actor, and opening it in a tab that shows nothing would take something away.</p><p>The tab lays out in three columns: a components tree, the preview viewport, and details. The preview is its own render feature with its own colour and depth target, its own pipeline state, and its own camera published at constant-buffer slot <b>b4</b> rather than b0 — b0 is the engine's per-frame block and gets rebound on every pipeline change. Lighting is fixed: one key light, a hemisphere fill, ACES and gamma. The panel says outright that it does not match the level viewport, because two independently exposed viewports would need a scene-pass rewrite.</p><p>Only one preview instance exists, shared and re-pointed at whichever tab is active, because the UI's shader-visible descriptor heap holds sixteen entries — a target per tab would exhaust it around the eleventh tab with a black image rather than an assert.</p></div><div class="block rv" id="a-drag-rewrites-nine-numbers-and-nothing-else"><h2>A drag rewrites nine numbers, and nothing else</h2><p>An actor is a partial class split across a hand-written half and a generated designer half. The editor never writes a byte of the hand-written half; it was later permitted to <i>read</i> <code>Configure</code>, because most actors are a single class-declared mesh with no designer file at all, and refusing to look would leave the tab empty for the common case.</p><p>The generated region is bounded by exact marker comments rather than <code>#region</code> — plain comment trivia, a span and nothing else. Every placement is one fixed token sequence carrying an object id, a mesh path, a material, and position, rotation and scale triples.</p><p>On save, the rewriter finds the statement whose object id matches the placement you dragged — <b>matched by id, never by file position</b>, so a reordered region still finds the right line — and replaces only the nine numeric literals. Property names, mesh paths, the id suffix, whitespace, comments and statement order survive byte for byte. Numbers are quantised and formatted in invariant culture so an unmoved model re-saves to an identical byte stream.</p></div><div class="block rv" id="live-edits-and-the-one-thing-it-refuses-to-do"><h2>Live edits, and the one thing it refuses to do</h2><p>The tab stats the file's modification time once per visible frame rather than watching the filesystem — a directory watcher was tried and rejected on contact, because a build running with its working directory inside the scripts folder overflows a recursive watch on its own churn.</p><p>If the file changes on disk and the tab is clean, it silently re-parses and reloads. If the tab is <b>dirty</b>, the reload is refused outright: <i>“The file changed on disk. Save or discard to pick it up.”</i> Silently clobbering an in-progress drag with whatever a background tool just wrote is called out in the design docs as the one behaviour a live-sync feature must never have.</p><p>A file with no generated region opens as a pure viewer — there are no placements to drag, nothing can mark the tab dirty, and Save never enables. A file whose region has drifted outside the locked grammar is declined loudly, with the reason logged, rather than opened silently as an empty tab.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:44px"><div class="code"><div class="code-bar"><i></i><i></i><i></i><span>A generated designer region — the only part the editor ever rewrites</span></div><pre>    // &lt;aver-generated region=&quot;models&quot; schema=&quot;1&quot;&gt;
+    [Model] public ModelHandle Wheel_FL { get; private set; }
+
+    protected override void BuildModels(ActorBuilder b)
+    {
+        Wheel_FL = b.Place(0x1A2B3C4D5E6F7081UL, &quot;Content/Meshes/Wheel.ocmesh&quot;,
+            material: &quot;M_Rubber&quot;, pos: (120f, 80f, 20f), rot: (0f, 0f, 0f), scale: (1f, 1f, 1f));
+    }
+    // &lt;/aver-generated&gt;</pre></div></div>
+    <div class="rv" style="margin-bottom:44px"><div class="tcap">Command-line flags worth knowing</div><div class="tablewrap "><div class="scroller"><table><thead><tr><th>Flag</th><th>What it does</th></tr></thead><tbody><tr><td>--new-project &lt;location&gt; &lt;name&gt;</td><td>Scaffolds a project and exits without touching a device</td></tr><tr><td>--upgrade-project &lt;path.ocproject&gt;</td><td>Applies the same fixes the in-editor prompt would, logs each, exits</td></tr><tr><td>--headless</td><td>Runs with no window; suppresses the project browser</td></tr><tr><td>--frames N</td><td>Renders N frames and exits — how the pixel-probe gates drive the editor</td></tr><tr><td>--ui-demo</td><td>Draws a HUD through the C seam, to see the game UI working</td></tr><tr><td>--compile-scripts</td><td>Runs the Tools menu's build job from the command line</td></tr><tr><td>--reload-scripts [N]</td><td>Builds, then unloads and reloads live</td></tr><tr><td>--scripts &lt;dir&gt;</td><td>Overrides where compiled behaviours are loaded from</td></tr><tr><td>--tool &lt;select|move|rotate|scale&gt;</td><td>Selects a transform tool at launch, for screenshot verification</td></tr></tbody></table></div></div></div>
+    <div class="rv"><div class="tcap">At a glance</div><div class="tablewrap facts"><div class="scroller"><table><tbody><tr><td>Editor binary</td><td><code>build/bin/Sandbox.exe</code> — no separate editor process exists</td></tr><tr><td>UI framework</td><td>Dear ImGui with docking, reached transitively through the D3D12 backend</td></tr><tr><td>Gizmos</td><td>Hand-built line geometry — ImGuizmo was never vendored</td></tr><tr><td>Viewport</td><td>The transparent central dock node, over the live back buffer</td></tr><tr><td>Camera</td><td>Free-fly: right-mouse look, WASD and QE, wheel dolly, middle-mouse pan, <kbd>F</kbd> to focus</td></tr><tr><td>Dock layout</td><td>Not persisted — rebuilt from the dock builder every launch</td></tr><tr><td>Actor preview camera</td><td>Published at <code>b4</code>, so it never collides with the engine's <code>b0</code> block</td></tr><tr><td>Preview instances</td><td>One, shared across tabs — the UI descriptor heap holds sixteen entries</td></tr><tr><td>Placement matching</td><td>By object id, never by file position</td></tr><tr><td>Number formatting</td><td>Quantised and invariant-culture, so an unmoved model re-saves byte-identically</td></tr><tr><td>Dirty-tab reload</td><td>Refused, with a message — never a silent clobber</td></tr><tr><td>Project upgrade</td><td>The <code>.csproj</code> is merged, never regenerated, so hand-added references survive</td></tr></tbody></table></div></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv" style="margin-bottom:30px">
+      <div class="eyebrow">Keep reading</div>
+      <h2 style="font-size:clamp(24px,3vw,32px)">The rest of the engine.</h2>
+    </div>
+    <div class="nextnav rv"><a class="nextcard" href="architecture.html"><span>Architecture</span><b>Modular by construction</b><em>A strict dependency DAG, no universal base object, and one C seam per module.</em></a><a class="nextcard" href="rendering.html"><span>Renderer</span><b>A DirectX 12 renderer, measured</b><em>Voxel cone-traced global illumination, inline ray-traced sun shadows, four-cascade shadow maps and a physical sky.</em></a><a class="nextcard" href="scripting.html"><span>Scripting</span><b>C# that reloads into a running editor</b><em>An in-process CoreCLR host with a collectible load context, two independently versioned contracts, and an exception boundary that disables one misbehaving actor instead of the process.</em></a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="data:image/png;base64,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" alt="" width="29" height="30">
+          Aver Engine
+        </a>
+        <p>A modular 3D engine built exclusively on permissively-licensed foundations.
+          Windows, DirectX 12, C++ and .NET 10.</p>
+      </div>
+      <div class="footcols">
+        <div class="footcol">
+          <h4>Engine</h4>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a>
+        </div>
+        <div class="footcol">
+          <h4>Project</h4>
+          <a href="index.html#download">Download</a>
+          <a href="https://github.com/hydrogen-isotope/Aver-Launcher">Launcher</a>
+          <a href="https://github.com/hydrogen-isotope/aver-engine">GitHub</a>
+          <a href="https://github.com/hydrogen-isotope/aver-engine/edit/main/editor.html">Edit this page</a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 Hydrogen-Isotope. All rights reserved.</span>
+      <span>Engine source distributed under an evaluation licence.</span>
+    </div>
+  </div>
+</footer>
+<script>
+
+var hdr = document.getElementById('hdr');
+addEventListener('scroll', function(){ hdr.classList.toggle('stuck', scrollY > 8); }, {passive:true});
+
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+}
+
+/* Highlight the table-of-contents entry for whichever section is in view. */
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.toc a'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function(a){ var t = document.querySelector(a.getAttribute('href')); if (t) map[t.id] = a; });
+  var seen = {};
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
+    var first = Object.keys(map).filter(function(id){ return seen[id]; })[0];
+    links.forEach(function(a){ a.classList.remove('on'); });
+    if (first) map[first].classList.add('on');
+  }, {rootMargin:'-84px 0px -62% 0px', threshold:0});
+  Object.keys(map).forEach(function(id){ spy.observe(document.getElementById(id)); });
+})();
+
+</script>
+</body>
+</html>
