@@ -7,7 +7,7 @@
 <meta name="description" content="One executable. A Dear ImGui shell composited straight over the live D3D12 back buffer — and edits that land as diffs in your own C# source.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="build" content="20260802-0941">
+<meta name="build" content="20260802-1025">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The editor is the runtime — Aver Engine">
 <meta property="og:description" content="One executable. A Dear ImGui shell composited straight over the live D3D12 back buffer — and edits that land as diffs in your own C# source.">
@@ -483,6 +483,9 @@ kbd{font-family:var(--mono); font-size:.84em; background:rgba(255,255,255,.07);
 
 /* two-column body with a sticky table of contents */
 .layout{display:grid; grid-template-columns:210px 1fr; gap:56px; align-items:start}
+/* Without this a wide table or code block stretches its grid track past
+   the viewport rather than scrolling inside its own wrapper. */
+.layout > *{min-width:0}
 .toc{position:sticky; top:88px}
 .toc h4{font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
   color:var(--ink-faint); font-weight:600; margin-bottom:14px}
@@ -555,7 +558,7 @@ a:focus-visible, .btn:focus-visible{
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html" class="on">Editor</a><a href="audio.html">Audio</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html" class="on">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
       <a class="btn btn-primary" href="index.html#download">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
         Download
@@ -628,7 +631,7 @@ a:focus-visible, .btn:focus-visible{
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>
@@ -664,7 +667,12 @@ if ('IntersectionObserver' in window) {
   var links = [].slice.call(document.querySelectorAll('.toc a'));
   if (!links.length || !('IntersectionObserver' in window)) return;
   var map = {};
-  links.forEach(function(a){ var t = document.querySelector(a.getAttribute('href')); if (t) map[t.id] = a; });
+  // getElementById, not querySelector: an id starting with a digit
+  // (#1-getting-started) is a valid id but an invalid CSS selector.
+  links.forEach(function(a){
+    var t = document.getElementById(a.getAttribute('href').slice(1));
+    if (t) map[t.id] = a;
+  });
   var seen = {};
   var spy = new IntersectionObserver(function(es){
     es.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });

@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C# Scripting API — Aver Engine</title>
+<meta name="description" content="The C# scripting API for Aver Engine: actors, pawns, characters, the play lifecycle, Entity, Game, Input, physics, the HUD and materials authored in C#.">
+<meta name="theme-color" content="#0C0E12">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta name="build" content="dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="C# Scripting API — Aver Engine">
+<meta property="og:description" content="The C# scripting API for Aver Engine: actors, pawns, characters, the play lifecycle, Entity, Game, Input, physics, the HUD and materials authored in C#.">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+
+<style>
+
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root{
+  --bg:        #0C0E12;
+  --bg-raise:  #12151B;
+  --bg-card:   #151920;
+  --line:      #232936;
+  --line-soft: #1B2029;
+  --ink:       #EAEDF2;
+  --ink-dim:   #A6AEBC;
+  --ink-faint: #6E7789;
+  --orange:    #F26522;
+  --orange-hi: #FF7A3D;
+  --steel:     #5B8DEF;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+  --sans: "Segoe UI Variable Display", "Segoe UI", Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --maxw: 1180px;
+  --r: 14px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{line-height:1.15; margin:0; font-weight:650; letter-spacing:-.02em}
+p{margin:0}
+img,svg{display:block; max-width:100%}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+code{
+  font-family:var(--mono); font-size:.88em;
+  background:rgba(255,255,255,.055); border:1px solid var(--line-soft);
+  border-radius:5px; padding:1px 5px; color:#C6CEDC;
+}
+td code, .ticks code{background:rgba(255,255,255,.05)}
+.eyebrow{
+  font-family:var(--mono); font-size:12px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:14px;
+}
+.lede{color:var(--ink-dim); font-size:18px; max-width:62ch}
+
+/* ============================================================
+   Nav
+   ============================================================ */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(12,14,18,.72);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s ease, background .25s ease;
+}
+header.stuck{border-bottom-color:var(--line-soft)}
+nav{
+  max-width:var(--maxw); margin:0 auto; padding:14px 28px;
+  display:flex; align-items:center; gap:30px;
+}
+.brand{
+  display:flex; align-items:center; gap:11px;
+  /* matches the master lockup's geometric wordmark, with graceful fallbacks */
+  font-family:"Century Gothic","Gill Sans MT",Poppins,Futura,var(--sans);
+  font-weight:650; letter-spacing:.005em; font-size:17.5px;
+}
+.brand img{width:29px; height:auto; flex:none}
+.navlinks{display:flex; gap:26px; margin-left:auto; align-items:center}
+.navlinks a{
+  font-size:14.5px; color:var(--ink-dim);
+  transition:color .18s ease;
+}
+.navlinks a:hover{color:var(--ink)}
+.navlinks .btn{margin-left:6px}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:11px 20px; border-radius:9px;
+  font-size:15px; font-weight:600; letter-spacing:-.01em;
+  border:1px solid transparent; cursor:pointer;
+  transition:transform .16s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  white-space:nowrap;
+}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-primary{
+  background:var(--orange); color:#12100E;
+  box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 8px 24px -10px rgba(242,101,34,.85);
+}
+.btn-primary:hover{background:var(--orange-hi); transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line); color:var(--ink); background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:#39414F; background:rgba(255,255,255,.05); transform:translateY(-1px)}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{position:relative; padding:104px 0 84px; overflow:hidden}
+.hero::before{ /* radial glow */
+  content:""; position:absolute; inset:-30% -10% auto -10%; height:760px;
+  background:radial-gradient(58% 52% at 68% 34%, rgba(242,101,34,.16), transparent 68%),
+             radial-gradient(46% 40% at 22% 12%, rgba(91,141,239,.11), transparent 70%);
+  pointer-events:none;
+}
+.hero::after{ /* grid floor */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(72% 62% at 50% 34%, #000 0%, transparent 78%);
+  -webkit-mask-image:radial-gradient(72% 62% at 50% 34%, #000 0%, transparent 78%);
+  opacity:.7;
+}
+.hero .wrap{position:relative; z-index:1}
+.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center}
+
+.tag{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+  color:var(--ink-dim); background:rgba(255,255,255,.035);
+  border:1px solid var(--line); border-radius:999px; padding:6px 14px 6px 10px;
+  margin-bottom:26px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(242,101,34,.16)}
+
+h1{font-size:clamp(40px, 5.6vw, 66px); letter-spacing:-.035em; font-weight:700}
+h1 .accent{
+  background:linear-gradient(96deg, var(--orange) 10%, #FFA366 90%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero p.lede{margin-top:22px; font-size:19.5px}
+.hero-cta{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap}
+.hero-note{margin-top:20px; font-size:13.5px; color:var(--ink-faint); font-family:var(--mono)}
+
+/* rotating cube */
+.cube-stage{display:grid; place-items:center; perspective:900px}
+.cube-stage img{
+  width:min(290px, 68vw); height:auto;
+  filter:drop-shadow(0 26px 60px rgba(242,101,34,.28));
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(-9px) rotate(-1.2deg)}
+  50%{transform:translateY(9px) rotate(1.2deg)}
+}
+@media (prefers-reduced-motion:reduce){
+  .cube-stage img{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============================================================
+   Spec strip
+   ============================================================ */
+.strip{border-block:1px solid var(--line-soft); background:var(--bg-raise)}
+.strip-inner{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  max-width:var(--maxw); margin:0 auto;
+}
+.spec{padding:26px 28px; border-left:1px solid var(--line-soft)}
+.spec:first-child{border-left:none}
+.spec b{display:block; font-family:var(--mono); font-size:19px; font-weight:600; letter-spacing:-.01em}
+.spec span{display:block; font-size:13px; color:var(--ink-faint); margin-top:4px}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+section{padding:96px 0}
+.sec-head{max-width:64ch; margin-bottom:52px}
+.sec-head h2{font-size:clamp(29px,3.6vw,42px)}
+.sec-head p{margin-top:16px; color:var(--ink-dim)}
+
+/* feature cards */
+.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--line-soft);
+  border-radius:var(--r);
+  padding:28px 26px 30px;
+  position:relative; overflow:hidden;
+  transition:border-color .22s ease, transform .22s ease, background .22s ease;
+}
+.card::after{
+  content:""; position:absolute; inset:0 0 auto 0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(242,101,34,.55), transparent);
+  opacity:0; transition:opacity .25s ease;
+}
+.card:hover{border-color:#2E3644; transform:translateY(-3px); background:#171C24}
+.card:hover::after{opacity:1}
+.card .ic{
+  width:38px;height:38px;border-radius:10px;
+  display:grid;place-items:center; margin-bottom:18px;
+  background:rgba(242,101,34,.11); border:1px solid rgba(242,101,34,.24);
+}
+.card .ic svg{width:19px;height:19px;stroke:var(--orange);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:18.5px; margin-bottom:9px}
+.card p{color:var(--ink-dim); font-size:15px; line-height:1.62}
+
+/* split rows */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center}
+.split + .split{margin-top:84px}
+.split h3{font-size:26px; margin-bottom:16px}
+.split p{color:var(--ink-dim); margin-bottom:14px}
+.ticks{list-style:none; padding:0; margin:22px 0 0}
+.ticks li{
+  position:relative; padding-left:26px; margin-bottom:11px;
+  font-size:15.5px; color:var(--ink-dim);
+}
+.ticks li::before{
+  content:""; position:absolute; left:2px; top:9px;
+  width:9px;height:9px; border-radius:2px;
+  background:var(--orange); transform:rotate(45deg);
+}
+.ticks li b{color:var(--ink); font-weight:600}
+
+/* DAG diagram */
+.dag{
+  background:var(--bg-card); border:1px solid var(--line-soft);
+  border-radius:var(--r); padding:26px; font-family:var(--mono); font-size:13.5px;
+}
+.dag-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px}
+.dag-row:last-child{margin-bottom:0}
+.node{
+  padding:7px 13px; border-radius:7px; border:1px solid var(--line);
+  background:rgba(255,255,255,.03); color:var(--ink);
+}
+.node.hot{border-color:rgba(242,101,34,.45); background:rgba(242,101,34,.10); color:#FFC49E}
+.node.cool{border-color:rgba(91,141,239,.38); background:rgba(91,141,239,.09); color:#B9CCF7}
+.arrow{color:var(--ink-faint)}
+
+/* code block */
+.code{
+  background:#0A0C10; border:1px solid var(--line-soft); border-radius:var(--r);
+  overflow:hidden;
+}
+.code-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:11px 16px; border-bottom:1px solid var(--line-soft); background:#0E1116;
+}
+.code-bar i{width:10px;height:10px;border-radius:50%;background:#2A313D;display:block}
+.code-bar span{margin-left:8px; font-family:var(--mono); font-size:12px; color:var(--ink-faint)}
+.code pre{
+  margin:0; padding:20px 22px; overflow-x:auto;
+  font-family:var(--mono); font-size:13.5px; line-height:1.85; color:var(--ink-dim);
+}
+.c-cmd{color:var(--ink)}
+.c-flag{color:var(--steel)}
+.c-com{color:#59617200; color:#5E6779}
+.c-pr{color:var(--orange)}
+
+/* table */
+.tablewrap{
+  border:1px solid var(--line-soft); border-radius:var(--r);
+  overflow:hidden; background:var(--bg-card);
+}
+.scroller{overflow-x:auto}
+table{border-collapse:collapse; width:100%; min-width:660px; font-size:15px}
+th,td{text-align:left; padding:14px 20px; border-bottom:1px solid var(--line-soft); vertical-align:top}
+thead th{
+  background:#101419; font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-faint); font-weight:600;
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr{transition:background .16s ease}
+tbody tr:hover{background:rgba(255,255,255,.022)}
+td.mod{font-family:var(--mono); font-size:13.5px; color:var(--orange); white-space:nowrap}
+td.tgt{font-family:var(--mono); font-size:13px; color:var(--ink-dim); white-space:nowrap}
+td.desc{color:var(--ink-dim); min-width:280px}
+
+/* ============================================================
+   Download panel
+   ============================================================ */
+.dl{
+  display:grid; grid-template-columns:1.05fr .95fr; gap:0;
+  border:1px solid var(--line); border-radius:20px; overflow:hidden;
+  background:var(--bg-card);
+}
+.dl-main{
+  position:relative; padding:44px 44px 40px;
+  background:linear-gradient(150deg, #171B22 0%, #12151B 55%, #17110C 100%);
+}
+.dl-main::before{
+  content:""; position:absolute; inset:auto -30% -70% -30%; height:340px;
+  background:radial-gradient(50% 60% at 50% 100%, rgba(242,101,34,.20), transparent 72%);
+  pointer-events:none;
+}
+.dl-main > *{position:relative}
+
+.os-badge{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.05em;
+  border:1px solid var(--line); border-radius:999px;
+  padding:6px 14px; margin-bottom:20px; color:var(--ink-dim);
+  background:rgba(255,255,255,.035);
+}
+.os-badge svg{width:14px;height:14px;fill:currentColor}
+.os-badge.ok{color:#9BE3B0; border-color:rgba(80,200,120,.3); background:rgba(80,200,120,.08)}
+.os-badge.no{color:#FFC49E; border-color:rgba(242,101,34,.32); background:rgba(242,101,34,.08)}
+
+.dl h3{font-size:clamp(24px,2.8vw,31px); margin-bottom:12px}
+.dl-sub{color:var(--ink-dim); font-size:15.5px; max-width:44ch}
+
+.btn-dl{
+  margin-top:26px; font-size:16px; padding:14px 26px;
+  min-height:50px;
+}
+.btn-dl[aria-disabled="true"]{
+  background:rgba(255,255,255,.05); color:var(--ink-faint);
+  border-color:var(--line); box-shadow:none; cursor:not-allowed;
+}
+.btn-dl[aria-disabled="true"]:hover{transform:none; background:rgba(255,255,255,.05)}
+
+.dl-meta{
+  margin-top:14px; font-family:var(--mono); font-size:12.5px;
+  color:var(--ink-faint); min-height:19px;
+}
+.dl-meta a{color:var(--ink-dim); border-bottom:1px solid var(--line); padding-bottom:1px}
+.dl-meta a:hover{color:var(--orange); border-color:var(--orange)}
+.dl-alt{margin-top:18px; font-size:13.5px; color:var(--ink-faint)}
+.dl-alt a{color:var(--ink-dim); text-decoration:underline; text-underline-offset:3px}
+.dl-alt a:hover{color:var(--orange)}
+
+/* spinner while the release lookup is in flight */
+.spin{
+  width:15px;height:15px;border-radius:50%; flex:none;
+  border:2px solid rgba(255,255,255,.25); border-top-color:currentColor;
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:2s}}
+
+/* requirements side panel */
+.dl-req{padding:40px 40px 38px; border-left:1px solid var(--line-soft); background:#12161C}
+.dl-req h4{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-faint); font-weight:600; margin-bottom:18px;
+}
+.req{list-style:none; margin:0; padding:0}
+.req li{
+  display:flex; gap:14px; padding:11px 0; border-bottom:1px solid var(--line-soft);
+  font-size:14.5px; color:var(--ink-dim);
+}
+.req li:last-child{border-bottom:none}
+.req b{
+  flex:none; width:104px; color:var(--ink-faint); font-family:var(--mono);
+  font-size:12px; letter-spacing:.03em; padding-top:2px; font-weight:500;
+}
+
+/* CTA */
+.cta{
+  position:relative; overflow:hidden;
+  border:1px solid var(--line); border-radius:20px;
+  background:linear-gradient(150deg, #16191F 0%, #101319 60%, #14100D 100%);
+  padding:64px 56px; text-align:center;
+}
+.cta::before{
+  content:""; position:absolute; inset:auto -20% -60% -20%; height:420px;
+  background:radial-gradient(50% 60% at 50% 100%, rgba(242,101,34,.24), transparent 70%);
+  pointer-events:none;
+}
+.cta > *{position:relative}
+.cta h2{font-size:clamp(28px,3.4vw,40px)}
+.cta p{color:var(--ink-dim); margin:18px auto 0; max-width:56ch}
+.cta .hero-cta{justify-content:center}
+
+/* footer */
+footer{border-top:1px solid var(--line-soft); padding:56px 0 64px; background:var(--bg-raise)}
+.foot{display:flex; gap:40px; justify-content:space-between; flex-wrap:wrap}
+.foot .brand{margin-bottom:14px}
+.foot p{font-size:13.5px; color:var(--ink-faint); max-width:44ch; line-height:1.7}
+.footcols{display:flex; gap:64px; flex-wrap:wrap}
+.footcol h4{font-size:12px; font-family:var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:14px; font-weight:600}
+.footcol a{display:block; font-size:14.5px; color:var(--ink-dim); margin-bottom:9px; transition:color .16s ease}
+.footcol a:hover{color:var(--orange)}
+.legal{
+  margin-top:44px; padding-top:24px; border-top:1px solid var(--line-soft);
+  font-size:12.5px; color:var(--ink-faint); display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+}
+
+/* reveal on scroll */
+.rv{opacity:0; transform:translateY(18px); transition:opacity .6s cubic-bezier(.2,.7,.3,1), transform .6s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr; gap:44px}
+  .cube-stage{order:-1}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .strip-inner{grid-template-columns:repeat(2,1fr)}
+  .spec:nth-child(3){border-left:none}
+  .spec:nth-child(n+3){border-top:1px solid var(--line-soft)}
+  .split{grid-template-columns:1fr; gap:34px}
+  .dl{grid-template-columns:1fr}
+  .dl-req{border-left:none; border-top:1px solid var(--line-soft)}
+  .navlinks a:not(.btn){display:none}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  nav{padding:12px 20px}
+  section{padding:68px 0}
+  .hero{padding:64px 0 56px}
+  .cards{grid-template-columns:1fr}
+  .strip-inner{grid-template-columns:1fr}
+  .spec{border-left:none; border-top:1px solid var(--line-soft)}
+  .spec:first-child{border-top:none}
+  .cta{padding:44px 26px}
+  .btn{padding:11px 17px; font-size:14.5px}
+  .dl-main{padding:32px 24px 30px}
+  .dl-req{padding:30px 24px}
+  .req b{width:88px}
+}
+
+
+/* ============================================================
+   Detail-page additions
+   ============================================================ */
+.subhero{position:relative; padding:64px 0 52px; overflow:hidden;
+  border-bottom:1px solid var(--line-soft); background:var(--bg-raise)}
+.subhero::before{content:""; position:absolute; inset:-40% -10% auto -10%; height:560px;
+  background:radial-gradient(50% 50% at 72% 30%, rgba(242,101,34,.14), transparent 70%);
+  pointer-events:none}
+.subhero::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(70% 70% at 40% 40%, #000 0%, transparent 80%);
+  -webkit-mask-image:radial-gradient(70% 70% at 40% 40%, #000 0%, transparent 80%); opacity:.55}
+.subhero .wrap{position:relative; z-index:1}
+.subhero h1{font-size:clamp(33px,4.6vw,54px); letter-spacing:-.032em; max-width:19ch}
+.subhero .lede{margin-top:20px; font-size:18.5px}
+
+.crumb{display:flex; align-items:center; gap:9px; font-family:var(--mono);
+  font-size:12px; color:var(--ink-faint); margin-bottom:20px}
+.crumb a{color:var(--ink-dim)} .crumb a:hover{color:var(--orange)}
+
+.stats{display:flex; gap:44px; flex-wrap:wrap; margin-top:38px;
+  padding-top:30px; border-top:1px solid var(--line-soft)}
+.stat b{display:block; font-size:29px; font-weight:680; letter-spacing:-.03em;
+  font-family:var(--mono); color:var(--orange)}
+.stat span{display:block; font-size:13.5px; color:var(--ink-faint); margin-top:5px}
+
+/* prose */
+.prose{max-width:74ch}
+.prose h2{font-size:clamp(23px,2.7vw,30px); margin:0 0 18px; scroll-margin-top:90px}
+.prose p{color:var(--ink-dim); font-size:16.5px; line-height:1.75; margin-bottom:16px}
+.prose p:last-child{margin-bottom:0}
+.prose b{color:var(--ink); font-weight:620}
+.prose i{color:var(--ink-dim)}
+.block{padding:38px 0; border-top:1px solid var(--line-soft)}
+.block:first-child{border-top:none; padding-top:0}
+
+kbd{font-family:var(--mono); font-size:.84em; background:rgba(255,255,255,.07);
+  border:1px solid var(--line); border-bottom-width:2px; border-radius:5px;
+  padding:1px 6px; color:var(--ink)}
+
+/* two-column body with a sticky table of contents */
+.layout{display:grid; grid-template-columns:210px 1fr; gap:56px; align-items:start}
+/* Without this a wide table or code block stretches its grid track past
+   the viewport rather than scrolling inside its own wrapper. */
+.layout > *{min-width:0}
+.toc{position:sticky; top:88px}
+.toc h4{font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--ink-faint); font-weight:600; margin-bottom:14px}
+.toc a{display:block; font-size:14px; color:var(--ink-faint); padding:6px 0 6px 13px;
+  border-left:2px solid var(--line-soft); transition:color .16s ease, border-color .16s ease}
+.toc a:hover{color:var(--ink-dim); border-color:#39414F}
+.toc a.on{color:var(--orange); border-color:var(--orange)}
+
+.tcap{font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:16px}
+.facts td:first-child{width:230px; color:var(--ink); font-weight:560}
+.facts td:last-child{color:var(--ink-dim)}
+.facts table{min-width:520px}
+
+.nextnav{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px}
+.nextcard{display:block; padding:22px 24px; border:1px solid var(--line-soft);
+  border-radius:var(--r); background:var(--bg-card);
+  transition:border-color .2s ease, transform .2s ease, background .2s ease}
+.nextcard:hover{border-color:#2E3644; transform:translateY(-2px); background:#171C24}
+.nextcard span{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:8px}
+.nextcard b{display:block; font-size:16.5px; font-weight:620; margin-bottom:5px}
+.nextcard em{display:block; font-style:normal; font-size:14px; color:var(--ink-faint); line-height:1.55}
+
+/* clickable feature cards on the landing page */
+a.card{display:block; color:inherit; cursor:pointer;
+  -webkit-tap-highlight-color:transparent; touch-action:manipulation}
+/* Nothing inside a card can swallow the click: the <code>, <b> and <svg>
+   children are decoration, so the whole surface hits the anchor itself. */
+a.card > *{pointer-events:none}
+a.card .more{display:inline-flex; align-items:center; gap:7px; margin-top:16px;
+  font-size:14px; font-weight:600; color:var(--orange)}
+a.card .more svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;
+  transition:transform .2s ease}
+a.card:hover .more svg{transform:translateX(3px)}
+a.card:active{transform:translateY(0) scale(.995)}
+
+/* Visible keyboard focus on every interactive element. */
+a:focus-visible, .btn:focus-visible{
+  outline:2px solid var(--orange); outline-offset:3px; border-radius:8px}
+
+/* The reveal animation must never leave anything unclickable: if the observer
+   somehow does not fire, this brings the element back after the transition. */
+@media (prefers-reduced-motion:no-preference){
+  .rv{animation:rvFallback 0s linear 2.5s forwards}
+}
+@keyframes rvFallback{to{opacity:1; transform:none}}
+
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr; gap:34px}
+  .toc{position:static; padding-bottom:8px; border-bottom:1px solid var(--line-soft)}
+  .toc a{display:inline-block; border-left:none; border-bottom:2px solid var(--line-soft);
+    padding:4px 14px 6px 0; margin-right:10px}
+  .nextnav{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .subhero{padding:44px 0 38px}
+  .stats{gap:28px}
+  .stat b{font-size:24px}
+  .facts td:first-child{width:150px}
+}
+
+</style>
+</head>
+<body>
+<header id="hdr">
+  <nav>
+    <a class="brand" href="index.html">
+      <img src="data:image/png;base64,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" alt="" width="29" height="30">
+      Aver Engine
+    </a>
+    <div class="navlinks">
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
+      <a class="btn btn-primary" href="index.html#download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        Download
+      </a>
+    </div>
+  </nav>
+</header>
+
+<div class="subhero">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span> <span>Docs</span></div>
+    <div class="eyebrow">Reference</div>
+    <h1>C# Scripting API</h1>
+    <div class="lede"><p>The gameplay you write for Aver Engine is <strong>C# that runs in-process</strong> against the engine's entity/component
+world. You derive a base type (<code>AverActor</code>, <code>AverPawn</code>, <code>AverCharacter</code>, …), override lifecycle hooks
+(<code>OnBeginPlay</code>, <code>OnTick</code>, …), and reach the running game through a small, static-first API (<code>Game</code>,
+<code>Input</code>, and the <code>Entity</code> handle). There is <strong>no <code>UObject</code></strong>: a "class" is a row in a native registry, and
+spawning is a memcpy of that row's defaults — so scripts are thin, and the surface below is all you touch.</p></div>
+    <div class="stats">
+      <div class="stat"><b>4</b><span>assemblies you write against</span></div>
+      <div class="stat"><b>19</b><span>sections</span></div>
+      <div class="stat"><b>0</b><span>UObject</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="docs">
+  <div class="wrap">
+    <div class="layout docs-layout">
+      <aside class="toc docs-toc">
+        <h4>Contents</h4>
+        <input id="tocFilter" type="search" placeholder="Filter sections…"
+               autocomplete="off" spellcheck="false" aria-label="Filter sections">
+        <div id="tocList"><a class="t2" href="#1-getting-started" data-t="getting started">Getting started</a><a class="t2" href="#2-the-class-hierarchy" data-t="the class hierarchy">The class hierarchy</a><a class="t2" href="#3-the-play-lifecycle" data-t="the play lifecycle">The play lifecycle</a><a class="t2" href="#4-lifecycle-hooks" data-t="lifecycle hooks">Lifecycle hooks</a><a class="t2" href="#5-actors-pawns-characters-controllers-gamemode" data-t="actors, pawns, characters, controllers, gamemode">Actors, Pawns, Characters, Controllers, GameMode</a><a class="t3" href="#averactor" data-t="averactor">AverActor</a><a class="t3" href="#averpawn--averactor" data-t="averpawn : averactor">AverPawn : AverActor</a><a class="t3" href="#avercharacter--averpawn" data-t="avercharacter : averpawn">AverCharacter : AverPawn</a><a class="t3" href="#averplayercontroller--averactor" data-t="averplayercontroller : averactor">AverPlayerController : AverActor</a><a class="t3" href="#avergamemode--averactor" data-t="avergamemode : averactor">AverGameMode : AverActor</a><a class="t3" href="#avergameinstance--averactor" data-t="avergameinstance : averactor">AverGameInstance : AverActor</a><a class="t2" href="#6-entity--the-handle-to-a-thing-in-the-world" data-t="entity — the handle to a thing in the world">Entity — the handle to a thing in the world</a><a class="t2" href="#7-game--the-running-session" data-t="game — the running session">Game — the running session</a><a class="t2" href="#8-input" data-t="input">Input</a><a class="t3" href="#action-mappings" data-t="action mappings">Action mappings</a><a class="t2" href="#9-spawning-and-destroying" data-t="spawning and destroying">Spawning and destroying</a><a class="t2" href="#10-possession" data-t="possession">Possession</a><a class="t2" href="#11-attributes" data-t="attributes">Attributes</a><a class="t2" href="#12-enums" data-t="enums">Enums</a><a class="t2" href="#13-classbuilder-and-actorbuilder" data-t="classbuilder and actorbuilder">ClassBuilder and ActorBuilder</a><a class="t2" href="#14-physics" data-t="physics">Physics</a><a class="t2" href="#15-maths--vec3-quat-rot" data-t="maths — vec3, quat, rot">Maths — Vec3, Quat, Rot</a><a class="t2" href="#16-averui--the-games-hud" data-t="aver.ui — the game&#x27;s hud">Aver.UI — the game&#x27;s HUD</a><a class="t2" href="#17-avermaterials--surfaces-authored-in-c" data-t="aver.materials — surfaces authored in c#">Aver.Materials — surfaces authored in C#</a><a class="t2" href="#18-worked-examples" data-t="worked examples">Worked examples</a><a class="t3" href="#a-player-character-wasd--mouse-firstthird-person" data-t="a player character (wasd + mouse, first/third person)">A player character (WASD + mouse, first/third person)</a><a class="t3" href="#a-gamemode-that-hands-out-that-character" data-t="a gamemode that hands out that character">A GameMode that hands out that character</a><a class="t3" href="#a-spawner-that-scatters-pickups-and-tags-them" data-t="a spawner that scatters pickups and tags them">A spawner that scatters pickups and tags them</a><a class="t2" href="#19-not-yet-available" data-t="not yet available">Not yet available</a></div>
+        <p class="toc-none" id="tocNone" hidden>Nothing matches.</p>
+      </aside>
+      <article class="prose doc-body">
+        <p>This document is the reference for that surface. It lives in <code>Aver.Framework</code> (namespace
+<code>Aver.Framework</code>); vector maths (<code>Vec3</code>, <code>Quat</code>, <code>Rot</code>) lives in <code>Aver.Scene</code>; the log (<code>Log</code>) lives in
+<code>Aver.Scripting</code>. Two further assemblies a game author writes against directly are documented here too:
+<strong><code>Aver.UI</code></strong> (the game's HUD) and <strong><code>Aver.Materials</code></strong> (surfaces authored in C#). A new project
+references all four whether or not it uses them (<code>sandbox/src/ProjectScaffold.cpp</code>) — an unused
+reference costs nothing, and the alternative is a compile error naming an assembly the author has never
+heard of, in a file the editor generated.</p>
+<h2 id="1-getting-started">1. Getting started<a class="hlink" href="#1-getting-started" aria-label="Link to this section">#</a></h2>
+<p>A gameplay type is a C# class that (a) derives an Aver base type, and (b) carries an <code>[AverClass("Name")]</code>
+(or <code>[AverGameMode(...)]</code>) attribute naming it. The editor's <strong>Content Browser → + Add → New C# Script</strong>
+scaffolds one; a hand-written one looks like this:</p>
+<pre><code class="language-csharp">using Aver.Framework;
+using Aver.Scene;      // Vec3, Rot
+using Aver.Scripting;  // Log
+
+namespace MyGame;
+
+[AverClass(&quot;BP_Rotator&quot;)]
+public sealed class Rotator : AverActor
+{
+    // The class RECIPE — run once per class at load, never per instance. Declares components + tick.
+    public static void Configure(ClassBuilder b)
+    {
+        b.Mesh(&quot;Meshes/cube.ocmesh&quot;);   // this actor's own entity gets a mesh
+        b.Ticks(TickGroup.PrePhysics);  // ask to tick
+    }
+
+    private float _angle;
+
+    public override void OnBeginPlay(BeginReason reason) =&gt; Log.Info(&quot;Rotator started&quot;);
+
+    public override void OnTick(float dt)
+    {
+        _angle += 90f * dt;                              // 90 deg/sec
+        Self.SetLocalRotation(new Rot(_angle, 0, 0).ToQuat());
+    }
+}
+</code></pre>
+<p><strong>How it runs.</strong> The editor's <em>Compile C#</em> button builds the project's <code>Scripts.csproj</code> and, when the
+scripting host is present, swaps the result in live. The two Tools items are the halves of that button
+and fail differently, which is why they are separate: <strong>Tools → Compile Scripts</strong> only builds (the
+editor keeps running whatever it already loaded), <strong>Tools → Reload Scripts</strong> builds and then unloads and
+reloads. At load the host reflects every <code>AverActor</code>-derived type, calls its
+<code>static Configure(ClassBuilder)</code> (if present) to register the class's defaults, and wires the lifecycle.
+Pressing <strong>Play</strong> starts a session (below); your actors' hooks then fire.</p>
+<p>One assembly, two source roots: <code>Scripts.csproj</code> compiles <code>Content/Scripts</code> <strong>and</strong> <code>Content/Materials</code>
+(see <a href="#17-avermaterials--surfaces-authored-in-c">§17</a>). After a successful build the editor runs
+<code>avermatc</code> over that assembly to bake the C# materials; a material that fails to bake is reported but
+does <strong>not</strong> fail the build, because the C# did compile and a red build light would say otherwise
+(<code>sandbox/src/ToolsMenu.cpp</code>).</p>
+<p><strong>Two rules worth knowing up front:</strong></p>
+<ul>
+<li><strong>Hooks are <code>virtual</code> overrides, not attributes</strong> — a misspelt <code>OnTick</code> is a <em>compile error</em>, not a
+  method that silently never runs.</li>
+<li><strong><code>0</code> is always invalid.</strong> A default <code>Entity</code> is invalid; a lookup that finds nothing returns
+  <code>Entity.None</code>; <code>IsValid</code>/<code>IsAlive</code> tell you.</li>
+</ul>
+<p><strong>Logging.</strong> <code>Console.WriteLine</code> goes nowhere in the editor's windowed process; write to the engine's
+Output Log through <code>Aver.Scripting.Log</code> instead: <code>Log.Trace/Info/Warn/Error(string)</code> (and the explicit
+<code>Log.Write(Log.Level, string)</code>). It falls back to the console when run outside a host.</p>
+<hr />
+<h2 id="2-the-class-hierarchy">2. The class hierarchy<a class="hlink" href="#2-the-class-hierarchy" aria-label="Link to this section">#</a></h2>
+<pre><code>AverActor                     the root: a thing in the world with a transform and a lifecycle
+├── AverPawn                  an actor that can be POSSESSED by a controller
+│   └── AverCharacter         a first/third-person walking pawn (WASD + mouse)
+├── AverPlayerController      the will that drives a pawn (possession control)
+├── AverGameMode              the rules of a play session (names its pawn + controller)
+└── AverGameInstance          process-lifetime state that spans levels
+</code></pre>
+<p>The base type you derive is how the <strong>compiler</strong> decides which capability flag the class gets
+(<code>PAWN</code>, <code>CONTROLLER</code>, <code>GAME_MODE</code>, …) and which hooks you may override. <code>AverPlayerController</code> is the one
+non-abstract base — many games never subclass it and just name <code>"PlayerController"</code> as the controller.</p>
+<hr />
+<h2 id="3-the-play-lifecycle">3. The play lifecycle<a class="hlink" href="#3-the-play-lifecycle" aria-label="Link to this section">#</a></h2>
+<p>The world has two lives: <strong>EDITOR</strong> (authoring) and <strong>PLAYING</strong>. Pressing <strong>Play</strong> in the editor calls
+<code>begin_play</code>, which:</p>
+<ol>
+<li>moves the state to <code>Playing</code> <strong>first</strong> — so every <code>OnBeginPlay</code> and <code>OnPostLogin</code> fired below already
+   observes <code>Game.State == Playing</code>, not the editor it is leaving;</li>
+<li>spawns the <strong>GameInstance</strong> (if the project has one), then the <strong>GameMode</strong> (mandatory — if <em>it</em> fails
+   to spawn, the state is restored to <code>Editor</code> and no session forms);</li>
+<li>spawns the GameMode's named <strong>PlayerController</strong> and <strong>Pawn</strong>, and <strong>possesses</strong> the pawn (a mode may
+   legally name neither — a menu mode, say);</li>
+<li>fires the GameMode's <code>OnPostLogin</code>, after the possess, so it can already see the controller's pawn.</li>
+</ol>
+<p>The ordering of step 1 is load-bearing, not incidental: a hook that gates on <code>Game.IsPlaying</code> runs during
+begin-play and must see the session it is starting.</p>
+<p><strong>Stop</strong> calls <code>end_play</code>, which unpossesses, then ends the four session roots in the <em>reverse</em> of spawn
+order (so <code>OnEndPlay</code> mirrors <code>OnBeginPlay</code>), then sweeps <strong>every other actor the session spawned</strong> — an
+actor a GameMode spawned in a hook is not a root, and would otherwise get <code>OnBeginPlay</code> and never
+<code>OnEndPlay</code>. Everything ends with <code>EndReason.Stop</code>, and the world returns to <code>EDITOR</code>. Read the current state and
+singletons through <a href="#7-game--the-running-session"><code>Game</code></a>.</p>
+<p>The hook order within a frame: begin-play queue drains → <code>OnTick</code> in tick-group order → destroy queue
+drains. Gameplay ticks only while <code>Playing</code> (a <code>Paused</code> session freezes it without tearing down).</p>
+<hr />
+<h2 id="4-lifecycle-hooks">4. Lifecycle hooks<a class="hlink" href="#4-lifecycle-hooks" aria-label="Link to this section">#</a></h2>
+<p>Override these on your <code>AverActor</code> subclass. All are optional; the defaults do nothing.</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Hook</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void OnBeginPlay(BeginReason reason)</code></td>
+<td>Once when the actor begins playing. <code>reason</code> is <code>Spawn</code> (fresh), <code>Play</code> (an already-placed actor entering Play), or <code>Reload</code> (after a hot reload).</td>
+</tr>
+<tr>
+<td><code>void OnTick(float dt)</code></td>
+<td>Every frame the class is scheduled to tick, in its tick group. <code>dt</code> is clamped seconds. Requires <code>b.Ticks(...)</code> in <code>Configure</code>.</td>
+</tr>
+<tr>
+<td><code>void OnEndPlay(EndReason reason)</code></td>
+<td>Once when the actor stops playing. <code>Stop</code> = the world stopped; <code>Destroy</code> = it was destroyed; <code>Reload</code> = the entity stays, only the managed half is rebuilt.</td>
+</tr>
+<tr>
+<td><code>void OnRebound()</code></td>
+<td><strong>DECLARED BUT NEVER CALLED.</strong> The hook exists in <code>framework_hooks.h</code> and nothing in the engine invokes it; the bridge's own comment records the rebind path as out of scope. Do not put logic here expecting it to run.</td>
+</tr>
+<tr>
+<td><code>void BuildModels(ActorBuilder builder)</code></td>
+<td><code>protected</code>. Builds the actor's model tree; the editor overrides it in a generated <code>.Designer.cs</code>. Hand code rarely writes this.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>Pawn-only hooks (<code>AverPawn</code>): <code>OnPossessed(Entity controller)</code>, <code>OnUnpossessed()</code>.
+GameMode-only hook (<code>AverGameMode</code>): <code>OnPostLogin(Entity controller)</code>.</p>
+<blockquote>
+<p><strong>Exceptions never cross back into the engine.</strong> A throw out of any hook is caught, logged, and that one
+actor is disabled for the session; the process and every other actor survive.</p>
+</blockquote>
+<hr />
+<h2 id="5-actors-pawns-characters-controllers-gamemode">5. Actors, Pawns, Characters, Controllers, GameMode<a class="hlink" href="#5-actors-pawns-characters-controllers-gamemode" aria-label="Link to this section">#</a></h2>
+<h3 id="averactor"><code>AverActor</code><a class="hlink" href="#averactor" aria-label="Link to this section">#</a></h3>
+<p>The root type. Every actor has <code>public Entity Self { get; }</code> — its entity handle (you read it, never
+assign it). See <a href="#9-spawning-and-destroying">Spawning</a> for the <code>Spawn</code>/<code>Destroy</code> members.</p>
+<h3 id="averpawn--averactor"><code>AverPawn : AverActor</code><a class="hlink" href="#averpawn--averactor" aria-label="Link to this section">#</a></h3>
+<p>Adds possession. <code>public Entity Controller</code>, <code>public T? ControllerAs&lt;T&gt;()</code>, <code>public bool IsPossessed</code>, and
+the <code>OnPossessed</code>/<code>OnUnpossessed</code> hooks.</p>
+<h3 id="avercharacter--averpawn"><code>AverCharacter : AverPawn</code><a class="hlink" href="#avercharacter--averpawn" aria-label="Link to this section">#</a></h3>
+<p>A first/third-person walking character.</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public float MoveSpeed</code></td>
+<td>Ground move speed, cm/s (default 350).</td>
+</tr>
+<tr>
+<td><code>public float TurnSpeed</code></td>
+<td>Mouse-look sensitivity, degrees of yaw per pixel (default 0.2).</td>
+</tr>
+<tr>
+<td><code>public CameraView CameraViewMode</code></td>
+<td><code>FirstPerson</code> or <code>ThirdPerson</code> (default third).</td>
+</tr>
+<tr>
+<td><code>public float EyeHeight</code></td>
+<td>First-person eye height, cm (default 160).</td>
+</tr>
+<tr>
+<td><code>public float BoomLength</code></td>
+<td>Third-person camera distance behind, cm (default 450).</td>
+</tr>
+<tr>
+<td><code>public float Yaw { get; }</code></td>
+<td>The character's facing yaw, degrees (read-only; turned by <code>DriveWithInput</code>, set by <code>SetYaw</code>).</td>
+</tr>
+<tr>
+<td><code>public float Height</code> / <code>public float Radius</code></td>
+<td>Capsule size, cm (default 180 / 34). Set before the first tick.</td>
+</tr>
+<tr>
+<td><code>public float JumpSpeed</code></td>
+<td>Upward speed a jump starts with, cm/s (default 465 — about 110 cm of height).</td>
+</tr>
+<tr>
+<td><code>public bool IsSimulated</code></td>
+<td>True when backed by the physics world rather than translating directly.</td>
+</tr>
+<tr>
+<td><code>public bool IsGrounded</code></td>
+<td>True while standing on ground shallow enough to hold.</td>
+</tr>
+<tr>
+<td><code>public Vec3 Velocity</code></td>
+<td>Current velocity, cm/s. The vertical component is the simulation's.</td>
+</tr>
+<tr>
+<td><code>public bool Jump()</code></td>
+<td>Jump if grounded; returns false when airborne rather than swallowing it.</td>
+</tr>
+<tr>
+<td><code>public void Teleport(Vec3 feet)</code></td>
+<td>Move the character <em>and</em> its capsule. Setting the transform alone leaves the capsule behind.</td>
+</tr>
+<tr>
+<td><code>protected void DriveWithInput(float dt)</code></td>
+<td>One frame of WASD-walk + mouse-turn control; call from <code>OnTick</code> while possessed. Reads the settled result of the last step, then writes this frame's intent.</td>
+</tr>
+<tr>
+<td><code>protected void SetYaw(float degrees)</code></td>
+<td>Snap the facing yaw without the mouse having moved it.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>The character's origin is its <strong>feet</strong>, not the capsule centre — which is what <code>EyeHeight</code> already
+assumed, and what makes "put it on the ground" mean setting <code>z</code> to the ground height.</p>
+<h3 id="averplayercontroller--averactor"><code>AverPlayerController : AverActor</code><a class="hlink" href="#averplayercontroller--averactor" aria-label="Link to this section">#</a></h3>
+<p>The will that drives a pawn. See <a href="#10-possession">Possession</a>.</p>
+<h3 id="avergamemode--averactor"><code>AverGameMode : AverActor</code><a class="hlink" href="#avergamemode--averactor" aria-label="Link to this section">#</a></h3>
+<p>The rules for a play session. Names its pawn/controller <em>by string</em> on <code>[AverGameMode]</code>. Adds
+<code>virtual void OnPostLogin(Entity controller)</code> — fires once the controller has entered.</p>
+<h3 id="avergameinstance--averactor"><code>AverGameInstance : AverActor</code><a class="hlink" href="#avergameinstance--averactor" aria-label="Link to this section">#</a></h3>
+<p>Process-lifetime state that spans levels. Adds nothing over <code>AverActor</code>; the concept it contributes is
+<em>lifetime</em>. Reach it with <code>Game.Instance</code>.</p>
+<hr />
+<h2 id="6-entity--the-handle-to-a-thing-in-the-world">6. <code>Entity</code> — the handle to a thing in the world<a class="hlink" href="#6-entity--the-handle-to-a-thing-in-the-world" aria-label="Link to this section">#</a></h2>
+<p><code>Entity</code> is a <code>readonly struct</code> — a 32-bit key into the world's component arrays. <code>default</code> is invalid.
+Transform <strong>writes are methods</strong> (not property setters) because it is returned by value.</p>
+<p><strong>Identity</strong></p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int Handle</code></td>
+<td>The raw ABI handle (0 = invalid).</td>
+</tr>
+<tr>
+<td><code>static Entity None</code></td>
+<td>The invalid handle.</td>
+</tr>
+<tr>
+<td><code>bool IsValid</code></td>
+<td><code>Handle != 0</code>.</td>
+</tr>
+<tr>
+<td><code>bool IsAlive</code></td>
+<td>The handle still addresses a live entity.</td>
+</tr>
+<tr>
+<td><code>bool IsActor</code></td>
+<td>A gameplay class owns this entity (vs a plain scene entity).</td>
+</tr>
+<tr>
+<td><code>ActorClass Class</code></td>
+<td>The class this entity is an instance of.</td>
+</tr>
+<tr>
+<td><code>string Name</code> / <code>void SetName(string)</code></td>
+<td>The display name.</td>
+</tr>
+<tr>
+<td><code>ulong ObjectId</code></td>
+<td>The persisted identity (fnv1a64 of the name), survives serialisation.</td>
+</tr>
+<tr>
+<td><code>AverActor? Actor</code> / <code>T? As&lt;T&gt;()</code></td>
+<td>The live managed instance bound to this entity, or null.</td>
+</tr>
+<tr>
+<td><code>void Destroy()</code></td>
+<td>Destroy this entity (full framework teardown if it's an actor).</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>Transform</strong> (local, centimetres; rotation as a quaternion — compose in degrees via <code>Rot</code>)</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Vec3 LocalPosition</code> / <code>void SetLocalPosition(Vec3)</code> / <code>void Translate(Vec3 delta)</code></td>
+<td>Local position.</td>
+</tr>
+<tr>
+<td><code>Quat LocalRotation</code> / <code>void SetLocalRotation(Quat)</code></td>
+<td>Local rotation.</td>
+</tr>
+<tr>
+<td><code>Vec3 LocalScale</code> / <code>void SetLocalScale(Vec3)</code></td>
+<td>Local scale.</td>
+</tr>
+<tr>
+<td><code>Vec3 Forward</code> / <code>Right</code> / <code>Up</code></td>
+<td>Local axes (+X / +Y / +Z), rotated by the local rotation.</td>
+</tr>
+<tr>
+<td><code>Vec3 WorldPosition</code></td>
+<td>World-space position, composed through parents.</td>
+</tr>
+<tr>
+<td><code>Vec3 WorldForward</code> / <code>WorldRight</code> / <code>WorldUp</code></td>
+<td>World-space axes, normalised.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>Hierarchy</strong></p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Entity Parent</code> / <code>Entity FirstChild</code> / <code>Entity NextSibling</code> / <code>int ChildCount</code></td>
+<td>Links.</td>
+</tr>
+<tr>
+<td><code>IEnumerable&lt;Entity&gt; Children</code></td>
+<td>Immediate children, in order.</td>
+</tr>
+<tr>
+<td><code>bool SetParent(Entity parent)</code> / <code>bool Detach()</code></td>
+<td>Reparent (<code>Entity.None</code> → root) / detach. Refuses a cycle.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>Components</strong> (see the <a href="#12-enums"><code>Component</code></a> enum)</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool HasComponent(Component)</code> / <code>bool AddComponent(Component)</code></td>
+<td>Query / attach (idempotent).</td>
+</tr>
+<tr>
+<td><code>bool Visible</code> / <code>bool SetVisible(bool)</code></td>
+<td>Mesh visibility (adds a mesh renderer if absent).</td>
+</tr>
+<tr>
+<td><code>bool SetMesh(string path)</code> / <code>bool SetMaterial(string name)</code></td>
+<td>Set the drawn mesh / material.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>Tags</strong> (a 32-bit mask the gameplay layer gives meaning to — define your own bit constants)</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uint Tags</code> / <code>bool SetTags(uint)</code></td>
+<td>The whole mask.</td>
+</tr>
+<tr>
+<td><code>bool HasTag(uint)</code> / <code>bool HasAnyTag(uint)</code></td>
+<td>All bits set / any bit set.</td>
+</tr>
+<tr>
+<td><code>bool AddTag(uint)</code> / <code>bool RemoveTag(uint)</code></td>
+<td>Set / clear bits.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>Generic component fields</strong> (by qualified name, e.g. <code>"CLight.intensityLux"</code> — works for <code>[Editable]</code>
+fields and any component field)</p>
+<p><code>float GetFloat(string)</code> · <code>bool SetFloat(string, float)</code> · <code>int GetInt(string)</code> ·
+<code>bool SetInt(string, int)</code> · <code>long GetInt64(string)</code> · <code>bool SetInt64(string, long)</code> ·
+<code>Vec3 GetVec3(string)</code> · <code>bool SetVec3(string, Vec3)</code> · <code>string GetString(string)</code> ·
+<code>bool SetString(string, string)</code></p>
+<hr />
+<h2 id="7-game--the-running-session">7. <code>Game</code> — the running session<a class="hlink" href="#7-game--the-running-session" aria-label="Link to this section">#</a></h2>
+<p>Static. In EDITOR every handle is <code>Entity.None</code> and <code>State</code> is <code>Editor</code>. <strong>Read-only</strong>: starting/stopping
+a session is the editor's job, not a script's.</p>
+<p><strong>State</strong></p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PlayState State</code></td>
+<td><code>Editor</code> / <code>Playing</code> / <code>Paused</code>.</td>
+</tr>
+<tr>
+<td><code>bool IsPlaying</code> / <code>bool IsPaused</code> / <code>bool HasSession</code></td>
+<td>Playing / paused / a session exists (playing OR paused).</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>Session singletons</strong> (each <code>Entity</code>, with a typed <code>…As&lt;T&gt;()</code> counterpart)</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Typed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Entity Mode</code></td>
+<td><code>T? ModeAs&lt;T&gt;()</code> where <code>T : AverGameMode</code></td>
+</tr>
+<tr>
+<td><code>Entity Instance</code></td>
+<td><code>T? InstanceAs&lt;T&gt;()</code> where <code>T : AverGameInstance</code></td>
+</tr>
+<tr>
+<td><code>Entity LocalPlayerController</code> / <code>Entity GetPlayerController(int i = 0)</code></td>
+<td><code>T? PlayerControllerAs&lt;T&gt;(int i = 0)</code></td>
+</tr>
+<tr>
+<td><code>Entity GetPlayerPawn(int i = 0)</code></td>
+<td><code>T? PlayerPawnAs&lt;T&gt;(int i = 0)</code> where <code>T : AverPawn</code></td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong>Lookup &amp; iteration</strong> (each a linear scan taken this frame — don't spawn/destroy while enumerating)</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Entity Find(string name)</code> / <code>T? FindActor&lt;T&gt;(string name)</code></td>
+<td>Resolve an actor by name.</td>
+</tr>
+<tr>
+<td><code>IEnumerable&lt;Entity&gt; AllActors()</code></td>
+<td>Every live actor.</td>
+</tr>
+<tr>
+<td><code>IEnumerable&lt;T&gt; ActorsOf&lt;T&gt;()</code></td>
+<td>Every live actor whose instance is a <code>T</code>.</td>
+</tr>
+<tr>
+<td><code>IEnumerable&lt;Entity&gt; WithTag(uint mask)</code></td>
+<td>Every entity carrying all of <code>mask</code>.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><code>Actors.Get(Entity)</code> / <code>Actors.Get&lt;T&gt;(Entity)</code> are the lower-level resolvers <code>Entity.As&lt;T&gt;</code> is built on.</p>
+<hr />
+<h2 id="8-input">8. <code>Input</code><a class="hlink" href="#8-input" aria-label="Link to this section">#</a></h2>
+<p>Static, polled, Unity-style. The editor pushes the frame's device state each tick (suppressed while a text
+field has focus). Read it from <code>OnTick</code>.</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool GetKey(Key k)</code></td>
+<td>Held.</td>
+</tr>
+<tr>
+<td><code>bool GetKeyDown(Key k)</code> / <code>bool GetKeyUp(Key k)</code></td>
+<td>Went down / up this frame.</td>
+</tr>
+<tr>
+<td><code>float MouseDeltaX</code> / <code>MouseDeltaY</code> / <code>MouseWheel</code></td>
+<td>This frame's mouse movement / wheel.</td>
+</tr>
+<tr>
+<td><code>Vec3 MoveAxis</code></td>
+<td>WASD/arrows as <code>(forward, right, 0)</code>; not normalised.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><code>Key</code> values: <code>A</code>–<code>Z</code>, <code>D0</code>–<code>D9</code>, <code>Space</code>, <code>LeftShift</code>, <code>LeftCtrl</code>, <code>LeftAlt</code>, <code>Enter</code>, <code>Escape</code>, <code>Tab</code>,
+<code>Left</code>, <code>Right</code>, <code>Up</code>, <code>Down</code>, <code>MouseLeft</code>, <code>MouseRight</code>, <code>MouseMiddle</code>.</p>
+<h3 id="action-mappings">Action mappings<a class="hlink" href="#action-mappings" aria-label="Link to this section">#</a></h3>
+<p><code>Input</code> is the device. <code>EnhancedInput</code> is the layer above it, for gameplay that should name <em>what the
+player is doing</em> rather than which key they pressed — so a pawn asks whether <code>Fire</code> happened and never
+mentions a key (<code>scripting/csharp/Aver.Framework/EnhancedInput.cs</code>).</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InputAction</code></td>
+<td>A thing the player can do. <code>InputAction.Digital(name)</code> / <code>.Axis1D(name)</code> / <code>.Axis2D(name)</code>. Read <code>IsHeld</code>, <code>WasPressed</code>, <code>WasReleased</code>, <code>Value1D</code>, <code>Value2D</code>. Declare each <strong>once</strong>, usually as a <code>static readonly</code> field on a class shared between the pawn that reads it and the context that binds it.</td>
+</tr>
+<tr>
+<td><code>InputMappingContext</code></td>
+<td>A set of key→action bindings pushed and popped as a whole. Derive it and bind in the constructor: <code>BindKey</code>, <code>BindAxis1D(action, positive, negative)</code>, <code>BindAxis2D(action, up, down, right, left)</code>, <code>BindMouseLook</code>, <code>BindMouseWheel</code>.</td>
+</tr>
+<tr>
+<td><code>EnhancedInput</code></td>
+<td>The router: <code>AddContext(context, priority = 0)</code>, <code>RemoveContext</code>, <code>ClearContexts</code>, <code>ContextCount</code>.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>A <strong>higher-priority context consumes the keys it binds</strong>, so a lower one never sees them — pushing a
+menu or vehicle context suppresses the walking bindings without anything having to disable them.
+Consumption is per <em>context</em>, not per binding, so one key can still feed two actions in the same
+context. Actions are recomputed once per frame before the first tick group, so every actor in a frame
+reads the same input; polling per actor would let two pawns disagree about a "was pressed" edge purely
+because of tick order.</p>
+<pre><code class="language-csharp">static class GameActions
+{
+    public static readonly InputAction Move = InputAction.Axis2D(&quot;Move&quot;);
+    public static readonly InputAction Jump = InputAction.Digital(&quot;Jump&quot;);
+}
+
+public sealed class OnFoot : InputMappingContext
+{
+    public OnFoot()
+    {
+        BindAxis2D(GameActions.Move, Key.W, Key.S, Key.D, Key.A);   // X forward, Y right
+        BindKey(GameActions.Jump, Key.Space);
+    }
+}
+</code></pre>
+<hr />
+<h2 id="9-spawning-and-destroying">9. Spawning and destroying<a class="hlink" href="#9-spawning-and-destroying" aria-label="Link to this section">#</a></h2>
+<p><code>Spawn</code> is <code>protected static</code> on <code>AverActor</code> (call from within an actor). The typed forms return the <strong>live
+instance</strong> (or null if the class isn't declared); the <code>ActorClass</code> forms return the <code>Entity</code>.</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Entity Spawn(ActorClass c, Vec3 at)</code></td>
+<td>Spawn a class chosen at runtime.</td>
+</tr>
+<tr>
+<td><code>Entity Spawn(ActorClass c, Vec3 at, Rot rotation)</code></td>
+<td>…with orientation.</td>
+</tr>
+<tr>
+<td><code>Entity Spawn(ActorClass c, Vec3 at, Rot rotation, Vec3 scale)</code></td>
+<td>…with a full transform.</td>
+</tr>
+<tr>
+<td><code>T? Spawn&lt;T&gt;(Vec3 at)</code></td>
+<td>Spawn <code>T</code>, return the instance.</td>
+</tr>
+<tr>
+<td><code>T? Spawn&lt;T&gt;(Vec3 at, Rot rotation)</code> / <code>T? Spawn&lt;T&gt;(Vec3 at, Rot rotation, Vec3 scale)</code></td>
+<td>…with orientation / full transform.</td>
+</tr>
+<tr>
+<td><code>T? SpawnAttached&lt;T&gt;(Entity parent, Vec3 localPosition)</code></td>
+<td>Spawn as a child of <code>parent</code>; returns null if the attach is rejected (and cleans up).</td>
+</tr>
+<tr>
+<td><code>void Destroy()</code></td>
+<td>Destroy this actor now (fires <code>OnEndPlay</code>).</td>
+</tr>
+<tr>
+<td><code>static void Destroy(Entity other)</code> / <code>static void Destroy(AverActor? other)</code></td>
+<td>Destroy another.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong><code>ActorClass</code></strong> — the <code>Spawn&lt;T&gt;</code> forms name the class by <em>type</em>; the <code>Spawn(ActorClass, …)</code> forms take a
+class <strong>handle</strong>, for when the class is chosen at runtime. Get one with <code>ActorClass.Find("BP_Coin")</code> (an
+invalid handle if no such class is declared — check <code>IsValid</code>); <code>Entity.Class</code> gives the class an entity is
+an instance of. An <code>ActorClass</code> is a <code>readonly struct</code> with <code>int Handle</code>, <code>bool IsValid</code>, and <code>string Name</code>
+(<code>0 == invalid</code>).</p>
+<pre><code class="language-csharp">ActorClass coin = ActorClass.Find(&quot;BP_Coin&quot;);
+if (coin.IsValid)
+    for (int i = 0; i &lt; count; i++)
+        Spawn(coin, new Vec3(i * 100f, 0f, 20f));   // class picked at runtime
+</code></pre>
+<hr />
+<h2 id="10-possession">10. Possession<a class="hlink" href="#10-possession" aria-label="Link to this section">#</a></h2>
+<p>On <code>AverPlayerController</code>:</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Entity Possessed</code> / <code>T? PossessedAs&lt;T&gt;()</code> / <code>bool HasPawn</code></td>
+<td>The controlled pawn.</td>
+</tr>
+<tr>
+<td><code>bool Possess(Entity pawn)</code> / <code>bool Possess(AverPawn pawn)</code></td>
+<td>Take control. A pawn already driven by another controller is <em>stolen</em> (it gets <code>OnUnpossessed</code> then <code>OnPossessed</code>); re-possessing the pawn you already drive is a no-op that returns true.</td>
+</tr>
+<tr>
+<td><code>bool Unpossess()</code></td>
+<td>Release the current pawn.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>On the pawn side, <code>AverPawn.Controller</code> / <code>ControllerAs&lt;T&gt;()</code> / <code>IsPossessed</code> read the inverse, straight
+from the world (never cached).</p>
+<hr />
+<h2 id="11-attributes">11. Attributes<a class="hlink" href="#11-attributes" aria-label="Link to this section">#</a></h2>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[AverClass("Name")]</code></td>
+<td>Names a gameplay class. Optional <code>Parent = "…"</code> (inferred from the base type otherwise).</td>
+</tr>
+<tr>
+<td><code>[AverGameMode("Name")]</code></td>
+<td>Names a GameMode. <code>DefaultPawnClass = "…"</code>, <code>PlayerControllerClass = "…"</code> name (by string) the pawn and controller it spawns.</td>
+</tr>
+<tr>
+<td><code>[Editable]</code></td>
+<td>A field editable in the Details panel and stored in native storage (survives Play/Stop and hot reload). Optional <code>Min</code> / <code>Max</code>.</td>
+</tr>
+<tr>
+<td><code>[Model]</code></td>
+<td>Marks a model-tree field the editor manages.</td>
+</tr>
+</tbody>
+</table></div></div>
+<hr />
+<h2 id="12-enums">12. Enums<a class="hlink" href="#12-enums" aria-label="Link to this section">#</a></h2>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Enum</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BeginReason</code></td>
+<td><code>Spawn</code> (0), <code>Play</code> (1), <code>Reload</code> (2)</td>
+</tr>
+<tr>
+<td><code>EndReason</code></td>
+<td><code>Destroy</code> (0), <code>Stop</code> (1), <code>Reload</code> (2), <code>Travel</code> (3)</td>
+</tr>
+<tr>
+<td><code>TickGroup</code></td>
+<td><code>PrePhysics</code> (0), <code>Physics</code> (1), <code>PostPhysics</code> (2)</td>
+</tr>
+<tr>
+<td><code>PlayState</code></td>
+<td><code>Editor</code> (0), <code>Playing</code> (1), <code>Paused</code> (2)</td>
+</tr>
+<tr>
+<td><code>CameraView</code></td>
+<td><code>FirstPerson</code>, <code>ThirdPerson</code></td>
+</tr>
+<tr>
+<td><code>Component</code></td>
+<td><code>Local</code> (1), <code>World</code> (2), <code>Hierarchy</code> (3), <code>Name</code> (4), <code>Tags</code> (5), <code>MeshRenderer</code> (6), <code>Light</code> (7), <code>Camera</code> (8)</td>
+</tr>
+</tbody>
+</table></div></div>
+<hr />
+<h2 id="13-classbuilder-and-actorbuilder">13. <code>ClassBuilder</code> and <code>ActorBuilder</code><a class="hlink" href="#13-classbuilder-and-actorbuilder" aria-label="Link to this section">#</a></h2>
+<p><code>ClassBuilder</code> writes a class's <strong>defaults</strong> — the recipe run once per class, in <code>static void
+Configure(ClassBuilder b)</code>:</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void Mesh(string meshPath, string material = "")</code></td>
+<td>Give the class's own entity a mesh (and optional material).</td>
+</tr>
+<tr>
+<td><code>void PointLight(float intensityLux, float rangeCm)</code></td>
+<td>Add a point light.</td>
+</tr>
+<tr>
+<td><code>void Camera(float fovDegrees, float nearCm, float farCm)</code></td>
+<td>Add a camera.</td>
+</tr>
+<tr>
+<td><code>void Ticks(TickGroup group, int order = 0)</code></td>
+<td>Ask the class to tick, in <code>group</code>.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><code>ActorBuilder</code> writes the editor-owned <strong>model tree</strong> inside <code>BuildModels</code>; hand code rarely touches it.
+<code>ModelHandle</code> is the handle a placed model returns.</p>
+<p><strong>How a mesh path resolves.</strong> <code>Mesh("Meshes/crate.ocmesh")</code> stores no string: the path is hashed
+(fnv1a64) to the <code>u64</code> ObjectId the <code>CMeshRenderer</code> field actually holds. Every <code>.ocmesh</code> under the
+project's <code>Content</code> is loaded at project open and registered under the hash of its <strong>content-relative
+path with forward slashes</strong> — so that exact spelling is the contract between a C# class, a level
+placement and the loader, and a path spelt any other way hashes to a different number and silently draws
+nothing. Two primitives are registered without a file behind them: <code>Meshes/cube.ocmesh</code> and
+<code>Meshes/sphere.ocmesh</code>. The <code>material</code> argument is a <em>name</em>, resolved to its <code>i32</code> handle the same way
+<code>Entity.SetMaterial</code> resolves one — see <a href="#17-avermaterials--surfaces-authored-in-c">§17</a> for where that
+name comes from.</p>
+<hr />
+<h2 id="14-physics">14. <code>Physics</code><a class="hlink" href="#14-physics" aria-label="Link to this section">#</a></h2>
+<p>Static, in <code>Aver.Framework</code>. Everything is in the engine's contract — centimetres, +X forward,
++Y right, +Z up, left-handed. The backend (Jolt, MIT) is right-handed, +Y up and metric; that
+translation happens once behind the native ABI, so no Jolt convention ever reaches a script.</p>
+<p>The world is stepped by the frame loop <strong>between the PrePhysics and PostPhysics tick groups</strong>, at a
+<strong>fixed step</strong> regardless of frame rate. So set what you want in a <code>PrePhysics</code> tick and read what
+happened in a <code>PostPhysics</code> one.</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool Ready</code></td>
+<td>True when the simulation is running (false if physics was compiled out).</td>
+</tr>
+<tr>
+<td><code>float FixedStep</code></td>
+<td>The fixed step in seconds — 1/60 unless the host changed it.</td>
+</tr>
+<tr>
+<td><code>void SetGravity(Vec3)</code></td>
+<td>cm/s². Default <code>(0, 0, -980)</code>: one g, straight down.</td>
+</tr>
+<tr>
+<td><code>int BodyCount</code></td>
+<td>How many bodies exist.</td>
+</tr>
+<tr>
+<td><code>Body AddStaticBox(Vec3 centre, Vec3 halfExtents)</code></td>
+<td>A box that never moves.</td>
+</tr>
+<tr>
+<td><code>Body AddDynamicBox(Vec3 centre, Vec3 halfExtents, float massKg = 0)</code></td>
+<td>Falls and collides; <code>massKg &lt;= 0</code> derives mass from volume.</td>
+</tr>
+<tr>
+<td><code>Body AddDynamicSphere(Vec3 centre, float radius, float massKg = 0)</code></td>
+<td>Likewise.</td>
+</tr>
+<tr>
+<td><code>RaycastHit Raycast(Vec3 origin, Vec3 direction, float maxDistanceCm)</code></td>
+<td>Direction need not be unit length.</td>
+</tr>
+<tr>
+<td><code>bool RaycastAny(...)</code></td>
+<td>Just whether anything is in the way.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong><code>Body</code></strong> — a handle (<code>0</code> invalid): <code>Handle</code>, <code>IsValid</code>, <code>Position</code>, <code>Rotation</code>, <code>Velocity</code>,
+<code>SetPosition</code>, <code>SetVelocity</code>, <code>Destroy()</code>.
+<strong><code>RaycastHit</code></strong> — <code>Hit</code>, <code>Body</code>, <code>Point</code>, <code>Normal</code>.</p>
+<blockquote>
+<p>The backend documents <strong>broadphase queries as non-deterministic</strong> (the broad phase is modified from
+several threads), and callback ordering likewise. Rely on <em>whether</em> something was hit and <em>where</em> —
+never on which of several equidistant bodies comes back.</p>
+</blockquote>
+<hr />
+<h2 id="15-maths--vec3-quat-rot">15. Maths — <code>Vec3</code>, <code>Quat</code>, <code>Rot</code><a class="hlink" href="#15-maths--vec3-quat-rot" aria-label="Link to this section">#</a></h2>
+<p>In <code>Aver.Scene</code> (centimetres; +X forward, +Y right, +Z up; left-handed).</p>
+<ul>
+<li><strong><code>Vec3</code></strong> — <code>float X, Y, Z</code>; <code>new Vec3(x, y, z)</code>; statics <code>Forward</code> <code>(1,0,0)</code>, <code>Right</code> <code>(0,1,0)</code>,
+  <code>Up</code> <code>(0,0,1)</code>, <code>Zero</code>, <code>One</code>; <code>+ - *</code> operators.</li>
+<li><strong><code>Quat</code></strong> — <code>float X, Y, Z, W</code>; static <code>Identity</code>; <code>Quat.FromAxisAngle(Vec3 axis, float radians)</code>; <code>*</code>.</li>
+<li><strong><code>Rot</code></strong> — degrees a viewport gizmo edits: <code>float Yaw</code> (about up), <code>Pitch</code> (about right), <code>Roll</code> (about
+  forward); <code>new Rot(yaw, pitch, roll)</code>; <code>Rot.Zero</code>; <code>Quat ToQuat()</code>.</li>
+</ul>
+<hr />
+<h2 id="16-averui--the-games-hud">16. <code>Aver.UI</code> — the game's HUD<a class="hlink" href="#16-averui--the-games-hud" aria-label="Link to this section">#</a></h2>
+<p>Namespace <code>Aver.UI</code>, in the assembly of the same name (<code>scripting/csharp/Aver.UI/Hud.cs</code>). It references
+nothing else — a HUD is drawn in screen coordinates and knows nothing about entities or the world — and
+P/Invokes the native <code>Aver.UI.Abi</code> (<code>modules/ui.abi/include/aver/ui/ui_abi.h</code>), which is the seam that
+exists so a HUD can be authored in the game's language rather than in engine C++.</p>
+<p><strong>Screen pixels, top-left origin, +Y down.</strong> Not the world's centimetres and not normalised coordinates:
+a UI is authored against a resolution, and every layout number a designer types is a pixel.</p>
+<p>Three rules carry most of the design:</p>
+<ul>
+<li><strong>You draw from a tick; the HOST owns the frame.</strong> The host clears the list once per frame <em>before</em>
+  anything ticks and submits it after (<code>aver_ui_begin_frame</code> and <code>submitGameUi</code> in
+  <code>sandbox/src/SandboxApp.cpp</code>). There is deliberately no <code>Begin</code> for a game to call: a game that
+  cleared the list would erase whatever another system had contributed, and the last one to run would
+  win with nothing anywhere to say so. One consequence to expect — gameplay ticks only while <code>Playing</code>,
+  so a HUD drawn from <code>OnTick</code> is absent in EDITOR, which is correct rather than a bug to chase.</li>
+<li><strong>Anchor to <code>Hud.Viewport</code>, never to the window.</strong> In the editor the game is drawn into a dockspace
+  panel and the two rectangles differ; a HUD laid out against the window sits partly under the editor's
+  own chrome. In a shipped build they are the same rectangle and nothing changes.</li>
+<li><strong>There is no text.</strong> Nothing in the engine can rasterise a glyph, so there is no <code>Hud.Text</code> to call.
+  A HUD today is rectangles, bars and tinted quads. There is no widget tree above the draw list either:
+  a HUD is laid out by the code that draws it.</li>
+</ul>
+<p><strong><code>Hud</code></strong> — static, and the whole drawing surface:</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Rect Viewport</code></td>
+<td>The rectangle this frame's UI is laid out against, in backbuffer pixels.</td>
+</tr>
+<tr>
+<td><code>Layer CurrentLayer</code></td>
+<td>The band subsequent draws land in. <strong>Reset to <code>Layer.Content</code> at the start of every frame</strong>, so set it in each frame that wants another band. An out-of-range value is ignored, not clamped — clamping would move a widget to a band its author did not choose and nothing would notice.</td>
+</tr>
+<tr>
+<td><code>void Box(Rect r, Colour c)</code> / <code>void Box(float x, float y, float w, float h, Colour c)</code></td>
+<td>A solid rectangle.</td>
+</tr>
+<tr>
+<td><code>void Frame(Rect r, float thickness, Colour border, Colour fill)</code></td>
+<td>A border drawn <strong>inside</strong> the bounds: a frame that grew its own bounds would not fit the layout that positioned it, and every caller would subtract the thickness back off by hand.</td>
+</tr>
+<tr>
+<td><code>void Bar(Rect r, float fraction, Colour border, Colour empty, Colour full)</code></td>
+<td>A 1px-framed bar filled left to right; <code>fraction</code> is clamped to 0..1.</td>
+</tr>
+<tr>
+<td><code>void Image(Rect r, ulong texture, Colour tint, float u0 = 0, float v0 = 0, float u1 = 1, float v1 = 1)</code></td>
+<td>A textured quad.</td>
+</tr>
+<tr>
+<td><code>void PushClip(Rect r)</code> / <code>void PopClip()</code></td>
+<td>Nested clips <strong>intersect</strong>, so a child can never escape its parent by pushing a larger rectangle. That is containment by construction, not a promise each element keeps.</td>
+</tr>
+<tr>
+<td><code>int DrawCallCount</code></td>
+<td>Draw calls this frame's UI will cost — the whole list, so it includes anything the host contributed. For a debug readout, not for logic.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><code>Image</code>'s <code>texture</code> is <code>0</code> for the built-in white texel, or a value the renderer recognises. <strong>There is
+no managed way to obtain one of those values yet</strong>, so in practice a game passes <code>0</code> and tints; a
+texture bound this way must also be premultiplied, because the colour is.</p>
+<p><strong><code>Layer</code></strong> — <code>Background</code> (0), <code>Content</code> (1, the default), <code>Overlay</code> (2), <code>Tooltip</code> (3), <code>Debug</code> (4).
+Coarse and named on purpose: a widget picks the band it belongs in rather than a depth number that would
+make every z decision global, so adding a tooltip does not mean auditing every other widget. Order
+<em>within</em> a layer is the order you drew in.</p>
+<p><strong><code>Colour</code></strong> — <code>Colour.Rgb(232, 228, 220)</code> (opaque unless a fourth byte is given), <code>Colour.Argb(0xFFE8E4DC)</code>,
+<code>WithAlpha(float)</code> (clamped 0..1), <code>Colour.Lerp(from, to, t)</code>. Alpha is <strong>straight</strong>: the
+premultiplication the renderer needs happens on the native side, and the packing the vertex actually
+holds is internal precisely so a game never carries it around.</p>
+<p><strong><code>Rect</code></strong> — a <code>readonly record struct (float X, float Y, float Width, float Height)</code> with <code>Right</code>,
+<code>Bottom</code>, <code>Inset(by)</code> (negative grows), and:</p>
+<pre><code class="language-csharp">Rect.Anchored(Rect container, float ax, float ay, float w, float h,
+              float offsetX = 0f, float offsetY = 0f)
+</code></pre>
+<p>Anchoring rather than absolute placement, because a HUD outlives the resolution it was authored at: an
+element pinned to the bottom-right by subtraction walks off-screen the moment the window is smaller than
+the number that was subtracted.</p>
+<pre><code class="language-csharp">using Aver.Framework;
+using Aver.UI;
+
+[AverClass(&quot;BP_PlayerHud&quot;)]
+public sealed class PlayerHud : AverActor
+{
+    // PostPhysics: draw what the frame settled on, not what it was asked for.
+    public static void Configure(ClassBuilder b) =&gt; b.Ticks(TickGroup.PostPhysics);
+
+    static readonly Colour Ink   = Colour.Argb(0xFFE8E4DC);
+    static readonly Colour Panel = Colour.Argb(0xB0141820);   // 69% alpha — proves the blend
+    static readonly Colour Hurt  = Colour.Rgb(232, 76, 46);
+
+    [Editable(Min = 0f, Max = 1f)] public float Health = 1f;
+
+    public override void OnTick(float dt)
+    {
+        Rect vp = Hud.Viewport;                       // NOT the window
+        Rect bar = Rect.Anchored(vp, 0f, 1f, 260f, 18f, offsetX: 24f, offsetY: -24f);
+
+        Hud.PushClip(vp);                             // nothing escapes into the editor's chrome
+        Hud.Box(bar.Inset(-6f), Panel);               // Layer.Content — the default, every frame
+        Hud.Bar(bar, Health, Ink, Panel, Colour.Lerp(Hurt, Ink, Health));
+        Hud.PopClip();
+
+        if (Health &lt;= 0f)                             // a full-screen wash, over the HUD
+        {
+            Hud.CurrentLayer = Layer.Overlay;         // set per frame; it does not persist
+            Hud.Box(vp, Hurt.WithAlpha(0.35f));
+        }
+    }
+}
+</code></pre>
+<hr />
+<h2 id="17-avermaterials--surfaces-authored-in-c">17. <code>Aver.Materials</code> — surfaces authored in C<a class="hlink" href="#17-avermaterials--surfaces-authored-in-c" aria-label="Link to this section">#</a></h2>
+<p>Namespace <code>Aver.Materials</code> (<code>scripting/csharp/Aver.Materials/</code>). Like <code>Aver.UI</code> it is a leaf: a material
+describes a surface and knows nothing about entities, the world or a device.</p>
+<p><strong>The C# is the source; the <code>.ocmat</code> is build output.</strong> A <code>.cs</code> under <code>Content/Materials</code> declares a
+surface. <em>Compile C#</em> builds it into the project's one script assembly, then <code>avermatc</code>
+(<code>scripting/csharp/Aver.MaterialCompiler/</code>) reflects over that assembly, runs every <code>Configure</code>, and
+writes one <code>.ocmat</code> per material into <code>&lt;project&gt;/Binaries/Materials</code>. The engine looks in
+<code>Binaries/Materials</code> <strong>first</strong>, then <code>Content/Materials</code>, then a content-relative path
+(<code>SandboxApp::materialForSurface</code>) — so a project that has adopted C# materials gets the built file and
+one that has not keeps working exactly as it did with hand-authored <code>.ocmat</code>.</p>
+<p>That ordering is why editing the generated file is a mistake with a delay on it: it is a build artefact,
+the next compile overwrites it, and the header it carries says so. The Details panel's <strong>Save to C#</strong>
+writes back to the <code>.cs</code> for the same reason (<code>modules/formats/include/aver/formats/MaterialScript.hpp</code>);
+it rewrites only the body of <code>Configure</code>, preserves the <code>.Comment(…)</code> calls — authored prose that cannot
+be re-derived from a material's numbers — and declines outright rather than half-succeeding on a file it
+did not parse.</p>
+<p><strong>Declaring one.</strong> <code>[AverMaterial("M_Crate")]</code> gives the <strong>bound name</strong> a mesh references. The name is
+given in the attribute rather than taken from the class name for the reason <code>[AverClass]</code> does it:
+renaming a C# class should not silently unbind every mesh that used it. Two classes claiming one name is
+refused outright, not last-one-wins, since which of the two won would depend on reflection order.</p>
+<p><code>Configure</code> is <strong><code>static</code></strong>. A material is never instantiated and never ticks — it is a description the
+compiler runs once, at build time, and nothing about it exists at run time — so there is no instance for
+a virtual call to dispatch on. The compiler finds it by reflection and reports a <code>[AverMaterial]</code> class
+that lacks one. <code>Material</code> is the base the templates derive; it carries nothing and exists so a material
+is findable by type rather than only by attribute.</p>
+<pre><code class="language-csharp">using Aver.Materials;
+
+namespace MyGame.Materials;
+
+[AverMaterial(&quot;M_Crate&quot;)]
+public sealed class Crate : Material
+{
+    public static void Configure(MaterialBuilder b) =&gt; b
+        .Comment(&quot;Painted wood, scuffed. Roughness stays high — a gloss here reads as plastic.&quot;)
+        .BaseColor(0.62f, 0.48f, 0.31f)
+        .Metallic(0f)
+        .Roughness(0.78f)
+        .Texture(Slot.BaseColor, &quot;Textures/crate_basecolor.png&quot;)
+        .Texture(Slot.Normal,    &quot;Textures/crate_normal.png&quot;);
+}
+</code></pre>
+<p>Bind it from a class recipe with <code>b.Mesh("Meshes/crate.ocmesh", "M_Crate")</code>, or at run time with
+<code>entity.SetMaterial("M_Crate")</code>.</p>
+<p><strong><code>MaterialBuilder</code></strong> — every call returns the builder, so a declaration is one chain:</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Comment(string)</code></td>
+<td>A line written into the output above the parameters. Carried through on purpose: the generated file is what somebody debugging a surface opens, and a bare table of numbers with the reasoning left behind in a <code>.cs</code> is how a value becomes mysterious.</td>
+</tr>
+<tr>
+<td><code>Shader(Shading)</code></td>
+<td>The shading model. <code>Shading.Standard</code> — the metallic-roughness BRDF — is the only one.</td>
+</tr>
+<tr>
+<td><code>Blending(Blend, float cutoff = 0.5f)</code></td>
+<td><code>Opaque</code> / <code>Masked</code> (the cutoff applies here only) / <code>Translucent</code> / <code>Additive</code>.</td>
+</tr>
+<tr>
+<td><code>Culling(Cull)</code></td>
+<td><code>Back</code> / <code>Front</code> / <code>None</code>. <code>None</code> implies two-sided.</td>
+</tr>
+<tr>
+<td><code>CastShadow(bool)</code></td>
+<td>On by default.</td>
+</tr>
+<tr>
+<td><code>WorldUv(bool)</code> / <code>Tiling(float centimetres)</code></td>
+<td>Project UVs from world space at N cm per tile — what untextured blockout geometry wants. <code>Tiling</code> is written whether or not world UVs are on, so toggling the mode off and back on does not reset it.</td>
+</tr>
+<tr>
+<td><code>BaseColor(r, g, b, a = 1)</code></td>
+<td>Linear multiplier.</td>
+</tr>
+<tr>
+<td><code>Metallic(v)</code> / <code>Roughness(v)</code></td>
+<td>Multipliers, both defaulting to 1 — that is, "whatever the metalRough texture says".</td>
+</tr>
+<tr>
+<td><code>Emissive(r, g, b)</code></td>
+<td>Added, not multiplied, so it lights itself and nothing else.</td>
+</tr>
+<tr>
+<td><code>NormalScale(v)</code> / <code>OcclusionStrength(v)</code></td>
+<td>Strength of the normal map / of baked occlusion.</td>
+</tr>
+<tr>
+<td><code>Reflectance(v)</code> / <code>F90(v)</code></td>
+<td>Dielectric reflectance at normal incidence (0.04 is almost every non-metal) and at grazing incidence.</td>
+</tr>
+<tr>
+<td><code>Texture(Slot, string contentRelativePath)</code></td>
+<td>Bind a texture. The path is relative to the project's content root; backslashes are normalised to forward slashes.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong><code>Slot</code></strong> — <code>BaseColor</code>, <code>MetalRough</code> (metallic in blue, roughness in green: the glTF packing),
+<code>Normal</code>, <code>Occlusion</code>, <code>Emissive</code>.</p>
+<p><strong>Colour space is a property of the slot and is deliberately not authorable.</strong> <code>Texture</code> takes no
+colour-space argument. Base colour and emissive are always sRGB, normal is always a normal map, and the
+rest are always linear; letting a caller choose would only let a caller choose wrong. The emitter writes
+the slot's space into the <code>TEX</code> line and the reader validates it, so the two cannot quietly disagree.</p>
+<blockquote>
+<p>The <code>.ocmat</code> grammar has <strong>two writers</strong> — this builder and <code>modules/formats/src/OcMat.cpp</code> — which is
+a real cost, paid so that baking a material does not require a loaded engine on the build path. The
+guard against them drifting is weaker than it sounds, and worth knowing before trusting it:
+<code>testGeneratedByCsharp</code> in <code>tests/formats/src/MaterialTest.cpp</code> parses a <strong>pasted, verbatim</strong> sample
+of <code>MaterialBuilder.Emit</code>'s output with the C++ reader. Nothing runs the C# emitter, so a change made
+only to <code>Emit</code> goes unnoticed until somebody re-pastes the sample. (The comment in <code>MaterialBuilder.cs</code>
+claiming a <code>MaterialCompilerTest</code> does this is wrong — no such test exists.)</p>
+</blockquote>
+<hr />
+<h2 id="18-worked-examples">18. Worked examples<a class="hlink" href="#18-worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="a-player-character-wasd--mouse-firstthird-person">A player character (WASD + mouse, first/third person)<a class="hlink" href="#a-player-character-wasd--mouse-firstthird-person" aria-label="Link to this section">#</a></h3>
+<pre><code class="language-csharp">[AverClass(&quot;BP_Hero&quot;)]
+public sealed class Hero : AverCharacter
+{
+    public static void Configure(ClassBuilder b)
+    {
+        b.Mesh(&quot;Meshes/hero.ocmesh&quot;);
+        b.Ticks(TickGroup.PrePhysics);
+    }
+
+    public override void OnTick(float dt)
+    {
+        DriveWithInput(dt);                                    // WASD walks, mouse turns
+        if (Input.GetKeyDown(Key.V))                           // V toggles the view
+            CameraViewMode = CameraViewMode == CameraView.ThirdPerson
+                ? CameraView.FirstPerson : CameraView.ThirdPerson;
+    }
+}
+</code></pre>
+<h3 id="a-gamemode-that-hands-out-that-character">A GameMode that hands out that character<a class="hlink" href="#a-gamemode-that-hands-out-that-character" aria-label="Link to this section">#</a></h3>
+<pre><code class="language-csharp">[AverGameMode(&quot;BP_GameMode&quot;, DefaultPawnClass = &quot;BP_Hero&quot;, PlayerControllerClass = &quot;PlayerController&quot;)]
+public sealed class MyGameMode : AverGameMode
+{
+    public override void OnPostLogin(Entity controller) =&gt;
+        Log.Info($&quot;{controller.Name} logged in, driving {controller.As&lt;AverPlayerController&gt;()?.Possessed.Name}&quot;);
+}
+</code></pre>
+<h3 id="a-spawner-that-scatters-pickups-and-tags-them">A spawner that scatters pickups and tags them<a class="hlink" href="#a-spawner-that-scatters-pickups-and-tags-them" aria-label="Link to this section">#</a></h3>
+<pre><code class="language-csharp">[AverClass(&quot;BP_Spawner&quot;)]
+public sealed class Spawner : AverActor
+{
+    const uint Pickup = 0x1;
+
+    public override void OnBeginPlay(BeginReason reason)
+    {
+        for (int i = 0; i &lt; 5; i++)
+        {
+            Coin? c = Spawn&lt;Coin&gt;(new Vec3(i * 100f, 0f, 20f));
+            c?.Self.AddTag(Pickup);
+        }
+        Log.Info($&quot;{System.Linq.Enumerable.Count(Game.WithTag(Pickup))} pickups in the world&quot;);
+    }
+}
+
+[AverClass(&quot;BP_Coin&quot;)]
+public sealed class Coin : AverActor
+{
+    public static void Configure(ClassBuilder b) =&gt; b.Mesh(&quot;Meshes/coin.ocmesh&quot;);
+}
+</code></pre>
+<hr />
+<h2 id="19-not-yet-available">19. Not yet available<a class="hlink" href="#19-not-yet-available" aria-label="Link to this section">#</a></h2>
+<p>The gameplay object model above is complete. What follows is what a script still <strong>cannot</strong> reach,
+stated as absences rather than left to be discovered:</p>
+<ul>
+<li><strong>Audio.</strong> The pieces exist — a mixer with voices, 3D panning and attenuation, a WASAPI device, the
+  <code>.ocaudio</code> container, and a C seam (<code>modules/audio</code>, <code>modules/audio.wasapi</code>, <code>modules/audio.abi</code>, and
+  <code>modules/formats</code>; see <code>docs/AUDIO.md</code>). None of them are joined up: there is no managed binding, and
+  neither the editor nor the runtime opens a device. A script cannot play a sound.</li>
+<li><strong>Text, and widgets, in the UI.</strong> <code>Aver.UI</code> (§16) draws rectangles and tinted quads. Nothing in the
+  engine rasterises a glyph, so there is no <code>Hud.Text</code>; and there is no widget tree above the draw list,
+  so layout is whatever the drawing code computes. There is also no input routing into the UI — a HUD is
+  drawn, not clicked.</li>
+<li><strong>Timers and coroutines.</strong> No <code>SetTimer</code>, no <code>yield</code>. Count down in <code>OnTick</code>.</li>
+<li><strong>Networking.</strong> <code>modules/net</code> exists; nothing in it is reachable from C#.</li>
+<li><strong>Hot-reload state migration</strong> beyond <code>[Editable]</code> fields.</li>
+<li><strong>Import beyond glTF.</strong> The Content Browser's Import <em>converts</em> <code>.gltf</code>/<code>.glb</code> into one <code>.ocmesh</code> per
+  mesh and registers the result immediately (<code>SandboxApp::importModel</code>); every other file type is copied
+  in unchanged. That is right for a <code>.png</code> a material names — a texture is decoded and uploaded straight
+  from the source file, with its colour space taken from the slot that binds it — and wrong for an FBX,
+  which is not read at all. No texture is converted, compressed or packed at import.</li>
+</ul>
+<p>These are the natural next layers; the object model is the foundation they plug into.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="sec-head rv" style="margin-bottom:30px">
+      <div class="eyebrow">Keep reading</div>
+      <h2 style="font-size:clamp(24px,3vw,32px)">How this runs.</h2>
+    </div>
+    <div class="nextnav rv">
+      <a class="nextcard" href="scripting.html"><span>Scripting</span><b>The hosting model</b>
+        <em>In-process CoreCLR, the collectible load context, and what survives a hot reload.</em></a>
+      <a class="nextcard" href="editor.html"><span>Editor</span><b>Compile and Reload</b>
+        <em>Where the Tools menu items differ, and why they are two buttons.</em></a>
+      <a class="nextcard" href="physics.html"><span>Physics</span><b>The seam underneath</b>
+        <em>What the static <code>Physics</code> class is calling into, and its limits.</em></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="data:image/png;base64,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" alt="" width="29" height="30">
+          Aver Engine
+        </a>
+        <p>A modular 3D engine built exclusively on permissively-licensed foundations.
+          Windows, DirectX 12, C++ and .NET 10.</p>
+      </div>
+      <div class="footcols">
+        <div class="footcol">
+          <h4>Engine</h4>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+        </div>
+        <div class="footcol">
+          <h4>Project</h4>
+          <a href="index.html#download">Download</a>
+          <a href="https://github.com/Vectoric-Core-Systems/Aver-Launcher">Launcher</a>
+          <a href="https://github.com/Vectoric-Core-Systems/aver-engine">GitHub</a>
+          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/docs.html">Edit this page</a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 Hydrogen-Isotope. All rights reserved.</span>
+      <span>Engine source distributed under an evaluation licence.</span>
+    </div>
+  </div>
+</footer>
+<script>
+
+var hdr = document.getElementById('hdr');
+addEventListener('scroll', function(){ hdr.classList.toggle('stuck', scrollY > 8); }, {passive:true});
+
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+}
+
+/* Highlight the table-of-contents entry for whichever section is in view. */
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.toc a'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  // getElementById, not querySelector: an id starting with a digit
+  // (#1-getting-started) is a valid id but an invalid CSS selector.
+  links.forEach(function(a){
+    var t = document.getElementById(a.getAttribute('href').slice(1));
+    if (t) map[t.id] = a;
+  });
+  var seen = {};
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
+    var first = Object.keys(map).filter(function(id){ return seen[id]; })[0];
+    links.forEach(function(a){ a.classList.remove('on'); });
+    if (first) map[first].classList.add('on');
+  }, {rootMargin:'-84px 0px -62% 0px', threshold:0});
+  Object.keys(map).forEach(function(id){ spy.observe(document.getElementById(id)); });
+})();
+
+</script>
+
+<style>
+/* ============================================================
+   Docs reference page
+   ============================================================ */
+.docs-layout{grid-template-columns:264px 1fr; gap:52px}
+.docs-layout > *{min-width:0}
+.doc-body .scroller{max-width:100%}
+.docs-toc{top:80px; max-height:calc(100vh - 104px); display:flex; flex-direction:column}
+.docs-toc #tocList{overflow-y:auto; overscroll-behavior:contain; padding-right:6px; margin-right:-6px}
+.docs-toc #tocList::-webkit-scrollbar{width:8px}
+.docs-toc #tocList::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px}
+.docs-toc #tocList::-webkit-scrollbar-track{background:transparent}
+.docs-toc a{padding:5px 0 5px 13px; font-size:13.5px; line-height:1.45}
+.docs-toc a.t3{padding-left:26px; font-size:13px; opacity:.85}
+#tocFilter{
+  width:100%; margin-bottom:12px; padding:8px 11px;
+  background:rgba(255,255,255,.04); border:1px solid var(--line);
+  border-radius:8px; color:var(--ink); font-family:var(--sans); font-size:13.5px;
+}
+#tocFilter::placeholder{color:var(--ink-faint)}
+#tocFilter:focus{outline:none; border-color:var(--orange); background:rgba(255,255,255,.06)}
+.toc-none{font-size:13px; color:var(--ink-faint); padding:6px 0 0 13px}
+
+.doc-body{max-width:80ch}
+.doc-body h2{
+  font-size:clamp(24px,2.8vw,31px); margin:56px 0 18px; padding-top:22px;
+  border-top:1px solid var(--line-soft); scroll-margin-top:88px;
+}
+.doc-body > h2:first-child{margin-top:0; border-top:none; padding-top:0}
+.doc-body h3{font-size:20px; margin:36px 0 14px; scroll-margin-top:88px; color:var(--ink)}
+.doc-body h4{font-size:16.5px; margin:26px 0 10px; scroll-margin-top:88px}
+.hlink{
+  margin-left:10px; font-family:var(--mono); font-weight:400; color:var(--ink-faint);
+  opacity:0; transition:opacity .15s ease; text-decoration:none; font-size:.8em;
+}
+h2:hover .hlink, h3:hover .hlink, h4:hover .hlink, .hlink:focus-visible{opacity:1}
+.hlink:hover{color:var(--orange)}
+
+.doc-body ul, .doc-body ol{color:var(--ink-dim); padding-left:22px; margin:0 0 16px}
+.doc-body li{margin-bottom:9px; line-height:1.7}
+.doc-body li > p{margin-bottom:8px}
+.doc-body a{color:var(--orange); text-decoration:underline; text-underline-offset:3px;
+  text-decoration-color:rgba(242,101,34,.4)}
+.doc-body a:hover{text-decoration-color:var(--orange)}
+.doc-body a.hlink{text-decoration:none}
+
+.doc-body blockquote{
+  margin:22px 0; padding:16px 20px; border-left:3px solid var(--orange);
+  background:rgba(242,101,34,.06); border-radius:0 10px 10px 0;
+}
+.doc-body blockquote p{margin-bottom:10px; color:var(--ink-dim)}
+.doc-body blockquote p:last-child{margin-bottom:0}
+
+.doc-body pre{
+  background:#0A0C10; border:1px solid var(--line-soft); border-radius:var(--r);
+  padding:18px 20px; overflow-x:auto; margin:0 0 20px;
+  font-family:var(--mono); font-size:13px; line-height:1.75; color:#C6CEDC;
+}
+.doc-body pre code{background:none; border:none; padding:0; font-size:inherit; color:inherit}
+
+/* A long unbroken path inside inline <code> has no break opportunity and
+   pushes the page wider than the viewport on a phone. Let prose code wrap;
+   table cells keep nowrap because they scroll instead. */
+.doc-body p code, .doc-body li code, .doc-body blockquote code{overflow-wrap:anywhere}
+.doc-body .tablewrap{margin:0 0 22px}
+.doc-body table{min-width:520px; font-size:14.5px}
+.doc-body td:first-child{color:var(--ink)}
+.doc-body td code, .doc-body th code{white-space:nowrap}
+.doc-body hr{border:none; border-top:1px solid var(--line-soft); margin:44px 0}
+
+/* The pre-formatted class-hierarchy diagram keeps its box drawing. */
+.doc-body pre code:only-child{white-space:pre}
+
+@media (max-width:1000px){
+  .docs-layout{grid-template-columns:1fr}
+  .docs-toc{position:static; max-height:none; display:block}
+  .docs-toc #tocList{max-height:230px}
+  .docs-toc a, .docs-toc a.t3{display:block; border-left:2px solid var(--line-soft);
+    border-bottom:none; padding-left:13px; margin-right:0}
+  .docs-toc a.t3{padding-left:26px}
+  .doc-body h2{margin-top:40px}
+}
+</style>
+<script>
+/* Filter the contents list. Typing narrows it; clearing restores it. */
+(function(){
+  var box = document.getElementById('tocFilter');
+  var list = document.getElementById('tocList');
+  var none = document.getElementById('tocNone');
+  if (!box || !list) return;
+  box.addEventListener('input', function(){
+    var q = box.value.trim().toLowerCase();
+    var shown = 0;
+    var links = list.querySelectorAll('a');
+    for (var i = 0; i < links.length; i++) {
+      var hit = !q || links[i].getAttribute('data-t').indexOf(q) !== -1;
+      links[i].style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    }
+    none.hidden = shown > 0;
+  });
+  // Escape clears rather than blurring, which is what a filter box should do.
+  box.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && box.value) {
+      box.value = '';
+      box.dispatchEvent(new Event('input'));
+      e.stopPropagation();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

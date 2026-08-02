@@ -7,7 +7,7 @@
 <meta name="description" content="Aver Engine is a modular C++/C# 3D game engine with a DirectX 12 renderer, Jolt physics, in-process CoreCLR scripting with hot reload, and an editor that is the runtime.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="build" content="20260802-0941">
+<meta name="build" content="20260802-1025">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -485,6 +485,9 @@ kbd{font-family:var(--mono); font-size:.84em; background:rgba(255,255,255,.07);
 
 /* two-column body with a sticky table of contents */
 .layout{display:grid; grid-template-columns:210px 1fr; gap:56px; align-items:start}
+/* Without this a wide table or code block stretches its grid track past
+   the viewport rather than scrolling inside its own wrapper. */
+.layout > *{min-width:0}
 .toc{position:sticky; top:88px}
 .toc h4{font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
   color:var(--ink-faint); font-weight:600; margin-bottom:14px}
@@ -906,7 +909,7 @@ a:focus-visible, .btn:focus-visible{
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>
