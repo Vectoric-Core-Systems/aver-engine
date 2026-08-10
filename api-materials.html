@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A mixer built to be tested — Aver Engine</title>
-<meta name="description" content="Core-only mixing that fills a buffer you supply, a WASAPI device behind its own seam, and 70 headless assertions — on a system that has not yet made a sound anyone has heard.">
+<title>Materials authored in C# — Aver Engine docs</title>
+<meta name="description" content="A surface is a class; the .ocmat next to it is build output.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="build" content="20260809-1523">
+<meta name="build" content="20260809-1524">
 <meta property="og:type" content="website">
-<meta property="og:title" content="A mixer built to be tested — Aver Engine">
-<meta property="og:description" content="Core-only mixing that fills a buffer you supply, a WASAPI device behind its own seam, and 70 headless assertions — on a system that has not yet made a sound anyone has heard.">
+<meta property="og:title" content="Materials authored in C# — Aver Engine docs">
+<meta property="og:description" content="A surface is a class; the .ocmat next to it is build output.">
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 
 <style>
@@ -629,7 +629,7 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html" class="on">Audio</a><a href="docs.html">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
     </div>
     <div class="navright">
       <a class="btn btn-primary" href="index.html#download">
@@ -656,7 +656,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html" class="on"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -666,58 +666,145 @@ body.nav-open{overflow:hidden}
 
 <div class="subhero">
   <div class="wrap">
-    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span> <span>Audio</span></div>
-    <div class="eyebrow">Audio</div>
-    <h1>A mixer built to be tested</h1>
-    <p class="lede">Core-only mixing that fills a buffer you supply, a WASAPI device behind its own seam, and 70 headless assertions — on a system that has not yet made a sound anyone has heard.</p>
-    <div class="stats"><div class="stat"><b>64</b><span>voices by default</span></div><div class="stat"><b>24</b><span>seam exports</span></div><div class="stat"><b>70</b><span>headless checks</span></div></div>
+    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span>
+      <a href="docs.html">Docs</a> <span>/</span> <span>Materials authored in C#</span></div>
+    <div class="eyebrow">Aver.Materials</div>
+    <h1>Materials authored in C#</h1>
+    <p class="lede">A surface is a class; the .ocmat next to it is build output.</p>
   </div>
 </div>
 
-<section>
+<section class="docs">
   <div class="wrap">
-    <div class="layout">
-      <aside class="toc">
+    <div class="layout docs-layout">
+      <aside class="toc docs-toc">
         <h4>On this page</h4>
-        <a href="#start-with-the-honest-part">Start with the honest part</a><a href="#three-targets-one-hard-rule">Three targets, one hard rule</a><a href="#constant-power-and-boundaries-that-don-t-pop">Constant power, and boundaries that don't pop</a><a href="#voices-buses-and-the-underrun-counter">Voices, buses and the underrun counter</a><a href="#wasapi-chosen-for-testability-rather-than-taste">WASAPI, chosen for testability rather than taste</a><a href="#the-ocaudio-container">The .ocaudio container</a>
+        <div id="tocList"><a class="t2" href="#17-avermaterials--surfaces-authored-in-c">Aver.Materials — surfaces authored in C#</a></div>
+        <a class="toc-back" href="docs.html">&larr; All documentation</a>
       </aside>
-      <div class="prose">
-        <div class="block rv" id="start-with-the-honest-part"><h2>Start with the honest part</h2><p>The mixer is built and asserted sample by sample. The WASAPI device is built. The C seam is built, and the <code>.ocaudio</code> container round-trips. What hasn't happened is anyone recording a listening test.</p><p><code>STATUS.md</code> puts it plainly: <i>“No sound has been heard.”</i> There's a <code>build/bin/AudioProbe.exe</code>, and <code>AudioTest</code> passes 70 headless assertions — but as the doc itself points out, a mixer that outputs silence would pass all seventy the same way.</p><p>So read this page as a description of a subsystem that is correct on paper and untested against a speaker. That gap is the honest state of it, and the rest of what follows is worth more with the gap stated than without.</p></div><div class="block rv" id="three-targets-one-hard-rule"><h2>Three targets, one hard rule</h2><p>The audio stack mirrors the split the engine already uses for its UI renderer: a Core-only logic layer that never touches hardware, with a thin device layer bolted on afterwards. <code>Aver.Audio</code> depends on <code>Aver.Core</code> and nothing else, and its <code>mix()</code> fills a buffer the caller supplies. It never opens a device.</p><p><code>Aver.Audio.Wasapi</code> is the only part that knows a sound card exists. <code>Aver.Audio.Abi</code> is the C seam a game calls, and it's shared and links the <i>device</i> rather than just the mixer — because “play a sound” only means anything once something is driving hardware.</p><p>The reasoning for building it in that order is blunt. A wrong pan law and a correct one produce the same waveform to someone reading source, and the same silence to a screenshot. Without a way to run the mixer headlessly and assert on individual samples, an audio bug is effectively unfindable by inspection. So the mixer came first, and the device second.</p></div><div class="block rv" id="constant-power-and-boundaries-that-don-t-pop"><h2>Constant power, and boundaries that don't pop</h2><p>Panning is constant-power — <code>l*l + r*r == 1</code> — so a source swept across the stereo field holds its energy instead of dipping about 3 dB in the middle the way a naive linear pan does. That's a defect the docs describe as audible while looking perfectly fine on paper, which is roughly the theme of the whole subsystem.</p><p>Distance attenuation is exactly 1.0 at or inside the inner radius and exactly 0.0 at or beyond the outer one, with no discontinuity at either boundary. The failure mode being designed against is a sound audibly popping as the listener crosses a radius.</p><p>The listener is nine atomics rather than a struct behind a lock: written once per frame by whatever owns the camera, read by the mixer. A torn read costs very slightly wrong panning, which nobody hears. A lock on a real-time thread risks a priority inversion, which everybody does.</p></div><div class="block rv" id="voices-buses-and-the-underrun-counter"><h2>Voices, buses and the underrun counter</h2><p>Voices are a fixed pool, 64 by default. Running out doesn't fail and doesn't allocate — it steals a voice, and a <code>stolenVoices</code> counter records that it happened. Buses sit above the voices, with a master volume over the top.</p><p>Underruns are counted too. That counter is the number worth watching: a dropped render frame is a stutter, and a dropped audio buffer is a click, and the two do not deserve the same tolerance.</p><p>The seam is 24 exports, which is also the reason <code>docs/ABI.md</code> is out of date — it documents seven seams and 201 exports, and the tree has eight and 225. The word “audio” doesn't appear in it at all.</p></div><div class="block rv" id="wasapi-chosen-for-testability-rather-than-taste"><h2>WASAPI, chosen for testability rather than taste</h2><p>The device backend is WASAPI in shared mode, and the reason it isn't XAudio2 is stated directly: XAudio2 would own the mixing, the 3D and the DSP, which would make <code>Aver.Audio</code> a wrapper around a thing it can neither test nor port.</p><p>That's the same build-versus-vendor call the rest of the engine keeps making — it already hand-writes its own D3D12 backend and its own JSON reader. Owning the mixer is the point, because the mixer is the part with the bugs in it.</p><p>The render thread joins Windows' Pro Audio scheduling class via <code>avrt</code>. An ordinary thread preempted for ten milliseconds is a gap somebody hears.</p></div><div class="block rv" id="the-ocaudio-container"><h2>The .ocaudio container</h2><p>Audio ships in the same AVR1 container as every other native format: the shared 64-byte file header, a chunk directory, 16-byte chunk alignment, a CRC32C over the header and an xxHash64 over each chunk payload. Audio adds two chunks — <code>AHDR</code> for the header and <code>APCM</code> for the samples.</p><p>Import is a hand-written WAV reader plus Windows Media Foundation for mp3, m4a, aac, wma and flac. Media Foundation was chosen so those formats don't require vendoring a decoder under the engine's permissive-licence-only rule, and <code>Aver.Formats.Audio</code> is its own target linking <code>mfplat mfreadwrite mfuuid ole32</code> — so nothing else in the tree pays for that dependency.</p><p>One caveat worth stating, because the test suite states it: <code>OcAudioTest</code> passes but skips the Media Foundation check. The WAV path and the container are tested. The mp3, m4a, aac, wma and flac path is exercised by nothing, and that skip is invisible in an exit code.</p></div>
-      </div>
+      <article class="prose doc-body"><h2 id="17-avermaterials--surfaces-authored-in-c">17. <code>Aver.Materials</code> — surfaces authored in C<a class="hlink" href="#17-avermaterials--surfaces-authored-in-c" aria-label="Link to this section">#</a></h2>
+<p>Namespace <code>Aver.Materials</code> (<code>scripting/csharp/Aver.Materials/</code>). Like <code>Aver.UI</code> it is a leaf: a material
+describes a surface and knows nothing about entities, the world or a device.</p>
+<p><strong>The C# is the source; the <code>.ocmat</code> is build output.</strong> A <code>.cs</code> under <code>Content/Materials</code> declares a
+surface. <em>Compile C#</em> builds it into the project's one script assembly, then <code>avermatc</code>
+(<code>scripting/csharp/Aver.MaterialCompiler/</code>) reflects over that assembly, runs every <code>Configure</code>, and
+writes one <code>.ocmat</code> per material into <code>&lt;project&gt;/Binaries/Materials</code>. The engine looks in
+<code>Binaries/Materials</code> <strong>first</strong>, then <code>Content/Materials</code>, then a content-relative path
+(<code>SandboxApp::materialForSurface</code>) — so a project that has adopted C# materials gets the built file and
+one that has not keeps working exactly as it did with hand-authored <code>.ocmat</code>.</p>
+<p>That ordering is why editing the generated file is a mistake with a delay on it: it is a build artefact,
+the next compile overwrites it, and the header it carries says so. The Details panel's <strong>Save to C#</strong>
+writes back to the <code>.cs</code> for the same reason (<code>modules/formats/include/aver/formats/MaterialScript.hpp</code>);
+it rewrites only the body of <code>Configure</code>, preserves the <code>.Comment(…)</code> calls — authored prose that cannot
+be re-derived from a material's numbers — and declines outright rather than half-succeeding on a file it
+did not parse.</p>
+<p><strong>Declaring one.</strong> <code>[AverMaterial("M_Crate")]</code> gives the <strong>bound name</strong> a mesh references. The name is
+given in the attribute rather than taken from the class name for the reason <code>[AverClass]</code> does it:
+renaming a C# class should not silently unbind every mesh that used it. Two classes claiming one name is
+refused outright, not last-one-wins, since which of the two won would depend on reflection order.</p>
+<p><code>Configure</code> is <strong><code>static</code></strong>. A material is never instantiated and never ticks — it is a description the
+compiler runs once, at build time, and nothing about it exists at run time — so there is no instance for
+a virtual call to dispatch on. The compiler finds it by reflection and reports a <code>[AverMaterial]</code> class
+that lacks one. <code>Material</code> is the base the templates derive; it carries nothing and exists so a material
+is findable by type rather than only by attribute.</p>
+<pre><code class="language-csharp">using Aver.Materials;
+
+namespace MyGame.Materials;
+
+[AverMaterial(&quot;M_Crate&quot;)]
+public sealed class Crate : Material
+{
+    public static void Configure(MaterialBuilder b) =&gt; b
+        .Comment(&quot;Painted wood, scuffed. Roughness stays high — a gloss here reads as plastic.&quot;)
+        .BaseColor(0.62f, 0.48f, 0.31f)
+        .Metallic(0f)
+        .Roughness(0.78f)
+        .Texture(Slot.BaseColor, &quot;Textures/crate_basecolor.png&quot;)
+        .Texture(Slot.Normal,    &quot;Textures/crate_normal.png&quot;);
+}
+</code></pre>
+<p>Bind it from a class recipe with <code>b.Mesh("Meshes/crate.ocmesh", "M_Crate")</code>, or at run time with
+<code>entity.SetMaterial("M_Crate")</code>.</p>
+<p><strong><code>MaterialBuilder</code></strong> — every call returns the builder, so a declaration is one chain:</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Comment(string)</code></td>
+<td>A line written into the output above the parameters. Carried through on purpose: the generated file is what somebody debugging a surface opens, and a bare table of numbers with the reasoning left behind in a <code>.cs</code> is how a value becomes mysterious.</td>
+</tr>
+<tr>
+<td><code>Shader(Shading)</code></td>
+<td>The shading model. <code>Shading.Standard</code> — the metallic-roughness BRDF — is the only one.</td>
+</tr>
+<tr>
+<td><code>Blending(Blend, float cutoff = 0.5f)</code></td>
+<td><code>Opaque</code> / <code>Masked</code> (the cutoff applies here only) / <code>Translucent</code> / <code>Additive</code>.</td>
+</tr>
+<tr>
+<td><code>Culling(Cull)</code></td>
+<td><code>Back</code> / <code>Front</code> / <code>None</code>. <code>None</code> implies two-sided.</td>
+</tr>
+<tr>
+<td><code>CastShadow(bool)</code></td>
+<td>On by default.</td>
+</tr>
+<tr>
+<td><code>WorldUv(bool)</code> / <code>Tiling(float centimetres)</code></td>
+<td>Project UVs from world space at N cm per tile — what untextured blockout geometry wants. <code>Tiling</code> is written whether or not world UVs are on, so toggling the mode off and back on does not reset it.</td>
+</tr>
+<tr>
+<td><code>BaseColor(r, g, b, a = 1)</code></td>
+<td>Linear multiplier.</td>
+</tr>
+<tr>
+<td><code>Metallic(v)</code> / <code>Roughness(v)</code></td>
+<td>Multipliers, both defaulting to 1 — that is, "whatever the metalRough texture says".</td>
+</tr>
+<tr>
+<td><code>Emissive(r, g, b)</code></td>
+<td>Added, not multiplied, so it lights itself and nothing else.</td>
+</tr>
+<tr>
+<td><code>NormalScale(v)</code> / <code>OcclusionStrength(v)</code></td>
+<td>Strength of the normal map / of baked occlusion.</td>
+</tr>
+<tr>
+<td><code>Reflectance(v)</code> / <code>F90(v)</code></td>
+<td>Dielectric reflectance at normal incidence (0.04 is almost every non-metal) and at grazing incidence.</td>
+</tr>
+<tr>
+<td><code>Texture(Slot, string contentRelativePath)</code></td>
+<td>Bind a texture. The path is relative to the project's content root; backslashes are normalised to forward slashes.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p><strong><code>Slot</code></strong> — <code>BaseColor</code>, <code>MetalRough</code> (metallic in blue, roughness in green: the glTF packing),
+<code>Normal</code>, <code>Occlusion</code>, <code>Emissive</code>.</p>
+<p><strong>Colour space is a property of the slot and is deliberately not authorable.</strong> <code>Texture</code> takes no
+colour-space argument. Base colour and emissive are always sRGB, normal is always a normal map, and the
+rest are always linear; letting a caller choose would only let a caller choose wrong. The emitter writes
+the slot's space into the <code>TEX</code> line and the reader validates it, so the two cannot quietly disagree.</p>
+<blockquote>
+<p>The <code>.ocmat</code> grammar has <strong>two writers</strong> — this builder and <code>modules/formats/src/OcMat.cpp</code> — which is
+a real cost, paid so that baking a material does not require a loaded engine on the build path. The
+guard against them drifting is weaker than it sounds, and worth knowing before trusting it:
+<code>testGeneratedByCsharp</code> in <code>tests/formats/src/MaterialTest.cpp</code> parses a <strong>pasted, verbatim</strong> sample
+of <code>MaterialBuilder.Emit</code>'s output with the C++ reader. Nothing runs the C# emitter, so a change made
+only to <code>Emit</code> goes unnoticed until somebody re-pastes the sample. (The comment in <code>MaterialBuilder.cs</code>
+claiming a <code>MaterialCompilerTest</code> does this is wrong — no such test exists.)</p>
+</blockquote></article>
     </div>
   </div>
 </section>
 
 <section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
-  <div class="wrap">
-    <div class="rv" style="margin-bottom:44px"><div class="code"><div class="code-bar"><i></i><i></i><i></i><span>The module split — why the mixer needs no device to be tested</span></div><pre># Core-only. mix() fills a buffer the caller supplies; opens nothing.
-aver_add_module(Aver.Audio         DEPS Aver.Core)
-
-# The only target that knows a sound card exists. Windows-guarded,
-# the same way the D3D12 backend is.
-aver_add_module(Aver.Audio.Wasapi  DEPS Aver.Core Aver.Audio)
-
-# The seam a game calls. SHARED, and it links the DEVICE rather than
-# just the mixer - &quot;play a sound&quot; means nothing until something is
-# driving hardware.
-add_library(Aver.Audio.Abi SHARED ...)
-target_link_libraries(Aver.Audio.Abi PRIVATE Aver.Audio Aver.Audio.Wasapi)
-
-# Media Foundation is isolated here, so no other module pays for it.
-target_link_libraries(Aver.Formats.Audio PRIVATE mfplat mfreadwrite mfuuid ole32)</pre></div></div>
-    <div class="rv" style="margin-bottom:44px"><div class="tcap">Built, and not yet</div><div class="tablewrap "><div class="scroller"><table><thead><tr><th>Piece</th><th>State</th></tr></thead><tbody><tr><td><code>Aver.Audio</code> mixer</td><td>Built. 70 headless assertions, 0 failed.</td></tr><tr><td><code>Aver.Audio.Wasapi</code> device</td><td>Built. Shared mode, Pro Audio thread class.</td></tr><tr><td><code>Aver.Audio.Abi</code> seam</td><td>Built. 24 exports, links the device.</td></tr><tr><td><code>.ocaudio</code> container</td><td>Built. AVR1 with AHDR + APCM chunks, round-trip tested.</td></tr><tr><td>WAV import</td><td>Built and tested.</td></tr><tr><td>mp3 / m4a / aac / wma / flac import</td><td>Built on Media Foundation. Exercised by no test.</td></tr><tr><td>Constant-power pan</td><td>Built and asserted.</td></tr><tr><td>Distance attenuation</td><td>Built and asserted at both radii.</td></tr><tr><td>Voice stealing</td><td>Built, with a counter.</td></tr><tr><td>A sound anyone has heard</td><td>Not yet.</td></tr></tbody></table></div></div></div>
-    <div class="rv"><div class="tcap">At a glance</div><div class="tablewrap facts"><div class="scroller"><table><tbody><tr><td>Mixer</td><td><code>Aver.Audio</code> — Core-only, fills a caller-supplied buffer, never opens a device</td></tr><tr><td>Device</td><td><code>Aver.Audio.Wasapi</code> — shared mode, Pro Audio thread scheduling via <code>avrt</code></td></tr><tr><td>Seam</td><td><code>Aver.Audio.Abi</code> — 24 exports; links the device, not just the mixer</td></tr><tr><td>Voices</td><td>64 by default, with stealing and a <code>stolenVoices</code> counter</td></tr><tr><td>Pan</td><td>Constant power — <code>l*l + r*r == 1</code></td></tr><tr><td>Attenuation</td><td>Exactly 1.0 inside the inner radius, exactly 0.0 beyond the outer</td></tr><tr><td>Listener</td><td>Nine atomics, lock-free, written once per frame</td></tr><tr><td>Underruns</td><td>Counted</td></tr><tr><td>Container</td><td><code>.ocaudio</code> — AVR1 with <code>AHDR</code> and <code>APCM</code> chunks</td></tr><tr><td>Import</td><td>Own WAV reader, plus Media Foundation for mp3, m4a, aac, wma and flac</td></tr><tr><td>Tests</td><td><code>AudioTest</code> 70 checks; <code>OcAudioTest</code> passes with 1 skipped</td></tr><tr><td>Not yet done</td><td>No recorded listening test; the Media Foundation import path is covered by nothing</td></tr></tbody></table></div></div></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="sec-head rv" style="margin-bottom:30px">
-      <div class="eyebrow">Keep reading</div>
-      <h2 style="font-size:clamp(24px,3vw,32px)">The rest of the engine.</h2>
-    </div>
-    <div class="nextnav rv"><a class="nextcard" href="architecture.html"><span>Architecture</span><b>Modular by construction</b><em>A strict dependency graph, no universal base object, and a separate C seam for every module.</em></a><a class="nextcard" href="rendering.html"><span>Voxi</span><b>Voxi, the engine's own renderer</b><em>Aver's render module: voxel cone-traced global illumination, inline ray-traced sun shadows and four cascades of shadow map.</em></a><a class="nextcard" href="scripting.html"><span>Scripting</span><b>C# that reloads into a running editor</b><em>An in-process CoreCLR host with a collectible load context, two independently versioned contracts, and an exception boundary that disables one misbehaving actor instead of the process.</em></a></div>
-  </div>
+  <div class="wrap"><div class="pager"><a class="pgr prev" href="api-ui.html"><span>Previous</span><b>The game&#x27;s HUD</b></a><a class="pgr next" href="api-reference.html"><span>Next</span><b>Attributes, enums and builders</b></a></div></div>
 </section>
 
 <footer>
@@ -741,7 +828,7 @@ target_link_libraries(Aver.Formats.Audio PRIVATE mfplat mfreadwrite mfuuid ole32
           <a href="index.html#download">Download</a>
           <a href="https://github.com/Vectoric-Core-Systems/Aver-Launcher">Launcher</a>
           <a href="https://github.com/Vectoric-Core-Systems/aver-engine">GitHub</a>
-          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/audio.html">Edit this page</a>
+          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/api-materials.html">Edit this page</a>
         </div>
       </div>
     </div>
@@ -845,5 +932,136 @@ if ('IntersectionObserver' in window) {
 })();
 
 </script>
+
+<style>
+/* ===================== documentation ===================== */
+.docs-layout{grid-template-columns:250px 1fr; gap:52px}
+.docs-layout > *{min-width:0}
+.docs-toc{top:80px; max-height:calc(100vh - 104px); display:flex; flex-direction:column}
+.docs-toc #tocList{overflow-y:auto; overscroll-behavior:contain; padding-right:6px; margin-right:-6px}
+.docs-toc a{padding:5px 0 5px 13px; font-size:13.5px; line-height:1.45}
+.docs-toc a.t3{padding-left:26px; font-size:13px; opacity:.85}
+.toc-back{display:block; margin-top:16px; padding-top:14px; border-top:1px solid var(--line-soft);
+  border-left:none !important; font-size:13px; color:var(--ink-faint)}
+.toc-back:hover{color:var(--orange)}
+
+.doc-body{max-width:80ch}
+.doc-body h2{font-size:clamp(24px,2.8vw,31px); margin:52px 0 18px; padding-top:22px;
+  border-top:1px solid var(--line-soft); scroll-margin-top:88px}
+.doc-body > h2:first-child{margin-top:0; border-top:none; padding-top:0}
+.doc-body h3{font-size:20px; margin:36px 0 14px; scroll-margin-top:88px; color:var(--ink)}
+.doc-body h4{font-size:16.5px; margin:26px 0 10px; scroll-margin-top:88px}
+.hlink{margin-left:10px; font-family:var(--mono); font-weight:400; color:var(--ink-faint);
+  opacity:0; transition:opacity .15s ease; text-decoration:none; font-size:.8em}
+h2:hover .hlink, h3:hover .hlink, h4:hover .hlink, .hlink:focus-visible{opacity:1}
+.hlink:hover{color:var(--orange)}
+.doc-body ul, .doc-body ol{color:var(--ink-dim); padding-left:22px; margin:0 0 16px}
+.doc-body li{margin-bottom:9px; line-height:1.7}
+.doc-body a{color:var(--orange); text-decoration:underline; text-underline-offset:3px;
+  text-decoration-color:rgba(242,101,34,.4)}
+.doc-body a.hlink{text-decoration:none}
+.doc-body p code, .doc-body li code, .doc-body blockquote code{overflow-wrap:anywhere}
+.doc-body blockquote{margin:22px 0; padding:16px 20px; border-left:3px solid var(--orange);
+  background:rgba(242,101,34,.06); border-radius:0 10px 10px 0}
+.doc-body blockquote p{margin-bottom:10px; color:var(--ink-dim)}
+.doc-body blockquote p:last-child{margin-bottom:0}
+.doc-body pre{background:#0A0C10; border:1px solid var(--line-soft); border-radius:var(--r);
+  padding:18px 20px; overflow-x:auto; margin:0 0 20px; font-family:var(--mono);
+  font-size:13px; line-height:1.75; color:#C6CEDC}
+.doc-body pre code{background:none; border:none; padding:0; font-size:inherit; color:inherit}
+.doc-body .tablewrap{margin:0 0 22px}
+.doc-body table{min-width:520px; font-size:14.5px}
+.doc-body td:first-child{color:var(--ink)}
+.doc-body td code, .doc-body th code{white-space:nowrap}
+.doc-body hr{border:none; border-top:1px solid var(--line-soft); margin:44px 0}
+
+/* pager */
+.pager{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.pgr{padding:20px 24px; border:1px solid var(--line-soft); border-radius:var(--r);
+  background:var(--bg-card); transition:border-color .2s ease, transform .2s ease}
+.pgr:hover{border-color:#2E3644; transform:translateY(-2px)}
+.pgr span{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:6px}
+.pgr b{font-size:16px; font-weight:620}
+.pgr.next{text-align:right; grid-column:2}
+.pgr.prev:only-child{grid-column:1}
+
+/* hub */
+.searchbox{position:relative; display:flex; align-items:center; margin-top:30px; max-width:620px}
+.searchbox svg{position:absolute; left:16px; width:18px; height:18px; color:var(--ink-faint)}
+.searchbox kbd{position:absolute; right:14px; font-size:11px}
+#docSearch{width:100%; padding:15px 46px 15px 46px; font-size:16px; color:var(--ink);
+  background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:12px;
+  font-family:var(--sans)}
+#docSearch::placeholder{color:var(--ink-faint)}
+#docSearch:focus{outline:none; border-color:var(--orange); background:rgba(255,255,255,.07)}
+.results{margin-top:12px; max-width:620px; background:var(--bg-card); border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; max-height:60vh; overflow-y:auto}
+.results a{display:block; padding:13px 18px; border-bottom:1px solid var(--line-soft)}
+.results a:last-child{border-bottom:none}
+.results a:hover, .results a.sel{background:rgba(242,101,34,.08)}
+.results .rt{font-size:15px; font-weight:600; color:var(--ink); margin-bottom:3px}
+.results .rs{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--orange); margin-bottom:5px}
+.results .rx{font-size:13.5px; color:var(--ink-faint); line-height:1.55;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.results mark{background:rgba(242,101,34,.28); color:var(--ink); border-radius:3px; padding:0 2px}
+.results .none{padding:18px; color:var(--ink-faint); font-size:14px}
+
+.startcard{display:flex; align-items:center; justify-content:space-between; gap:28px;
+  padding:30px 32px; border-radius:18px; border:1px solid rgba(242,101,34,.3);
+  background:linear-gradient(140deg, rgba(242,101,34,.11), rgba(242,101,34,.03) 60%, transparent);
+  transition:border-color .2s ease, transform .2s ease}
+.startcard:hover{border-color:rgba(242,101,34,.55); transform:translateY(-2px)}
+.startcard .area{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:9px}
+.startcard b{display:block; font-size:23px; font-weight:660; letter-spacing:-.02em; margin-bottom:8px}
+.startcard em{display:block; font-style:normal; color:var(--ink-dim); font-size:15px;
+  line-height:1.6; max-width:62ch}
+.startcard .go{display:inline-flex; align-items:center; gap:8px; flex:none; font-weight:600;
+  color:var(--orange); font-size:15px}
+.startcard .go svg{width:16px; height:16px; transition:transform .2s ease}
+.startcard:hover .go svg{transform:translateX(3px)}
+
+.dcards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.dcard{display:block; padding:24px 24px 26px; border:1px solid var(--line-soft);
+  border-radius:var(--r); background:var(--bg-card);
+  transition:border-color .2s ease, transform .2s ease, background .2s ease}
+.dcard:hover{border-color:#2E3644; transform:translateY(-3px); background:#171C24}
+.dcard .ic{width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
+  margin-bottom:15px; background:rgba(242,101,34,.11); border:1px solid rgba(242,101,34,.24)}
+.dcard .ic svg{width:18px; height:18px; stroke:var(--orange); fill:none; stroke-width:1.7;
+  stroke-linecap:round; stroke-linejoin:round}
+.dcard .area{display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-faint); margin-bottom:7px}
+.dcard b{display:block; font-size:17px; font-weight:630; margin-bottom:7px; letter-spacing:-.01em}
+.dcard em{display:block; font-style:normal; font-size:14px; color:var(--ink-dim); line-height:1.6}
+
+.dl-md{display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;
+  margin-top:44px; padding:26px 30px; border:1px solid var(--line-soft); border-radius:var(--r);
+  background:var(--bg-raise)}
+.dl-md b{display:block; font-size:17px; font-weight:630; margin-bottom:6px}
+.dl-md em{display:block; font-style:normal; font-size:14.5px; color:var(--ink-dim);
+  line-height:1.6; max-width:58ch}
+.dl-md-actions{display:flex; gap:10px; flex-wrap:wrap}
+
+@media (max-width:1000px){
+  .docs-layout{grid-template-columns:1fr}
+  .docs-toc{position:static; max-height:none; display:block}
+  .docs-toc #tocList{max-height:230px}
+  .docs-toc a, .docs-toc a.t3{display:block; border-left:2px solid var(--line-soft);
+    border-bottom:none; padding-left:13px; margin-right:0}
+  .docs-toc a.t3{padding-left:26px}
+  .dcards{grid-template-columns:repeat(2,1fr)}
+  .pager{grid-template-columns:1fr}
+  .pgr.next{text-align:left; grid-column:1}
+  .startcard{flex-direction:column; align-items:flex-start; gap:18px}
+}
+@media (max-width:640px){
+  .dcards{grid-template-columns:1fr}
+  .doc-body h2{margin-top:40px}
+}
+</style>
+
 </body>
 </html>

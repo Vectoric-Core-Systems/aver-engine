@@ -7,7 +7,7 @@
 <meta name="description" content="A strict dependency graph, no universal base object, and a separate C seam for every module — so you compile in only the engine you use.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="build" content="20260802-1025">
+<meta name="build" content="20260809-1523">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Modular by construction — Aver Engine">
 <meta property="og:description" content="A strict dependency graph, no universal base object, and a separate C seam for every module — so you compile in only the engine you use.">
@@ -534,6 +534,77 @@ a:focus-visible, .btn:focus-visible{
 }
 @keyframes rvFallback{to{opacity:1; transform:none}}
 
+
+/* ============================================================
+   Collapsing nav: wide bar above 1080px, slide-in drawer below
+   ============================================================ */
+.navright{display:flex; align-items:center; gap:12px; margin-left:auto}
+.burger{
+  display:none; width:42px; height:42px; padding:0; cursor:pointer;
+  background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px;
+  flex-direction:column; align-items:center; justify-content:center; gap:5px;
+}
+.burger span{display:block; width:18px; height:2px; border-radius:2px; background:var(--ink);
+  transition:transform .22s ease, opacity .18s ease}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.scrim{
+  position:fixed; inset:0; z-index:60; background:rgba(6,8,11,.66);
+  backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px);
+  opacity:0; transition:opacity .24s ease;
+}
+.scrim.show{opacity:1}
+
+.drawer{
+  position:fixed; top:0; right:0; bottom:0; z-index:61; width:min(370px, 88vw);
+  background:var(--bg-raise); border-left:1px solid var(--line);
+  transform:translateX(100%); transition:transform .28s cubic-bezier(.2,.8,.3,1);
+  display:flex; flex-direction:column; overflow:hidden;
+}
+.drawer.open{transform:none; box-shadow:-24px 0 60px -20px rgba(0,0,0,.6)}
+.drawer-top{
+  display:flex; align-items:center; justify-content:space-between; flex:none;
+  padding:16px 20px; border-bottom:1px solid var(--line-soft);
+}
+.dclose{
+  width:38px; height:38px; display:grid; place-items:center; cursor:pointer;
+  background:none; border:1px solid var(--line); border-radius:9px; color:var(--ink-dim);
+}
+.dclose:hover{color:var(--ink); border-color:#39414F}
+.dclose svg{width:17px; height:17px}
+.drawer-body{padding:18px 20px 28px; overflow-y:auto; overscroll-behavior:contain}
+.dgroup{margin-bottom:24px}
+.dgroup h5{
+  margin:0 0 8px; font-family:var(--mono); font-size:10.5px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-faint); font-weight:600;
+}
+.dgroup a{
+  display:block; padding:11px 13px; border-radius:10px; border:1px solid transparent;
+  transition:background .16s ease, border-color .16s ease;
+}
+.dgroup a:hover{background:rgba(255,255,255,.04); border-color:var(--line-soft)}
+.dgroup a.on{background:rgba(242,101,34,.09); border-color:rgba(242,101,34,.3)}
+.dgroup a b{display:block; font-size:15.5px; font-weight:620; color:var(--ink); margin-bottom:2px}
+.dgroup a.on b{color:var(--orange)}
+.dgroup a em{display:block; font-style:normal; font-size:13px; color:var(--ink-faint); line-height:1.5}
+.drawer-cta{width:100%; justify-content:center}
+
+/* Body scroll lock while the drawer is open. */
+body.nav-open{overflow:hidden}
+
+@media (max-width:1080px){
+  .navlinks{display:none}
+  .burger{display:flex}
+}
+@media (max-width:520px){
+  .navright .btn-primary{display:none}   /* the drawer carries the CTA */
+}
+@media (prefers-reduced-motion:reduce){
+  .drawer, .scrim, .burger span{transition:none}
+}
+
 @media (max-width:1000px){
   .layout{grid-template-columns:1fr; gap:34px}
   .toc{position:static; padding-bottom:8px; border-bottom:1px solid var(--line-soft)}
@@ -559,13 +630,39 @@ a:focus-visible, .btn:focus-visible{
     </a>
     <div class="navlinks">
       <a href="architecture.html" class="on">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+    </div>
+    <div class="navright">
       <a class="btn btn-primary" href="index.html#download">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
         Download
       </a>
+      <button id="navToggle" class="burger" aria-label="Open menu"
+              aria-expanded="false" aria-controls="navDrawer">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 </header>
+
+<div class="scrim" id="navScrim" hidden></div>
+<aside class="drawer" id="navDrawer" aria-label="Site menu" aria-hidden="true">
+  <div class="drawer-top">
+    <a class="brand" href="index.html">
+      <img src="data:image/png;base64,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" alt="" width="27" height="28">
+      Aver Engine
+    </a>
+    <button id="navClose" class="dclose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body">
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html" class="on"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <a class="btn btn-primary drawer-cta" href="index.html#download">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+      Download the Launcher
+    </a>
+  </div>
+</aside>
 
 <div class="subhero">
   <div class="wrap">
@@ -573,7 +670,7 @@ a:focus-visible, .btn:focus-visible{
     <div class="eyebrow">Architecture</div>
     <h1>Modular by construction</h1>
     <p class="lede">A strict dependency graph, no universal base object, and a separate C seam for every module — so you compile in only the engine you use.</p>
-    <div class="stats"><div class="stat"><b>8</b><span>versioned C seams</span></div><div class="stat"><b>15</b><span>build switches</span></div><div class="stat"><b>49.9k</b><span>lines of engine C++</span></div></div>
+    <div class="stats"><div class="stat"><b>8</b><span>versioned C seams</span></div><div class="stat"><b>15</b><span>build switches</span></div><div class="stat"><b>92.4k</b><span>lines of engine C++</span></div></div>
   </div>
 </div>
 
@@ -649,6 +746,64 @@ endif()</pre></div></div>
   </div>
 </footer>
 <script>
+
+/* ------------------------------------------------------------------
+   Nav drawer. Opens below 1080px; focus is trapped while open, Escape
+   closes, and the scrim is click-to-dismiss.
+   ------------------------------------------------------------------ */
+(function(){
+  var btn    = document.getElementById('navToggle');
+  var drawer = document.getElementById('navDrawer');
+  var scrim  = document.getElementById('navScrim');
+  var closeB = document.getElementById('navClose');
+  if (!btn || !drawer || !scrim) return;
+  var lastFocus = null;
+
+  function focusable(){
+    return drawer.querySelectorAll('a[href], button:not([disabled])');
+  }
+  function open(){
+    lastFocus = document.activeElement;
+    scrim.hidden = false;
+    // Next frame, so the transition has a starting value to animate from.
+    requestAnimationFrame(function(){ scrim.classList.add('show'); });
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden','false');
+    btn.setAttribute('aria-expanded','true');
+    document.body.classList.add('nav-open');
+    var f = focusable(); if (f.length) f[0].focus();
+  }
+  function close(){
+    scrim.classList.remove('show');
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden','true');
+    btn.setAttribute('aria-expanded','false');
+    document.body.classList.remove('nav-open');
+    setTimeout(function(){ if (!drawer.classList.contains('open')) scrim.hidden = true; }, 260);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function isOpen(){ return drawer.classList.contains('open'); }
+
+  btn.addEventListener('click', function(){ isOpen() ? close() : open(); });
+  scrim.addEventListener('click', close);
+  if (closeB) closeB.addEventListener('click', close);
+
+  document.addEventListener('keydown', function(e){
+    if (!isOpen()) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    var f = focusable(); if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  // Widening past the breakpoint must not leave a hidden drawer holding focus.
+  addEventListener('resize', function(){
+    if (isOpen() && innerWidth > 1080) close();
+  }, {passive:true});
+})();
+
 
 var hdr = document.getElementById('hdr');
 addEventListener('scroll', function(){ hdr.classList.toggle('stuck', scrollY > 8); }, {passive:true});
