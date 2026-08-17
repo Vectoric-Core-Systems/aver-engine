@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Physics — Aver Engine docs</title>
-<meta name="description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<title>Input and action mappings — Aver Engine docs</title>
+<meta name="description" content="Polled device input, and the layer above it that names what the player is doing.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta name="build" content="20260809-1524">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Physics — Aver Engine docs">
-<meta property="og:description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<meta property="og:title" content="Input and action mappings — Aver Engine docs">
+<meta property="og:description" content="Polled device input, and the layer above it that names what the player is doing.">
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 
 <style>
@@ -541,7 +541,7 @@ a:focus-visible, .btn:focus-visible{
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
 /* ============================================================
-   Version selector (0.3.0 latest -> 0.2.0 snapshot)
+   Version selector (0.2.0 snapshot -> 0.3.0 latest)
    ============================================================ */
 .vsel{position:relative}
 .vsel summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
@@ -563,6 +563,16 @@ a:focus-visible, .btn:focus-visible{
 .vsel-menu a:hover em{color:var(--orange)}
 .vsel-menu .vsel-cur{color:var(--orange); background:rgba(242,101,34,.09)}
 .vsel-menu .vsel-cur em{color:var(--orange)}
+
+/* Old-version banner */
+.oldver{background:rgba(242,101,34,.09); border-bottom:1px solid rgba(242,101,34,.25)}
+.oldver .wrap{display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+  padding:12px 28px; font-size:14px; color:var(--ink-dim); text-align:center}
+.oldver b{color:var(--orange); font-weight:650}
+.oldver a{display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-weight:620;
+  white-space:nowrap}
+.oldver a svg{width:14px; height:14px}
+.oldver a:hover{color:var(--orange-hi)}
 @media (max-width:520px){
   .vsel summary{padding:9px 10px}
   .vsel summary span.vlabel{display:none}
@@ -657,18 +667,18 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
     </div>
     <div class="navright">
       <details class="vsel">
-        <summary aria-label="Documentation version: 0.3.0 (latest)">
+        <summary aria-label="Documentation version: 0.2.0">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
-          <span class="vlabel">0.3.0</span>
+          <span class="vlabel">0.2.0</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="vsel-menu">
-          <span class="vsel-cur">0.3.0<em>latest</em></span>
-          <a href="v0.2.0/api-physics.html">0.2.0</a>
+          <span class="vsel-cur">0.2.0<em>&#10003;</em></span>
+          <a href="../api-input.html">0.3.0<em>latest</em></a>
         </div>
       </details>
       <a class="btn btn-primary" href="index.html#download">
@@ -683,6 +693,15 @@ body.nav-open{overflow:hidden}
   </nav>
 </header>
 
+<div class="oldver">
+  <div class="wrap">
+    <span>You’re viewing the archived <b>0.2.0</b> documentation — it no longer matches the current build.</span>
+    <a href="../api-input.html">See the latest — 0.3.0
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
 <div class="scrim" id="navScrim" hidden></div>
 <aside class="drawer" id="navDrawer" aria-label="Site menu" aria-hidden="true">
   <div class="drawer-top">
@@ -695,7 +714,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -706,10 +725,10 @@ body.nav-open{overflow:hidden}
 <div class="subhero">
   <div class="wrap">
     <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span>
-      <a href="docs.html">Docs</a> <span>/</span> <span>Physics</span></div>
+      <a href="docs.html">Docs</a> <span>/</span> <span>Input and action mappings</span></div>
     <div class="eyebrow">Aver.Framework</div>
-    <h1>Physics</h1>
-    <p class="lede">Bodies, raycasts and the fixed step, in the engine&#x27;s own units.</p>
+    <h1>Input and action mappings</h1>
+    <p class="lede">Polled device input, and the layer above it that names what the player is doing.</p>
   </div>
 </div>
 
@@ -718,16 +737,12 @@ body.nav-open{overflow:hidden}
     <div class="layout docs-layout">
       <aside class="toc docs-toc">
         <h4>On this page</h4>
-        <div id="tocList"><a class="t2" href="#14-physics">Physics</a></div>
+        <div id="tocList"><a class="t2" href="#8-input">Input</a><a class="t3" href="#action-mappings">Action mappings</a></div>
         <a class="toc-back" href="docs.html">&larr; All documentation</a>
       </aside>
-      <article class="prose doc-body"><h2 id="14-physics">14. <code>Physics</code><a class="hlink" href="#14-physics" aria-label="Link to this section">#</a></h2>
-<p>Static, in <code>Aver.Framework</code>. Everything is in the engine's contract — centimetres, +X forward,
-+Y right, +Z up, left-handed. The backend (Jolt, MIT) is right-handed, +Y up and metric; that
-translation happens once behind the native ABI, so no Jolt convention ever reaches a script.</p>
-<p>The world is stepped by the frame loop <strong>between the PrePhysics and PostPhysics tick groups</strong>, at a
-<strong>fixed step</strong> regardless of frame rate. So set what you want in a <code>PrePhysics</code> tick and read what
-happened in a <code>PostPhysics</code> one.</p>
+      <article class="prose doc-body"><h2 id="8-input">8. <code>Input</code><a class="hlink" href="#8-input" aria-label="Link to this section">#</a></h2>
+<p>Static, polled, Unity-style. The editor pushes the frame's device state each tick (suppressed while a text
+field has focus). Read it from <code>OnTick</code>.</p>
 <div class="tablewrap"><div class="scroller"><table>
 <thead>
 <tr>
@@ -737,63 +752,78 @@ happened in a <code>PostPhysics</code> one.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>bool Ready</code></td>
-<td>True when the simulation is running (false if physics was compiled out).</td>
+<td><code>bool GetKey(Key k)</code></td>
+<td>Held.</td>
 </tr>
 <tr>
-<td><code>float FixedStep</code></td>
-<td>The fixed step in seconds — 1/60 unless the host changed it.</td>
+<td><code>bool GetKeyDown(Key k)</code> / <code>bool GetKeyUp(Key k)</code></td>
+<td>Went down / up this frame.</td>
 </tr>
 <tr>
-<td><code>void SetGravity(Vec3)</code></td>
-<td>cm/s². Default <code>(0, 0, -980)</code>: one g, straight down.</td>
+<td><code>float MouseDeltaX</code> / <code>MouseDeltaY</code> / <code>MouseWheel</code></td>
+<td>This frame's mouse movement / wheel.</td>
 </tr>
 <tr>
-<td><code>int BodyCount</code></td>
-<td>How many bodies exist.</td>
-</tr>
-<tr>
-<td><code>Body AddStaticBox(Vec3 centre, Vec3 halfExtents)</code></td>
-<td>A box that never moves.</td>
-</tr>
-<tr>
-<td><code>Body AddDynamicBox(Vec3 centre, Vec3 halfExtents, float massKg = 0)</code></td>
-<td>Falls and collides; <code>massKg &lt;= 0</code> derives mass from volume.</td>
-</tr>
-<tr>
-<td><code>Body AddDynamicSphere(Vec3 centre, float radius, float massKg = 0)</code></td>
-<td>Likewise.</td>
-</tr>
-<tr>
-<td><code>RaycastHit Raycast(Vec3 origin, Vec3 direction, float maxDistanceCm)</code></td>
-<td>Direction need not be unit length.</td>
-</tr>
-<tr>
-<td><code>bool RaycastAny(...)</code></td>
-<td>Just whether anything is in the way.</td>
+<td><code>Vec3 MoveAxis</code></td>
+<td>WASD/arrows as <code>(forward, right, 0)</code>; not normalised.</td>
 </tr>
 </tbody>
 </table></div></div>
-<p><strong><code>Body</code></strong> — a handle (<code>0</code> invalid): <code>Handle</code>, <code>IsValid</code>, <code>Position</code>, <code>Rotation</code>, <code>Velocity</code>,
-<code>SetPosition</code>, <code>SetVelocity</code>, <code>SetEntity</code>, <code>Destroy()</code>.
-<strong><code>RaycastHit</code></strong> — <code>Hit</code>, <code>Body</code>, <code>Entity</code>, <code>Point</code>, <code>Normal</code>.</p>
-<p><code>Entity</code> is the scene entity that owns whatever the ray hit, so a raycast no longer stops at
-<em>that</em> something was hit — <code>Raycast</code> resolves <em>what</em>. A body or character carries this stamp
-automatically when it comes from a level placement or the editor; a body a script creates with
-<code>AddDynamicBox</code> or a sibling only carries one once the script calls <code>Body.SetEntity</code> on it.
-<code>Entity.None</code> (<code>0</code>) means the hit is real but unclaimed — a landscape heightfield, today — which
-is not the same thing as a miss, so check <code>Hit</code> first.</p>
-<blockquote>
-<p>The backend documents <strong>broadphase queries as non-deterministic</strong> (the broad phase is modified from
-several threads), and callback ordering likewise. Rely on <em>whether</em> something was hit and <em>where</em> —
-never on which of several equidistant bodies comes back.</p>
-</blockquote></article>
+<p><code>Key</code> values: <code>A</code>–<code>Z</code>, <code>D0</code>–<code>D9</code>, <code>Space</code>, <code>LeftShift</code>, <code>LeftCtrl</code>, <code>LeftAlt</code>, <code>Enter</code>, <code>Escape</code>, <code>Tab</code>,
+<code>Left</code>, <code>Right</code>, <code>Up</code>, <code>Down</code>, <code>MouseLeft</code>, <code>MouseRight</code>, <code>MouseMiddle</code>.</p>
+<h3 id="action-mappings">Action mappings<a class="hlink" href="#action-mappings" aria-label="Link to this section">#</a></h3>
+<p><code>Input</code> is the device. <code>EnhancedInput</code> is the layer above it, for gameplay that should name <em>what the
+player is doing</em> rather than which key they pressed — so a pawn asks whether <code>Fire</code> happened and never
+mentions a key (<code>scripting/csharp/Aver.Framework/EnhancedInput.cs</code>).</p>
+<div class="tablewrap"><div class="scroller"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InputAction</code></td>
+<td>A thing the player can do. <code>InputAction.Digital(name)</code> / <code>.Axis1D(name)</code> / <code>.Axis2D(name)</code>. Read <code>IsHeld</code>, <code>WasPressed</code>, <code>WasReleased</code>, <code>Value1D</code>, <code>Value2D</code>. Declare each <strong>once</strong>, usually as a <code>static readonly</code> field on a class shared between the pawn that reads it and the context that binds it.</td>
+</tr>
+<tr>
+<td><code>InputMappingContext</code></td>
+<td>A set of key→action bindings pushed and popped as a whole. Derive it and bind in the constructor: <code>BindKey</code>, <code>BindAxis1D(action, positive, negative)</code>, <code>BindAxis2D(action, up, down, right, left)</code>, <code>BindMouseLook</code>, <code>BindMouseWheel</code>.</td>
+</tr>
+<tr>
+<td><code>EnhancedInput</code></td>
+<td>The router: <code>AddContext(context, priority = 0)</code>, <code>RemoveContext</code>, <code>ClearContexts</code>, <code>ContextCount</code>.</td>
+</tr>
+</tbody>
+</table></div></div>
+<p>A <strong>higher-priority context consumes the keys it binds</strong>, so a lower one never sees them — pushing a
+menu or vehicle context suppresses the walking bindings without anything having to disable them.
+Consumption is per <em>context</em>, not per binding, so one key can still feed two actions in the same
+context. Actions are recomputed once per frame before the first tick group, so every actor in a frame
+reads the same input; polling per actor would let two pawns disagree about a "was pressed" edge purely
+because of tick order.</p>
+<pre><code class="language-csharp">static class GameActions
+{
+    public static readonly InputAction Move = InputAction.Axis2D(&quot;Move&quot;);
+    public static readonly InputAction Jump = InputAction.Digital(&quot;Jump&quot;);
+}
+
+public sealed class OnFoot : InputMappingContext
+{
+    public OnFoot()
+    {
+        BindAxis2D(GameActions.Move, Key.W, Key.S, Key.D, Key.A);   // X forward, Y right
+        BindKey(GameActions.Jump, Key.Space);
+    }
+}
+</code></pre></article>
     </div>
   </div>
 </section>
 
 <section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
-  <div class="wrap"><div class="pager"><a class="pgr prev" href="api-input.html"><span>Previous</span><b>Input and action mappings</b></a><a class="pgr next" href="api-ui.html"><span>Next</span><b>The game&#x27;s HUD</b></a></div></div>
+  <div class="wrap"><div class="pager"><a class="pgr prev" href="api-session.html"><span>Previous</span><b>Session, spawning and possession</b></a><a class="pgr next" href="api-physics.html"><span>Next</span><b>Physics</b></a></div></div>
 </section>
 
 <footer>
@@ -810,14 +840,14 @@ never on which of several equidistant bodies comes back.</p>
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>
           <a href="index.html#download">Download</a>
           <a href="https://github.com/Vectoric-Core-Systems/Aver-Launcher">Launcher</a>
           <a href="https://github.com/Vectoric-Core-Systems/aver-engine">GitHub</a>
-          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/api-physics.html">Edit this page</a>
+          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/api-input.html">Edit this page</a>
         </div>
       </div>
     </div>

@@ -36,14 +36,8 @@ AverActor                     the root: a thing in the world with a transform an
 ```
 
 The base type you derive is how the **compiler** decides which capability flag the class gets
-(`PAWN`, `CONTROLLER`, `GAME_MODE`, …) and which hooks you may override. `AverActor`, `AverPawn`,
-`AverPlayerController`, `AverGameMode` and `AverGameInstance` are all abstract lineage anchors — none of
-the five spawns on its own, so a `[AverGameMode]` that leaves `PlayerControllerClass` at its own default,
-`"PlayerController"`, with no subclass of its own gets a controller that refuses to spawn, and possession
-silently never happens. `AverCharacter` is the one exception: as of 0.3.0 it's concrete on its own,
-registered as `"Character"` — a `[AverGameMode]` can set `DefaultPawnClass = "Character"` directly, with
-no C# subclass required. Earlier releases needed a project's own concrete subclass for every base here,
-this one included.
+(`PAWN`, `CONTROLLER`, `GAME_MODE`, …) and which hooks you may override. `AverPlayerController` is the one
+non-abstract base — many games never subclass it and just name `"PlayerController"` as the controller.
 
 
 
@@ -61,10 +55,7 @@ the `OnPossessed`/`OnUnpossessed` hooks.
 
 ### `AverCharacter : AverPawn`
 
-A first/third-person walking character. As of 0.3.0 it's **concrete** — before, it was abstract like
-every other base on this page, and a project had to write its own subclass just to reach the capsule and
-view machinery below. It now registers directly under the name `"Character"`, so that machinery is
-reachable with no C# file at all.
+A first/third-person walking character.
 
 | Member | Description |
 |---|---|
@@ -371,15 +362,8 @@ happened in a `PostPhysics` one.
 | `bool RaycastAny(...)` | Just whether anything is in the way. |
 
 **`Body`** — a handle (`0` invalid): `Handle`, `IsValid`, `Position`, `Rotation`, `Velocity`,
-`SetPosition`, `SetVelocity`, `SetEntity`, `Destroy()`.
-**`RaycastHit`** — `Hit`, `Body`, `Entity`, `Point`, `Normal`.
-
-`Entity` is the scene entity that owns whatever the ray hit, so a raycast no longer stops at *that*
-something was hit — `Raycast` resolves *what*. A body or character carries this stamp automatically when
-it comes from a level placement or the editor; a body a script creates with `AddDynamicBox` or a sibling
-only carries one once the script calls `Body.SetEntity` on it. `Entity.None` (`0`) means the hit is real
-but unclaimed — a landscape heightfield, today — which is not the same thing as a miss, so check `Hit`
-first.
+`SetPosition`, `SetVelocity`, `Destroy()`.
+**`RaycastHit`** — `Hit`, `Body`, `Point`, `Normal`.
 
 > The backend documents **broadphase queries as non-deterministic** (the broad phase is modified from
 > several threads), and callback ordering likewise. Rely on *whether* something was hit and *where* —
@@ -595,7 +579,7 @@ the slot's space into the `TEX` line and the reader validates it, so the two can
 | `TickGroup` | `PrePhysics` (0), `Physics` (1), `PostPhysics` (2) |
 | `PlayState` | `Editor` (0), `Playing` (1), `Paused` (2) |
 | `CameraView` | `FirstPerson`, `ThirdPerson` |
-| `Component` | `Local` (1), `World` (2), `Hierarchy` (3), `Name` (4), `Tags` (5), `MeshRenderer` (6), `Light` (7), `Camera` (8), `SkeletalMesh` (9), `Animator` (10), `ParticleEmitter` (11) |
+| `Component` | `Local` (1), `World` (2), `Hierarchy` (3), `Name` (4), `Tags` (5), `MeshRenderer` (6), `Light` (7), `Camera` (8) |
 
 
 
@@ -672,14 +656,6 @@ public sealed class MyGameMode : AverGameMode
         Log.Info($"{controller.Name} logged in, driving {controller.As<AverPlayerController>()?.Possessed.Name}");
 }
 ```
-
-> `DefaultPawnClass`/`PlayerControllerClass` above set the same native class fields an Aver Node graph
-> sets with a `CLASS <Name> GameMode pawn=<className> controller=<className>` line, and begin-play
-> possesses through the same path either way — C# and graphs are two writers to one mechanism, not two
-> different ones. As of 0.3.0 the graph path actually possesses what it names; before, a graph-only
-> GameMode could declare a pawn and controller and still render from a default camera. The engine now
-> ships a game built entirely that way — **First Person**, five graphs and one map, no `.cs` file
-> anywhere in it.
 
 ### A spawner that scatters pickups and tags them
 

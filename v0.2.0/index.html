@@ -543,7 +543,7 @@ a:focus-visible, .btn:focus-visible{
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
 /* ============================================================
-   Version selector (0.3.0 current -> 0.2.0 archived)
+   Version selector (0.2.0 snapshot -> 0.3.0 latest)
    ============================================================ */
 .vsel{position:relative}
 .vsel summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
@@ -565,6 +565,16 @@ a:focus-visible, .btn:focus-visible{
 .vsel-menu a:hover em{color:var(--orange)}
 .vsel-menu .vsel-cur{color:var(--orange); background:rgba(242,101,34,.09)}
 .vsel-menu .vsel-cur em{color:var(--orange)}
+
+/* Old-version banner */
+.oldver{background:rgba(242,101,34,.09); border-bottom:1px solid rgba(242,101,34,.25)}
+.oldver .wrap{display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+  padding:12px 28px; font-size:14px; color:var(--ink-dim); text-align:center}
+.oldver b{color:var(--orange); font-weight:650}
+.oldver a{display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-weight:620;
+  white-space:nowrap}
+.oldver a svg{width:14px; height:14px}
+.oldver a:hover{color:var(--orange-hi)}
 @media (max-width:520px){
   .vsel summary{padding:9px 10px}
   .vsel summary span.vlabel{display:none}
@@ -661,18 +671,18 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
     </div>
     <div class="navright">
       <details class="vsel">
-        <summary aria-label="Documentation version: 0.3.0 (latest)">
+        <summary aria-label="Documentation version: 0.2.0">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
-          <span class="vlabel">0.3.0</span>
+          <span class="vlabel">0.2.0</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="vsel-menu">
-          <span class="vsel-cur">0.3.0<em>latest</em></span>
-          <a href="v0.2.0/index.html">0.2.0<em>archived</em></a>
+          <span class="vsel-cur">0.2.0<em>&#10003;</em></span>
+          <a href="../index.html">0.3.0<em>latest</em></a>
         </div>
       </details>
       <a class="btn btn-primary" href="index.html#download">
@@ -687,6 +697,15 @@ body.nav-open{overflow:hidden}
   </nav>
 </header>
 
+<div class="oldver">
+  <div class="wrap">
+    <span>You’re viewing the archived <b>0.2.0</b> documentation — it no longer matches the current build.</span>
+    <a href="../index.html">See the latest — 0.3.0
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
 <div class="scrim" id="navScrim" hidden></div>
 <aside class="drawer" id="navDrawer" aria-label="Site menu" aria-hidden="true">
   <div class="drawer-top">
@@ -699,7 +718,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -806,14 +825,6 @@ body.nav-open{overflow:hidden}
         <p>A Core-only mixer — voices, buses, 3D pan and distance attenuation — that fills a buffer you supply,
           with a WASAPI device behind a separate seam. Testable with no sound card in the machine.</p>
       <span class="more">Inside the mixer <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
-
-      <a class="card rv" href="aver-node.html" style="grid-column:1/-1">
-        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="5" rx="1.4"/><rect x="15" y="4" width="6" height="5" rx="1.4"/><rect x="9" y="15" width="6" height="5" rx="1.4"/><path d="M6 9v2a2 2 0 0 0 2 2h1"/><path d="M18 9v2a2 2 0 0 0-2 2h-1"/></svg></div>
-        <h3>Aver Node, gameplay with no C#</h3>
-        <p>A visual, graph-based way to build gameplay — characters, raycasts, game modes and variables,
-          wired instead of written. The engine ships a full example this way: a playable first-person
-          template, five Aver Node graphs, one map, and no C# anywhere.</p>
-      <span class="more">How Aver Node works <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -1053,7 +1064,7 @@ body.nav-open{overflow:hidden}
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>

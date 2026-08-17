@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Physics — Aver Engine docs</title>
-<meta name="description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<title>Voxi, the engine&#x27;s own renderer — Aver Engine</title>
+<meta name="description" content="Aver&#x27;s render module: voxel cone-traced global illumination, inline ray-traced sun shadows and four cascades of shadow map — driving a generic RHI, and naming no backend anywhere in its source.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="build" content="20260809-1524">
+<meta name="build" content="20260809-1523">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Physics — Aver Engine docs">
-<meta property="og:description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<meta property="og:title" content="Voxi, the engine&#x27;s own renderer — Aver Engine">
+<meta property="og:description" content="Aver&#x27;s render module: voxel cone-traced global illumination, inline ray-traced sun shadows and four cascades of shadow map — driving a generic RHI, and naming no backend anywhere in its source.">
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 
 <style>
@@ -541,7 +541,7 @@ a:focus-visible, .btn:focus-visible{
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
 /* ============================================================
-   Version selector (0.3.0 latest -> 0.2.0 snapshot)
+   Version selector (0.2.0 snapshot -> 0.3.0 latest)
    ============================================================ */
 .vsel{position:relative}
 .vsel summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
@@ -563,6 +563,16 @@ a:focus-visible, .btn:focus-visible{
 .vsel-menu a:hover em{color:var(--orange)}
 .vsel-menu .vsel-cur{color:var(--orange); background:rgba(242,101,34,.09)}
 .vsel-menu .vsel-cur em{color:var(--orange)}
+
+/* Old-version banner */
+.oldver{background:rgba(242,101,34,.09); border-bottom:1px solid rgba(242,101,34,.25)}
+.oldver .wrap{display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+  padding:12px 28px; font-size:14px; color:var(--ink-dim); text-align:center}
+.oldver b{color:var(--orange); font-weight:650}
+.oldver a{display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-weight:620;
+  white-space:nowrap}
+.oldver a svg{width:14px; height:14px}
+.oldver a:hover{color:var(--orange-hi)}
 @media (max-width:520px){
   .vsel summary{padding:9px 10px}
   .vsel summary span.vlabel{display:none}
@@ -657,18 +667,18 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html" class="on">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
     </div>
     <div class="navright">
       <details class="vsel">
-        <summary aria-label="Documentation version: 0.3.0 (latest)">
+        <summary aria-label="Documentation version: 0.2.0">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
-          <span class="vlabel">0.3.0</span>
+          <span class="vlabel">0.2.0</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="vsel-menu">
-          <span class="vsel-cur">0.3.0<em>latest</em></span>
-          <a href="v0.2.0/api-physics.html">0.2.0</a>
+          <span class="vsel-cur">0.2.0<em>&#10003;</em></span>
+          <a href="../rendering.html">0.3.0<em>latest</em></a>
         </div>
       </details>
       <a class="btn btn-primary" href="index.html#download">
@@ -683,6 +693,15 @@ body.nav-open{overflow:hidden}
   </nav>
 </header>
 
+<div class="oldver">
+  <div class="wrap">
+    <span>You’re viewing the archived <b>0.2.0</b> documentation — it no longer matches the current build.</span>
+    <a href="../rendering.html">See the latest — 0.3.0
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
 <div class="scrim" id="navScrim" hidden></div>
 <aside class="drawer" id="navDrawer" aria-label="Site menu" aria-hidden="true">
   <div class="drawer-top">
@@ -695,7 +714,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html" class="on"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -705,95 +724,63 @@ body.nav-open{overflow:hidden}
 
 <div class="subhero">
   <div class="wrap">
-    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span>
-      <a href="docs.html">Docs</a> <span>/</span> <span>Physics</span></div>
-    <div class="eyebrow">Aver.Framework</div>
-    <h1>Physics</h1>
-    <p class="lede">Bodies, raycasts and the fixed step, in the engine&#x27;s own units.</p>
+    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span> <span>Renderer</span></div>
+    <div class="eyebrow">Voxi</div>
+    <h1>Voxi, the engine's own renderer</h1>
+    <p class="lede">Aver's render module: voxel cone-traced global illumination, inline ray-traced sun shadows and four cascades of shadow map — driving a generic RHI, and naming no backend anywhere in its source.</p>
+    <div class="stats"><div class="stat"><b>21</b><span>entry points, zero handles</span></div><div class="stat"><b>128³</b><span>GI volume at ~59 FPS</span></div><div class="stat"><b>153</b><span>pixel gates, 9 configurations</span></div></div>
   </div>
 </div>
 
-<section class="docs">
+<section>
   <div class="wrap">
-    <div class="layout docs-layout">
-      <aside class="toc docs-toc">
+    <div class="layout">
+      <aside class="toc">
         <h4>On this page</h4>
-        <div id="tocList"><a class="t2" href="#14-physics">Physics</a></div>
-        <a class="toc-back" href="docs.html">&larr; All documentation</a>
+        <a href="#voxi-is-the-renderer">Voxi is the renderer</a><a href="#it-names-no-backend-anywhere">It names no backend, anywhere</a><a href="#two-targets-and-a-link-line-that-is-the-architec">Two targets, and a link line that is the architecture</a><a href="#voxel-cone-tracing-which-is-the-whole-point">Voxel cone tracing, which is the whole point</a><a href="#ray-traced-sun-shadows-dxr-1-1-or-nothing">Ray-traced sun shadows, DXR 1.1 or nothing</a><a href="#four-cascades-in-one-atlas">Four cascades in one atlas</a><a href="#shading-msaa-and-the-hdr-chain">Shading, MSAA and the HDR chain</a><a href="#sky-clouds-and-fog">Sky, clouds and fog</a><a href="#a-settings-seam-that-refuses-rather-than-pretend">A settings seam that refuses rather than pretends</a>
       </aside>
-      <article class="prose doc-body"><h2 id="14-physics">14. <code>Physics</code><a class="hlink" href="#14-physics" aria-label="Link to this section">#</a></h2>
-<p>Static, in <code>Aver.Framework</code>. Everything is in the engine's contract — centimetres, +X forward,
-+Y right, +Z up, left-handed. The backend (Jolt, MIT) is right-handed, +Y up and metric; that
-translation happens once behind the native ABI, so no Jolt convention ever reaches a script.</p>
-<p>The world is stepped by the frame loop <strong>between the PrePhysics and PostPhysics tick groups</strong>, at a
-<strong>fixed step</strong> regardless of frame rate. So set what you want in a <code>PrePhysics</code> tick and read what
-happened in a <code>PostPhysics</code> one.</p>
-<div class="tablewrap"><div class="scroller"><table>
-<thead>
-<tr>
-<th>Member</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bool Ready</code></td>
-<td>True when the simulation is running (false if physics was compiled out).</td>
-</tr>
-<tr>
-<td><code>float FixedStep</code></td>
-<td>The fixed step in seconds — 1/60 unless the host changed it.</td>
-</tr>
-<tr>
-<td><code>void SetGravity(Vec3)</code></td>
-<td>cm/s². Default <code>(0, 0, -980)</code>: one g, straight down.</td>
-</tr>
-<tr>
-<td><code>int BodyCount</code></td>
-<td>How many bodies exist.</td>
-</tr>
-<tr>
-<td><code>Body AddStaticBox(Vec3 centre, Vec3 halfExtents)</code></td>
-<td>A box that never moves.</td>
-</tr>
-<tr>
-<td><code>Body AddDynamicBox(Vec3 centre, Vec3 halfExtents, float massKg = 0)</code></td>
-<td>Falls and collides; <code>massKg &lt;= 0</code> derives mass from volume.</td>
-</tr>
-<tr>
-<td><code>Body AddDynamicSphere(Vec3 centre, float radius, float massKg = 0)</code></td>
-<td>Likewise.</td>
-</tr>
-<tr>
-<td><code>RaycastHit Raycast(Vec3 origin, Vec3 direction, float maxDistanceCm)</code></td>
-<td>Direction need not be unit length.</td>
-</tr>
-<tr>
-<td><code>bool RaycastAny(...)</code></td>
-<td>Just whether anything is in the way.</td>
-</tr>
-</tbody>
-</table></div></div>
-<p><strong><code>Body</code></strong> — a handle (<code>0</code> invalid): <code>Handle</code>, <code>IsValid</code>, <code>Position</code>, <code>Rotation</code>, <code>Velocity</code>,
-<code>SetPosition</code>, <code>SetVelocity</code>, <code>SetEntity</code>, <code>Destroy()</code>.
-<strong><code>RaycastHit</code></strong> — <code>Hit</code>, <code>Body</code>, <code>Entity</code>, <code>Point</code>, <code>Normal</code>.</p>
-<p><code>Entity</code> is the scene entity that owns whatever the ray hit, so a raycast no longer stops at
-<em>that</em> something was hit — <code>Raycast</code> resolves <em>what</em>. A body or character carries this stamp
-automatically when it comes from a level placement or the editor; a body a script creates with
-<code>AddDynamicBox</code> or a sibling only carries one once the script calls <code>Body.SetEntity</code> on it.
-<code>Entity.None</code> (<code>0</code>) means the hit is real but unclaimed — a landscape heightfield, today — which
-is not the same thing as a miss, so check <code>Hit</code> first.</p>
-<blockquote>
-<p>The backend documents <strong>broadphase queries as non-deterministic</strong> (the broad phase is modified from
-several threads), and callback ordering likewise. Rely on <em>whether</em> something was hit and <em>where</em> —
-never on which of several equidistant bodies comes back.</p>
-</blockquote></article>
+      <div class="prose">
+        <div class="block rv" id="voxi-is-the-renderer"><h2>Voxi is the renderer</h2><p>The thing that draws Aver's world is <code>Aver.Render.Voxi</code>. It sits at tier 5 of the module graph, alongside the UI renderer and the actor preview, and it owns what most engines would call the render pipeline: anti-aliasing, global illumination, ray tracing, the quality ladder that ties them together, and the feature that walks the draw list and turns it into work.</p><p>It was the engine's first pay-for-what-you-use render module, and it still behaves like one. It builds on by default, and the engine builds and runs with <code>-DAVER_MODULE_VOXI=OFF</code> — you get an unshadowed scene with no GI and a status line explaining why, not a broken build.</p><p>The name is the honest one. Voxi voxelises the scene and cone-traces through the result, so the voxel grid isn't an implementation detail buried somewhere — it's the thing the module is named after and the thing most of its settings are about.</p></div><div class="block rv" id="it-names-no-backend-anywhere"><h2>It names no backend, anywhere</h2><p>Voxi drives the generic RHI interface and never mentions Direct3D. Its renderer half links <code>Aver.Core</code>, <code>Aver.RHI</code>, <code>Aver.Render.Voxi</code> and <code>Aver.Render.PBR.Materials</code> — and the architecture doc annotates that line with <b>NEVER RHI.D3D12</b>, the same annotation carried by every other tier-5 feature.</p><p>That's what makes the backend swappable in principle rather than in a comment. D3D12 is the only implementation that exists today; D3D11 and Vulkan compile and return a null device. But nothing in Voxi would need to change to sit on a different one, because nothing in Voxi knows which one it's on. It asks the RHI what the device can do and works with the answer.</p><p>The backend it currently drives owns the device, a DXGI <code>FLIP_DISCARD</code> swap chain with two back buffers, per-buffer fences and window resize. Shaders compile at run time rather than offline: DXC emits DXIL at Shader Model 6.0, stepping to 6.5 for the mesh-shader and inline-RayQuery variants, with an FXC and SM 5.1 fallback that still produces the correct reference image when <code>dxcompiler.dll</code> is missing.</p></div><div class="block rv" id="two-targets-and-a-link-line-that-is-the-architec"><h2>Two targets, and a link line that is the architecture</h2><p>Voxi is split in half, and the split is the same one <code>Render.PBR</code> uses. <code>Aver.Render.Voxi</code> is SHARED and links <code>Aver.Core</code> and nothing else — it holds the settings and the C seam, so a C# graphics-settings panel can bind it without a single RHI type crossing the P/Invoke boundary. <code>Aver.Render.Voxi.Renderer</code> is STATIC, and it's the half that owns GPU resources.</p><p>The renderer half's dependency on <code>Render.PBR.Materials</code> is, as the ABI doc puts it, the architecture written on a link line: <b>Voxi supplies visibility and irradiance and calls the shading model; the material owns the BRDF.</b> The arrow runs that way and never the other.</p><p>Which is also why the top-level build forces <code>AVER_MODULE_VOXI</code> off when <code>AVER_MODULE_PBR</code> is off. Voxi renders materials. Without that guard the failure is a C1083 four includes deep, which reads as a broken include path rather than as an invalid module combination — so the build catches it up front and says so.</p></div><div class="block rv" id="voxel-cone-tracing-which-is-the-whole-point"><h2>Voxel cone tracing, which is the whole point</h2><p>Global illumination works by voxelising the geometry and injecting it into an atomic accumulator by dominant-axis projection. A compute pass resolves that into a 3D radiance volume, another mip-filters it, and the lit pixel shader gathers with six diffuse cones plus ambient occlusion.</p><p>It runs at about 59 FPS with a 128³ volume on the reference GPU. The resolution, the intensity and the reach in centimetres are all exposed on the seam, so a settings panel can tune the volume rather than just switching a preset.</p><p>Two honest limits. It's diffuse only — specular isn't cone traced — and the volume is rebuilt every frame. There's no temporal accumulation and no cached irradiance sitting between frames.</p></div><div class="block rv" id="ray-traced-sun-shadows-dxr-1-1-or-nothing"><h2>Ray-traced sun shadows, DXR 1.1 or nothing</h2><p>Ray tracing in Voxi is <b>inline RayQuery, and only that</b>. Requiring <code>RaytracingTier ≥ 1.1</code> is deliberate: it excludes GPUs that emulate DXR 1.0 without dedicated RT cores, where the feature would technically run and practically be unusable.</p><p>What it traces is exact hard sun shadows, straight from the pixel shader, over a per-mesh BLAS and a per-frame TLAS built from the replayed draw list. With no acceleration structure it falls back to the shadow map rather than failing.</p><p>The device's real tier is readable through the seam — 0 for none, 10 for DXR 1.0, 11 for 1.1 — so a settings panel can grey the option out with a reason instead of offering something that will be refused.</p></div><div class="block rv" id="four-cascades-in-one-atlas"><h2>Four cascades in one atlas</h2><p>The shadow map this replaced was a single 2048² texture fitted to the GI volume rather than the camera view. In one test scene that box was forty-four centimetres across, so the arena had no shadows at all. It's now four cascades, each fitted to a slice of the camera frustum and packed 2×2 into one 4096² depth texture — an atlas rather than a texture array, because the RHI has no array-texture concept. The cost is a clamp so PCF taps can't wander into a neighbouring quadrant.</p><p>Three details carry most of the quality. Cascades are fitted with <b>bounding spheres, not boxes</b>, because a box changes size as the camera rotates and makes shadow edges crawl, while a sphere only translates. That translation is quantised to whole shadow texels to kill sub-texel crawl. And the bias is normal-offset scaled per cascade, since one constant depth bias can't serve cascades whose texel sizes differ by two orders of magnitude.</p><p>The last cascade is unioned with the GI volume, and that's not tidiness. The voxelisation pass samples this same map for every voxel it injects, so a shadowed surface the map doesn't cover will inject sun radiance into the volume and leak light through walls in the bounce. Filtering is 3×3 PCF.</p></div><div class="block rv" id="shading-msaa-and-the-hdr-chain"><h2>Shading, MSAA and the HDR chain</h2><p>There's no deferred G-buffer. Full shading is a single forward pixel shader composed from three HLSL fragments: the RHI's shared prelude, the material system's, and Voxi's own. Cook-Torrance GGX, with per-object metallic and roughness arriving as root constants, sky-hemisphere ambient, a sky environment reflection term, sRGB decode going in and ACES plus gamma coming out.</p><p>MSAA is a genuine runtime setting rather than a build flag — Off, 2×, 4× or 8×, rebuilding both scene render targets and every pipeline state object on the spot. At one sample it uses <code>CopyResource</code> instead of a resolve, because a D3D12 resolve is illegal at 1×. The seam exposes a support mask, so a panel offers only the counts the device will accept.</p><p>The scene renders linear HDR radiance into an RGBA16F target and tonemaps last. Bloom is a half-resolution six-mip pyramid with a Karis-weighted prefilter, a Jimenez 13-tap downsample and a 9-tap tent upsample, added by the fixed-function blender rather than a compute write — which sidesteps a typed-UAV-load hardware dependency. Auto-exposure bins 256 log-luminance buckets at quarter resolution and damps in log space. Every default is the identity, so a feature nobody turned on can't move the oracle.</p></div><div class="block rv" id="sky-clouds-and-fog"><h2>Sky, clouds and fog</h2><p>The default sky is a two-colour authored dome, and <b>that default is load-bearing</b>. The gate baseline records 17 probes across 9 device configurations, and a new sky model would move all of them at once and read as a regression everywhere.</p><p>So the physical model is opt-in, via <code>--sky-physical</code> or the Sky Model combo in the sun-and-sky Details panel. Turn it on and you get single-scattering Rayleigh, Mie and ozone marched through a spherical shell, plus one flat isotropic term standing in for higher-order bounces. Earth defaults in kilometres: 6360 km planet radius, 60 km air depth, 8 km Rayleigh scale height, Mie anisotropy 0.80 through Cornette-Shanks rather than plain Henyey-Greenstein, and an ozone Chappuis-band tent. Transmittance to the sun is solved <b>analytically with the Chapman function</b> instead of marched, landing within 0.125% of a two-million-step numerical integral.</p><p>Only the sky pass marches per pixel. The ambient term, environment reflections, the fog in-scatter target, ground radiance and cloud fill all read a two-colour dome the CPU refits to the current model once per frame — so a physical sky costs nothing extra per surface. Above it sits a single raymarched cloud layer (24 steps, a 3-step light march, Henyey-Greenstein phase, Beer plus a powder term, analytic value noise) and analytic exponential height fog with a closed-form optical depth.</p></div><div class="block rv" id="a-settings-seam-that-refuses-rather-than-pretend"><h2>A settings seam that refuses rather than pretends</h2><p>Voxi's C seam is 21 entry points and <b>the only seam in the engine with no handles at all</b> — a global settings block plus a read-only mirror of what the device reports. Nothing can go stale, so every call is a get or a set with no instance parameter, and the only rejection path is the return value: 1 for accepted, 0 when the request is an unsupported feature or a bad argument.</p><p>Features introspect themselves. You can ask how many there are, what each is called, and what state it's in — Ready, NotImplemented or Unsupported — with the status coming from an actual device capability query rather than a guess. A setting <b>refuses to enable</b> rather than accepting the call and quietly doing nothing, which is the failure mode that wastes an afternoon.</p><p>The quality-laddered features share one scale (Off, Low, Medium, High, Epic), the GI tunables are separate because a preset isn't always enough, and the capability reads — ray-tracing tier, max MSAA, mesh-shader tier, shader model — are what a panel should be built on. Two <code>const char*</code> returns are the only outbound strings on the whole surface.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
-  <div class="wrap"><div class="pager"><a class="pgr prev" href="api-input.html"><span>Previous</span><b>Input and action mappings</b></a><a class="pgr next" href="api-ui.html"><span>Next</span><b>The game&#x27;s HUD</b></a></div></div>
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:44px"><div class="code"><div class="code-bar"><i></i><i></i><i></i><span>voxi_abi.h — ask the device, then set</span></div><pre>/* Feature introspection - what exists, and whether this machine can do it. */
+int32_t     aver_voxi_feature_count(void);
+const char* aver_voxi_feature_name(int32_t feature);
+int32_t     aver_voxi_feature_status(int32_t feature);      /* Ready / NotImplemented / Unsupported */
+const char* aver_voxi_feature_status_text(int32_t feature);
+
+/* Device capabilities, read-only - what the GPU reports, not what was asked for. */
+int32_t aver_voxi_ray_tracing_tier(void);   /* 0 none, 10 DXR 1.0, 11 DXR 1.1 */
+int32_t aver_voxi_mesh_shader_tier(void);   /* 0 none, 1 Tier 1 */
+int32_t aver_voxi_shader_model(void);       /* 60 = SM 6.0, 65 = SM 6.5 */
+int32_t aver_voxi_max_msaa(void);
+int32_t aver_voxi_msaa_mask(void);          /* bit N set =&gt; N samples supported */
+
+/* Settings. A setter returns 0 when it REFUSES - unsupported, or a bad argument. */
+int32_t aver_voxi_set_quality(int32_t feature, int32_t quality);   /* OFF/LOW/MEDIUM/HIGH/EPIC */
+int32_t aver_voxi_set_msaa(int32_t samples);
+int32_t aver_voxi_set_voxel_resolution(int32_t res);
+int32_t aver_voxi_set_gi_intensity(float v);
+int32_t aver_voxi_set_gi_max_distance(float cm);
+int32_t aver_voxi_set_mesh_shaders(int32_t on);</pre></div></div>
+    <div class="rv" style="margin-bottom:44px"><div class="tcap">The register map Voxi binds</div><div class="tablewrap "><div class="scroller"><table><thead><tr><th>Slot</th><th>Bound to</th><th>Notes</th></tr></thead><tbody><tr><td class="mod">t0</td><td>Radiance volume</td><td>Descriptor table 0 — the GI gather source</td></tr><tr><td class="mod">t1</td><td>Shadow map</td><td>The 4096² four-cascade atlas</td></tr><tr><td class="mod">t2</td><td>TLAS</td><td>Per-frame, over the replayed draw list</td></tr><tr><td class="mod">t3–t7</td><td>Base colour, metal-rough, normal, occlusion, emissive</td><td>Descriptor table 1 — owned by the material system</td></tr><tr><td class="mod">t8, t9</td><td>Mesh-shader vertex and index buffers</td><td>Only bound on the mesh-shader path</td></tr><tr><td class="mod">b0</td><td>Engine per-frame constants</td><td>Rebound on every pipeline change</td></tr><tr><td class="mod">b1</td><td>Per-object constants</td><td>32 DWORDs of root constants</td></tr><tr><td class="mod">b2</td><td>Per-material constants</td><td>Owned by Render.PBR.Materials</td></tr><tr><td class="mod">b4</td><td>Voxi per-frame</td><td>Also where the actor preview publishes its camera, so it can't collide with b0</td></tr><tr><td class="mod">b5</td><td>Mesh-shader triangle count</td><td></td></tr><tr><td class="mod">s0</td><td>Linear clamp sampler</td><td></td></tr><tr><td class="mod">s1</td><td>Comparison sampler</td><td>Shadow PCF</td></tr><tr><td class="mod">s2</td><td>Material sampler</td><td>Wrap address, 8× anisotropic</td></tr></tbody></table></div></div></div>
+    <div class="rv"><div class="tcap">At a glance</div><div class="tablewrap facts"><div class="scroller"><table><tbody><tr><td>What Voxi is</td><td>Aver's own render module — AA, GI, ray tracing, the quality ladder, and the feature that drives the RHI</td></tr><tr><td>Backend independence</td><td>Links the generic <code>Aver.RHI</code>; annotated <b>NEVER RHI.D3D12</b>. D3D11 and Vulkan return a null device.</td></tr><tr><td>Target split</td><td><code>Aver.Render.Voxi</code> SHARED, links Core only — <code>.Renderer</code> STATIC, owns GPU resources</td></tr><tr><td>Seam</td><td><code>voxi_abi.h</code>, 21 exports, no handles, no version macro — global settings plus a caps mirror</td></tr><tr><td>Global illumination</td><td>Voxel cone tracing, six diffuse cones plus AO, diffuse only, rebuilt every frame, ~59 FPS at 128³</td></tr><tr><td>Ray tracing</td><td>DXR 1.1 inline RayQuery — exact hard sun shadows; per-mesh BLAS, per-frame TLAS</td></tr><tr><td>Shadows</td><td>4 cascades, 2×2 in one 4096² atlas, bounding-sphere fit, texel quantised, 3×3 PCF</td></tr><tr><td>MSAA</td><td>Runtime switchable Off / 2× / 4× / 8×, with a device support mask on the seam</td></tr><tr><td>HDR chain</td><td>RGBA16F scene target; bloom, 256-bin histogram auto-exposure, ACES tonemap + gamma</td></tr><tr><td>Sky</td><td>Two-colour authored dome by default; physical single scattering behind <code>--sky-physical</code></td></tr><tr><td>Shader compiler</td><td>DXC → DXIL, SM 6.0 baseline, SM 6.5 for mesh shaders and RayQuery; FXC / SM 5.1 fallback</td></tr><tr><td>Reference hardware</td><td>AMD Radeon RX 7800 XT — DXR tier 1.1, mesh-shader tier 1, SM 6.6, MSAA to 8×</td></tr></tbody></table></div></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv" style="margin-bottom:30px">
+      <div class="eyebrow">Keep reading</div>
+      <h2 style="font-size:clamp(24px,3vw,32px)">The rest of the engine.</h2>
+    </div>
+    <div class="nextnav rv"><a class="nextcard" href="architecture.html"><span>Architecture</span><b>Modular by construction</b><em>A strict dependency graph, no universal base object, and a separate C seam for every module.</em></a><a class="nextcard" href="scripting.html"><span>Scripting</span><b>C# that reloads into a running editor</b><em>An in-process CoreCLR host with a collectible load context, two independently versioned contracts, and an exception boundary that disables one misbehaving actor instead of the process.</em></a><a class="nextcard" href="physics.html"><span>Physics</span><b>Jolt, behind a plain-C seam</b><em>Rigid bodies, a swept character controller and broadphase queries.</em></a></div>
+  </div>
 </section>
 
 <footer>
@@ -810,14 +797,14 @@ never on which of several equidistant bodies comes back.</p>
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>
           <a href="index.html#download">Download</a>
           <a href="https://github.com/Vectoric-Core-Systems/Aver-Launcher">Launcher</a>
           <a href="https://github.com/Vectoric-Core-Systems/aver-engine">GitHub</a>
-          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/api-physics.html">Edit this page</a>
+          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/rendering.html">Edit this page</a>
         </div>
       </div>
     </div>
@@ -921,136 +908,5 @@ if ('IntersectionObserver' in window) {
 })();
 
 </script>
-
-<style>
-/* ===================== documentation ===================== */
-.docs-layout{grid-template-columns:250px 1fr; gap:52px}
-.docs-layout > *{min-width:0}
-.docs-toc{top:80px; max-height:calc(100vh - 104px); display:flex; flex-direction:column}
-.docs-toc #tocList{overflow-y:auto; overscroll-behavior:contain; padding-right:6px; margin-right:-6px}
-.docs-toc a{padding:5px 0 5px 13px; font-size:13.5px; line-height:1.45}
-.docs-toc a.t3{padding-left:26px; font-size:13px; opacity:.85}
-.toc-back{display:block; margin-top:16px; padding-top:14px; border-top:1px solid var(--line-soft);
-  border-left:none !important; font-size:13px; color:var(--ink-faint)}
-.toc-back:hover{color:var(--orange)}
-
-.doc-body{max-width:80ch}
-.doc-body h2{font-size:clamp(24px,2.8vw,31px); margin:52px 0 18px; padding-top:22px;
-  border-top:1px solid var(--line-soft); scroll-margin-top:88px}
-.doc-body > h2:first-child{margin-top:0; border-top:none; padding-top:0}
-.doc-body h3{font-size:20px; margin:36px 0 14px; scroll-margin-top:88px; color:var(--ink)}
-.doc-body h4{font-size:16.5px; margin:26px 0 10px; scroll-margin-top:88px}
-.hlink{margin-left:10px; font-family:var(--mono); font-weight:400; color:var(--ink-faint);
-  opacity:0; transition:opacity .15s ease; text-decoration:none; font-size:.8em}
-h2:hover .hlink, h3:hover .hlink, h4:hover .hlink, .hlink:focus-visible{opacity:1}
-.hlink:hover{color:var(--orange)}
-.doc-body ul, .doc-body ol{color:var(--ink-dim); padding-left:22px; margin:0 0 16px}
-.doc-body li{margin-bottom:9px; line-height:1.7}
-.doc-body a{color:var(--orange); text-decoration:underline; text-underline-offset:3px;
-  text-decoration-color:rgba(242,101,34,.4)}
-.doc-body a.hlink{text-decoration:none}
-.doc-body p code, .doc-body li code, .doc-body blockquote code{overflow-wrap:anywhere}
-.doc-body blockquote{margin:22px 0; padding:16px 20px; border-left:3px solid var(--orange);
-  background:rgba(242,101,34,.06); border-radius:0 10px 10px 0}
-.doc-body blockquote p{margin-bottom:10px; color:var(--ink-dim)}
-.doc-body blockquote p:last-child{margin-bottom:0}
-.doc-body pre{background:#0A0C10; border:1px solid var(--line-soft); border-radius:var(--r);
-  padding:18px 20px; overflow-x:auto; margin:0 0 20px; font-family:var(--mono);
-  font-size:13px; line-height:1.75; color:#C6CEDC}
-.doc-body pre code{background:none; border:none; padding:0; font-size:inherit; color:inherit}
-.doc-body .tablewrap{margin:0 0 22px}
-.doc-body table{min-width:520px; font-size:14.5px}
-.doc-body td:first-child{color:var(--ink)}
-.doc-body td code, .doc-body th code{white-space:nowrap}
-.doc-body hr{border:none; border-top:1px solid var(--line-soft); margin:44px 0}
-
-/* pager */
-.pager{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-.pgr{padding:20px 24px; border:1px solid var(--line-soft); border-radius:var(--r);
-  background:var(--bg-card); transition:border-color .2s ease, transform .2s ease}
-.pgr:hover{border-color:#2E3644; transform:translateY(-2px)}
-.pgr span{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--orange); margin-bottom:6px}
-.pgr b{font-size:16px; font-weight:620}
-.pgr.next{text-align:right; grid-column:2}
-.pgr.prev:only-child{grid-column:1}
-
-/* hub */
-.searchbox{position:relative; display:flex; align-items:center; margin-top:30px; max-width:620px}
-.searchbox svg{position:absolute; left:16px; width:18px; height:18px; color:var(--ink-faint)}
-.searchbox kbd{position:absolute; right:14px; font-size:11px}
-#docSearch{width:100%; padding:15px 46px 15px 46px; font-size:16px; color:var(--ink);
-  background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:12px;
-  font-family:var(--sans)}
-#docSearch::placeholder{color:var(--ink-faint)}
-#docSearch:focus{outline:none; border-color:var(--orange); background:rgba(255,255,255,.07)}
-.results{margin-top:12px; max-width:620px; background:var(--bg-card); border:1px solid var(--line);
-  border-radius:12px; overflow:hidden; max-height:60vh; overflow-y:auto}
-.results a{display:block; padding:13px 18px; border-bottom:1px solid var(--line-soft)}
-.results a:last-child{border-bottom:none}
-.results a:hover, .results a.sel{background:rgba(242,101,34,.08)}
-.results .rt{font-size:15px; font-weight:600; color:var(--ink); margin-bottom:3px}
-.results .rs{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--orange); margin-bottom:5px}
-.results .rx{font-size:13.5px; color:var(--ink-faint); line-height:1.55;
-  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
-.results mark{background:rgba(242,101,34,.28); color:var(--ink); border-radius:3px; padding:0 2px}
-.results .none{padding:18px; color:var(--ink-faint); font-size:14px}
-
-.startcard{display:flex; align-items:center; justify-content:space-between; gap:28px;
-  padding:30px 32px; border-radius:18px; border:1px solid rgba(242,101,34,.3);
-  background:linear-gradient(140deg, rgba(242,101,34,.11), rgba(242,101,34,.03) 60%, transparent);
-  transition:border-color .2s ease, transform .2s ease}
-.startcard:hover{border-color:rgba(242,101,34,.55); transform:translateY(-2px)}
-.startcard .area{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.15em;
-  text-transform:uppercase; color:var(--orange); margin-bottom:9px}
-.startcard b{display:block; font-size:23px; font-weight:660; letter-spacing:-.02em; margin-bottom:8px}
-.startcard em{display:block; font-style:normal; color:var(--ink-dim); font-size:15px;
-  line-height:1.6; max-width:62ch}
-.startcard .go{display:inline-flex; align-items:center; gap:8px; flex:none; font-weight:600;
-  color:var(--orange); font-size:15px}
-.startcard .go svg{width:16px; height:16px; transition:transform .2s ease}
-.startcard:hover .go svg{transform:translateX(3px)}
-
-.dcards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-.dcard{display:block; padding:24px 24px 26px; border:1px solid var(--line-soft);
-  border-radius:var(--r); background:var(--bg-card);
-  transition:border-color .2s ease, transform .2s ease, background .2s ease}
-.dcard:hover{border-color:#2E3644; transform:translateY(-3px); background:#171C24}
-.dcard .ic{width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
-  margin-bottom:15px; background:rgba(242,101,34,.11); border:1px solid rgba(242,101,34,.24)}
-.dcard .ic svg{width:18px; height:18px; stroke:var(--orange); fill:none; stroke-width:1.7;
-  stroke-linecap:round; stroke-linejoin:round}
-.dcard .area{display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.13em;
-  text-transform:uppercase; color:var(--ink-faint); margin-bottom:7px}
-.dcard b{display:block; font-size:17px; font-weight:630; margin-bottom:7px; letter-spacing:-.01em}
-.dcard em{display:block; font-style:normal; font-size:14px; color:var(--ink-dim); line-height:1.6}
-
-.dl-md{display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;
-  margin-top:44px; padding:26px 30px; border:1px solid var(--line-soft); border-radius:var(--r);
-  background:var(--bg-raise)}
-.dl-md b{display:block; font-size:17px; font-weight:630; margin-bottom:6px}
-.dl-md em{display:block; font-style:normal; font-size:14.5px; color:var(--ink-dim);
-  line-height:1.6; max-width:58ch}
-.dl-md-actions{display:flex; gap:10px; flex-wrap:wrap}
-
-@media (max-width:1000px){
-  .docs-layout{grid-template-columns:1fr}
-  .docs-toc{position:static; max-height:none; display:block}
-  .docs-toc #tocList{max-height:230px}
-  .docs-toc a, .docs-toc a.t3{display:block; border-left:2px solid var(--line-soft);
-    border-bottom:none; padding-left:13px; margin-right:0}
-  .docs-toc a.t3{padding-left:26px}
-  .dcards{grid-template-columns:repeat(2,1fr)}
-  .pager{grid-template-columns:1fr}
-  .pgr.next{text-align:left; grid-column:1}
-  .startcard{flex-direction:column; align-items:flex-start; gap:18px}
-}
-@media (max-width:640px){
-  .dcards{grid-template-columns:1fr}
-  .doc-body h2{margin-top:40px}
-}
-</style>
-
 </body>
 </html>

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Physics — Aver Engine docs</title>
-<meta name="description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<title>The game&#x27;s HUD — Aver Engine docs</title>
+<meta name="description" content="Screen-space rectangles, bars and clips. No text yet, and the page says why.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta name="build" content="20260809-1524">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Physics — Aver Engine docs">
-<meta property="og:description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<meta property="og:title" content="The game&#x27;s HUD — Aver Engine docs">
+<meta property="og:description" content="Screen-space rectangles, bars and clips. No text yet, and the page says why.">
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 
 <style>
@@ -541,7 +541,7 @@ a:focus-visible, .btn:focus-visible{
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
 /* ============================================================
-   Version selector (0.3.0 latest -> 0.2.0 snapshot)
+   Version selector (0.2.0 snapshot -> 0.3.0 latest)
    ============================================================ */
 .vsel{position:relative}
 .vsel summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
@@ -563,6 +563,16 @@ a:focus-visible, .btn:focus-visible{
 .vsel-menu a:hover em{color:var(--orange)}
 .vsel-menu .vsel-cur{color:var(--orange); background:rgba(242,101,34,.09)}
 .vsel-menu .vsel-cur em{color:var(--orange)}
+
+/* Old-version banner */
+.oldver{background:rgba(242,101,34,.09); border-bottom:1px solid rgba(242,101,34,.25)}
+.oldver .wrap{display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+  padding:12px 28px; font-size:14px; color:var(--ink-dim); text-align:center}
+.oldver b{color:var(--orange); font-weight:650}
+.oldver a{display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-weight:620;
+  white-space:nowrap}
+.oldver a svg{width:14px; height:14px}
+.oldver a:hover{color:var(--orange-hi)}
 @media (max-width:520px){
   .vsel summary{padding:9px 10px}
   .vsel summary span.vlabel{display:none}
@@ -657,18 +667,18 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
     </div>
     <div class="navright">
       <details class="vsel">
-        <summary aria-label="Documentation version: 0.3.0 (latest)">
+        <summary aria-label="Documentation version: 0.2.0">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
-          <span class="vlabel">0.3.0</span>
+          <span class="vlabel">0.2.0</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="vsel-menu">
-          <span class="vsel-cur">0.3.0<em>latest</em></span>
-          <a href="v0.2.0/api-physics.html">0.2.0</a>
+          <span class="vsel-cur">0.2.0<em>&#10003;</em></span>
+          <a href="../api-ui.html">0.3.0<em>latest</em></a>
         </div>
       </details>
       <a class="btn btn-primary" href="index.html#download">
@@ -683,6 +693,15 @@ body.nav-open{overflow:hidden}
   </nav>
 </header>
 
+<div class="oldver">
+  <div class="wrap">
+    <span>You’re viewing the archived <b>0.2.0</b> documentation — it no longer matches the current build.</span>
+    <a href="../api-ui.html">See the latest — 0.3.0
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
 <div class="scrim" id="navScrim" hidden></div>
 <aside class="drawer" id="navDrawer" aria-label="Site menu" aria-hidden="true">
   <div class="drawer-top">
@@ -695,7 +714,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -706,10 +725,10 @@ body.nav-open{overflow:hidden}
 <div class="subhero">
   <div class="wrap">
     <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span>
-      <a href="docs.html">Docs</a> <span>/</span> <span>Physics</span></div>
-    <div class="eyebrow">Aver.Framework</div>
-    <h1>Physics</h1>
-    <p class="lede">Bodies, raycasts and the fixed step, in the engine&#x27;s own units.</p>
+      <a href="docs.html">Docs</a> <span>/</span> <span>The game&#x27;s HUD</span></div>
+    <div class="eyebrow">Aver.UI</div>
+    <h1>The game&#x27;s HUD</h1>
+    <p class="lede">Screen-space rectangles, bars and clips. No text yet, and the page says why.</p>
   </div>
 </div>
 
@@ -718,16 +737,32 @@ body.nav-open{overflow:hidden}
     <div class="layout docs-layout">
       <aside class="toc docs-toc">
         <h4>On this page</h4>
-        <div id="tocList"><a class="t2" href="#14-physics">Physics</a></div>
+        <div id="tocList"><a class="t2" href="#16-averui--the-games-hud">Aver.UI — the game&#x27;s HUD</a></div>
         <a class="toc-back" href="docs.html">&larr; All documentation</a>
       </aside>
-      <article class="prose doc-body"><h2 id="14-physics">14. <code>Physics</code><a class="hlink" href="#14-physics" aria-label="Link to this section">#</a></h2>
-<p>Static, in <code>Aver.Framework</code>. Everything is in the engine's contract — centimetres, +X forward,
-+Y right, +Z up, left-handed. The backend (Jolt, MIT) is right-handed, +Y up and metric; that
-translation happens once behind the native ABI, so no Jolt convention ever reaches a script.</p>
-<p>The world is stepped by the frame loop <strong>between the PrePhysics and PostPhysics tick groups</strong>, at a
-<strong>fixed step</strong> regardless of frame rate. So set what you want in a <code>PrePhysics</code> tick and read what
-happened in a <code>PostPhysics</code> one.</p>
+      <article class="prose doc-body"><h2 id="16-averui--the-games-hud">16. <code>Aver.UI</code> — the game's HUD<a class="hlink" href="#16-averui--the-games-hud" aria-label="Link to this section">#</a></h2>
+<p>Namespace <code>Aver.UI</code>, in the assembly of the same name (<code>scripting/csharp/Aver.UI/Hud.cs</code>). It references
+nothing else — a HUD is drawn in screen coordinates and knows nothing about entities or the world — and
+P/Invokes the native <code>Aver.UI.Abi</code> (<code>modules/ui.abi/include/aver/ui/ui_abi.h</code>), which is the seam that
+exists so a HUD can be authored in the game's language rather than in engine C++.</p>
+<p><strong>Screen pixels, top-left origin, +Y down.</strong> Not the world's centimetres and not normalised coordinates:
+a UI is authored against a resolution, and every layout number a designer types is a pixel.</p>
+<p>Three rules carry most of the design:</p>
+<ul>
+<li><strong>You draw from a tick; the HOST owns the frame.</strong> The host clears the list once per frame <em>before</em>
+  anything ticks and submits it after (<code>aver_ui_begin_frame</code> and <code>submitGameUi</code> in
+  <code>sandbox/src/SandboxApp.cpp</code>). There is deliberately no <code>Begin</code> for a game to call: a game that
+  cleared the list would erase whatever another system had contributed, and the last one to run would
+  win with nothing anywhere to say so. One consequence to expect — gameplay ticks only while <code>Playing</code>,
+  so a HUD drawn from <code>OnTick</code> is absent in EDITOR, which is correct rather than a bug to chase.</li>
+<li><strong>Anchor to <code>Hud.Viewport</code>, never to the window.</strong> In the editor the game is drawn into a dockspace
+  panel and the two rectangles differ; a HUD laid out against the window sits partly under the editor's
+  own chrome. In a shipped build they are the same rectangle and nothing changes.</li>
+<li><strong>There is no text.</strong> Nothing in the engine can rasterise a glyph, so there is no <code>Hud.Text</code> to call.
+  A HUD today is rectangles, bars and tinted quads. There is no widget tree above the draw list either:
+  a HUD is laid out by the code that draws it.</li>
+</ul>
+<p><strong><code>Hud</code></strong> — static, and the whole drawing surface:</p>
 <div class="tablewrap"><div class="scroller"><table>
 <thead>
 <tr>
@@ -737,63 +772,97 @@ happened in a <code>PostPhysics</code> one.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>bool Ready</code></td>
-<td>True when the simulation is running (false if physics was compiled out).</td>
+<td><code>Rect Viewport</code></td>
+<td>The rectangle this frame's UI is laid out against, in backbuffer pixels.</td>
 </tr>
 <tr>
-<td><code>float FixedStep</code></td>
-<td>The fixed step in seconds — 1/60 unless the host changed it.</td>
+<td><code>Layer CurrentLayer</code></td>
+<td>The band subsequent draws land in. <strong>Reset to <code>Layer.Content</code> at the start of every frame</strong>, so set it in each frame that wants another band. An out-of-range value is ignored, not clamped — clamping would move a widget to a band its author did not choose and nothing would notice.</td>
 </tr>
 <tr>
-<td><code>void SetGravity(Vec3)</code></td>
-<td>cm/s². Default <code>(0, 0, -980)</code>: one g, straight down.</td>
+<td><code>void Box(Rect r, Colour c)</code> / <code>void Box(float x, float y, float w, float h, Colour c)</code></td>
+<td>A solid rectangle.</td>
 </tr>
 <tr>
-<td><code>int BodyCount</code></td>
-<td>How many bodies exist.</td>
+<td><code>void Frame(Rect r, float thickness, Colour border, Colour fill)</code></td>
+<td>A border drawn <strong>inside</strong> the bounds: a frame that grew its own bounds would not fit the layout that positioned it, and every caller would subtract the thickness back off by hand.</td>
 </tr>
 <tr>
-<td><code>Body AddStaticBox(Vec3 centre, Vec3 halfExtents)</code></td>
-<td>A box that never moves.</td>
+<td><code>void Bar(Rect r, float fraction, Colour border, Colour empty, Colour full)</code></td>
+<td>A 1px-framed bar filled left to right; <code>fraction</code> is clamped to 0..1.</td>
 </tr>
 <tr>
-<td><code>Body AddDynamicBox(Vec3 centre, Vec3 halfExtents, float massKg = 0)</code></td>
-<td>Falls and collides; <code>massKg &lt;= 0</code> derives mass from volume.</td>
+<td><code>void Image(Rect r, ulong texture, Colour tint, float u0 = 0, float v0 = 0, float u1 = 1, float v1 = 1)</code></td>
+<td>A textured quad.</td>
 </tr>
 <tr>
-<td><code>Body AddDynamicSphere(Vec3 centre, float radius, float massKg = 0)</code></td>
-<td>Likewise.</td>
+<td><code>void PushClip(Rect r)</code> / <code>void PopClip()</code></td>
+<td>Nested clips <strong>intersect</strong>, so a child can never escape its parent by pushing a larger rectangle. That is containment by construction, not a promise each element keeps.</td>
 </tr>
 <tr>
-<td><code>RaycastHit Raycast(Vec3 origin, Vec3 direction, float maxDistanceCm)</code></td>
-<td>Direction need not be unit length.</td>
-</tr>
-<tr>
-<td><code>bool RaycastAny(...)</code></td>
-<td>Just whether anything is in the way.</td>
+<td><code>int DrawCallCount</code></td>
+<td>Draw calls this frame's UI will cost — the whole list, so it includes anything the host contributed. For a debug readout, not for logic.</td>
 </tr>
 </tbody>
 </table></div></div>
-<p><strong><code>Body</code></strong> — a handle (<code>0</code> invalid): <code>Handle</code>, <code>IsValid</code>, <code>Position</code>, <code>Rotation</code>, <code>Velocity</code>,
-<code>SetPosition</code>, <code>SetVelocity</code>, <code>SetEntity</code>, <code>Destroy()</code>.
-<strong><code>RaycastHit</code></strong> — <code>Hit</code>, <code>Body</code>, <code>Entity</code>, <code>Point</code>, <code>Normal</code>.</p>
-<p><code>Entity</code> is the scene entity that owns whatever the ray hit, so a raycast no longer stops at
-<em>that</em> something was hit — <code>Raycast</code> resolves <em>what</em>. A body or character carries this stamp
-automatically when it comes from a level placement or the editor; a body a script creates with
-<code>AddDynamicBox</code> or a sibling only carries one once the script calls <code>Body.SetEntity</code> on it.
-<code>Entity.None</code> (<code>0</code>) means the hit is real but unclaimed — a landscape heightfield, today — which
-is not the same thing as a miss, so check <code>Hit</code> first.</p>
-<blockquote>
-<p>The backend documents <strong>broadphase queries as non-deterministic</strong> (the broad phase is modified from
-several threads), and callback ordering likewise. Rely on <em>whether</em> something was hit and <em>where</em> —
-never on which of several equidistant bodies comes back.</p>
-</blockquote></article>
+<p><code>Image</code>'s <code>texture</code> is <code>0</code> for the built-in white texel, or a value the renderer recognises. <strong>There is
+no managed way to obtain one of those values yet</strong>, so in practice a game passes <code>0</code> and tints; a
+texture bound this way must also be premultiplied, because the colour is.</p>
+<p><strong><code>Layer</code></strong> — <code>Background</code> (0), <code>Content</code> (1, the default), <code>Overlay</code> (2), <code>Tooltip</code> (3), <code>Debug</code> (4).
+Coarse and named on purpose: a widget picks the band it belongs in rather than a depth number that would
+make every z decision global, so adding a tooltip does not mean auditing every other widget. Order
+<em>within</em> a layer is the order you drew in.</p>
+<p><strong><code>Colour</code></strong> — <code>Colour.Rgb(232, 228, 220)</code> (opaque unless a fourth byte is given), <code>Colour.Argb(0xFFE8E4DC)</code>,
+<code>WithAlpha(float)</code> (clamped 0..1), <code>Colour.Lerp(from, to, t)</code>. Alpha is <strong>straight</strong>: the
+premultiplication the renderer needs happens on the native side, and the packing the vertex actually
+holds is internal precisely so a game never carries it around.</p>
+<p><strong><code>Rect</code></strong> — a <code>readonly record struct (float X, float Y, float Width, float Height)</code> with <code>Right</code>,
+<code>Bottom</code>, <code>Inset(by)</code> (negative grows), and:</p>
+<pre><code class="language-csharp">Rect.Anchored(Rect container, float ax, float ay, float w, float h,
+              float offsetX = 0f, float offsetY = 0f)
+</code></pre>
+<p>Anchoring rather than absolute placement, because a HUD outlives the resolution it was authored at: an
+element pinned to the bottom-right by subtraction walks off-screen the moment the window is smaller than
+the number that was subtracted.</p>
+<pre><code class="language-csharp">using Aver.Framework;
+using Aver.UI;
+
+[AverClass(&quot;BP_PlayerHud&quot;)]
+public sealed class PlayerHud : AverActor
+{
+    // PostPhysics: draw what the frame settled on, not what it was asked for.
+    public static void Configure(ClassBuilder b) =&gt; b.Ticks(TickGroup.PostPhysics);
+
+    static readonly Colour Ink   = Colour.Argb(0xFFE8E4DC);
+    static readonly Colour Panel = Colour.Argb(0xB0141820);   // 69% alpha — proves the blend
+    static readonly Colour Hurt  = Colour.Rgb(232, 76, 46);
+
+    [Editable(Min = 0f, Max = 1f)] public float Health = 1f;
+
+    public override void OnTick(float dt)
+    {
+        Rect vp = Hud.Viewport;                       // NOT the window
+        Rect bar = Rect.Anchored(vp, 0f, 1f, 260f, 18f, offsetX: 24f, offsetY: -24f);
+
+        Hud.PushClip(vp);                             // nothing escapes into the editor's chrome
+        Hud.Box(bar.Inset(-6f), Panel);               // Layer.Content — the default, every frame
+        Hud.Bar(bar, Health, Ink, Panel, Colour.Lerp(Hurt, Ink, Health));
+        Hud.PopClip();
+
+        if (Health &lt;= 0f)                             // a full-screen wash, over the HUD
+        {
+            Hud.CurrentLayer = Layer.Overlay;         // set per frame; it does not persist
+            Hud.Box(vp, Hurt.WithAlpha(0.35f));
+        }
+    }
+}
+</code></pre></article>
     </div>
   </div>
 </section>
 
 <section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
-  <div class="wrap"><div class="pager"><a class="pgr prev" href="api-input.html"><span>Previous</span><b>Input and action mappings</b></a><a class="pgr next" href="api-ui.html"><span>Next</span><b>The game&#x27;s HUD</b></a></div></div>
+  <div class="wrap"><div class="pager"><a class="pgr prev" href="api-physics.html"><span>Previous</span><b>Physics</b></a><a class="pgr next" href="api-materials.html"><span>Next</span><b>Materials authored in C#</b></a></div></div>
 </section>
 
 <footer>
@@ -810,14 +879,14 @@ never on which of several equidistant bodies comes back.</p>
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>
           <a href="index.html#download">Download</a>
           <a href="https://github.com/Vectoric-Core-Systems/Aver-Launcher">Launcher</a>
           <a href="https://github.com/Vectoric-Core-Systems/aver-engine">GitHub</a>
-          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/api-physics.html">Edit this page</a>
+          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/api-ui.html">Edit this page</a>
         </div>
       </div>
     </div>

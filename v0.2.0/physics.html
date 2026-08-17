@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Physics — Aver Engine docs</title>
-<meta name="description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<title>Jolt, behind a plain-C seam — Aver Engine</title>
+<meta name="description" content="Rigid bodies, a swept character controller and broadphase queries — wrapped completely enough that nothing above the seam has ever seen a third-party type.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="build" content="20260809-1524">
+<meta name="build" content="20260809-1523">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Physics — Aver Engine docs">
-<meta property="og:description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<meta property="og:title" content="Jolt, behind a plain-C seam — Aver Engine">
+<meta property="og:description" content="Rigid bodies, a swept character controller and broadphase queries — wrapped completely enough that nothing above the seam has ever seen a third-party type.">
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 
 <style>
@@ -541,7 +541,7 @@ a:focus-visible, .btn:focus-visible{
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
 /* ============================================================
-   Version selector (0.3.0 latest -> 0.2.0 snapshot)
+   Version selector (0.2.0 snapshot -> 0.3.0 latest)
    ============================================================ */
 .vsel{position:relative}
 .vsel summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
@@ -563,6 +563,16 @@ a:focus-visible, .btn:focus-visible{
 .vsel-menu a:hover em{color:var(--orange)}
 .vsel-menu .vsel-cur{color:var(--orange); background:rgba(242,101,34,.09)}
 .vsel-menu .vsel-cur em{color:var(--orange)}
+
+/* Old-version banner */
+.oldver{background:rgba(242,101,34,.09); border-bottom:1px solid rgba(242,101,34,.25)}
+.oldver .wrap{display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+  padding:12px 28px; font-size:14px; color:var(--ink-dim); text-align:center}
+.oldver b{color:var(--orange); font-weight:650}
+.oldver a{display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-weight:620;
+  white-space:nowrap}
+.oldver a svg{width:14px; height:14px}
+.oldver a:hover{color:var(--orange-hi)}
 @media (max-width:520px){
   .vsel summary{padding:9px 10px}
   .vsel summary span.vlabel{display:none}
@@ -657,18 +667,18 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html" class="on">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
     </div>
     <div class="navright">
       <details class="vsel">
-        <summary aria-label="Documentation version: 0.3.0 (latest)">
+        <summary aria-label="Documentation version: 0.2.0">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
-          <span class="vlabel">0.3.0</span>
+          <span class="vlabel">0.2.0</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="vsel-menu">
-          <span class="vsel-cur">0.3.0<em>latest</em></span>
-          <a href="v0.2.0/api-physics.html">0.2.0</a>
+          <span class="vsel-cur">0.2.0<em>&#10003;</em></span>
+          <a href="../physics.html">0.3.0<em>latest</em></a>
         </div>
       </details>
       <a class="btn btn-primary" href="index.html#download">
@@ -683,6 +693,15 @@ body.nav-open{overflow:hidden}
   </nav>
 </header>
 
+<div class="oldver">
+  <div class="wrap">
+    <span>You’re viewing the archived <b>0.2.0</b> documentation — it no longer matches the current build.</span>
+    <a href="../physics.html">See the latest — 0.3.0
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
 <div class="scrim" id="navScrim" hidden></div>
 <aside class="drawer" id="navDrawer" aria-label="Site menu" aria-hidden="true">
   <div class="drawer-top">
@@ -695,7 +714,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html" class="on"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -705,95 +724,60 @@ body.nav-open{overflow:hidden}
 
 <div class="subhero">
   <div class="wrap">
-    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span>
-      <a href="docs.html">Docs</a> <span>/</span> <span>Physics</span></div>
-    <div class="eyebrow">Aver.Framework</div>
-    <h1>Physics</h1>
-    <p class="lede">Bodies, raycasts and the fixed step, in the engine&#x27;s own units.</p>
+    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span> <span>Physics</span></div>
+    <div class="eyebrow">Physics</div>
+    <h1>Jolt, behind a plain-C seam</h1>
+    <p class="lede">Rigid bodies, a swept character controller and broadphase queries — wrapped completely enough that nothing above the seam has ever seen a third-party type.</p>
+    <div class="stats"><div class="stat"><b>36</b><span>C entry points</span></div><div class="stat"><b>29</b><span>bound in C#</span></div><div class="stat"><b>42</b><span>assertions, 0 failed</span></div></div>
   </div>
 </div>
 
-<section class="docs">
+<section>
   <div class="wrap">
-    <div class="layout docs-layout">
-      <aside class="toc docs-toc">
+    <div class="layout">
+      <aside class="toc">
         <h4>On this page</h4>
-        <div id="tocList"><a class="t2" href="#14-physics">Physics</a></div>
-        <a class="toc-back" href="docs.html">&larr; All documentation</a>
+        <a href="#vendored-and-linked-private-on-purpose">Vendored, and linked private on purpose</a><a href="#a-fixed-step-whatever-the-frame-rate">A fixed step, whatever the frame rate</a><a href="#the-character-controller">The character controller</a><a href="#events-are-polled-never-called-back">Events are polled, never called back</a><a href="#what-the-c-side-can-and-can-t-reach">What the C# side can and can't reach</a>
       </aside>
-      <article class="prose doc-body"><h2 id="14-physics">14. <code>Physics</code><a class="hlink" href="#14-physics" aria-label="Link to this section">#</a></h2>
-<p>Static, in <code>Aver.Framework</code>. Everything is in the engine's contract — centimetres, +X forward,
-+Y right, +Z up, left-handed. The backend (Jolt, MIT) is right-handed, +Y up and metric; that
-translation happens once behind the native ABI, so no Jolt convention ever reaches a script.</p>
-<p>The world is stepped by the frame loop <strong>between the PrePhysics and PostPhysics tick groups</strong>, at a
-<strong>fixed step</strong> regardless of frame rate. So set what you want in a <code>PrePhysics</code> tick and read what
-happened in a <code>PostPhysics</code> one.</p>
-<div class="tablewrap"><div class="scroller"><table>
-<thead>
-<tr>
-<th>Member</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bool Ready</code></td>
-<td>True when the simulation is running (false if physics was compiled out).</td>
-</tr>
-<tr>
-<td><code>float FixedStep</code></td>
-<td>The fixed step in seconds — 1/60 unless the host changed it.</td>
-</tr>
-<tr>
-<td><code>void SetGravity(Vec3)</code></td>
-<td>cm/s². Default <code>(0, 0, -980)</code>: one g, straight down.</td>
-</tr>
-<tr>
-<td><code>int BodyCount</code></td>
-<td>How many bodies exist.</td>
-</tr>
-<tr>
-<td><code>Body AddStaticBox(Vec3 centre, Vec3 halfExtents)</code></td>
-<td>A box that never moves.</td>
-</tr>
-<tr>
-<td><code>Body AddDynamicBox(Vec3 centre, Vec3 halfExtents, float massKg = 0)</code></td>
-<td>Falls and collides; <code>massKg &lt;= 0</code> derives mass from volume.</td>
-</tr>
-<tr>
-<td><code>Body AddDynamicSphere(Vec3 centre, float radius, float massKg = 0)</code></td>
-<td>Likewise.</td>
-</tr>
-<tr>
-<td><code>RaycastHit Raycast(Vec3 origin, Vec3 direction, float maxDistanceCm)</code></td>
-<td>Direction need not be unit length.</td>
-</tr>
-<tr>
-<td><code>bool RaycastAny(...)</code></td>
-<td>Just whether anything is in the way.</td>
-</tr>
-</tbody>
-</table></div></div>
-<p><strong><code>Body</code></strong> — a handle (<code>0</code> invalid): <code>Handle</code>, <code>IsValid</code>, <code>Position</code>, <code>Rotation</code>, <code>Velocity</code>,
-<code>SetPosition</code>, <code>SetVelocity</code>, <code>SetEntity</code>, <code>Destroy()</code>.
-<strong><code>RaycastHit</code></strong> — <code>Hit</code>, <code>Body</code>, <code>Entity</code>, <code>Point</code>, <code>Normal</code>.</p>
-<p><code>Entity</code> is the scene entity that owns whatever the ray hit, so a raycast no longer stops at
-<em>that</em> something was hit — <code>Raycast</code> resolves <em>what</em>. A body or character carries this stamp
-automatically when it comes from a level placement or the editor; a body a script creates with
-<code>AddDynamicBox</code> or a sibling only carries one once the script calls <code>Body.SetEntity</code> on it.
-<code>Entity.None</code> (<code>0</code>) means the hit is real but unclaimed — a landscape heightfield, today — which
-is not the same thing as a miss, so check <code>Hit</code> first.</p>
-<blockquote>
-<p>The backend documents <strong>broadphase queries as non-deterministic</strong> (the broad phase is modified from
-several threads), and callback ordering likewise. Rely on <em>whether</em> something was hit and <em>where</em> —
-never on which of several equidistant bodies comes back.</p>
-</blockquote></article>
+      <div class="prose">
+        <div class="block rv" id="vendored-and-linked-private-on-purpose"><h2>Vendored, and linked private on purpose</h2><p>The backend is Jolt Physics 5.6.0, MIT-licensed, vendored at <code>modules/physics.jolt/</code> and linked <b>PRIVATE</b> into the <code>Aver.Physics</code> shared library. That link keyword is the entire design. Nothing above can include a <code>JPH::</code> header by accident, which keeps swapping the backend a decision local to one module rather than a refactor across the tree.</p><p>You get static boxes, triangle meshes and heightfields; dynamic boxes and spheres; convex hulls (which take a flag for whether they're dynamic); and box and sphere sensors for triggers. Bodies and characters draw from one shared handle counter starting at 1 — zero is always invalid, and handles are never reissued, so a stale lookup misses rather than aliasing whatever took the slot.</p><p>Jolt works in metres with a different up-axis. Aver is centimetres, +Z up, left-handed. The translation happens once, behind the boundary, and no caller ever sees a metre or a +Y-up vector. Gravity is in cm/s² and defaults to <code>(0, 0, -980)</code>.</p></div><div class="block rv" id="a-fixed-step-whatever-the-frame-rate"><h2>A fixed step, whatever the frame rate</h2><p>The simulation runs at a fixed step regardless of what you pass to <code>step</code>. Jolt's determinism guarantee is stated in terms of the same calls in the same order, and a step that follows the frame rate makes the result a function of machine speed. Leftover time is carried forward and a long stall is clamped, so hitting a breakpoint doesn't fire a hundred catch-up steps when you resume.</p><p><code>aver_phys_step</code> returns how many fixed steps actually ran, which is what you want if you're accumulating anything alongside the simulation.</p><p>Set the step before any body exists. Changing it mid-session changes the meaning of every tuned velocity in the project. Ticks are grouped <code>PrePhysics</code>, <code>Physics</code>, <code>PostPhysics</code>, and the convention follows from that: set intent — movement, forces — in a PrePhysics tick, and read what the simulation settled on in a PostPhysics one.</p></div><div class="block rv" id="the-character-controller"><h2>The character controller</h2><p><code>aver_phys_character_create(radius, height, x, y, z)</code> and its family wrap Jolt's <code>CharacterVirtual</code>, which is swept and resolved each step rather than force-simulated. That's what gives a walking character controlled movement instead of a capsule that skids and bounces off level geometry.</p><p>Height is the <b>total</b> capsule height including both caps, so a 180 cm character passes 180. The velocity you set is what the character wants: horizontal comes from input, vertical is left to the simulation unless you override it — which is how a jump gets expressed.</p><p>In C# this surfaces as <code>AverCharacter : AverPawn</code>, a first- or third-person walking pawn with sensible defaults already dialled in. Move speed 350 cm/s, mouse look at 0.2 degrees of yaw per pixel, a 180 × 34 cm capsule, 160 cm eye height, a 450 cm camera boom, and a jump speed of 465 cm/s — about 110 cm of height. <code>IsGrounded</code> is true while you're on ground shallow enough to hold, and <code>IsSimulated</code> tells you whether the physics world is backing the character or it's translating directly.</p></div><div class="block rv" id="events-are-polled-never-called-back"><h2>Events are polled, never called back</h2><p>Jolt invokes its contact listener from several worker threads during the step, in an order it documents as non-deterministic. Calling managed code from there would mean marshalling into the CLR from threads it has never seen, mid-simulation, with gameplay then free to mutate the world being stepped.</p><p>So contacts and overlaps get buffered into two vectors behind a single mutex, cleared at the start of each step and drained afterwards. What you drain describes the step that just ran, on the main thread, in a fixed order. Those queues are the one piece of genuinely cross-thread state in any of the engine's eight seams, and that mutex is doing real work — worth knowing before anyone concludes the locks are dead weight.</p><p>Broadphase queries — raycast, sphere overlap, sphere cast — are documented as non-deterministic in <i>which</i> of several equidistant bodies comes back. Assert that a hit exists and where it is; don't assert which body won a tie.</p></div><div class="block rv" id="what-the-c-side-can-and-can-t-reach"><h2>What the C# side can and can't reach</h2><p>29 of the 36 entry points are bound in <code>Aver.Framework/Physics.cs</code>. The unbound ones split cleanly: <code>aver_phys_init</code>, <code>_shutdown</code>, <code>_step</code> and <code>_set_fixed_step</code> are lifecycle, and the native application owns those — a script shouldn't be stepping the world.</p><p>The other three are worth knowing about, because they're a real limitation rather than a design line. <code>_add_convex_hull</code>, <code>_add_mesh</code> and <code>_add_heightfield</code> are unbound, which means a script can't build a hull, mesh or heightfield collider today. Primitives and characters, yes. Bulk geometry, not from C#.</p><p>The seam itself is 36 entry points using only <code>int32_t</code>, <code>float</code> and pointer types. One thing to note: unlike the scene and framework seams it carries no ABI version macro and no version entry point, so it can't self-report staleness to a caller.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
-  <div class="wrap"><div class="pager"><a class="pgr prev" href="api-input.html"><span>Previous</span><b>Input and action mappings</b></a><a class="pgr next" href="api-ui.html"><span>Next</span><b>The game&#x27;s HUD</b></a></div></div>
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:44px"><div class="code"><div class="code-bar"><i></i><i></i><i></i><span>C# — a character driven by input, ticking before physics</span></div><pre>[AverClass(&quot;BP_Hero&quot;)]
+public sealed class Hero : AverCharacter
+{
+    public static void Configure(ClassBuilder b)
+    {
+        b.Mesh(&quot;Meshes/hero.ocmesh&quot;);
+        b.Ticks(TickGroup.PrePhysics);        // set intent before the step
+    }
+
+    public override void OnTick(float dt)
+    {
+        DriveWithInput(dt);                   // WASD walks, mouse turns
+        if (Input.GetKeyDown(Key.V))
+            CameraViewMode = CameraViewMode == CameraView.ThirdPerson
+                ? CameraView.FirstPerson : CameraView.ThirdPerson;
+    }
+}</pre></div></div>
+    <div class="rv" style="margin-bottom:44px"><div class="tcap">What the seam exposes</div><div class="tablewrap "><div class="scroller"><table><thead><tr><th>Area</th><th>Coverage</th></tr></thead><tbody><tr><td>World</td><td>Init, ready-check, shutdown, step, fixed-step get and set, gravity</td></tr><tr><td>Static bodies</td><td>Box, triangle mesh, heightfield</td></tr><tr><td>Dynamic bodies</td><td>Box, sphere, convex hull — mass in kilograms</td></tr><tr><td>Sensors</td><td>Box and sphere triggers, reported through the overlap queue</td></tr><tr><td>Character</td><td>Create, destroy, set and get velocity, grounded state, position</td></tr><tr><td>Transforms</td><td>Read and write position, rotation and linear velocity per body</td></tr><tr><td>Queries</td><td>Raycast, sphere cast, sphere overlap</td></tr><tr><td>Events</td><td>Contact count and get, overlap count and get — polled after each step</td></tr></tbody></table></div></div></div>
+    <div class="rv"><div class="tcap">At a glance</div><div class="tablewrap facts"><div class="scroller"><table><tbody><tr><td>Backend</td><td>Jolt Physics 5.6.0 (MIT), vendored at <code>modules/physics.jolt/</code></td></tr><tr><td>Isolation</td><td>Linked PRIVATE — no <code>JPH::</code> type reaches any caller</td></tr><tr><td>Seam</td><td><code>physics_abi.h</code>, 36 exports, POD types only, no version macro</td></tr><tr><td>Handles</td><td>One shared <code>int32_t</code> counter from 1; 0 invalid, never reissued</td></tr><tr><td>Timestep</td><td>Fixed and delta-independent; leftover carried, long stalls clamped</td></tr><tr><td>Gravity</td><td><code>(0, 0, -980)</code> cm/s² by default</td></tr><tr><td>Character</td><td>Jolt <code>CharacterVirtual</code> — swept and resolved, not force-simulated</td></tr><tr><td>Character defaults</td><td>350 cm/s move, 465 cm/s jump, 180 × 34 cm capsule, 160 cm eye, 450 cm boom</td></tr><tr><td>Tick groups</td><td>PrePhysics → Physics → PostPhysics</td></tr><tr><td>Events</td><td>Two vectors behind one mutex, drained at the start of each step</td></tr><tr><td>Query determinism</td><td>Hit existence and position are stable; the winner among equidistant ties is not</td></tr><tr><td>Tests</td><td><code>PhysicsTest</code> — 42 assertions, 0 failed, touching 21 of 36 entry points</td></tr></tbody></table></div></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rv" style="margin-bottom:30px">
+      <div class="eyebrow">Keep reading</div>
+      <h2 style="font-size:clamp(24px,3vw,32px)">The rest of the engine.</h2>
+    </div>
+    <div class="nextnav rv"><a class="nextcard" href="architecture.html"><span>Architecture</span><b>Modular by construction</b><em>A strict dependency graph, no universal base object, and a separate C seam for every module.</em></a><a class="nextcard" href="rendering.html"><span>Voxi</span><b>Voxi, the engine's own renderer</b><em>Aver's render module: voxel cone-traced global illumination, inline ray-traced sun shadows and four cascades of shadow map.</em></a><a class="nextcard" href="scripting.html"><span>Scripting</span><b>C# that reloads into a running editor</b><em>An in-process CoreCLR host with a collectible load context, two independently versioned contracts, and an exception boundary that disables one misbehaving actor instead of the process.</em></a></div>
+  </div>
 </section>
 
 <footer>
@@ -810,14 +794,14 @@ never on which of several equidistant bodies comes back.</p>
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>
           <a href="index.html#download">Download</a>
           <a href="https://github.com/Vectoric-Core-Systems/Aver-Launcher">Launcher</a>
           <a href="https://github.com/Vectoric-Core-Systems/aver-engine">GitHub</a>
-          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/api-physics.html">Edit this page</a>
+          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/physics.html">Edit this page</a>
         </div>
       </div>
     </div>
@@ -921,136 +905,5 @@ if ('IntersectionObserver' in window) {
 })();
 
 </script>
-
-<style>
-/* ===================== documentation ===================== */
-.docs-layout{grid-template-columns:250px 1fr; gap:52px}
-.docs-layout > *{min-width:0}
-.docs-toc{top:80px; max-height:calc(100vh - 104px); display:flex; flex-direction:column}
-.docs-toc #tocList{overflow-y:auto; overscroll-behavior:contain; padding-right:6px; margin-right:-6px}
-.docs-toc a{padding:5px 0 5px 13px; font-size:13.5px; line-height:1.45}
-.docs-toc a.t3{padding-left:26px; font-size:13px; opacity:.85}
-.toc-back{display:block; margin-top:16px; padding-top:14px; border-top:1px solid var(--line-soft);
-  border-left:none !important; font-size:13px; color:var(--ink-faint)}
-.toc-back:hover{color:var(--orange)}
-
-.doc-body{max-width:80ch}
-.doc-body h2{font-size:clamp(24px,2.8vw,31px); margin:52px 0 18px; padding-top:22px;
-  border-top:1px solid var(--line-soft); scroll-margin-top:88px}
-.doc-body > h2:first-child{margin-top:0; border-top:none; padding-top:0}
-.doc-body h3{font-size:20px; margin:36px 0 14px; scroll-margin-top:88px; color:var(--ink)}
-.doc-body h4{font-size:16.5px; margin:26px 0 10px; scroll-margin-top:88px}
-.hlink{margin-left:10px; font-family:var(--mono); font-weight:400; color:var(--ink-faint);
-  opacity:0; transition:opacity .15s ease; text-decoration:none; font-size:.8em}
-h2:hover .hlink, h3:hover .hlink, h4:hover .hlink, .hlink:focus-visible{opacity:1}
-.hlink:hover{color:var(--orange)}
-.doc-body ul, .doc-body ol{color:var(--ink-dim); padding-left:22px; margin:0 0 16px}
-.doc-body li{margin-bottom:9px; line-height:1.7}
-.doc-body a{color:var(--orange); text-decoration:underline; text-underline-offset:3px;
-  text-decoration-color:rgba(242,101,34,.4)}
-.doc-body a.hlink{text-decoration:none}
-.doc-body p code, .doc-body li code, .doc-body blockquote code{overflow-wrap:anywhere}
-.doc-body blockquote{margin:22px 0; padding:16px 20px; border-left:3px solid var(--orange);
-  background:rgba(242,101,34,.06); border-radius:0 10px 10px 0}
-.doc-body blockquote p{margin-bottom:10px; color:var(--ink-dim)}
-.doc-body blockquote p:last-child{margin-bottom:0}
-.doc-body pre{background:#0A0C10; border:1px solid var(--line-soft); border-radius:var(--r);
-  padding:18px 20px; overflow-x:auto; margin:0 0 20px; font-family:var(--mono);
-  font-size:13px; line-height:1.75; color:#C6CEDC}
-.doc-body pre code{background:none; border:none; padding:0; font-size:inherit; color:inherit}
-.doc-body .tablewrap{margin:0 0 22px}
-.doc-body table{min-width:520px; font-size:14.5px}
-.doc-body td:first-child{color:var(--ink)}
-.doc-body td code, .doc-body th code{white-space:nowrap}
-.doc-body hr{border:none; border-top:1px solid var(--line-soft); margin:44px 0}
-
-/* pager */
-.pager{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-.pgr{padding:20px 24px; border:1px solid var(--line-soft); border-radius:var(--r);
-  background:var(--bg-card); transition:border-color .2s ease, transform .2s ease}
-.pgr:hover{border-color:#2E3644; transform:translateY(-2px)}
-.pgr span{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--orange); margin-bottom:6px}
-.pgr b{font-size:16px; font-weight:620}
-.pgr.next{text-align:right; grid-column:2}
-.pgr.prev:only-child{grid-column:1}
-
-/* hub */
-.searchbox{position:relative; display:flex; align-items:center; margin-top:30px; max-width:620px}
-.searchbox svg{position:absolute; left:16px; width:18px; height:18px; color:var(--ink-faint)}
-.searchbox kbd{position:absolute; right:14px; font-size:11px}
-#docSearch{width:100%; padding:15px 46px 15px 46px; font-size:16px; color:var(--ink);
-  background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:12px;
-  font-family:var(--sans)}
-#docSearch::placeholder{color:var(--ink-faint)}
-#docSearch:focus{outline:none; border-color:var(--orange); background:rgba(255,255,255,.07)}
-.results{margin-top:12px; max-width:620px; background:var(--bg-card); border:1px solid var(--line);
-  border-radius:12px; overflow:hidden; max-height:60vh; overflow-y:auto}
-.results a{display:block; padding:13px 18px; border-bottom:1px solid var(--line-soft)}
-.results a:last-child{border-bottom:none}
-.results a:hover, .results a.sel{background:rgba(242,101,34,.08)}
-.results .rt{font-size:15px; font-weight:600; color:var(--ink); margin-bottom:3px}
-.results .rs{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--orange); margin-bottom:5px}
-.results .rx{font-size:13.5px; color:var(--ink-faint); line-height:1.55;
-  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
-.results mark{background:rgba(242,101,34,.28); color:var(--ink); border-radius:3px; padding:0 2px}
-.results .none{padding:18px; color:var(--ink-faint); font-size:14px}
-
-.startcard{display:flex; align-items:center; justify-content:space-between; gap:28px;
-  padding:30px 32px; border-radius:18px; border:1px solid rgba(242,101,34,.3);
-  background:linear-gradient(140deg, rgba(242,101,34,.11), rgba(242,101,34,.03) 60%, transparent);
-  transition:border-color .2s ease, transform .2s ease}
-.startcard:hover{border-color:rgba(242,101,34,.55); transform:translateY(-2px)}
-.startcard .area{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.15em;
-  text-transform:uppercase; color:var(--orange); margin-bottom:9px}
-.startcard b{display:block; font-size:23px; font-weight:660; letter-spacing:-.02em; margin-bottom:8px}
-.startcard em{display:block; font-style:normal; color:var(--ink-dim); font-size:15px;
-  line-height:1.6; max-width:62ch}
-.startcard .go{display:inline-flex; align-items:center; gap:8px; flex:none; font-weight:600;
-  color:var(--orange); font-size:15px}
-.startcard .go svg{width:16px; height:16px; transition:transform .2s ease}
-.startcard:hover .go svg{transform:translateX(3px)}
-
-.dcards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-.dcard{display:block; padding:24px 24px 26px; border:1px solid var(--line-soft);
-  border-radius:var(--r); background:var(--bg-card);
-  transition:border-color .2s ease, transform .2s ease, background .2s ease}
-.dcard:hover{border-color:#2E3644; transform:translateY(-3px); background:#171C24}
-.dcard .ic{width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
-  margin-bottom:15px; background:rgba(242,101,34,.11); border:1px solid rgba(242,101,34,.24)}
-.dcard .ic svg{width:18px; height:18px; stroke:var(--orange); fill:none; stroke-width:1.7;
-  stroke-linecap:round; stroke-linejoin:round}
-.dcard .area{display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.13em;
-  text-transform:uppercase; color:var(--ink-faint); margin-bottom:7px}
-.dcard b{display:block; font-size:17px; font-weight:630; margin-bottom:7px; letter-spacing:-.01em}
-.dcard em{display:block; font-style:normal; font-size:14px; color:var(--ink-dim); line-height:1.6}
-
-.dl-md{display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;
-  margin-top:44px; padding:26px 30px; border:1px solid var(--line-soft); border-radius:var(--r);
-  background:var(--bg-raise)}
-.dl-md b{display:block; font-size:17px; font-weight:630; margin-bottom:6px}
-.dl-md em{display:block; font-style:normal; font-size:14.5px; color:var(--ink-dim);
-  line-height:1.6; max-width:58ch}
-.dl-md-actions{display:flex; gap:10px; flex-wrap:wrap}
-
-@media (max-width:1000px){
-  .docs-layout{grid-template-columns:1fr}
-  .docs-toc{position:static; max-height:none; display:block}
-  .docs-toc #tocList{max-height:230px}
-  .docs-toc a, .docs-toc a.t3{display:block; border-left:2px solid var(--line-soft);
-    border-bottom:none; padding-left:13px; margin-right:0}
-  .docs-toc a.t3{padding-left:26px}
-  .dcards{grid-template-columns:repeat(2,1fr)}
-  .pager{grid-template-columns:1fr}
-  .pgr.next{text-align:left; grid-column:1}
-  .startcard{flex-direction:column; align-items:flex-start; gap:18px}
-}
-@media (max-width:640px){
-  .dcards{grid-template-columns:1fr}
-  .doc-body h2{margin-top:40px}
-}
-</style>
-
 </body>
 </html>

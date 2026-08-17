@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Physics — Aver Engine docs</title>
-<meta name="description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<title>Documentation — Aver Engine</title>
+<meta name="description" content="The Aver Engine C# scripting API: actors, the play lifecycle, Entity, input, physics, the HUD and materials authored in C#.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta name="build" content="20260809-1524">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Physics — Aver Engine docs">
-<meta property="og:description" content="Bodies, raycasts and the fixed step, in the engine&#x27;s own units.">
+<meta property="og:title" content="Documentation — Aver Engine">
+<meta property="og:description" content="The Aver Engine C# scripting API: actors, the play lifecycle, Entity, input, physics, the HUD and materials authored in C#.">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAABgCAMAAABIS46CAAAA9lBMVEVHcEwQDg1VKAoIBgYBAQELCgkbGRYAAAAHBwcBAQEHBgUKCQgDAgEBAQECAgEEBAQDAgICAgIEAwMCAgIjHR0EAgK5kkj/dR////8mJiYAAAD9/f0nJyf8/PwXFxcpKSkCAgL9dB7+/v77+/v/dh8NDAv/fCEFBATExMQbGxvh4eHk5OQfHx+IiIgqKipISEgjIyP/eSDucB/2cx/19fXmbR7r6+smEgXKXxnLy8u9vb1ubm5kZGQ4ODgxMTBZWVmioqJAQEB7e3vc3Nw9HQiYmJiwUxZPT0+QkJCzs7PW1tabSRNGRkbR0dGIQBGsrKxtMw7/hSMKbdgkAAAAF3RSTlMAIP5kijgP/QKSeFD34+6ku9GxxwHaA1z9hUYAAAj4SURBVGjerZppW+LMEobdZuI6o46+dppsBANEQlhEHGURVEQclDn//8+cqupOQjAJ6JgPXopwp1NP1VO9sLa24rW9vbb23+bO5nfx65deCPy+e8Q5P939Yv4Jwta3Dvj1n7drzn9sreNrJ1/Ehh/fjvf541O+WGz+Af7+z2/4PCdfEpL/9g4ta+N3o3iWz58XL5FvHe79e4Ao3JtHvPT3d7GYz5/BBfzzp0eLW6eb6//Cp9BSuN+uig3BJv5ZsfH0qHB+sPXtswKIcP/8AVI259khf0P5tAD4xNt7hwpICZGIs4mfLzZ+I790uLf9wQAF4Qb2ZfPq8vz87P2VzzeKwAcBjj5SYSK7dw94CdPkPH95lcX/6yjcOtgigU9WDPfOD+5AmlC4z88z+VfE399ZQQCR3cc8nibL+G/XwIcKOMnki3D/gnD/uYxLmck/LzYF/yjDgoJw843ENDnPN6+aqXwoYCUQ4H0F0CsYbr4BVXmWT4AI/lkS/4z4j8j/8b4CSMq9YwXZjUY+kR3y88n8MzII4CuiAk4Ww43sYjp7Ob8h+DyqgBMK9ynnykboVJn8s3Q+FbClQImd7q7L8aOZELuxnB0kUDofCriEfCHA+s99cKPV2ZLfbF6m8LGAgQ8DPl5f2wEdnKf/FS9XZofjTy+Aq7cSBIhvre3AY1hh2X+I30zko7owesQDncNDcLSsr+DnRetCIqexc6XeR7y1Ws4sJug8n1wB2y5ctbFiAd1SxvZsSq9sPDVS6jSbLwpYOhpF4u6WPSslok8ZY+U7B1/GVvQ5PiXjX4IYnVfG7Kqk1+yCzdjLvUH8P3nwsI/yry6xkEoIUKsVxnItFtJZjuk6Y+1nH/99vei/yy4ySSllb9BiTM+xQowOtwN+azAk/ltzdb4wYGKXxhMAYSDe0SFUwGe3dyXOF6cwWexQSqeL4dZtYr2ny/+9dFCA678r8GXjRrZ3fyGHnUpnFDNWqao4lmV8qkohZX/UQiIrtLLpgQA9jGOWQQg/R7RVm+SIfTEavkhWKh0CVEABatIgEgtY9CIR7ht4YvhEuesb3sNyuhRgMrVgYGJqndBHSUr3/gFQOcwG11U1fyndFn8hv9wFxazHBYOI2P3ntgj3ZOy6mqmp5sXysedEWuHPh3tvwSAi9nRWIHZrMDWAraqa6i+h26z9IlNHCNwe9XkwgSJ2k9LbuSsLgdqjoeHBsFWk9yvMzsxIVjW6kxYGyJb8wqxGBgEFHLCNzouQslLtBWyIuutl023WGnquO6y+RAIzKQAYhGBrVQx3AePWN+q+ZJueMRwE9ZRM19mta5rwRrV7G4zDFgK4wL8OjKoA93ztmCHb1FyjNmix7FrNsa6B+piq5zyjZFGFtUdgoaXhxBZ633TrhmqGbHc80XFwWfQcuxDvV1Xf7URvFvwyt5w2ZpSt395582wPmpG4aRZdZ884dIqjO2b2fJ4W9DKkygV0ghyr1A3NlOFWjXq3HGeneCRqKgev1XvtGF5nSK/Am+EJfU3koA+3oUanx0smiU6aqsFVf4mVWYxuqhqNwPDvIbty76wkiS41FZdpTOYDn0DX6v3qRRI7kU6fUiP68zK6Vw6qOhienU6f05TonSWR0bwbXZ831lzW2O1CqCkG1avFHjmRHt2fdL1opzpBXFOMaixpMunI1ssdM703RZpK5/Be4/6WSrepWdZcQ03tHpjFQS7KwM/mZU2lCzb5sJlKDzWt9+4o/L5RXYFOFvQMPowFlt497MKUoJArM7qNaXSXRiaHU4FqX3i8Vk+lo6aaCEj5lX6jpLGXjB1mt37gwxm9Kcc6NGLNGxYqfl17lzRJ9NeXjhZ5vGmoKRkJvuerQbSll8XyOdFnxuqCD+vJvUlnI0OmDMxQuq75LmkS6KqnLvpwcq2Gmrp3+C8pa3UJPWjX8Aidm3kfjtNDTTW3zFq2TBq3mxl3WdN+gg/H6YGmcOF09kbGfViI8Ml0ZPerD4s+HKOjpnU5Fpw3tPoiafxKNh2nGT2c7um5DH8vgKaBgcEHprOpHHw5CnxSzsAUZjTHtvVEfw80DeY90it9YxDNOpJ605QWYfacByfQC6zsavPuqAUN5D5r7FSr8+zcbVI1FQJNtSCBJR3SM7dSb0J2Gzw4yd+ZKH2cZaiGNt+e5pJmib+373uGm7g6YCPXl5OMG1hDRPzI9DLoYhrYQ7+J/F0P6FO7MHY8WDpoEAixRjGDbHajpMnw98qCv2PuR2NvXYzGHtzbndCSE9YpMoNMSBr9I/6O9YFsWLPQ/oyl9HBiDC237/Ratk1JAHxtMWlW8HcN/B2H99qBCbfcueIqzqiwfw2CHshyz6KBQKyyVH197YKBhXN4Q2vTWq7uekYJd662OAc+banQNDUohgeRRB48mL2Kv6MH0zwb5t6u5+CmG99d+757yvHX0vjWnisNu90jp1G1h2imtszfbzCksC4S7APc0ha7tJZihXsrYnIzlqG5DQKf5e84zwYPhnJyDWDD+ucX7tbKHeafCj2ARvtC+lyX9Y1RFj3y9wvWGg2BXUK2crgX7GSHu+NWIACUXjC5mUuaFH8HS+3DGhCnNIZBm6iLu+TBzj4JgNLAMnfi+GYsaWL0OXYP2k0FUt5wOIVb7PAnn0qUQIDhDGCVrodL/2h9856u+dAKBjlatmK4Lc7TTifwpRM8UcF3TSe4JYKWYNZfwylynI7jrs2odAwRbi5OVrazToP2KUB97DlgOV7oBXE6mBL0PCodw6FwLz2WCw8OkU9bL5OxX02iQ+mMZ1Q6jmAf7KxyohWcwlkgAG0btVoJqj6YHSod13GUrHCnniCSAFZtEq5zIzpUMhjTYAohEeHe/MhJojz9DASQFRzSaTUwGq4a7lQBRIXVaVGqSzo6OnQLpyQqZ+dzJ7jb8jDHggA5WMFyn4C6hUMnD/JoZvvzp9p7v4hPFor09sO9KdDWr3/86oI87RcW15vdWtzp1i0LpbSO9/791F8IEFicRecZQbi/4hsFMYsT7IPd9S/8tkV4zk3nO0df/k0RFOAEv26hHH/4DH51gbc+Fu7/A1s1O2xY/8EOAAAAAElFTkSuQmCC">
 
 <style>
@@ -541,7 +541,7 @@ a:focus-visible, .btn:focus-visible{
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
 /* ============================================================
-   Version selector (0.3.0 latest -> 0.2.0 snapshot)
+   Version selector (0.2.0 snapshot -> 0.3.0 latest)
    ============================================================ */
 .vsel{position:relative}
 .vsel summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
@@ -563,6 +563,16 @@ a:focus-visible, .btn:focus-visible{
 .vsel-menu a:hover em{color:var(--orange)}
 .vsel-menu .vsel-cur{color:var(--orange); background:rgba(242,101,34,.09)}
 .vsel-menu .vsel-cur em{color:var(--orange)}
+
+/* Old-version banner */
+.oldver{background:rgba(242,101,34,.09); border-bottom:1px solid rgba(242,101,34,.25)}
+.oldver .wrap{display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+  padding:12px 28px; font-size:14px; color:var(--ink-dim); text-align:center}
+.oldver b{color:var(--orange); font-weight:650}
+.oldver a{display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-weight:620;
+  white-space:nowrap}
+.oldver a svg{width:14px; height:14px}
+.oldver a:hover{color:var(--orange-hi)}
 @media (max-width:520px){
   .vsel summary{padding:9px 10px}
   .vsel summary span.vlabel{display:none}
@@ -657,18 +667,18 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
     </div>
     <div class="navright">
       <details class="vsel">
-        <summary aria-label="Documentation version: 0.3.0 (latest)">
+        <summary aria-label="Documentation version: 0.2.0">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
-          <span class="vlabel">0.3.0</span>
+          <span class="vlabel">0.2.0</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="vsel-menu">
-          <span class="vsel-cur">0.3.0<em>latest</em></span>
-          <a href="v0.2.0/api-physics.html">0.2.0</a>
+          <span class="vsel-cur">0.2.0<em>&#10003;</em></span>
+          <a href="../docs.html">0.3.0<em>latest</em></a>
         </div>
       </details>
       <a class="btn btn-primary" href="index.html#download">
@@ -683,6 +693,15 @@ body.nav-open{overflow:hidden}
   </nav>
 </header>
 
+<div class="oldver">
+  <div class="wrap">
+    <span>You’re viewing the archived <b>0.2.0</b> documentation — it no longer matches the current build.</span>
+    <a href="../docs.html">See the latest — 0.3.0
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
 <div class="scrim" id="navScrim" hidden></div>
 <aside class="drawer" id="navDrawer" aria-label="Site menu" aria-hidden="true">
   <div class="drawer-top">
@@ -695,7 +714,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -705,95 +724,113 @@ body.nav-open{overflow:hidden}
 
 <div class="subhero">
   <div class="wrap">
-    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span>
-      <a href="docs.html">Docs</a> <span>/</span> <span>Physics</span></div>
-    <div class="eyebrow">Aver.Framework</div>
-    <h1>Physics</h1>
-    <p class="lede">Bodies, raycasts and the fixed step, in the engine&#x27;s own units.</p>
+    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span> <span>Docs</span></div>
+    <div class="eyebrow">Documentation</div>
+    <h1>Everything you can write against</h1>
+    <p class="lede">The C# scripting API, split by area. Start with the guide if this is
+      your first project, or search across every page below.</p>
+
+    <div class="stats">
+      <div class="stat"><b>92.4k</b><span>lines of engine C++, 9.1k of C#</span></div>
+      <div class="stat"><b>18.4k</b><span>lines of documentation behind it</span></div>
+      <div class="stat"><b>15</b><span>switches — compile in only what you use</span></div>
+    </div>
+
+    <div class="searchbox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="docSearch" type="search" placeholder="Search the documentation&hellip;"
+             autocomplete="off" spellcheck="false" aria-label="Search the documentation">
+      <kbd>/</kbd>
+    </div>
+    <div id="results" class="results" hidden></div>
   </div>
 </div>
 
-<section class="docs">
+<section>
   <div class="wrap">
-    <div class="layout docs-layout">
-      <aside class="toc docs-toc">
-        <h4>On this page</h4>
-        <div id="tocList"><a class="t2" href="#14-physics">Physics</a></div>
-        <a class="toc-back" href="docs.html">&larr; All documentation</a>
-      </aside>
-      <article class="prose doc-body"><h2 id="14-physics">14. <code>Physics</code><a class="hlink" href="#14-physics" aria-label="Link to this section">#</a></h2>
-<p>Static, in <code>Aver.Framework</code>. Everything is in the engine's contract — centimetres, +X forward,
-+Y right, +Z up, left-handed. The backend (Jolt, MIT) is right-handed, +Y up and metric; that
-translation happens once behind the native ABI, so no Jolt convention ever reaches a script.</p>
-<p>The world is stepped by the frame loop <strong>between the PrePhysics and PostPhysics tick groups</strong>, at a
-<strong>fixed step</strong> regardless of frame rate. So set what you want in a <code>PrePhysics</code> tick and read what
-happened in a <code>PostPhysics</code> one.</p>
-<div class="tablewrap"><div class="scroller"><table>
-<thead>
-<tr>
-<th>Member</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bool Ready</code></td>
-<td>True when the simulation is running (false if physics was compiled out).</td>
-</tr>
-<tr>
-<td><code>float FixedStep</code></td>
-<td>The fixed step in seconds — 1/60 unless the host changed it.</td>
-</tr>
-<tr>
-<td><code>void SetGravity(Vec3)</code></td>
-<td>cm/s². Default <code>(0, 0, -980)</code>: one g, straight down.</td>
-</tr>
-<tr>
-<td><code>int BodyCount</code></td>
-<td>How many bodies exist.</td>
-</tr>
-<tr>
-<td><code>Body AddStaticBox(Vec3 centre, Vec3 halfExtents)</code></td>
-<td>A box that never moves.</td>
-</tr>
-<tr>
-<td><code>Body AddDynamicBox(Vec3 centre, Vec3 halfExtents, float massKg = 0)</code></td>
-<td>Falls and collides; <code>massKg &lt;= 0</code> derives mass from volume.</td>
-</tr>
-<tr>
-<td><code>Body AddDynamicSphere(Vec3 centre, float radius, float massKg = 0)</code></td>
-<td>Likewise.</td>
-</tr>
-<tr>
-<td><code>RaycastHit Raycast(Vec3 origin, Vec3 direction, float maxDistanceCm)</code></td>
-<td>Direction need not be unit length.</td>
-</tr>
-<tr>
-<td><code>bool RaycastAny(...)</code></td>
-<td>Just whether anything is in the way.</td>
-</tr>
-</tbody>
-</table></div></div>
-<p><strong><code>Body</code></strong> — a handle (<code>0</code> invalid): <code>Handle</code>, <code>IsValid</code>, <code>Position</code>, <code>Rotation</code>, <code>Velocity</code>,
-<code>SetPosition</code>, <code>SetVelocity</code>, <code>SetEntity</code>, <code>Destroy()</code>.
-<strong><code>RaycastHit</code></strong> — <code>Hit</code>, <code>Body</code>, <code>Entity</code>, <code>Point</code>, <code>Normal</code>.</p>
-<p><code>Entity</code> is the scene entity that owns whatever the ray hit, so a raycast no longer stops at
-<em>that</em> something was hit — <code>Raycast</code> resolves <em>what</em>. A body or character carries this stamp
-automatically when it comes from a level placement or the editor; a body a script creates with
-<code>AddDynamicBox</code> or a sibling only carries one once the script calls <code>Body.SetEntity</code> on it.
-<code>Entity.None</code> (<code>0</code>) means the hit is real but unclaimed — a landscape heightfield, today — which
-is not the same thing as a miss, so check <code>Hit</code> first.</p>
-<blockquote>
-<p>The backend documents <strong>broadphase queries as non-deterministic</strong> (the broad phase is modified from
-several threads), and callback ordering likewise. Rely on <em>whether</em> something was hit and <em>where</em> —
-never on which of several equidistant bodies comes back.</p>
-</blockquote></article>
+    <a class="startcard rv" href="guide.html">
+      <div>
+        <span class="area">Start here</span>
+        <b>Your first project, start to finish</b>
+        <em>Install the launcher, scaffold a project, write an actor, compile it, press Play,
+          then give it a material and a HUD. No prior engine experience assumed.</em>
+      </div>
+      <span class="go">Open the guide
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <div class="sec-head rv" style="margin:56px 0 26px">
+      <div class="eyebrow">Reference</div>
+      <h2 style="font-size:clamp(24px,3vw,32px)">By area.</h2>
+    </div>
+    <div class="dcards rv"><a class="dcard" href="api-actors.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg></div>
+  <span class="area">Aver.Framework</span>
+  <b>Actors, pawns and characters</b>
+  <em>The class hierarchy you derive from, and what each base type adds.</em>
+</a><a class="dcard" href="api-lifecycle.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 0-10-10"/><path d="M12 6v6l4 2"/></svg></div>
+  <span class="area">Aver.Framework</span>
+  <b>The play lifecycle</b>
+  <em>What Play and Stop actually do, in order, and the hooks that fire.</em>
+</a><a class="dcard" href="api-entity.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-5 9 5v10l-9 5-9-5Z"/><path d="M3 7l9 5 9-5"/><path d="M12 12v10"/></svg></div>
+  <span class="area">Aver.Scene</span>
+  <b>Entity and the world</b>
+  <em>The 32-bit handle to a thing in the world: transform, hierarchy, components, tags.</em>
+</a><a class="dcard" href="api-session.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><path d="M9 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+  <span class="area">Aver.Framework</span>
+  <b>Session, spawning and possession</b>
+  <em>Reading the running session, spawning classes at runtime, and driving a pawn.</em>
+</a><a class="dcard" href="api-input.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H4z"/><path d="M8 20h8"/><path d="M12 16v4"/></svg></div>
+  <span class="area">Aver.Framework</span>
+  <b>Input and action mappings</b>
+  <em>Polled device input, and the layer above it that names what the player is doing.</em>
+</a><a class="dcard" href="api-physics.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M12 3v18"/><path d="M3.6 8h16.8"/><path d="M3.6 16h16.8"/></svg></div>
+  <span class="area">Aver.Framework</span>
+  <b>Physics</b>
+  <em>Bodies, raycasts and the fixed step, in the engine&#x27;s own units.</em>
+</a><a class="dcard" href="api-ui.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3z"/><path d="M3 9h18"/><path d="M8 9v11"/></svg></div>
+  <span class="area">Aver.UI</span>
+  <b>The game&#x27;s HUD</b>
+  <em>Screen-space rectangles, bars and clips. No text yet, and the page says why.</em>
+</a><a class="dcard" href="api-materials.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 3 3 0 0 0 0-6 2 2 0 0 1 0-4h2a6 6 0 0 0 0-10Z"/><path d="M8 8h.01"/><path d="M15 7h.01"/></svg></div>
+  <span class="area">Aver.Materials</span>
+  <b>Materials authored in C#</b>
+  <em>A surface is a class; the .ocmat next to it is build output.</em>
+</a><a class="dcard" href="api-reference.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h10"/></svg></div>
+  <span class="area">Aver.Framework</span>
+  <b>Attributes, enums and builders</b>
+  <em>The small surfaces: what you can annotate, every enum value, and the two builders.</em>
+</a><a class="dcard" href="api-examples.html">
+  <div class="ic"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></div>
+  <span class="area">Reference</span>
+  <b>Worked examples and limits</b>
+  <em>Complete classes that compile, and an honest list of what a script still cannot reach.</em>
+</a></div>
+
+    <div class="dl-md rv">
+      <div>
+        <b>The whole reference as one file</b>
+        <em>Every page above, consolidated into a single Markdown document — for reading
+          offline, grepping, or feeding to a tool.</em>
+      </div>
+      <div class="dl-md-actions">
+        <a class="btn btn-primary" href="aver-csharp-api.md" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          Download .md
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/Vectoric-Core-Systems/aver-engine/blob/main/aver-csharp-api.md">View on GitHub</a>
+      </div>
     </div>
   </div>
-</section>
-
-<section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
-  <div class="wrap"><div class="pager"><a class="pgr prev" href="api-input.html"><span>Previous</span><b>Input and action mappings</b></a><a class="pgr next" href="api-ui.html"><span>Next</span><b>The game&#x27;s HUD</b></a></div></div>
 </section>
 
 <footer>
@@ -810,14 +847,14 @@ never on which of several equidistant bodies comes back.</p>
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>
           <a href="index.html#download">Download</a>
           <a href="https://github.com/Vectoric-Core-Systems/Aver-Launcher">Launcher</a>
           <a href="https://github.com/Vectoric-Core-Systems/aver-engine">GitHub</a>
-          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/api-physics.html">Edit this page</a>
+          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/docs.html">Edit this page</a>
         </div>
       </div>
     </div>
@@ -1051,6 +1088,81 @@ h2:hover .hlink, h3:hover .hlink, h4:hover .hlink, .hlink:focus-visible{opacity:
   .doc-body h2{margin-top:40px}
 }
 </style>
+
+<script>
+/* Search across every documentation page. The index is built at build time
+   from the same HTML the pages ship, so it can never describe a page that
+   is not there. */
+(function(){
+  var IDX = [{"p":"api-actors.html","a":"2-the-class-hierarchy","t":"2. The class hierarchy","s":"Actors, pawns and characters","x":"2. The class hierarchy # AverActor the root: a thing in the world with a transform and a lifecycle \u251c\u2500\u2500 AverPawn an actor that can be POSSESSED by a controller \u2502 \u2514\u2500\u2500 AverCharacter a first/third-person walking pawn (WASD + mouse) \u251c\u2500\u2500 AverPlayerController the will that drives a pawn (possession control) \u251c\u2500\u2500 AverGameMode the rules of a play session (names its pawn + controller) \u2514\u2500\u2500 AverGameInstance process-lifetime state that spans levels The base type you derive is how the compiler decides which capability flag the class gets ( PAWN , CONTROLLER , GAME_MODE , \u2026) and which hooks you may override. AverPlayerController is the one non-abstract base \u2014 many games never subclass it and just name \"PlayerController\" as the controller."},{"p":"api-actors.html","a":"5-actors-pawns-characters-controllers-gamemode","t":"5. Actors, Pawns, Characters, Controllers, GameMode","s":"Actors, pawns and characters","x":"5. Actors, Pawns, Characters, Controllers, GameMode #"},{"p":"api-actors.html","a":"averactor","t":"AverActor","s":"Actors, pawns and characters","x":"AverActor # The root type. Every actor has public Entity Self { get; } \u2014 its entity handle (you read it, never assign it). See Spawning for the Spawn / Destroy members."},{"p":"api-actors.html","a":"averpawn--averactor","t":"AverPawn : AverActor","s":"Actors, pawns and characters","x":"AverPawn : AverActor # Adds possession. public Entity Controller , public T? ControllerAs<T>() , public bool IsPossessed , and the OnPossessed / OnUnpossessed hooks."},{"p":"api-actors.html","a":"avercharacter--averpawn","t":"AverCharacter : AverPawn","s":"Actors, pawns and characters","x":"AverCharacter : AverPawn # A first/third-person walking character. Member Description public float MoveSpeed Ground move speed, cm/s (default 350). public float TurnSpeed Mouse-look sensitivity, degrees of yaw per pixel (default 0.2). public CameraView CameraViewMode FirstPerson or ThirdPerson (default third). public float EyeHeight First-person eye height, cm (default 160). public float BoomLength Third-person camera distance behind, cm (default 450). public float Yaw { get; } The character's facing yaw, degrees (read-only; turned by DriveWithInput , set by SetYaw ). public float Height / public float Radius Capsule size, cm (default 180 / 34). Set before the first tick. public float JumpSpeed Upward speed a jump starts with, cm/s (default 465 \u2014 about 110 cm of height). public bool IsSimulated True when backed by the physics world rather than translating directly. public bool IsGrounded True while standing on ground shallow enough to hold. public Vec3 Velocity Current velocity, cm/s. The vertical component is the simulation's. public bool Jump() Jump if grounded; returns false when airborne rather than swallowing it. public void Teleport(Vec3 feet) Move the character and its capsule. Setting the transform alone leaves the capsule behind. protected void DriveWithInput(float dt) One frame of WASD-walk + mouse-turn control; call from OnTick while possessed. Reads the settled result of the last step, then writes this frame's intent. protected void SetYaw(float degrees) Snap the facing yaw without the mouse having moved it. The character's origin is its feet , not the capsule centre \u2014 which is what EyeHeight already assumed, and what makes \"put it on the ground\" mean setting z to the ground height."},{"p":"api-actors.html","a":"averplayercontroller--averactor","t":"AverPlayerController : AverActor","s":"Actors, pawns and characters","x":"AverPlayerController : AverActor # The will that drives a pawn. See Possession ."},{"p":"api-actors.html","a":"avergamemode--averactor","t":"AverGameMode : AverActor","s":"Actors, pawns and characters","x":"AverGameMode : AverActor # The rules for a play session. Names its pawn/controller by string on [AverGameMode] . Adds virtual void OnPostLogin(Entity controller) \u2014 fires once the controller has entered."},{"p":"api-actors.html","a":"avergameinstance--averactor","t":"AverGameInstance : AverActor","s":"Actors, pawns and characters","x":"AverGameInstance : AverActor # Process-lifetime state that spans levels. Adds nothing over AverActor ; the concept it contributes is lifetime . Reach it with Game.Instance ."},{"p":"api-lifecycle.html","a":"3-the-play-lifecycle","t":"3. The play lifecycle","s":"The play lifecycle","x":"3. The play lifecycle # The world has two lives: EDITOR (authoring) and PLAYING . Pressing Play in the editor calls begin_play , which: moves the state to Playing first \u2014 so every OnBeginPlay and OnPostLogin fired below already observes Game.State == Playing , not the editor it is leaving; spawns the GameInstance (if the project has one), then the GameMode (mandatory \u2014 if it fails to spawn, the state is restored to Editor and no session forms); spawns the GameMode's named PlayerController and Pawn , and possesses the pawn (a mode may legally name neither \u2014 a menu mode, say); fires the GameMode's OnPostLogin , after the possess, so it can already see the controller's pawn. The ordering of step 1 is load-bearing, not incidental: a hook that gates on Game.IsPlaying runs during begin-play and must see the session it is starting. Stop calls end_play , which unpossesses, then ends the four session roots in the reverse of spawn order (so OnEndPlay mirrors OnBeginPlay ), then sweeps every other actor the session spawned \u2014 an actor a GameMode spawned in a hook is not a root, and would otherwise get OnBeginPlay and never OnEndPlay . Everything ends with EndReason.Stop , and the world returns to EDITOR . Read the current state and singletons through Game . The hook order within a frame: begin-play queue drains \u2192 OnTick in tick-group order \u2192 destroy queue drains. Gameplay ticks only while Playing (a Paused session freezes it without tearing down)."},{"p":"api-lifecycle.html","a":"4-lifecycle-hooks","t":"4. Lifecycle hooks","s":"The play lifecycle","x":"4. Lifecycle hooks # Override these on your AverActor subclass. All are optional; the defaults do nothing. Hook When void OnBeginPlay(BeginReason reason) Once when the actor begins playing. reason is Spawn (fresh), Play (an already-placed actor entering Play), or Reload (after a hot reload). void OnTick(float dt) Every frame the class is scheduled to tick, in its tick group. dt is clamped seconds. Requires b.Ticks(...) in Configure . void OnEndPlay(EndReason reason) Once when the actor stops playing. Stop = the world stopped; Destroy = it was destroyed; Reload = the entity stays, only the managed half is rebuilt. void OnRebound() DECLARED BUT NEVER CALLED. The hook exists in framework_hooks.h and nothing in the engine invokes it; the bridge's own comment records the rebind path as out of scope. Do not put logic here expecting it to run. void BuildModels(ActorBuilder builder) protected . Builds the actor's model tree; the editor overrides it in a generated .Designer.cs . Hand code rarely writes this. Pawn-only hooks ( AverPawn ): OnPossessed(Entity controller) , OnUnpossessed() . GameMode-only hook ( AverGameMode ): OnPostLogin(Entity controller) . Exceptions never cross back into the engine. A throw out of any hook is caught, logged, and that one actor is disabled for the session; the process and every other actor survive."},{"p":"api-entity.html","a":"6-entity--the-handle-to-a-thing-in-the-world","t":"6. Entity \u2014 the handle to a thing in the world","s":"Entity and the world","x":"6. Entity \u2014 the handle to a thing in the world # Entity is a readonly struct \u2014 a 32-bit key into the world's component arrays. default is invalid. Transform writes are methods (not property setters) because it is returned by value. Identity Member Description int Handle The raw ABI handle (0 = invalid). static Entity None The invalid handle. bool IsValid Handle != 0 . bool IsAlive The handle still addresses a live entity. bool IsActor A gameplay class owns this entity (vs a plain scene entity). ActorClass Class The class this entity is an instance of. string Name / void SetName(string) The display name. ulong ObjectId The persisted identity (fnv1a64 of the name), survives serialisation. AverActor? Actor / T? As<T>() The live managed instance bound to this entity, or null. void Destroy() Destroy this entity (full framework teardown if it's an actor). Transform (local, centimetres; rotation as a quaternion \u2014 compose in degrees via Rot ) Member Description Vec3 LocalPosition / void SetLocalPosition(Vec3) / void Translate(Vec3 delta) Local position. Quat LocalRotation / void SetLocalRotation(Quat) Local rotation. Vec3 LocalScale / void SetLocalScale(Vec3) Local scale. Vec3 Forward / Right / Up Local axes (+X / +Y / +Z), rotated by the local rotation. Vec3 WorldPosition World-space position, composed through parents. Vec3 WorldForward / WorldRight / WorldUp World-space axes, normalised. Hierarchy Member Description Entity Parent / Entity FirstChild / Entity NextSibling / int ChildCount Links. IEnumerable<Entity> Children Immediate children, in order. bool SetParent(Entity parent) / bool Detach() Reparent ( Entity.None \u2192 root) / detach. Refuses a cycle. Components (see the Component enum) Member Description bool HasComponent(Component) / bool AddComponent(Component) Query / attach (idempotent). bool Visible / bool SetVisible(bool) Mesh visibility (adds a mesh renderer if absent). bool SetMesh(string path) / bool SetMaterial(string name) Set the drawn mesh / material. Tags (a 32-bit mask the gameplay layer gives meaning to \u2014 define your own bit constants) Member Description uint Tags / bool SetTags(uint) The whole mask. bool HasTag(uint) / bool HasAnyTag(uint) All bits set / any bit set. bool AddTag(uint) / bool RemoveTag(uint) Set / clear bits. Generic component fields (by qualified name, e.g. \"CLight.intensityLux\" \u2014 works for [Editable] fields and any component field) float GetFloat(string) \u00b7 bool SetFloat(string, float) \u00b7 int GetInt(string) \u00b7 bool SetInt(string, int) \u00b7 long GetInt64(string) \u00b7 bool SetInt64(string, long) \u00b7 Vec3 GetVec3(string) \u00b7 bool SetVec3(string, Vec3) \u00b7 string GetString(string) \u00b7 bool SetString(string, string)"},{"p":"api-session.html","a":"7-game--the-running-session","t":"7. Game \u2014 the running session","s":"Session, spawning and possession","x":"7. Game \u2014 the running session # Static. In EDITOR every handle is Entity.None and State is Editor . Read-only : starting/stopping a session is the editor's job, not a script's. State Member Description PlayState State Editor / Playing / Paused . bool IsPlaying / bool IsPaused / bool HasSession Playing / paused / a session exists (playing OR paused). Session singletons (each Entity , with a typed \u2026As<T>() counterpart) Member Typed Entity Mode T? ModeAs<T>() where T : AverGameMode Entity Instance T? InstanceAs<T>() where T : AverGameInstance Entity LocalPlayerController / Entity GetPlayerController(int i = 0) T? PlayerControllerAs<T>(int i = 0) Entity GetPlayerPawn(int i = 0) T? PlayerPawnAs<T>(int i = 0) where T : AverPawn Lookup & iteration (each a linear scan taken this frame \u2014 don't spawn/destroy while enumerating) Member Description Entity Find(string name) / T? FindActor<T>(string name) Resolve an actor by name. IEnumerable<Entity> AllActors() Every live actor. IEnumerable<T> ActorsOf<T>() Every live actor whose instance is a T . IEnumerable<Entity> WithTag(uint mask) Every entity carrying all of mask . Actors.Get(Entity) / Actors.Get<T>(Entity) are the lower-level resolvers Entity.As<T> is built on."},{"p":"api-session.html","a":"9-spawning-and-destroying","t":"9. Spawning and destroying","s":"Session, spawning and possession","x":"9. Spawning and destroying # Spawn is protected static on AverActor (call from within an actor). The typed forms return the live instance (or null if the class isn't declared); the ActorClass forms return the Entity . Member Description Entity Spawn(ActorClass c, Vec3 at) Spawn a class chosen at runtime. Entity Spawn(ActorClass c, Vec3 at, Rot rotation) \u2026with orientation. Entity Spawn(ActorClass c, Vec3 at, Rot rotation, Vec3 scale) \u2026with a full transform. T? Spawn<T>(Vec3 at) Spawn T , return the instance. T? Spawn<T>(Vec3 at, Rot rotation) / T? Spawn<T>(Vec3 at, Rot rotation, Vec3 scale) \u2026with orientation / full transform. T? SpawnAttached<T>(Entity parent, Vec3 localPosition) Spawn as a child of parent ; returns null if the attach is rejected (and cleans up). void Destroy() Destroy this actor now (fires OnEndPlay ). static void Destroy(Entity other) / static void Destroy(AverActor? other) Destroy another. ActorClass \u2014 the Spawn<T> forms name the class by type ; the Spawn(ActorClass, \u2026) forms take a class handle , for when the class is chosen at runtime. Get one with ActorClass.Find(\"BP_Coin\") (an invalid handle if no such class is declared \u2014 check IsValid ); Entity.Class gives the class an entity is an instance of. An ActorClass is a readonly struct with int Handle , bool IsValid , and string Name ( 0 == invalid ). ActorClass coin = ActorClass.Find(\"BP_Coin\"); if (coin.IsValid) for (int i = 0; i < count; i++) Spawn(coin, new Vec3(i * 100f, 0f, 20f)); // class picked at runtime"},{"p":"api-session.html","a":"10-possession","t":"10. Possession","s":"Session, spawning and possession","x":"10. Possession # On AverPlayerController : Member Description Entity Possessed / T? PossessedAs<T>() / bool HasPawn The controlled pawn. bool Possess(Entity pawn) / bool Possess(AverPawn pawn) Take control. A pawn already driven by another controller is stolen (it gets OnUnpossessed then OnPossessed ); re-possessing the pawn you already drive is a no-op that returns true. bool Unpossess() Release the current pawn. On the pawn side, AverPawn.Controller / ControllerAs<T>() / IsPossessed read the inverse, straight from the world (never cached)."},{"p":"api-input.html","a":"8-input","t":"8. Input","s":"Input and action mappings","x":"8. Input # Static, polled, Unity-style. The editor pushes the frame's device state each tick (suppressed while a text field has focus). Read it from OnTick . Member Description bool GetKey(Key k) Held. bool GetKeyDown(Key k) / bool GetKeyUp(Key k) Went down / up this frame. float MouseDeltaX / MouseDeltaY / MouseWheel This frame's mouse movement / wheel. Vec3 MoveAxis WASD/arrows as (forward, right, 0) ; not normalised. Key values: A \u2013 Z , D0 \u2013 D9 , Space , LeftShift , LeftCtrl , LeftAlt , Enter , Escape , Tab , Left , Right , Up , Down , MouseLeft , MouseRight , MouseMiddle ."},{"p":"api-input.html","a":"action-mappings","t":"Action mappings","s":"Input and action mappings","x":"Action mappings # Input is the device. EnhancedInput is the layer above it, for gameplay that should name what the player is doing rather than which key they pressed \u2014 so a pawn asks whether Fire happened and never mentions a key ( scripting/csharp/Aver.Framework/EnhancedInput.cs ). Type Description InputAction A thing the player can do. InputAction.Digital(name) / .Axis1D(name) / .Axis2D(name) . Read IsHeld , WasPressed , WasReleased , Value1D , Value2D . Declare each once , usually as a static readonly field on a class shared between the pawn that reads it and the context that binds it. InputMappingContext A set of key\u2192action bindings pushed and popped as a whole. Derive it and bind in the constructor: BindKey , BindAxis1D(action, positive, negative) , BindAxis2D(action, up, down, right, left) , BindMouseLook , BindMouseWheel . EnhancedInput The router: AddContext(context, priority = 0) , RemoveContext , ClearContexts , ContextCount . A higher-priority context consumes the keys it binds , so a lower one never sees them \u2014 pushing a menu or vehicle context suppresses the walking bindings without anything having to disable them. Consumption is per context , not per binding, so one key can still feed two actions in the same context. Actions are recomputed once per frame before the first tick group, so every actor in a frame reads the same input; polling per actor would let two pawns disagree about a \"was pressed\" edge purely because of tick order. static class GameActions { public static readonly InputAction Move = InputAction.Axis2D(\"Move\"); public static readonly InputAction Jump = InputAction.Digital(\"Jump\"); } public sealed class OnFoot : InputMappingContext { public OnFoot() { BindAxis2D(GameActions.Move, Key.W, Key.S, Key.D, Key.A); // X forward, Y right BindKey(GameActions.Jump, Key.Space); } }"},{"p":"api-physics.html","a":"14-physics","t":"14. Physics","s":"Physics","x":"14. Physics # Static, in Aver.Framework . Everything is in the engine's contract \u2014 centimetres, +X forward, +Y right, +Z up, left-handed. The backend (Jolt, MIT) is right-handed, +Y up and metric; that translation happens once behind the native ABI, so no Jolt convention ever reaches a script. The world is stepped by the frame loop between the PrePhysics and PostPhysics tick groups , at a fixed step regardless of frame rate. So set what you want in a PrePhysics tick and read what happened in a PostPhysics one. Member Description bool Ready True when the simulation is running (false if physics was compiled out). float FixedStep The fixed step in seconds \u2014 1/60 unless the host changed it. void SetGravity(Vec3) cm/s\u00b2. Default (0, 0, -980) : one g, straight down. int BodyCount How many bodies exist. Body AddStaticBox(Vec3 centre, Vec3 halfExtents) A box that never moves. Body AddDynamicBox(Vec3 centre, Vec3 halfExtents, float massKg = 0) Falls and collides; massKg <= 0 derives mass from volume. Body AddDynamicSphere(Vec3 centre, float radius, float massKg = 0) Likewise. RaycastHit Raycast(Vec3 origin, Vec3 direction, float maxDistanceCm) Direction need not be unit length. bool RaycastAny(...) Just whether anything is in the way. Body \u2014 a handle ( 0 invalid): Handle , IsValid , Position , Rotation , Velocity , SetPosition , SetVelocity , Destroy() . RaycastHit \u2014 Hit , Body , Point , Normal . The backend documents broadphase queries as non-deterministic (the broad phase is modified from several threads), and callback ordering likewise. Rely on whether something was hit and where \u2014 never on which of several equidistant bodies comes back."},{"p":"api-ui.html","a":"16-averui--the-games-hud","t":"16. Aver.UI \u2014 the game's HUD","s":"The game's HUD","x":"16. Aver.UI \u2014 the game's HUD # Namespace Aver.UI , in the assembly of the same name ( scripting/csharp/Aver.UI/Hud.cs ). It references nothing else \u2014 a HUD is drawn in screen coordinates and knows nothing about entities or the world \u2014 and P/Invokes the native Aver.UI.Abi ( modules/ui.abi/include/aver/ui/ui_abi.h ), which is the seam that exists so a HUD can be authored in the game's language rather than in engine C++. Screen pixels, top-left origin, +Y down. Not the world's centimetres and not normalised coordinates: a UI is authored against a resolution, and every layout number a designer types is a pixel. Three rules carry most of the design: You draw from a tick; the HOST owns the frame. The host clears the list once per frame before anything ticks and submits it after ( aver_ui_begin_frame and submitGameUi in sandbox/src/SandboxApp.cpp ). There is deliberately no Begin for a game to call: a game that cleared the list would erase whatever another system had contributed, and the last one to run would win with nothing anywhere to say so. One consequence to expect \u2014 gameplay ticks only while Playing , so a HUD drawn from OnTick is absent in EDITOR, which is correct rather than a bug to chase. Anchor to Hud.Viewport , never to the window. In the editor the game is drawn into a dockspace panel and the two rectangles differ; a HUD laid out against the window sits partly under the editor's own chrome. In a shipped build they are the same rectangle and nothing changes. There is no text. Nothing in the engine can rasterise a glyph, so there is no Hud.Text to call. A HUD today is rectangles, bars and tinted quads. There is no widget tree above the draw list either: a HUD is laid out by the code that draws it. Hud \u2014 static, and the whole drawing surface: Member Description Rect Viewport The rectangle this frame's UI is laid out against, in backbuffer pixels. Layer CurrentLayer The band subsequent draws land in. Reset to Layer.Content at the start of every frame , so set it in each frame that wants another band. An out-of-range value is ignored, not clamped \u2014 clamping would move a widget to a band its author did not choose and nothing would notice. void Box(Rect r, Colour c) / void Box(float x, float y, float w, float h, Colour c) A solid rectangle. void Frame(Rect r, float thickness, Colour border, Colour fill) A border drawn inside the bounds: a frame that grew its own bounds would not fit the layout that positioned it, and every caller would subtract the thickness back off by hand. void Bar(Rect r, float fraction, Colour border, Colour empty, Colour full) A 1px-framed bar filled left to right; fraction is clamped to 0..1. void Image(Rect r, ulong texture, Colour tint, float u0 = 0, float v0 = 0, float u1 = 1, float v1 = 1) A textured quad. void PushClip(Rect r) / void PopClip() Nested clips intersect , so a child can never escape its parent by pushing a larger rectangle. That is containment by construction, not a promise each element keeps. int DrawCal"},{"p":"api-materials.html","a":"17-avermaterials--surfaces-authored-in-c","t":"17. Aver.Materials \u2014 surfaces authored in C#","s":"Materials authored in C#","x":"17. Aver.Materials \u2014 surfaces authored in C # Namespace Aver.Materials ( scripting/csharp/Aver.Materials/ ). Like Aver.UI it is a leaf: a material describes a surface and knows nothing about entities, the world or a device. The C# is the source; the .ocmat is build output. A .cs under Content/Materials declares a surface. Compile C# builds it into the project's one script assembly, then avermatc ( scripting/csharp/Aver.MaterialCompiler/ ) reflects over that assembly, runs every Configure , and writes one .ocmat per material into <project>/Binaries/Materials . The engine looks in Binaries/Materials first , then Content/Materials , then a content-relative path ( SandboxApp::materialForSurface ) \u2014 so a project that has adopted C# materials gets the built file and one that has not keeps working exactly as it did with hand-authored .ocmat . That ordering is why editing the generated file is a mistake with a delay on it: it is a build artefact, the next compile overwrites it, and the header it carries says so. The Details panel's Save to C# writes back to the .cs for the same reason ( modules/formats/include/aver/formats/MaterialScript.hpp ); it rewrites only the body of Configure , preserves the .Comment(\u2026) calls \u2014 authored prose that cannot be re-derived from a material's numbers \u2014 and declines outright rather than half-succeeding on a file it did not parse. Declaring one. [AverMaterial(\"M_Crate\")] gives the bound name a mesh references. The name is given in the attribute rather than taken from the class name for the reason [AverClass] does it: renaming a C# class should not silently unbind every mesh that used it. Two classes claiming one name is refused outright, not last-one-wins, since which of the two won would depend on reflection order. Configure is static . A material is never instantiated and never ticks \u2014 it is a description the compiler runs once, at build time, and nothing about it exists at run time \u2014 so there is no instance for a virtual call to dispatch on. The compiler finds it by reflection and reports a [AverMaterial] class that lacks one. Material is the base the templates derive; it carries nothing and exists so a material is findable by type rather than only by attribute. using Aver.Materials; namespace MyGame.Materials; [AverMaterial(\"M_Crate\")] public sealed class Crate : Material { public static void Configure(MaterialBuilder b) => b .Comment(\"Painted wood, scuffed. Roughness stays high \u2014 a gloss here reads as plastic.\") .BaseColor(0.62f, 0.48f, 0.31f) .Metallic(0f) .Roughness(0.78f) .Texture(Slot.BaseColor, \"Textures/crate_basecolor.png\") .Texture(Slot.Normal, \"Textures/crate_normal.png\"); } Bind it from a class recipe with b.Mesh(\"Meshes/crate.ocmesh\", \"M_Crate\") , or at run time with entity.SetMaterial(\"M_Crate\") . MaterialBuilder \u2014 every call returns the builder, so a declaration is one chain: Member Description Comment(string) A line written into the output above the parameters. Carried through on purpose: the generated f"},{"p":"api-reference.html","a":"11-attributes","t":"11. Attributes","s":"Attributes, enums and builders","x":"11. Attributes # Attribute Use [AverClass(\"Name\")] Names a gameplay class. Optional Parent = \"\u2026\" (inferred from the base type otherwise). [AverGameMode(\"Name\")] Names a GameMode. DefaultPawnClass = \"\u2026\" , PlayerControllerClass = \"\u2026\" name (by string) the pawn and controller it spawns. [Editable] A field editable in the Details panel and stored in native storage (survives Play/Stop and hot reload). Optional Min / Max . [Model] Marks a model-tree field the editor manages."},{"p":"api-reference.html","a":"12-enums","t":"12. Enums","s":"Attributes, enums and builders","x":"12. Enums # Enum Values BeginReason Spawn (0), Play (1), Reload (2) EndReason Destroy (0), Stop (1), Reload (2), Travel (3) TickGroup PrePhysics (0), Physics (1), PostPhysics (2) PlayState Editor (0), Playing (1), Paused (2) CameraView FirstPerson , ThirdPerson Component Local (1), World (2), Hierarchy (3), Name (4), Tags (5), MeshRenderer (6), Light (7), Camera (8)"},{"p":"api-reference.html","a":"13-classbuilder-and-actorbuilder","t":"13. ClassBuilder and ActorBuilder","s":"Attributes, enums and builders","x":"13. ClassBuilder and ActorBuilder # ClassBuilder writes a class's defaults \u2014 the recipe run once per class, in static void Configure(ClassBuilder b) : Member Description void Mesh(string meshPath, string material = \"\") Give the class's own entity a mesh (and optional material). void PointLight(float intensityLux, float rangeCm) Add a point light. void Camera(float fovDegrees, float nearCm, float farCm) Add a camera. void Ticks(TickGroup group, int order = 0) Ask the class to tick, in group . ActorBuilder writes the editor-owned model tree inside BuildModels ; hand code rarely touches it. ModelHandle is the handle a placed model returns. How a mesh path resolves. Mesh(\"Meshes/crate.ocmesh\") stores no string: the path is hashed (fnv1a64) to the u64 ObjectId the CMeshRenderer field actually holds. Every .ocmesh under the project's Content is loaded at project open and registered under the hash of its content-relative path with forward slashes \u2014 so that exact spelling is the contract between a C# class, a level placement and the loader, and a path spelt any other way hashes to a different number and silently draws nothing. Two primitives are registered without a file behind them: Meshes/cube.ocmesh and Meshes/sphere.ocmesh . The material argument is a name , resolved to its i32 handle the same way Entity.SetMaterial resolves one \u2014 see \u00a717 for where that name comes from."},{"p":"api-reference.html","a":"15-maths--vec3-quat-rot","t":"15. Maths \u2014 Vec3, Quat, Rot","s":"Attributes, enums and builders","x":"15. Maths \u2014 Vec3 , Quat , Rot # In Aver.Scene (centimetres; +X forward, +Y right, +Z up; left-handed). Vec3 \u2014 float X, Y, Z ; new Vec3(x, y, z) ; statics Forward (1,0,0) , Right (0,1,0) , Up (0,0,1) , Zero , One ; + - * operators. Quat \u2014 float X, Y, Z, W ; static Identity ; Quat.FromAxisAngle(Vec3 axis, float radians) ; * . Rot \u2014 degrees a viewport gizmo edits: float Yaw (about up), Pitch (about right), Roll (about forward); new Rot(yaw, pitch, roll) ; Rot.Zero ; Quat ToQuat() ."},{"p":"api-examples.html","a":"18-worked-examples","t":"18. Worked examples","s":"Worked examples and limits","x":"18. Worked examples #"},{"p":"api-examples.html","a":"a-player-character-wasd--mouse-firstthird-person","t":"A player character (WASD + mouse, first/third person)","s":"Worked examples and limits","x":"A player character (WASD + mouse, first/third person) # [AverClass(\"BP_Hero\")] public sealed class Hero : AverCharacter { public static void Configure(ClassBuilder b) { b.Mesh(\"Meshes/hero.ocmesh\"); b.Ticks(TickGroup.PrePhysics); } public override void OnTick(float dt) { DriveWithInput(dt); // WASD walks, mouse turns if (Input.GetKeyDown(Key.V)) // V toggles the view CameraViewMode = CameraViewMode == CameraView.ThirdPerson ? CameraView.FirstPerson : CameraView.ThirdPerson; } }"},{"p":"api-examples.html","a":"a-gamemode-that-hands-out-that-character","t":"A GameMode that hands out that character","s":"Worked examples and limits","x":"A GameMode that hands out that character # [AverGameMode(\"BP_GameMode\", DefaultPawnClass = \"BP_Hero\", PlayerControllerClass = \"PlayerController\")] public sealed class MyGameMode : AverGameMode { public override void OnPostLogin(Entity controller) => Log.Info($\"{controller.Name} logged in, driving {controller.As<AverPlayerController>()?.Possessed.Name}\"); }"},{"p":"api-examples.html","a":"a-spawner-that-scatters-pickups-and-tags-them","t":"A spawner that scatters pickups and tags them","s":"Worked examples and limits","x":"A spawner that scatters pickups and tags them # [AverClass(\"BP_Spawner\")] public sealed class Spawner : AverActor { const uint Pickup = 0x1; public override void OnBeginPlay(BeginReason reason) { for (int i = 0; i < 5; i++) { Coin? c = Spawn<Coin>(new Vec3(i * 100f, 0f, 20f)); c?.Self.AddTag(Pickup); } Log.Info($\"{System.Linq.Enumerable.Count(Game.WithTag(Pickup))} pickups in the world\"); } } [AverClass(\"BP_Coin\")] public sealed class Coin : AverActor { public static void Configure(ClassBuilder b) => b.Mesh(\"Meshes/coin.ocmesh\"); }"},{"p":"api-examples.html","a":"19-not-yet-available","t":"19. Not yet available","s":"Worked examples and limits","x":"19. Not yet available # The gameplay object model above is complete. What follows is what a script still cannot reach, stated as absences rather than left to be discovered: Audio. The pieces exist \u2014 a mixer with voices, 3D panning and attenuation, a WASAPI device, the .ocaudio container, and a C seam ( modules/audio , modules/audio.wasapi , modules/audio.abi , and modules/formats ; see docs/AUDIO.md ). None of them are joined up: there is no managed binding, and neither the editor nor the runtime opens a device. A script cannot play a sound. Text, and widgets, in the UI. Aver.UI (\u00a716) draws rectangles and tinted quads. Nothing in the engine rasterises a glyph, so there is no Hud.Text ; and there is no widget tree above the draw list, so layout is whatever the drawing code computes. There is also no input routing into the UI \u2014 a HUD is drawn, not clicked. Timers and coroutines. No SetTimer , no yield . Count down in OnTick . Networking. modules/net exists; nothing in it is reachable from C#. Hot-reload state migration beyond [Editable] fields. Import beyond glTF. The Content Browser's Import converts .gltf / .glb into one .ocmesh per mesh and registers the result immediately ( SandboxApp::importModel ); every other file type is copied in unchanged. That is right for a .png a material names \u2014 a texture is decoded and uploaded straight from the source file, with its colour space taken from the slot that binds it \u2014 and wrong for an FBX, which is not read at all. No texture is converted, compressed or packed at import. These are the natural next layers; the object model is the foundation they plug into."},{"p":"guide.html","a":"install","t":"Get the launcher and the tools","s":"Starter guide","x":"aria-label=\"Link to this step\"># Aver runs on Windows and renders through DirectX 12. Before anything else, check the machine can host it \u2014 the engine reports every capability from a real device query, so a card that cannot do something will say so rather than fail obscurely later. Windows 10 or 11, 64-bit \u2014 the platform layer is Win32. A DirectX 12 GPU with current drivers. Ray-traced shadows additionally want DXR tier 1.1; without it the renderer falls back to the shadow map. The .NET desktop runtime , if you want C#. It is optional: with no runtime present the editor still starts and the scripting menu items disable themselves with a tooltip naming the reason. Grab the launcher from the download panel on the home page. It installs the engine and keeps it current, and it is the only piece you fetch by hand. Building the engine from source instead? You need Visual Studio 18 with the C++ workload, which supplies CMake, Ninja and the Windows SDK. Then ./scripts/build.ps1 and ./scripts/run.ps1 . 02"},{"p":"guide.html","a":"project","t":"Make a project","s":"Starter guide","x":"aria-label=\"Link to this step\"># A project lives outside the engine. The engine ships no game content; your project is a sibling folder with its own .ocproject manifest, and that separation is why updating the engine cannot disturb your game. Create one from the project browser on startup, or from the command line \u2014 the flag exists so project creation is scriptable rather than something that only happens when someone remembers to click a modal: PowerShell Sandbox.exe --new-project D:\\Games MyFirstGame Sandbox.exe --upgrade-project D:\\Games\\MyFirstGame\\MyFirstGame.ocproject You get a manifest and a content tree: Maps , Meshes , Materials , Textures , Sounds , Scripts . You also get Content/Scripts/Scripts.csproj written at creation time, already referencing the four assemblies you write against, plus a starter M_Default material. Assembly What it gives you Aver.Scripting AverBehaviour , Log , the renderer bindings Aver.Framework Actors, pawns, characters, game modes, Entity \u2014 pulls Aver.Scene in behind it Aver.UI Hud , Layer , Colour , Rect Aver.Materials [AverMaterial] , MaterialBuilder All four are referenced whether or not you use them. An unused reference costs nothing, and the alternative is a compile error naming an assembly you have never heard of, in a file the editor generated. The manifest names a start map, but no map file is written \u2014 a fresh project opens with an empty world and logs that it did. 03"},{"p":"guide.html","a":"actor","t":"Write your first actor","s":"Starter guide","x":"aria-label=\"Link to this step\"># A gameplay type is a C# class that derives an Aver base type and carries an [AverClass(\"Name\")] attribute naming it. Put this in Content/Scripts/Rotator.cs : Content/Scripts/Rotator.cs \u2014 C# using Aver.Framework; using Aver.Scene; // Vec3, Rot using Aver.Scripting; // Log namespace MyGame; [AverClass(\"BP_Rotator\")] public sealed class Rotator : AverActor { // The class RECIPE - run once per class at load, never per instance. public static void Configure(ClassBuilder b) { b.Mesh(\"Meshes/cube.ocmesh\"); // a built-in primitive; no file needed b.Ticks(TickGroup.PrePhysics); // ask to tick } private float _angle; public override void OnBeginPlay(BeginReason reason) => Log.Info(\"Rotator started\"); public override void OnTick(float dt) { _angle += 90f * dt; // 90 deg/sec Self.SetLocalRotation(new Rot(_angle, 0, 0).ToQuat()); } } Three things in there are worth understanding before you write anything else. Configure runs once per class, not per instance. It is the recipe: what components every instance gets, and whether the class ticks at all. An actor that does not call b.Ticks(...) never receives OnTick . Hooks are overrides, never attributes. Misspell OnTick and you get a compile error, rather than a method that silently never runs. That is the whole reason the API is shaped this way. Log , not Console.WriteLine . The editor is a windowed process; console writes go nowhere. Log.Trace , Info , Warn and Error reach the Output Log, and fall back to the console outside a host. 04"},{"p":"guide.html","a":"compile","t":"Compile it, then press Play","s":"Starter guide","x":"aria-label=\"Link to this step\"># The Tools menu has two items that look similar and fail differently, which is exactly why they are two buttons: Tools \u25b8 Compile Scripts \u2014 builds only. The editor keeps running whatever it already loaded, so a broken file gives you an error while the previous build carries on. Diagnostics are clickable and jump to file, line and column in Visual Studio, VS Code or Rider. Tools \u25b8 Reload Scripts \u2014 builds, then unloads and reloads live. Your hooks fire again without restarting the editor. Press Play and the session forms in a fixed order: the state moves to Playing first, then the GameInstance spawns, then the GameMode, then its PlayerController and Pawn, then the pawn is possessed, and finally OnPostLogin fires. Stop reverses it and sweeps every other actor the session spawned. Nothing survives a reload. Every object is rebuilt from its field initialisers \u2014 a counter at 564 restarts at 1. The single exception is [Editable] fields, which live in native storage and survive both Play/Stop and hot reload. C# \u2014 a field you can edit in the Details panel [AverClass(\"BP_Spinner\")] public sealed class Spinner : AverActor { public static void Configure(ClassBuilder b) => b.Ticks(TickGroup.PrePhysics); [Editable(Min = 0f, Max = 720f)] public float DegreesPerSecond = 90f; public override void OnTick(float dt) { /* ... */ } } 05"},{"p":"guide.html","a":"character","t":"Add something to walk around with","s":"Starter guide","x":"aria-label=\"Link to this step\"># AverCharacter is a first- or third-person walking pawn with the defaults already dialled in \u2014 350 cm/s move speed, a 180 \u00d7 34 cm capsule, 160 cm eye height, a 450 cm camera boom, and a jump that clears about 110 cm. C# \u2014 a playable character [AverClass(\"BP_Hero\")] public sealed class Hero : AverCharacter { public static void Configure(ClassBuilder b) { b.Mesh(\"Meshes/hero.ocmesh\"); b.Ticks(TickGroup.PrePhysics); // set intent BEFORE the physics step } public override void OnTick(float dt) { DriveWithInput(dt); // WASD walks, mouse turns if (Input.GetKeyDown(Key.Space)) Jump(); } } A GameMode names the pawn and controller it spawns, by string . Many games never subclass the controller and just name the built-in one: C# \u2014 the rules of a play session [AverGameMode(\"BP_GameMode\", DefaultPawnClass = \"BP_Hero\", PlayerControllerClass = \"PlayerController\")] public sealed class MyGameMode : AverGameMode { public override void OnPostLogin(Entity controller) => Log.Info($\"{controller.Name} joined\"); } The character's origin is its feet , not the capsule centre \u2014 so putting it on the ground means setting z to the ground height. And use Teleport rather than setting the transform: moving the transform alone leaves the physics capsule behind. 06"},{"p":"guide.html","a":"material","t":"Give it a surface","s":"Starter guide","x":"aria-label=\"Link to this step\"># A material is a C# class. The .cs under Content/Materials is the source of truth; the .ocmat that appears in Binaries/Materials is build output that the next compile overwrites. Content/Materials/Crate.cs \u2014 C# using Aver.Materials; namespace MyGame.Materials; [AverMaterial(\"M_Crate\")] public sealed class Crate : Material { public static void Configure(MaterialBuilder b) => b .Comment(\"Painted wood, scuffed. Roughness stays high - a gloss here reads as plastic.\") .BaseColor(0.62f, 0.48f, 0.31f) .Metallic(0f) .Roughness(0.78f) .Texture(Slot.BaseColor, \"Textures/crate_basecolor.png\") .Texture(Slot.Normal, \"Textures/crate_normal.png\"); } Configure is static because a material is never instantiated and never ticks \u2014 it is a description the compiler runs once, at build time. Bind it from a class recipe with b.Mesh(\"Meshes/crate.ocmesh\", \"M_Crate\") , or at run time with entity.SetMaterial(\"M_Crate\") . Two things that will save you an afternoon. The name in the attribute is what a mesh references \u2014 renaming the C# class does not unbind anything, which is the point. And the engine looks in Binaries first , then Content , so a stale hand-authored file cannot shadow the one you just built. Editing the generated .ocmat is a mistake with a delay on it: it is a build artefact, and the next compile overwrites it. The Details panel's Save to C# writes back to your .cs for exactly this reason. 07"},{"p":"guide.html","a":"hud","t":"Draw a HUD","s":"Starter guide","x":"aria-label=\"Link to this step\"># A HUD is drawn from a tick, in screen pixels, top-left origin, +Y down. Not centimetres and not normalised coordinates \u2014 every layout number is a pixel. C# \u2014 a health bar using Aver.Framework; using Aver.UI; [AverClass(\"BP_PlayerHud\")] public sealed class PlayerHud : AverActor { // PostPhysics: draw what the frame settled on, not what it was asked for. public static void Configure(ClassBuilder b) => b.Ticks(TickGroup.PostPhysics); static readonly Colour Ink = Colour.Argb(0xFFE8E4DC); static readonly Colour Panel = Colour.Argb(0xB0141820); static readonly Colour Hurt = Colour.Rgb(232, 76, 46); [Editable(Min = 0f, Max = 1f)] public float Health = 1f; public override void OnTick(float dt) { Rect vp = Hud.Viewport; // NOT the window Rect bar = Rect.Anchored(vp, 0f, 1f, 260f, 18f, offsetX: 24f, offsetY: -24f); Hud.PushClip(vp); Hud.Box(bar.Inset(-6f), Panel); Hud.Bar(bar, Health, Ink, Panel, Colour.Lerp(Hurt, Ink, Health)); Hud.PopClip(); } } Anchor to Hud.Viewport , never to the window. In the editor the game draws into a dock panel and the two rectangles differ, so a HUD laid out against the window sits partly under the editor's own chrome. In a shipped build they are the same rectangle and nothing changes. There is no text. Nothing in the engine rasterises a glyph yet, so there is no Hud.Text \u2014 a HUD today is rectangles, bars and tinted quads. There is also no widget tree and no input routing into the UI: a HUD is drawn, not clicked. 08"},{"p":"guide.html","a":"next","t":"What to know before you go further","s":"Starter guide","x":"aria-label=\"Link to this step\"># A few rules run through the whole API. Knowing them early saves working them out the hard way. Zero is always invalid. A default Entity is invalid, a lookup that finds nothing returns Entity.None , and IsValid / IsAlive tell you which. Set intent before physics, read results after. The world steps between the PrePhysics and PostPhysics tick groups, at a fixed step regardless of frame rate. Everything is centimetres , +X forward, +Y right, +Z up, left-handed. The physics backend works in metres with a different up-axis; that is translated once, behind the seam, and never reaches you. A throw does not take the process down. An exception out of a hook is caught and logged, and that one actor is disabled for the session. Everything else keeps ticking. And the honest list of what a script still cannot reach: audio \u2014 the mixer, device and container all exist and are tested, but nothing is joined up and no managed binding exists, so you cannot play a sound. Text and widgets in the UI. Timers and coroutines \u2014 count down in OnTick . Networking. And import beyond glTF : the Content Browser converts .gltf and .glb , and copies every other file type in unchanged."}];
+  var box = document.getElementById('docSearch');
+  var out = document.getElementById('results');
+  if (!box || !out) return;
+  var sel = -1, rows = [];
+
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  function mark(text, q){
+    var i = text.toLowerCase().indexOf(q);
+    if (i < 0) return esc(text.slice(0, 150));
+    var from = Math.max(0, i - 55);
+    var cut = (from ? '\u2026' : '') + text.slice(from, i);
+    return esc(cut) + '<mark>' + esc(text.substr(i, q.length)) + '</mark>'
+         + esc(text.substr(i + q.length, 110));
+  }
+
+  function run(){
+    var q = box.value.trim().toLowerCase();
+    sel = -1;
+    if (q.length < 2) { out.hidden = true; out.innerHTML = ''; return; }
+    var hits = [];
+    for (var i = 0; i < IDX.length; i++) {
+      var r = IDX[i];
+      var inTitle = r.t.toLowerCase().indexOf(q);
+      var inText  = r.x.toLowerCase().indexOf(q);
+      if (inTitle < 0 && inText < 0) continue;
+      // A heading match outranks a body match, and an earlier one outranks a later.
+      hits.push({r:r, score:(inTitle >= 0 ? 0 : 1000) + (inTitle >= 0 ? inTitle : inText)});
+    }
+    hits.sort(function(a,b){ return a.score - b.score; });
+    hits = hits.slice(0, 12);
+    if (!hits.length) { out.hidden = false; out.innerHTML = '<div class="none">Nothing matches \u201c' + esc(box.value) + '\u201d.</div>'; return; }
+    out.innerHTML = hits.map(function(h){
+      var r = h.r;
+      return '<a href="' + r.p + (r.a ? '#' + r.a : '') + '">'
+           + '<div class="rs">' + esc(r.s) + '</div>'
+           + '<div class="rt">' + mark(r.t, q) + '</div>'
+           + '<div class="rx">' + mark(r.x, q) + '</div></a>';
+    }).join('');
+    out.hidden = false;
+    rows = out.querySelectorAll('a');
+  }
+
+  box.addEventListener('input', run);
+  box.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') { box.value = ''; run(); box.blur(); return; }
+    if (!rows.length) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      sel += (e.key === 'ArrowDown' ? 1 : -1);
+      if (sel < 0) sel = rows.length - 1;
+      if (sel >= rows.length) sel = 0;
+      for (var i = 0; i < rows.length; i++) rows[i].classList.toggle('sel', i === sel);
+      rows[sel].scrollIntoView({block:'nearest'});
+    } else if (e.key === 'Enter' && sel >= 0) {
+      location.href = rows[sel].getAttribute('href');
+    }
+  });
+  // "/" focuses search, the way most doc sites behave.
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== box &&
+        !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+      e.preventDefault(); box.focus();
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
