@@ -540,34 +540,6 @@ a:focus-visible, .btn:focus-visible{
    ============================================================ */
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
-/* ============================================================
-   Version selector (0.3.0 latest -> 0.2.0 archived)
-   ============================================================ */
-.vsel{position:relative}
-.vsel summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
-  padding:9px 13px; border-radius:9px; border:1px solid var(--line); background:rgba(255,255,255,.03);
-  font-family:var(--mono); font-size:13px; color:var(--ink-dim); user-select:none;
-  transition:border-color .18s ease, background .18s ease, color .18s ease}
-.vsel summary::-webkit-details-marker{display:none}
-.vsel summary svg{width:14px; height:14px; flex:none; color:var(--ink-faint)}
-.vsel summary svg.chev{width:12px; height:12px; transition:transform .18s ease}
-.vsel:hover summary, .vsel[open] summary{border-color:#39414F; background:rgba(255,255,255,.06); color:var(--ink)}
-.vsel[open] summary svg.chev{transform:rotate(180deg)}
-.vsel-menu{position:absolute; top:calc(100% + 8px); right:0; z-index:70; min-width:184px;
-  background:var(--bg-card); border:1px solid var(--line); border-radius:12px; padding:6px;
-  box-shadow:0 20px 44px -18px rgba(0,0,0,.65)}
-.vsel-menu a, .vsel-menu .vsel-cur{display:flex; align-items:center; justify-content:space-between; gap:16px;
-  padding:9px 11px; border-radius:8px; font-family:var(--mono); font-size:13.5px; color:var(--ink-dim)}
-.vsel-menu em{font-style:normal; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint)}
-.vsel-menu a:hover{background:rgba(255,255,255,.05); color:var(--ink)}
-.vsel-menu a:hover em{color:var(--orange)}
-.vsel-menu .vsel-cur{color:var(--orange); background:rgba(242,101,34,.09)}
-.vsel-menu .vsel-cur em{color:var(--orange)}
-@media (max-width:520px){
-  .vsel summary{padding:9px 10px}
-  .vsel summary span.vlabel{display:none}
-}
-
 .burger{
   display:none; width:42px; height:42px; padding:0; cursor:pointer;
   background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px;
@@ -661,17 +633,6 @@ body.nav-open{overflow:hidden}
       <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html" class="on">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
     </div>
     <div class="navright">
-      <details class="vsel">
-        <summary aria-label="Documentation version: 0.3.0 (latest)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
-          <span class="vlabel">0.3.0</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </summary>
-        <div class="vsel-menu">
-          <span class="vsel-cur">0.3.0<em>latest</em></span>
-          <a href="v0.2.0/editor.html">0.2.0<em>archived</em></a>
-        </div>
-      </details>
       <a class="btn btn-primary" href="index.html#download">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
         Download
