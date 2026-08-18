@@ -989,9 +989,17 @@ h2:hover .hlink, h3:hover .hlink, h4:hover .hlink, .hlink:focus-visible{opacity:
 .vsel summary svg.chev{width:12px; height:12px; transition:transform .18s ease}
 .vsel:hover summary, .vsel[open] summary{border-color:#39414F; background:rgba(255,255,255,.07); color:var(--ink)}
 .vsel[open] summary svg.chev{transform:rotate(180deg)}
-.vsel-menu{position:absolute; top:calc(100% + 8px); left:0; z-index:70; min-width:184px;
+/* OPENS UPWARD, AND HAS TO. The .subhero band this sits in is overflow:hidden -- it has to be,
+   because its decorative ::before glow is inset -126px horizontally and would otherwise widen the
+   page (measured: scrollWidth 1265 -> 1392, i.e. a horizontal scrollbar on every docs page). A menu
+   dropping DOWN from a control this near the band's bottom edge overflowed it by 49px and had its
+   lower half clipped away. Stacking was never the problem; z-index:70 was already winning.
+   Measured headroom above the control is 415px against a 95px menu, so this survives several more
+   archived versions being added. If it ever needs to drop down again, the fix is to stop .subhero
+   clipping -- give the glow its own clipping wrapper -- not to move this back. */
+.vsel-menu{position:absolute; bottom:calc(100% + 8px); left:0; z-index:70; min-width:184px;
   background:var(--bg-card); border:1px solid var(--line); border-radius:12px; padding:6px;
-  box-shadow:0 20px 44px -18px rgba(0,0,0,.65)}
+  box-shadow:0 -20px 44px -18px rgba(0,0,0,.65)}
 .vsel-menu a, .vsel-menu .vsel-cur{display:flex; align-items:center; justify-content:space-between; gap:16px;
   padding:9px 11px; border-radius:8px; font-family:var(--mono); font-size:13.5px; color:var(--ink-dim)}
 .vsel-menu em{font-style:normal; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint)}
