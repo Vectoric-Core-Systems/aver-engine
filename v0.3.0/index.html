@@ -634,7 +634,7 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="materials.html">Materials</a><a href="physics.html">Physics</a><a href="fluids.html">Fluids</a><a href="synapse.html">Synapse</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
     </div>
     <div class="navright">
       <a class="btn btn-primary" href="index.html#download">
@@ -661,7 +661,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="fluids.html"><b>Fluids</b><em>Real density, a calibrated viscosity fit</em></a><a href="synapse.html"><b>Synapse</b><em>Navigation, perception, behaviour trees</em></a><a href="audio.html"><b>Audio</b><em>The mixer's callers, and a graph that synthesises</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="materials.html"><b>Materials</b><em>Node-graph materials, wired not written</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -769,14 +769,6 @@ body.nav-open{overflow:hidden}
           with a WASAPI device behind a separate seam. Testable with no sound card in the machine.</p>
       <span class="more">Inside the mixer <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
-      <a class="card rv" href="materials.html">
-        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.3"/><circle cx="18" cy="6" r="2.3"/><circle cx="12" cy="18" r="2.6"/><path d="M7.7 7.9 10.2 15.6"/><path d="M16.3 7.9 13.8 15.6"/></svg></div>
-        <h3>Materials, wired instead of written</h3>
-        <p>A .ocgraph carrying DOMAIN material compiles straight to HLSL and shades a real surface —
-          one generated shader for every graph in the project, switched per draw rather than compiled
-          per material. 56 node types, previewed live on a sphere.</p>
-      <span class="more">Inside node-graph materials <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
-
       <a class="card rv" href="aver-node.html" style="grid-column:1/-1">
         <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="5" rx="1.4"/><rect x="15" y="4" width="6" height="5" rx="1.4"/><rect x="9" y="15" width="6" height="5" rx="1.4"/><path d="M6 9v2a2 2 0 0 0 2 2h1"/><path d="M18 9v2a2 2 0 0 0-2 2h-1"/></svg></div>
         <h3>Aver Node, gameplay with no C#</h3>
@@ -866,14 +858,14 @@ body.nav-open{overflow:hidden}
           <tr><td class="mod">assets</td><td class="tgt">Aver.Assets</td><td class="desc">Asset ids and the decode-to-GPU texture step.</td></tr>
           <tr><td class="mod">formats</td><td class="tgt">Aver.Formats</td><td class="desc">The AVR1 container, the <code>.oc*</code> readers/writers, glTF import, JSON, and the C# source rewriters.</td></tr>
           <tr><td class="mod">rhi</td><td class="tgt">Aver.RHI</td><td class="desc">Device and swapchain interface, the generic render-feature surface, the shared shader prelude.</td></tr>
-          <tr><td class="mod">rhi.d3d12</td><td class="tgt">Aver.RHI.D3D12</td><td class="desc">The backend: PBR, sky and clouds, lines, wireframe, runtime MSAA, a mesh-shader path, the ImGui host, capture.</td></tr><tr><td class="mod">rhi.vulkan</td><td class="tgt">Aver.RHI.Vulkan</td><td class="desc">A second backend: constructs a device, presents frames, runs the full editor. Off by default; one open defect (the shadow cascade map is never written).</td></tr>
+          <tr><td class="mod">rhi.d3d12</td><td class="tgt">Aver.RHI.D3D12</td><td class="desc">The backend: PBR, sky and clouds, lines, wireframe, runtime MSAA, a mesh-shader path, the ImGui host, capture.</td></tr>
           <tr><td class="mod">render.pbr</td><td class="tgt">Aver.Render.PBR</td><td class="desc">The material system and its C seam — the surface BRDF and the GPU binding half.</td></tr>
           <tr><td class="mod">render.voxi</td><td class="tgt">Aver.Render.Voxi</td><td class="desc">Render-feature settings plus the GI / shadow / RayQuery feature that drives the RHI.</td></tr>
           <tr><td class="mod">render.ui</td><td class="tgt">Aver.Render.UI</td><td class="desc">Turns a draw list into calls in the overlay pass, after the camera post chain — a HUD is never tonemapped with the world.</td></tr>
           <tr><td class="mod">render.actorpreview</td><td class="tgt">Aver.Render.ActorPreview</td><td class="desc">The actor editor's 3D preview: its own colour and depth target, pipeline, mesh registry and camera.</td></tr>
           <tr><td class="mod">scene</td><td class="tgt">Aver.Scene</td><td class="desc">Entities, packed component pools, hierarchy, and fields addressed by name.</td></tr>
           <tr><td class="mod">framework</td><td class="tgt">Aver.Framework</td><td class="desc">The gameplay vocabulary — class registry, defaults, spawn, possess, begin/end play — as data, not an inheritance tree.</td></tr>
-          <tr><td class="mod">physics</td><td class="tgt">Aver.Physics</td><td class="desc">Jolt behind the engine's own plain-C seam.</td></tr><tr><td class="mod">fluids</td><td class="tgt">Aver.Fluids</td><td class="desc">Real-unit fluid volumes &mdash; density in kg/m&sup3;, viscosity in Pa&middot;s &mdash; over an XPBD solver, with the raw knobs still reachable underneath. Also drives a level's own <code>WATER ... SIMULATED</code>.</td></tr>
+          <tr><td class="mod">physics</td><td class="tgt">Aver.Physics</td><td class="desc">Jolt behind the engine's own plain-C seam.</td></tr>
           <tr><td class="mod">scripting</td><td class="tgt">Aver.Scripting.Host</td><td class="desc">In-process CoreCLR via nethost/hostfxr; collectible load context, reflection discovery, hot reload.</td></tr>
           <tr><td class="mod">ui</td><td class="tgt">Aver.UI</td><td class="desc">The retained game UI draw list — layers, batching, clip intersection, premultiplied alpha. Core-only.</td></tr>
           <tr><td class="mod">audio</td><td class="tgt">Aver.Audio</td><td class="desc">The mixer — voices, buses, 3D pan and attenuation. Fills a buffer the caller supplies.</td></tr>
@@ -881,7 +873,7 @@ body.nav-open{overflow:hidden}
           <tr><td class="mod">anim</td><td class="tgt">Aver.Anim</td><td class="desc">Skeletal animation — the first real consumer of the <code>.ocskel</code> and <code>.ocanim</code> formats.</td></tr>
           <tr><td class="mod">deform</td><td class="tgt">Aver.Deform</td><td class="desc">Sub-bone vertex deformation: a cage finer than the skeleton, over its rest pose. CPU only.</td></tr>
           <tr><td class="mod">landscape</td><td class="tgt">Aver.Landscape</td><td class="desc">Chunked heightfield terrain — quadtree, LOD selection, culling and chunk geometry.</td></tr>
-          <tr><td class="mod">synapse</td><td class="tgt">Aver.Synapse</td><td class="desc">NPC perception &mdash; a sight cone, OnSeeTarget &mdash; a <code>.ocbt</code> behavior-tree format with its own editor tab, and baked-navigation wall avoidance.</td></tr><tr><td class="mod">mcp</td><td class="tgt">Aver.Mcp</td><td class="desc">An editor control channel over loopback, for debugging. Off by default; listens only with <code>--mcp</code>.</td></tr>
+          <tr><td class="mod">mcp</td><td class="tgt">Aver.Mcp</td><td class="desc">An editor control channel over loopback, for debugging. Off by default; listens only with <code>--mcp</code>.</td></tr>
           <tr><td class="mod">runtime</td><td class="tgt">Aver.Runtime</td><td class="desc">The engine loop, <code>Application</code>, and the entry point that wires the compiled-in modules.</td></tr>
         </tbody>
       </table>
@@ -1023,7 +1015,7 @@ body.nav-open{overflow:hidden}
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="materials.html">Materials</a><a href="physics.html">Physics</a><a href="fluids.html">Fluids</a><a href="synapse.html">Synapse</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>

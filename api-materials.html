@@ -630,7 +630,7 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="materials.html">Materials</a><a href="physics.html">Physics</a><a href="fluids.html">Fluids</a><a href="synapse.html">Synapse</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html" class="on">Docs</a>
     </div>
     <div class="navright">
       <a class="btn btn-primary" href="index.html#download">
@@ -657,7 +657,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="fluids.html"><b>Fluids</b><em>Real density, a calibrated viscosity fit</em></a><a href="synapse.html"><b>Synapse</b><em>Navigation, perception, behaviour trees</em></a><a href="audio.html"><b>Audio</b><em>The mixer's callers, and a graph that synthesises</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="materials.html"><b>Materials</b><em>Node-graph materials, wired not written</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html" class="on"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -684,6 +684,21 @@ body.nav-open{overflow:hidden}
         <a class="toc-back" href="docs.html">&larr; All documentation</a>
       </aside>
       <article class="prose doc-body"><h2 id="17-avermaterials--surfaces-authored-in-c">17. <code>Aver.Materials</code> — surfaces authored in C<a class="hlink" href="#17-avermaterials--surfaces-authored-in-c" aria-label="Link to this section">#</a></h2>
+<blockquote>
+<p><strong>This is one of two ways a material comes into existence.</strong> The route documented on this page is
+the older one: a C# class, compiled by <code>avermatc</code> into a <code>.ocmat</code>. The newer route is a
+<strong>material graph</strong> — a <code>.ocgraph</code> carrying <code>DOMAIN material</code>, wired in the same node editor
+Aver Node uses for gameplay, that computes some of a surface's inputs per pixel instead of taking
+them as fixed constants. See <a href="materials.html">Materials, wired instead of written</a> for that
+route; this page does not repeat it.</p>
+<p>The two are layered, not exclusive. A <code>.ocmat</code> this page's pipeline produces can still carry a
+<code>GRAPHREF &lt;path&gt;</code> record naming a graph, and only the <code>MaterialOutput</code> pins that graph actually
+drives — linked to something, or given a literal — override the factors <code>Configure</code> sets below;
+everything the graph leaves unwired keeps exactly the values this page describes. The <code>.ocmat</code>
+format itself, its <code>PARAM</code> block, the metallic-roughness shading model, and its eight texture
+slots are shared by both routes — what differs between them is only how <code>PARAM</code>'s factors and
+<code>TEX</code> lines get written in the first place.</p>
+</blockquote>
 <p>Namespace <code>Aver.Materials</code> (<code>scripting/csharp/Aver.Materials/</code>). Like <code>Aver.UI</code> it is a leaf: a material
 describes a surface and knows nothing about entities, the world or a device.</p>
 <p><strong>The C# is the source; the <code>.ocmat</code> is build output.</strong> A <code>.cs</code> under <code>Content/Materials</code> declares a
@@ -786,7 +801,10 @@ public sealed class Crate : Material
 </tbody>
 </table></div></div>
 <p><strong><code>Slot</code></strong> — <code>BaseColor</code>, <code>MetalRough</code> (metallic in blue, roughness in green: the glTF packing),
-<code>Normal</code>, <code>Occlusion</code>, <code>Emissive</code>.</p>
+<code>Normal</code>, <code>Occlusion</code>, <code>Emissive</code>. These five are what <code>MaterialBuilder</code> can set. The
+<code>.ocmat</code> format itself carries three more slots — a second, slope-blended layer of base colour,
+metal/rough and normal, used for terrain — that nothing in this builder writes today; a material
+graph's <code>SampleTexture</code> node can read all eight.</p>
 <p><strong>Colour space is a property of the slot and is deliberately not authorable.</strong> <code>Texture</code> takes no
 colour-space argument. Base colour and emissive are always sRGB, normal is always a normal map, and the
 rest are always linear; letting a caller choose would only let a caller choose wrong. The emitter writes
@@ -822,7 +840,7 @@ claiming a <code>MaterialCompilerTest</code> does this is wrong — no such test
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="materials.html">Materials</a><a href="physics.html">Physics</a><a href="fluids.html">Fluids</a><a href="synapse.html">Synapse</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>

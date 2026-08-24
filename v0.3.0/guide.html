@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The editor is the runtime — Aver Engine</title>
-<meta name="description" content="One executable. A Dear ImGui shell composited straight over the live D3D12 back buffer — and edits that land as diffs in your own C# source.">
+<title>Starter guide — Aver Engine</title>
+<meta name="description" content="From an empty folder to a playable character: install the launcher, make a project, write an actor in C#, compile, add a material and a HUD.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-<meta name="build" content="20260809-1523">
+<meta name="build" content="20260809-1524">
 <meta property="og:type" content="website">
-<meta property="og:title" content="The editor is the runtime — Aver Engine">
-<meta property="og:description" content="One executable. A Dear ImGui shell composited straight over the live D3D12 back buffer — and edits that land as diffs in your own C# source.">
+<meta property="og:title" content="Starter guide — Aver Engine">
+<meta property="og:description" content="From an empty folder to a playable character: install the launcher, make a project, write an actor in C#, compile, add a material and a HUD.">
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 
 <style>
@@ -630,7 +630,7 @@ body.nav-open{overflow:hidden}
       Aver Engine
     </a>
     <div class="navlinks">
-      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="materials.html">Materials</a><a href="physics.html">Physics</a><a href="fluids.html">Fluids</a><a href="synapse.html">Synapse</a><a href="editor.html" class="on">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+      <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
     </div>
     <div class="navright">
       <a class="btn btn-primary" href="index.html#download">
@@ -657,7 +657,7 @@ body.nav-open{overflow:hidden}
     </button>
   </div>
   <div class="drawer-body">
-    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="fluids.html"><b>Fluids</b><em>Real density, a calibrated viscosity fit</em></a><a href="synapse.html"><b>Synapse</b><em>Navigation, perception, behaviour trees</em></a><a href="audio.html"><b>Audio</b><em>The mixer's callers, and a graph that synthesises</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="materials.html"><b>Materials</b><em>Node-graph materials, wired not written</em></a><a href="editor.html" class="on"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
+    <div class="dgroup"><h5>Engine</h5><a href="architecture.html"><b>Architecture</b><em>The dependency graph and the module switches</em></a><a href="rendering.html"><b>Renderer</b><em>Voxi — GI, ray-traced shadows, cascades</em></a><a href="physics.html"><b>Physics</b><em>Jolt behind a plain-C seam</em></a><a href="audio.html"><b>Audio</b><em>The Core-only mixer and its device</em></a></div><div class="dgroup"><h5>Build with it</h5><a href="scripting.html"><b>Scripting</b><em>In-process CoreCLR and hot reload</em></a><a href="aver-node.html"><b>Aver Node</b><em>Gameplay as graphs, with no C#</em></a><a href="editor.html"><b>Editor</b><em>The ImGui shell over the live viewport</em></a><a href="guide.html" class="on"><b>Starter guide</b><em>Your first project, start to finish</em></a><a href="docs.html"><b>Documentation</b><em>The full C# API reference</em></a></div>
     <a class="btn btn-primary drawer-cta" href="index.html#download">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
       Download the Launcher
@@ -667,51 +667,329 @@ body.nav-open{overflow:hidden}
 
 <div class="subhero">
   <div class="wrap">
-    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span> <span>Editor</span></div>
-    <div class="eyebrow">Editor</div>
-    <h1>The editor is the runtime</h1>
-    <p class="lede">One executable. A Dear ImGui shell composited straight over the live D3D12 back buffer — and edits that land as diffs in your own C# source.</p>
-    <div class="stats"><div class="stat"><b>1</b><span>binary, no launcher</span></div><div class="stat"><b>b4</b><span>where the preview camera lives</span></div><div class="stat"><b>0</b><span>bytes of your hand-written code rewritten</span></div></div>
+    <div class="crumb"><a href="index.html">Aver Engine</a> <span>/</span>
+      <a href="docs.html">Docs</a> <span>/</span> <span>Starter guide</span></div>
+    <div class="eyebrow">Start here</div>
+    <h1>Your first project</h1>
+    <p class="lede">From an empty folder to a character you can walk around, a surface you
+      authored in C#, and a HUD drawn over the top. Eight steps, no prior engine experience
+      assumed.</p>
+    <div class="stats">
+      <div class="stat"><b>8</b><span>steps</span></div>
+      <div class="stat"><b>C#</b><span>no C++ required</span></div>
+      <div class="stat"><b>~30 min</b><span>start to finish</span></div>
+    </div>
   </div>
 </div>
 
-<section>
+<section class="docs">
   <div class="wrap">
-    <div class="layout">
-      <aside class="toc">
-        <h4>On this page</h4>
-        <a href="#one-binary-no-separate-editor-process">One binary, no separate editor process</a><a href="#the-shell-docking-panels-and-a-viewport-you-can-">The shell: docking, panels, and a viewport you can see through</a><a href="#two-menus-because-c-and-c-aren-t-the-same-promis">Two menus, because C# and C++ aren't the same promise</a><a href="#save-to-c-never-to-the-build-artefact">Save to C#, never to the build artefact</a><a href="#the-actor-editor-and-a-gizmo-that-edits-source">The actor editor, and a gizmo that edits source</a><a href="#the-node-canvas">The node canvas, and the panel that makes it usable</a><a href="#a-drag-rewrites-nine-numbers-and-nothing-else">A drag rewrites nine numbers, and nothing else</a><a href="#live-edits-and-the-one-thing-it-refuses-to-do">Live edits, and the one thing it refuses to do</a>
+    <div class="layout docs-layout">
+      <aside class="toc docs-toc guide-toc">
+        <h4>Steps</h4>
+        <div id="tocList"><a href="#install"><span>01</span>Get the launcher and the tools</a><a href="#project"><span>02</span>Make a project</a><a href="#actor"><span>03</span>Write your first actor</a><a href="#compile"><span>04</span>Compile it, then press Play</a><a href="#character"><span>05</span>Add something to walk around with</a><a href="#material"><span>06</span>Give it a surface</a><a href="#hud"><span>07</span>Draw a HUD</a><a href="#next"><span>08</span>What to know before you go further</a></div>
+        <a class="toc-back" href="docs.html">&larr; All documentation</a>
       </aside>
-      <div class="prose">
-        <div class="block rv" id="one-binary-no-separate-editor-process"><h2>One binary, no separate editor process</h2><p>There's no <code>Aver.Editor</code> target and no editor build flag. The editor <i>is</i> <code>Sandbox.exe</code>. ImGui reaches the executable transitively through <code>Aver.RHI.D3D12</code>, which links it publicly and defines <code>AVER_WITH_IMGUI=1</code> — so every editor source file guards on that macro rather than on a separate target.</p><p>ImGuizmo was never vendored. Every gizmo in the tree, in the level viewport and the actor preview alike, is hand-built line and overlay geometry.</p><p>Because it's one binary, the same executable a person clicks also runs the automated pixel gates. The project browser gets suppressed whenever <code>--frames</code> is present, a project path is given on the command line, or <code>--headless</code> is passed — a full-screen chooser sitting in front of the probe would fail every gate at once.</p></div><div class="block rv" id="the-shell-docking-panels-and-a-viewport-you-can-"><h2>The shell: docking, panels, and a viewport you can see through</h2><p>The dockspace holds a menu bar, a toolbar, the dockspace itself and a status bar, with the World Outliner and Details stacked on the right at roughly 22% width. The 3D viewport takes the transparent central node, so the already-drawn D3D12 back buffer shows through the hole the panels dock around.</p><p>Dock layout deliberately doesn't persist between runs. The ImGui ini file is disabled by design and the layout is rebuilt from the dock builder every launch, with <b>Window ▸ Reset Layout</b> there if you drag something somewhere regrettable.</p><p>The camera is free-fly rather than orbit: right-mouse look with WASD and QE, wheel to dolly, middle-mouse to pan, <kbd>F</kbd> to focus the selection. Selection picks against each object's local bounding box transformed by its inverse world matrix. The transform tools live in an overlay bar inside the viewport, and the gizmos draw always-on-top — arrows for move, three rings for rotate, axis lines with end boxes for scale, hovered axis in amber.</p></div><div class="block rv" id="two-menus-because-c-and-c-aren-t-the-same-promis"><h2>Two menus, because C# and C++ aren't the same promise</h2><p>The Tools menu splits into two labelled groups. It's a deliberate departure from Unreal and probably the thing most likely to surprise someone arriving from there. Under <b>Project — C#</b>, new scripts and classes write into the project's own <code>Content/Scripts/</code> and need no rebuild. Under <b>Engine — C++</b>, new modules and classes write into the engine's <code>modules/</code> tree and require a full engine rebuild, because a project manifest carries no build integration — a game project has nowhere of its own to put C++.</p><p>Neither CMakeLists gets auto-edited. Wiring a new module into the top-level build, or adding a source file to an existing module's explicit source list, stays a manual step, and both dialogs name the exact line to add.</p><p>Below those sit two separate actions, kept separate because they fail differently. <b>Compile Scripts</b> only builds, and the editor keeps running whatever it already loaded; its diagnostics render as clickable rows that jump to file, line and column in a detected IDE — Visual Studio via <code>vswhere</code>, VS Code or Rider. <b>Reload Scripts</b> builds, then unloads and reloads live, firing the lifecycle hooks without an editor restart.</p></div><div class="block rv" id="save-to-c-never-to-the-build-artefact"><h2>Save to C#, never to the build artefact</h2><p>The Details panel exposes the live material: metallic, roughness, normal scale, occlusion, reflectance capped at 0.2 because anything above that is gemstone, grazing reflectance, emissive, UV mapping mode and per-slot texture paths. Every control edits the live material description and marks it dirty, so the viewport updates the same frame and objects sharing a material change together.</p><p><b>Save to C# writes the <code>.cs</code> and never the <code>.ocmat</code>.</b> The <code>.ocmat</code> is a build artefact the next compile regenerates, so writing there would look like it worked and then quietly vanish. Instead the panel walks the project's material sources and rewrites only the body of <code>Configure</code>. Usings, namespace, other classes, hand-authored comment prose and indentation all survive, and only values that differ from the defaults get written.</p><p>A file it can't parse is declined rather than half-written. Compiling then bakes the result back to <code>.ocmat</code> in the same step, and a bake failure keeps the previous file and logs the error rather than turning a bad <code>Configure</code> into a red build light.</p></div><div class="block rv" id="the-actor-editor-and-a-gizmo-that-edits-source"><h2>The actor editor, and a gizmo that edits source</h2><p>A <code>.cs</code> file that declares a mesh, camera or point light in <code>Configure</code>, or carries a generated designer region, opens as its own asset editor tab. Everything else is declined. A plain behaviour script isn't an actor, and opening it in a tab that shows nothing would be taking something away.</p><p>The tab lays out in three columns — components tree, preview viewport, details — collapsing to two when it gets narrow. The preview is its own render feature with its own colour and depth target, its own pipeline state, and its own camera published at constant-buffer slot <b>b4</b> rather than b0, since b0 is the engine's per-frame block and gets rebound on every pipeline change. Lighting is fixed: one key light, a hemisphere fill, ACES and gamma. The panel says outright that it doesn't match the level viewport — no bloom, no eye adaptation, no GI, no cascades, no MSAA — because two independently exposed viewports would need a scene-pass rewrite.</p><p>There's only one preview instance, shared and re-pointed at whichever tab is active. The UI's shader-visible descriptor heap holds sixteen entries, and a target per tab would exhaust it around the eleventh tab — with a black image rather than an assert, which is worse.</p></div><div class="block rv" id="the-node-canvas"><h2>The node canvas, and the panel that makes it usable</h2><p>The editor opens <code>.ocgraph</code> files on a node canvas: a palette, wired pins, and the same file on disk that the runtime compiles. The text is the format and the canvas is one way to produce it, so a graph stays diffable and hand-editable either way. See <a href="aver-node.html">Aver Node</a> for what the graphs themselves are.</p><p><b>It can open real graphs now</b>, which it could not before 0.3.0. <code>ENTRY</code> and <code>OUT</code> records may name a node declared further down the file &mdash; the style every graph here is written in. The C++ reader validated that inline while the C# one deferred it, so the editor refused the sample projects, the demo, and every template graph while the runtime ran them all quite happily.</p><p><b>Saving keeps every record where its author put it.</b> Records are matched individually rather than a whole kind being re-emitted at that kind&rsquo;s first line &mdash; which used to haul every <code>NODE</code> up to the first one and separate it from the comment explaining it. Line endings survive too.</p><p><b>A Variables panel declares, renames, retypes and deletes.</b> Validation rejects a graph addressing an undeclared variable, and until this release nothing in the editor could declare one, so dragging <code>SetVar</code> off the palette produced a graph that could not compile and could not be fixed from inside the editor. Renaming offers to rewrite every node addressing the old name rather than orphaning them.</p><p>Panning is right-drag, alongside the existing Space-drag and middle-drag, with click and drag separated by a movement threshold so a right-click still opens Add Node.</p><p>A <code>DOMAIN material</code> graph opens on the same canvas, but its Viewport tab shows a sphere instead of the usual component preview — shaded by the graph itself, compiled through the same registry the renderer uses. It has no components to preview: no <code>CLASS</code> record, no actor. The add-node palette also changes shape with it, offering only the open graph’s own vocabulary, so a material graph is never offered a gameplay node whose only possible outcome is a compile error. See <a href="materials.html">Materials, wired instead of written</a>.</p></div><div class="block rv" id="a-drag-rewrites-nine-numbers-and-nothing-else"><h2>A drag rewrites nine numbers, and nothing else</h2><p>An actor is a partial class split across a hand-written half and a generated designer half. The editor never writes a byte of the hand-written half. It was later allowed to <i>read</i> <code>Configure</code>, because most actors are a single class-declared mesh with no designer file at all, and refusing to look would have left the tab empty for the common case.</p><p>The generated region is bounded by exact marker comments rather than <code>#region</code> — plain comment trivia, a span and nothing else. Every placement is one fixed token sequence carrying an object id, a mesh path, a material, and position, rotation and scale triples.</p><p>On save, the rewriter finds the statement whose object id matches the placement you dragged — <b>matched by id, never by file position</b>, so a reordered region still finds the right line — and replaces only the nine numeric literals. Property names, mesh paths, the id suffix, whitespace, comments and statement order survive byte for byte. Numbers are quantised and formatted in invariant culture, so a model you didn't move re-saves to an identical byte stream.</p></div><div class="block rv" id="live-edits-and-the-one-thing-it-refuses-to-do"><h2>Live edits, and the one thing it refuses to do</h2><p>The tab checks the file's modification time once per visible frame rather than watching the filesystem. A directory watcher was tried and rejected on contact: a build running with its working directory inside the scripts folder overflows a recursive watch on its own <code>obj/</code> churn.</p><p>If the file changes on disk and the tab is clean, it re-parses and reloads silently. If the tab is <b>dirty</b>, the reload is refused outright — <i>“The file changed on disk. Save or discard to pick it up.”</i> Quietly clobbering an in-progress drag with whatever a background tool just wrote is named in the design docs as the one behaviour a live-sync feature must never have.</p><p>A file with no generated region opens as a pure viewer: nothing to drag, nothing that can mark the tab dirty, Save never enables. A file whose region has drifted outside the locked grammar is declined loudly with the reason logged, rather than opened silently as an empty tab.</p></div>
-      </div>
+      <div class="steps">
+<div class="step rv" id="install">
+  <div class="step-n">01</div>
+  <div class="step-body">
+    <h2>Get the launcher and the tools<a class="hlink" href="#install" aria-label="Link to this step">#</a></h2>
+    
+<p>Aver runs on Windows and renders through DirectX&nbsp;12. Before anything else, check the
+machine can host it — the engine reports every capability from a real device query, so a card
+that cannot do something will say so rather than fail obscurely later.</p>
+<ul class="ticks">
+  <li><b>Windows 10 or 11, 64-bit</b> — the platform layer is Win32.</li>
+  <li><b>A DirectX 12 GPU</b> with current drivers. Ray-traced shadows additionally want
+      DXR&nbsp;tier&nbsp;1.1; without it the renderer falls back to the shadow map.</li>
+  <li><b>The .NET desktop runtime</b>, if you want C#. It is optional: with no runtime present
+      the editor still starts and the scripting menu items disable themselves with a tooltip
+      naming the reason.</li>
+</ul>
+<p>Grab the launcher from the download panel on the home page. It installs the engine and keeps
+it current, and it is the only piece you fetch by hand.</p>
+<p class="note">Building the engine from source instead? You need Visual Studio 18 with the C++
+workload, which supplies CMake, Ninja and the Windows SDK. Then
+<code>./scripts/build.ps1</code> and <code>./scripts/run.ps1</code>.</p>
+
+  </div>
+</div>
+<div class="step rv" id="project">
+  <div class="step-n">02</div>
+  <div class="step-body">
+    <h2>Make a project<a class="hlink" href="#project" aria-label="Link to this step">#</a></h2>
+    
+<p>A project lives <em>outside</em> the engine. The engine ships no game content; your project is
+a sibling folder with its own <code>.ocproject</code> manifest, and that separation is why
+updating the engine cannot disturb your game.</p>
+<p>Create one from the project browser on startup, or from the command line — the flag exists so
+project creation is scriptable rather than something that only happens when someone remembers to
+click a modal:</p>
+<div class="code"><div class="code-bar"><i></i><i></i><i></i><span>PowerShell</span></div><pre>Sandbox.exe --new-project D:\Games MyFirstGame
+Sandbox.exe --upgrade-project D:\Games\MyFirstGame\MyFirstGame.ocproject</pre></div>
+<p>You get a manifest and a content tree: <code>Maps</code>, <code>Meshes</code>,
+<code>Materials</code>, <code>Textures</code>, <code>Sounds</code>, <code>Scripts</code>. You also
+get <code>Content/Scripts/Scripts.csproj</code> written at creation time, already referencing the
+four assemblies you write against, plus a starter <code>M_Default</code> material.</p>
+<div class="tablewrap"><div class="scroller"><table><thead><tr><th>Assembly</th><th>What it gives you</th></tr></thead><tbody>
+<tr><td><code>Aver.Scripting</code></td><td><code>AverBehaviour</code>, <code>Log</code>, the renderer bindings</td></tr>
+<tr><td><code>Aver.Framework</code></td><td>Actors, pawns, characters, game modes, <code>Entity</code> — pulls <code>Aver.Scene</code> in behind it</td></tr>
+<tr><td><code>Aver.UI</code></td><td><code>Hud</code>, <code>Layer</code>, <code>Colour</code>, <code>Rect</code></td></tr>
+<tr><td><code>Aver.Materials</code></td><td><code>[AverMaterial]</code>, <code>MaterialBuilder</code></td></tr>
+</tbody></table></div></div>
+<p>All four are referenced whether or not you use them. An unused reference costs nothing, and the
+alternative is a compile error naming an assembly you have never heard of, in a file the editor
+generated.</p>
+<p class="note">The manifest names a start map, but <b>no map file is written</b> — a fresh project
+opens with an empty world and logs that it did.</p>
+
+  </div>
+</div>
+<div class="step rv" id="actor">
+  <div class="step-n">03</div>
+  <div class="step-body">
+    <h2>Write your first actor<a class="hlink" href="#actor" aria-label="Link to this step">#</a></h2>
+    
+<p>A gameplay type is a C# class that derives an Aver base type and carries an
+<code>[AverClass("Name")]</code> attribute naming it. Put this in
+<code>Content/Scripts/Rotator.cs</code>:</p>
+<div class="code"><div class="code-bar"><i></i><i></i><i></i><span>Content/Scripts/Rotator.cs — C#</span></div><pre>using Aver.Framework;
+using Aver.Scene;      // Vec3, Rot
+using Aver.Scripting;  // Log
+
+namespace MyGame;
+
+[AverClass(&quot;BP_Rotator&quot;)]
+public sealed class Rotator : AverActor
+{
+    // The class RECIPE - run once per class at load, never per instance.
+    public static void Configure(ClassBuilder b)
+    {
+        b.Mesh(&quot;Meshes/cube.ocmesh&quot;);   // a built-in primitive; no file needed
+        b.Ticks(TickGroup.PrePhysics);  // ask to tick
+    }
+
+    private float _angle;
+
+    public override void OnBeginPlay(BeginReason reason) =&gt; Log.Info(&quot;Rotator started&quot;);
+
+    public override void OnTick(float dt)
+    {
+        _angle += 90f * dt;                              // 90 deg/sec
+        Self.SetLocalRotation(new Rot(_angle, 0, 0).ToQuat());
+    }
+}</pre></div>
+<p>Three things in there are worth understanding before you write anything else.</p>
+<p><b><code>Configure</code> runs once per class, not per instance.</b> It is the recipe: what
+components every instance gets, and whether the class ticks at all. An actor that does not call
+<code>b.Ticks(...)</code> never receives <code>OnTick</code>.</p>
+<p><b>Hooks are overrides, never attributes.</b> Misspell <code>OnTick</code> and you get a compile
+error, rather than a method that silently never runs. That is the whole reason the API is shaped
+this way.</p>
+<p><b><code>Log</code>, not <code>Console.WriteLine</code>.</b> The editor is a windowed process;
+console writes go nowhere. <code>Log.Trace</code>, <code>Info</code>, <code>Warn</code> and
+<code>Error</code> reach the Output Log, and fall back to the console outside a host.</p>
+
+  </div>
+</div>
+<div class="step rv" id="compile">
+  <div class="step-n">04</div>
+  <div class="step-body">
+    <h2>Compile it, then press Play<a class="hlink" href="#compile" aria-label="Link to this step">#</a></h2>
+    
+<p>The Tools menu has two items that look similar and fail differently, which is exactly why they
+are two buttons:</p>
+<ul class="ticks">
+  <li><b>Tools ▸ Compile Scripts</b> — builds only. The editor keeps running whatever it already
+      loaded, so a broken file gives you an error while the previous build carries on. Diagnostics
+      are clickable and jump to file, line and column in Visual Studio, VS Code or Rider.</li>
+  <li><b>Tools ▸ Reload Scripts</b> — builds, then unloads and reloads live. Your hooks fire again
+      without restarting the editor.</li>
+</ul>
+<p>Press <b>Play</b> and the session forms in a fixed order: the state moves to <em>Playing</em>
+first, then the GameInstance spawns, then the GameMode, then its PlayerController and Pawn, then
+the pawn is possessed, and finally <code>OnPostLogin</code> fires. Stop reverses it and sweeps
+every other actor the session spawned.</p>
+<p class="note"><b>Nothing survives a reload.</b> Every object is rebuilt from its field
+initialisers — a counter at 564 restarts at 1. The single exception is <code>[Editable]</code>
+fields, which live in native storage and survive both Play/Stop and hot reload.</p>
+<div class="code"><div class="code-bar"><i></i><i></i><i></i><span>C# — a field you can edit in the Details panel</span></div><pre>[AverClass(&quot;BP_Spinner&quot;)]
+public sealed class Spinner : AverActor
+{
+    public static void Configure(ClassBuilder b) =&gt; b.Ticks(TickGroup.PrePhysics);
+
+    [Editable(Min = 0f, Max = 720f)] public float DegreesPerSecond = 90f;
+
+    public override void OnTick(float dt) { /* ... */ }
+}</pre></div>
+
+  </div>
+</div>
+<div class="step rv" id="character">
+  <div class="step-n">05</div>
+  <div class="step-body">
+    <h2>Add something to walk around with<a class="hlink" href="#character" aria-label="Link to this step">#</a></h2>
+    
+<p><code>AverCharacter</code> is a first- or third-person walking pawn with the defaults already
+dialled in — 350&nbsp;cm/s move speed, a 180&nbsp;×&nbsp;34&nbsp;cm capsule, 160&nbsp;cm eye
+height, a 450&nbsp;cm camera boom, and a jump that clears about 110&nbsp;cm.</p>
+<div class="code"><div class="code-bar"><i></i><i></i><i></i><span>C# — a playable character</span></div><pre>[AverClass(&quot;BP_Hero&quot;)]
+public sealed class Hero : AverCharacter
+{
+    public static void Configure(ClassBuilder b)
+    {
+        b.Mesh(&quot;Meshes/hero.ocmesh&quot;);
+        b.Ticks(TickGroup.PrePhysics);        // set intent BEFORE the physics step
+    }
+
+    public override void OnTick(float dt)
+    {
+        DriveWithInput(dt);                   // WASD walks, mouse turns
+        if (Input.GetKeyDown(Key.Space)) Jump();
+    }
+}</pre></div>
+<p>A GameMode names the pawn and controller it spawns, <b>by string</b>. Many games never subclass
+the controller and just name the built-in one:</p>
+<div class="code"><div class="code-bar"><i></i><i></i><i></i><span>C# — the rules of a play session</span></div><pre>[AverGameMode(&quot;BP_GameMode&quot;,
+    DefaultPawnClass = &quot;BP_Hero&quot;,
+    PlayerControllerClass = &quot;PlayerController&quot;)]
+public sealed class MyGameMode : AverGameMode
+{
+    public override void OnPostLogin(Entity controller) =&gt;
+        Log.Info($&quot;{controller.Name} joined&quot;);
+}</pre></div>
+<p>The character's origin is its <b>feet</b>, not the capsule centre — so putting it on the ground
+means setting <code>z</code> to the ground height. And use <code>Teleport</code> rather than
+setting the transform: moving the transform alone leaves the physics capsule behind.</p>
+
+  </div>
+</div>
+<div class="step rv" id="material">
+  <div class="step-n">06</div>
+  <div class="step-body">
+    <h2>Give it a surface<a class="hlink" href="#material" aria-label="Link to this step">#</a></h2>
+    
+<p>A material is a C# class. The <code>.cs</code> under <code>Content/Materials</code> is the
+source of truth; the <code>.ocmat</code> that appears in <code>Binaries/Materials</code> is build
+output that the next compile overwrites.</p>
+<div class="code"><div class="code-bar"><i></i><i></i><i></i><span>Content/Materials/Crate.cs — C#</span></div><pre>using Aver.Materials;
+
+namespace MyGame.Materials;
+
+[AverMaterial(&quot;M_Crate&quot;)]
+public sealed class Crate : Material
+{
+    public static void Configure(MaterialBuilder b) =&gt; b
+        .Comment(&quot;Painted wood, scuffed. Roughness stays high - a gloss here reads as plastic.&quot;)
+        .BaseColor(0.62f, 0.48f, 0.31f)
+        .Metallic(0f)
+        .Roughness(0.78f)
+        .Texture(Slot.BaseColor, &quot;Textures/crate_basecolor.png&quot;)
+        .Texture(Slot.Normal,    &quot;Textures/crate_normal.png&quot;);
+}</pre></div>
+<p><code>Configure</code> is <code>static</code> because a material is never instantiated and never
+ticks — it is a description the compiler runs once, at build time. Bind it from a class recipe with
+<code>b.Mesh("Meshes/crate.ocmesh", "M_Crate")</code>, or at run time with
+<code>entity.SetMaterial("M_Crate")</code>.</p>
+<p>Two things that will save you an afternoon. The <b>name in the attribute</b> is what a mesh
+references — renaming the C# class does not unbind anything, which is the point. And the engine
+looks in <code>Binaries</code> <b>first</b>, then <code>Content</code>, so a stale hand-authored
+file cannot shadow the one you just built.</p>
+<p class="note">Editing the generated <code>.ocmat</code> is a mistake with a delay on it: it is a
+build artefact, and the next compile overwrites it. The Details panel's <b>Save to C#</b> writes
+back to your <code>.cs</code> for exactly this reason.</p>
+
+  </div>
+</div>
+<div class="step rv" id="hud">
+  <div class="step-n">07</div>
+  <div class="step-body">
+    <h2>Draw a HUD<a class="hlink" href="#hud" aria-label="Link to this step">#</a></h2>
+    
+<p>A HUD is drawn from a tick, in screen pixels, top-left origin, +Y down. Not centimetres and not
+normalised coordinates — every layout number is a pixel.</p>
+<div class="code"><div class="code-bar"><i></i><i></i><i></i><span>C# — a health bar</span></div><pre>using Aver.Framework;
+using Aver.UI;
+
+[AverClass(&quot;BP_PlayerHud&quot;)]
+public sealed class PlayerHud : AverActor
+{
+    // PostPhysics: draw what the frame settled on, not what it was asked for.
+    public static void Configure(ClassBuilder b) =&gt; b.Ticks(TickGroup.PostPhysics);
+
+    static readonly Colour Ink   = Colour.Argb(0xFFE8E4DC);
+    static readonly Colour Panel = Colour.Argb(0xB0141820);
+    static readonly Colour Hurt  = Colour.Rgb(232, 76, 46);
+
+    [Editable(Min = 0f, Max = 1f)] public float Health = 1f;
+
+    public override void OnTick(float dt)
+    {
+        Rect vp  = Hud.Viewport;                      // NOT the window
+        Rect bar = Rect.Anchored(vp, 0f, 1f, 260f, 18f, offsetX: 24f, offsetY: -24f);
+
+        Hud.PushClip(vp);
+        Hud.Box(bar.Inset(-6f), Panel);
+        Hud.Bar(bar, Health, Ink, Panel, Colour.Lerp(Hurt, Ink, Health));
+        Hud.PopClip();
+    }
+}</pre></div>
+<p>Anchor to <code>Hud.Viewport</code>, never to the window. In the editor the game draws into a
+dock panel and the two rectangles differ, so a HUD laid out against the window sits partly under
+the editor's own chrome. In a shipped build they are the same rectangle and nothing changes.</p>
+<p class="note"><b>There is no text.</b> Nothing in the engine rasterises a glyph yet, so there is
+no <code>Hud.Text</code> — a HUD today is rectangles, bars and tinted quads. There is also no
+widget tree and no input routing into the UI: a HUD is drawn, not clicked.</p>
+
+  </div>
+</div>
+<div class="step rv" id="next">
+  <div class="step-n">08</div>
+  <div class="step-body">
+    <h2>What to know before you go further<a class="hlink" href="#next" aria-label="Link to this step">#</a></h2>
+    
+<p>A few rules run through the whole API. Knowing them early saves working them out the hard way.</p>
+<ul class="ticks">
+  <li><b>Zero is always invalid.</b> A default <code>Entity</code> is invalid, a lookup that finds
+      nothing returns <code>Entity.None</code>, and <code>IsValid</code> / <code>IsAlive</code>
+      tell you which.</li>
+  <li><b>Set intent before physics, read results after.</b> The world steps between the
+      <code>PrePhysics</code> and <code>PostPhysics</code> tick groups, at a fixed step regardless
+      of frame rate.</li>
+  <li><b>Everything is centimetres</b>, +X forward, +Y right, +Z up, left-handed. The physics
+      backend works in metres with a different up-axis; that is translated once, behind the seam,
+      and never reaches you.</li>
+  <li><b>A throw does not take the process down.</b> An exception out of a hook is caught and
+      logged, and that one actor is disabled for the session. Everything else keeps ticking.</li>
+</ul>
+<p>And the honest list of what a script still cannot reach: <b>audio</b> — the mixer, device and
+container all exist and are tested, but nothing is joined up and no managed binding exists, so you
+cannot play a sound. <b>Text and widgets</b> in the UI. <b>Timers and coroutines</b> — count down
+in <code>OnTick</code>. <b>Networking.</b> And <b>import beyond glTF</b>: the Content Browser
+converts <code>.gltf</code> and <code>.glb</code>, and copies every other file type in
+unchanged.</p>
+
+  </div>
+</div></div>
     </div>
   </div>
 </section>
 
 <section style="background:var(--bg-raise); border-block:1px solid var(--line-soft)">
   <div class="wrap">
-    <div class="rv" style="margin-bottom:44px"><div class="code"><div class="code-bar"><i></i><i></i><i></i><span>A generated designer region — the only part the editor ever rewrites</span></div><pre>    // &lt;aver-generated region=&quot;models&quot; schema=&quot;1&quot;&gt;
-    [Model] public ModelHandle Wheel_FL { get; private set; }
-
-    protected override void BuildModels(ActorBuilder b)
-    {
-        Wheel_FL = b.Place(0x1A2B3C4D5E6F7081UL, &quot;Content/Meshes/Wheel.ocmesh&quot;,
-            material: &quot;M_Rubber&quot;, pos: (120f, 80f, 20f), rot: (0f, 0f, 0f), scale: (1f, 1f, 1f));
-    }
-    // &lt;/aver-generated&gt;</pre></div></div>
-    <div class="rv" style="margin-bottom:44px"><div class="tcap">Command-line flags worth knowing</div><div class="tablewrap "><div class="scroller"><table><thead><tr><th>Flag</th><th>What it does</th></tr></thead><tbody><tr><td>--new-project &lt;location&gt; &lt;name&gt;</td><td>Scaffolds a project and exits without touching a device</td></tr><tr><td>--upgrade-project &lt;path.ocproject&gt;</td><td>Applies the same fixes the in-editor prompt would, logs each, exits</td></tr><tr><td>--headless</td><td>Runs with no window; suppresses the project browser</td></tr><tr><td>--frames N</td><td>Renders N frames and exits — how the pixel gates drive the editor</td></tr><tr><td>--ui-demo</td><td>Draws a HUD through the C seam, to see the game UI working</td></tr><tr><td>--compile-scripts</td><td>Runs the Tools menu's build job from the command line</td></tr><tr><td>--reload-scripts [N]</td><td>Builds, then unloads and reloads live</td></tr><tr><td>--scripts &lt;dir&gt;</td><td>Overrides where compiled behaviours are loaded from</td></tr><tr><td>--sky-physical [elevation]</td><td>Switches the sky from the authored dome to the physical model</td></tr><tr><td>--tool &lt;select|move|rotate|scale&gt;</td><td>Selects a transform tool at launch, for screenshot verification</td></tr></tbody></table></div></div></div>
-    <div class="rv"><div class="tcap">At a glance</div><div class="tablewrap facts"><div class="scroller"><table><tbody><tr><td>Editor binary</td><td><code>build/bin/Sandbox.exe</code> — no separate editor process exists</td></tr><tr><td>UI framework</td><td>Dear ImGui with docking, reached transitively through the D3D12 backend</td></tr><tr><td>Gizmos</td><td>Hand-built line geometry — ImGuizmo was never vendored</td></tr><tr><td>Viewport</td><td>The transparent central dock node, over the live back buffer</td></tr><tr><td>Camera</td><td>Free-fly: right-mouse look, WASD and QE, wheel dolly, middle-mouse pan, <kbd>F</kbd> to focus</td></tr><tr><td>Dock layout</td><td>Not persisted — rebuilt from the dock builder every launch</td></tr><tr><td>Actor preview camera</td><td>Published at <code>b4</code>, so it never collides with the engine's <code>b0</code> block</td></tr><tr><td>Preview instances</td><td>One, shared across tabs — the UI descriptor heap holds sixteen entries</td></tr><tr><td>Placement matching</td><td>By object id, never by file position</td></tr><tr><td>Number formatting</td><td>Quantised and invariant-culture, so an unmoved model re-saves byte-identically</td></tr><tr><td>Dirty-tab reload</td><td>Refused, with a message — never a silent clobber</td></tr><tr><td>Project upgrade</td><td>The <code>.csproj</code> is merged, never regenerated, so hand-added references survive</td></tr></tbody></table></div></div></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
     <div class="sec-head rv" style="margin-bottom:30px">
       <div class="eyebrow">Keep reading</div>
-      <h2 style="font-size:clamp(24px,3vw,32px)">The rest of the engine.</h2>
+      <h2 style="font-size:clamp(24px,3vw,32px)">The full reference.</h2>
     </div>
-    <div class="nextnav rv"><a class="nextcard" href="architecture.html"><span>Architecture</span><b>Modular by construction</b><em>A strict dependency graph, no universal base object, and a separate C seam for every module.</em></a><a class="nextcard" href="rendering.html"><span>Voxi</span><b>Voxi, the engine's own renderer</b><em>Aver's render module: voxel cone-traced global illumination, inline ray-traced sun shadows and four cascades of shadow map.</em></a><a class="nextcard" href="scripting.html"><span>Scripting</span><b>C# that reloads into a running editor</b><em>An in-process CoreCLR host with a collectible load context, two independently versioned contracts, and an exception boundary that disables one misbehaving actor instead of the process.</em></a></div>
+    <div class="nextnav rv">
+      <a class="nextcard" href="api-actors.html"><span>Reference</span><b>Actors and pawns</b>
+        <em>Every base type, and what each one adds over the last.</em></a>
+      <a class="nextcard" href="api-entity.html"><span>Reference</span><b>Entity</b>
+        <em>Transforms, hierarchy, components and tags on the handle itself.</em></a>
+      <a class="nextcard" href="docs.html"><span>Docs</span><b>Everything else</b>
+        <em>Search across the whole API, or download it as one file.</em></a>
+    </div>
   </div>
 </section>
 
@@ -729,14 +1007,14 @@ body.nav-open{overflow:hidden}
       <div class="footcols">
         <div class="footcol">
           <h4>Engine</h4>
-          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="materials.html">Materials</a><a href="physics.html">Physics</a><a href="fluids.html">Fluids</a><a href="synapse.html">Synapse</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
+          <a href="architecture.html">Architecture</a><a href="rendering.html">Renderer</a><a href="scripting.html">Scripting</a><a href="aver-node.html">Aver Node</a><a href="physics.html">Physics</a><a href="editor.html">Editor</a><a href="audio.html">Audio</a><a href="docs.html">Docs</a>
         </div>
         <div class="footcol">
           <h4>Project</h4>
           <a href="index.html#download">Download</a>
           <a href="https://github.com/Vectoric-Core-Systems/Aver-Launcher">Launcher</a>
           <a href="https://github.com/Vectoric-Core-Systems/aver-engine">GitHub</a>
-          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/editor.html">Edit this page</a>
+          <a href="https://github.com/Vectoric-Core-Systems/aver-engine/edit/main/guide.html">Edit this page</a>
         </div>
       </div>
     </div>
@@ -840,5 +1118,162 @@ if ('IntersectionObserver' in window) {
 })();
 
 </script>
+
+<style>
+/* ===================== documentation ===================== */
+.docs-layout{grid-template-columns:250px 1fr; gap:52px}
+.docs-layout > *{min-width:0}
+.docs-toc{top:80px; max-height:calc(100vh - 104px); display:flex; flex-direction:column}
+.docs-toc #tocList{overflow-y:auto; overscroll-behavior:contain; padding-right:6px; margin-right:-6px}
+.docs-toc a{padding:5px 0 5px 13px; font-size:13.5px; line-height:1.45}
+.docs-toc a.t3{padding-left:26px; font-size:13px; opacity:.85}
+.toc-back{display:block; margin-top:16px; padding-top:14px; border-top:1px solid var(--line-soft);
+  border-left:none !important; font-size:13px; color:var(--ink-faint)}
+.toc-back:hover{color:var(--orange)}
+
+.doc-body{max-width:80ch}
+.doc-body h2{font-size:clamp(24px,2.8vw,31px); margin:52px 0 18px; padding-top:22px;
+  border-top:1px solid var(--line-soft); scroll-margin-top:88px}
+.doc-body > h2:first-child{margin-top:0; border-top:none; padding-top:0}
+.doc-body h3{font-size:20px; margin:36px 0 14px; scroll-margin-top:88px; color:var(--ink)}
+.doc-body h4{font-size:16.5px; margin:26px 0 10px; scroll-margin-top:88px}
+.hlink{margin-left:10px; font-family:var(--mono); font-weight:400; color:var(--ink-faint);
+  opacity:0; transition:opacity .15s ease; text-decoration:none; font-size:.8em}
+h2:hover .hlink, h3:hover .hlink, h4:hover .hlink, .hlink:focus-visible{opacity:1}
+.hlink:hover{color:var(--orange)}
+.doc-body ul, .doc-body ol{color:var(--ink-dim); padding-left:22px; margin:0 0 16px}
+.doc-body li{margin-bottom:9px; line-height:1.7}
+.doc-body a{color:var(--orange); text-decoration:underline; text-underline-offset:3px;
+  text-decoration-color:rgba(242,101,34,.4)}
+.doc-body a.hlink{text-decoration:none}
+.doc-body p code, .doc-body li code, .doc-body blockquote code{overflow-wrap:anywhere}
+.doc-body blockquote{margin:22px 0; padding:16px 20px; border-left:3px solid var(--orange);
+  background:rgba(242,101,34,.06); border-radius:0 10px 10px 0}
+.doc-body blockquote p{margin-bottom:10px; color:var(--ink-dim)}
+.doc-body blockquote p:last-child{margin-bottom:0}
+.doc-body pre{background:#0A0C10; border:1px solid var(--line-soft); border-radius:var(--r);
+  padding:18px 20px; overflow-x:auto; margin:0 0 20px; font-family:var(--mono);
+  font-size:13px; line-height:1.75; color:#C6CEDC}
+.doc-body pre code{background:none; border:none; padding:0; font-size:inherit; color:inherit}
+.doc-body .tablewrap{margin:0 0 22px}
+.doc-body table{min-width:520px; font-size:14.5px}
+.doc-body td:first-child{color:var(--ink)}
+.doc-body td code, .doc-body th code{white-space:nowrap}
+.doc-body hr{border:none; border-top:1px solid var(--line-soft); margin:44px 0}
+
+/* pager */
+.pager{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.pgr{padding:20px 24px; border:1px solid var(--line-soft); border-radius:var(--r);
+  background:var(--bg-card); transition:border-color .2s ease, transform .2s ease}
+.pgr:hover{border-color:#2E3644; transform:translateY(-2px)}
+.pgr span{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:6px}
+.pgr b{font-size:16px; font-weight:620}
+.pgr.next{text-align:right; grid-column:2}
+.pgr.prev:only-child{grid-column:1}
+
+/* hub */
+.searchbox{position:relative; display:flex; align-items:center; margin-top:30px; max-width:620px}
+.searchbox svg{position:absolute; left:16px; width:18px; height:18px; color:var(--ink-faint)}
+.searchbox kbd{position:absolute; right:14px; font-size:11px}
+#docSearch{width:100%; padding:15px 46px 15px 46px; font-size:16px; color:var(--ink);
+  background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:12px;
+  font-family:var(--sans)}
+#docSearch::placeholder{color:var(--ink-faint)}
+#docSearch:focus{outline:none; border-color:var(--orange); background:rgba(255,255,255,.07)}
+.results{margin-top:12px; max-width:620px; background:var(--bg-card); border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; max-height:60vh; overflow-y:auto}
+.results a{display:block; padding:13px 18px; border-bottom:1px solid var(--line-soft)}
+.results a:last-child{border-bottom:none}
+.results a:hover, .results a.sel{background:rgba(242,101,34,.08)}
+.results .rt{font-size:15px; font-weight:600; color:var(--ink); margin-bottom:3px}
+.results .rs{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--orange); margin-bottom:5px}
+.results .rx{font-size:13.5px; color:var(--ink-faint); line-height:1.55;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.results mark{background:rgba(242,101,34,.28); color:var(--ink); border-radius:3px; padding:0 2px}
+.results .none{padding:18px; color:var(--ink-faint); font-size:14px}
+
+.startcard{display:flex; align-items:center; justify-content:space-between; gap:28px;
+  padding:30px 32px; border-radius:18px; border:1px solid rgba(242,101,34,.3);
+  background:linear-gradient(140deg, rgba(242,101,34,.11), rgba(242,101,34,.03) 60%, transparent);
+  transition:border-color .2s ease, transform .2s ease}
+.startcard:hover{border-color:rgba(242,101,34,.55); transform:translateY(-2px)}
+.startcard .area{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--orange); margin-bottom:9px}
+.startcard b{display:block; font-size:23px; font-weight:660; letter-spacing:-.02em; margin-bottom:8px}
+.startcard em{display:block; font-style:normal; color:var(--ink-dim); font-size:15px;
+  line-height:1.6; max-width:62ch}
+.startcard .go{display:inline-flex; align-items:center; gap:8px; flex:none; font-weight:600;
+  color:var(--orange); font-size:15px}
+.startcard .go svg{width:16px; height:16px; transition:transform .2s ease}
+.startcard:hover .go svg{transform:translateX(3px)}
+
+.dcards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.dcard{display:block; padding:24px 24px 26px; border:1px solid var(--line-soft);
+  border-radius:var(--r); background:var(--bg-card);
+  transition:border-color .2s ease, transform .2s ease, background .2s ease}
+.dcard:hover{border-color:#2E3644; transform:translateY(-3px); background:#171C24}
+.dcard .ic{width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
+  margin-bottom:15px; background:rgba(242,101,34,.11); border:1px solid rgba(242,101,34,.24)}
+.dcard .ic svg{width:18px; height:18px; stroke:var(--orange); fill:none; stroke-width:1.7;
+  stroke-linecap:round; stroke-linejoin:round}
+.dcard .area{display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-faint); margin-bottom:7px}
+.dcard b{display:block; font-size:17px; font-weight:630; margin-bottom:7px; letter-spacing:-.01em}
+.dcard em{display:block; font-style:normal; font-size:14px; color:var(--ink-dim); line-height:1.6}
+
+.dl-md{display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;
+  margin-top:44px; padding:26px 30px; border:1px solid var(--line-soft); border-radius:var(--r);
+  background:var(--bg-raise)}
+.dl-md b{display:block; font-size:17px; font-weight:630; margin-bottom:6px}
+.dl-md em{display:block; font-style:normal; font-size:14.5px; color:var(--ink-dim);
+  line-height:1.6; max-width:58ch}
+.dl-md-actions{display:flex; gap:10px; flex-wrap:wrap}
+
+@media (max-width:1000px){
+  .docs-layout{grid-template-columns:1fr}
+  .docs-toc{position:static; max-height:none; display:block}
+  .docs-toc #tocList{max-height:230px}
+  .docs-toc a, .docs-toc a.t3{display:block; border-left:2px solid var(--line-soft);
+    border-bottom:none; padding-left:13px; margin-right:0}
+  .docs-toc a.t3{padding-left:26px}
+  .dcards{grid-template-columns:repeat(2,1fr)}
+  .pager{grid-template-columns:1fr}
+  .pgr.next{text-align:left; grid-column:1}
+  .startcard{flex-direction:column; align-items:flex-start; gap:18px}
+}
+@media (max-width:640px){
+  .dcards{grid-template-columns:1fr}
+  .doc-body h2{margin-top:40px}
+}
+</style>
+
+<style>
+.steps{display:block}
+.step{display:grid; grid-template-columns:60px 1fr; gap:24px; padding:38px 0;
+  border-top:1px solid var(--line-soft)}
+.step:first-child{border-top:none; padding-top:0}
+.step-n{font-family:var(--mono); font-size:13px; font-weight:600; color:var(--orange);
+  letter-spacing:.06em; padding-top:6px}
+.step-body{min-width:0; max-width:78ch}
+.step-body h2{font-size:clamp(22px,2.6vw,28px); margin:0 0 16px; scroll-margin-top:90px}
+.step-body p{color:var(--ink-dim); font-size:16.5px; line-height:1.75; margin-bottom:16px}
+.step-body b{color:var(--ink); font-weight:620}
+.step-body .code{margin-bottom:20px}
+.step-body .tablewrap{margin-bottom:20px}
+.step-body table{min-width:460px; font-size:14.5px}
+.step-body .ticks{margin:0 0 18px}
+.step-body .ticks li{font-size:16px}
+p.note{padding:14px 18px; border-left:3px solid var(--orange); border-radius:0 10px 10px 0;
+  background:rgba(242,101,34,.06); font-size:15px}
+.guide-toc a{display:flex; gap:11px; align-items:baseline}
+.guide-toc a span{font-family:var(--mono); font-size:11.5px; color:var(--ink-faint); flex:none}
+@media (max-width:640px){
+  .step{grid-template-columns:1fr; gap:10px}
+  .step-n{padding-top:0}
+}
+</style>
+
 </body>
 </html>
