@@ -90,7 +90,15 @@ nav{
   font-weight:650; letter-spacing:.005em; font-size:17.5px;
 }
 .brand img{width:29px; height:auto; flex:none}
-.navlinks{display:flex; gap:26px; margin-left:auto; align-items:center}
+/* THE DRAWER IS THE NAVIGATION NOW, at every width.
+   Eleven inline links did not fit a desktop header: they crowded the brand against the
+   Download button and wrapped "Aver Node" onto two lines, which made the whole bar taller
+   than the logo it sits beside. The burger opens the same drawer at every width and that
+   drawer is the better list anyway -- two labelled groups with a line of description under
+   each entry, rather than eleven bare words competing for the same row.
+   The markup stays in the DOM rather than being deleted: it is a plain <nav> link list, and
+   leaving it there keeps every page one crawlable hop from every other. */
+.navlinks{display:none; gap:26px; align-items:center}
 .navlinks a{
   font-size:14.5px; color:var(--ink-dim);
   transition:color .18s ease;
@@ -605,9 +613,6 @@ a:focus-visible, .btn:focus-visible{
 /* Body scroll lock while the drawer is open. */
 body.nav-open{overflow:hidden}
 
-@media (max-width:1080px){
-  .navlinks{display:none}
-}
 @media (max-width:520px){
   .navright .btn-primary{display:none}   /* the drawer carries the CTA */
 }

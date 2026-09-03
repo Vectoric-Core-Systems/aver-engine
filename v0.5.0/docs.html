@@ -90,7 +90,15 @@ nav{
   font-weight:650; letter-spacing:.005em; font-size:17.5px;
 }
 .brand img{width:29px; height:auto; flex:none}
-.navlinks{display:flex; gap:26px; margin-left:auto; align-items:center}
+/* THE DRAWER IS THE NAVIGATION NOW, at every width.
+   Eleven inline links did not fit a desktop header: they crowded the brand against the
+   Download button and wrapped "Aver Node" onto two lines, which made the whole bar taller
+   than the logo it sits beside. The burger opens the same drawer at every width and that
+   drawer is the better list anyway -- two labelled groups with a line of description under
+   each entry, rather than eleven bare words competing for the same row.
+   The markup stays in the DOM rather than being deleted: it is a plain <nav> link list, and
+   leaving it there keeps every page one crawlable hop from every other. */
+.navlinks{display:none; gap:26px; align-items:center}
 .navlinks a{
   font-size:14.5px; color:var(--ink-dim);
   transition:color .18s ease;
@@ -595,9 +603,6 @@ a:focus-visible, .btn:focus-visible{
 /* Body scroll lock while the drawer is open. */
 body.nav-open{overflow:hidden}
 
-@media (max-width:1080px){
-  .navlinks{display:none}
-}
 @media (max-width:520px){
   .navright .btn-primary{display:none}   /* the drawer carries the CTA */
 }
@@ -686,14 +691,14 @@ body.nav-open{overflow:hidden}
         <kbd>/</kbd>
       </div>
       <details class="vsel">
-        <summary aria-label="Documentation version: 0.5 (latest)">
+        <summary aria-label="Documentation version: 0.5 (preview, not yet released)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
           <span class="vlabel">0.5</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="vsel-menu">
-          <span class="vsel-cur">0.5<em>latest &#10003;</em></span>
-          <a href="../docs.html">0.4<em>archived</em></a>
+          <span class="vsel-cur">0.5<em>preview</em></span>
+          <a href="../docs.html">0.4<em>latest &#10003;</em></a>
           <a href="../v0.3.0/docs.html">0.3<em>archived</em></a>
           <a href="../v0.2.0/docs.html">0.2<em>archived</em></a>
         </div>
