@@ -90,7 +90,15 @@ nav{
   font-weight:650; letter-spacing:.005em; font-size:17.5px;
 }
 .brand img{width:29px; height:auto; flex:none}
-.navlinks{display:flex; gap:26px; margin-left:auto; align-items:center}
+/* THE DRAWER IS THE NAVIGATION NOW, at every width.
+   Eleven inline links did not fit a desktop header: they crowded the brand against the
+   Download button and wrapped "Aver Node" onto two lines, which made the whole bar taller
+   than the logo it sits beside. The burger opens the same drawer at every width and that
+   drawer is the better list anyway -- two labelled groups with a line of description under
+   each entry, rather than eleven bare words competing for the same row.
+   The markup stays in the DOM rather than being deleted: it is a plain <nav> link list, and
+   leaving it there keeps every page one crawlable hop from every other. */
+.navlinks{display:none; gap:26px; align-items:center}
 .navlinks a{
   font-size:14.5px; color:var(--ink-dim);
   transition:color .18s ease;
@@ -596,9 +604,6 @@ a:focus-visible, .btn:focus-visible{
 /* Body scroll lock while the drawer is open. */
 body.nav-open{overflow:hidden}
 
-@media (max-width:1080px){
-  .navlinks{display:none}
-}
 @media (max-width:520px){
   .navright .btn-primary{display:none}   /* the drawer carries the CTA */
 }
@@ -743,14 +748,43 @@ public sealed class Coin : AverActor
     public static void Configure(ClassBuilder b) =&gt; b.Mesh(&quot;Meshes/coin.ocmesh&quot;);
 }
 </code></pre>
+<h3 id="playing-a-sound">Playing a sound<a class="hlink" href="#playing-a-sound" aria-label="Link to this section">#</a></h3>
+<pre><code class="language-csharp">[AverClass(&quot;BP_Chest&quot;)]
+public sealed class Chest : AverActor
+{
+    static Sound s_openSfx;   // loaded once, shared by every chest
+
+    public static void Configure(ClassBuilder b) =&gt; b.Mesh(&quot;Meshes/chest.ocmesh&quot;);
+
+    public override void OnBeginPlay(BeginReason reason)
+    {
+        if (!s_openSfx.IsValid) s_openSfx = Audio.Load(&quot;Sounds/chest_open.wav&quot;);
+    }
+
+    public void Open()
+    {
+        Audio.PlayAt(s_openSfx, Self.WorldPosition, volume: 0.8f, innerCm: 50f, outerCm: 1200f);
+    }
+}
+</code></pre>
+<p><code>Audio</code> (<code>Aver.Framework</code>, over <code>Aver.Audio.Abi</code>) is a static mixer: <code>Load</code>/<code>LoadPcm</code>
+decode a <code>Sound</code> once; <code>Play</code> and <code>PlayAt</code> (panned and attenuated between <code>innerCm</code>,
+full volume, and <code>outerCm</code>, silent) hand back a <code>Voice</code> whose handle goes stale on its own once the
+sound ends. <code>SetListener</code> places the ears — push it once a frame from whatever owns the camera, or every
+positioned sound pans against the origin. <code>Ready</code> is false, and every call above a harmless no-op
+returning <code>Voice.None</code>, on a machine with no output device or a build with audio compiled out: a game
+never has to branch on whether sound exists.</p>
 <h2 id="19-not-yet-available">19. Not yet available<a class="hlink" href="#19-not-yet-available" aria-label="Link to this section">#</a></h2>
 <p>The gameplay object model above is complete. What follows is what a script still <strong>cannot</strong> reach,
 stated as absences rather than left to be discovered:</p>
 <ul>
-<li><strong>Audio.</strong> The pieces exist — a mixer with voices, 3D panning and attenuation, a WASAPI device, the
-  <code>.ocaudio</code> container, and a C seam (<code>modules/audio</code>, <code>modules/audio.wasapi</code>, <code>modules/audio.abi</code>, and
-  <code>modules/formats</code>; see <code>docs/AUDIO.md</code>). None of them are joined up: there is no managed binding, and
-  neither the editor nor the runtime opens a device. A script cannot play a sound.</li>
+<li><strong>Reverb, occlusion, HRTF or any DSP chain, on audio.</strong> <code>Audio</code> (§18) plays, positions and
+  mixes sounds — no longer the absence it once was here: 0.4.0's own notes claimed the mixer had callers and
+  shipped that way regardless, so every <code>Play</code>/<code>PlayAt</code> call in a 0.4.0 project was a silent
+  no-op, because the device that mixer needed was opened by nothing except a button in the Sound Editor.
+  Fixed in 0.5 — the device now opens at startup. What is still genuinely absent is the DSP layer above the
+  mixer itself: no reverb, no occlusion, no HRTF, no effects chain, and no streaming — every sound is
+  resident in memory once loaded.</li>
 <li><strong>Text, and widgets, in the UI.</strong> <code>Aver.UI</code> (§16) draws rectangles and tinted quads. Nothing in the
   engine rasterises a glyph, so there is no <code>Hud.Text</code>; and there is no widget tree above the draw list,
   so layout is whatever the drawing code computes. There is also no input routing into the UI — a HUD is
