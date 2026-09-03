@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fluids, weighed and thickened — Aver Engine</title>
+<link rel="canonical" href="https://vectoric-core-systems.github.io/aver-engine/fluids.html">
 <meta name="description" content="Aver.Water and Aver.Render.Fluid merged into Aver.Fluids: a pressurised soft-body volume authored in real density (kg/m³) and a calibrated viscosity fit (Pa·s), an analytic Gerstner surface, and an underwater fog override.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
@@ -541,7 +542,7 @@ a:focus-visible, .btn:focus-visible{
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
 .burger{
-  display:none; width:42px; height:42px; padding:0; cursor:pointer;
+  display:flex; width:42px; height:42px; padding:0; cursor:pointer;
   background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px;
   flex-direction:column; align-items:center; justify-content:center; gap:5px;
 }
@@ -597,7 +598,6 @@ body.nav-open{overflow:hidden}
 
 @media (max-width:1080px){
   .navlinks{display:none}
-  .burger{display:flex}
 }
 @media (max-width:520px){
   .navright .btn-primary{display:none}   /* the drawer carries the CTA */
@@ -789,9 +789,9 @@ body.nav-open{overflow:hidden}
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  // Widening past the breakpoint must not leave a hidden drawer holding focus.
+  // The burger is shown at every width now, and the drawer it opens is legitimately
+  // usable at desktop width too, so widening past the old breakpoint no longer force-closes it.
   addEventListener('resize', function(){
-    if (isOpen() && innerWidth > 1080) close();
   }, {passive:true});
 })();
 

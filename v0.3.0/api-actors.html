@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Actors, pawns and characters — Aver Engine docs</title>
+<link rel="canonical" href="https://vectoric-core-systems.github.io/aver-engine/v0.3.0/api-actors.html">
 <meta name="description" content="The class hierarchy you derive from, and what each base type adds.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
@@ -541,7 +542,7 @@ a:focus-visible, .btn:focus-visible{
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
 .burger{
-  display:none; width:42px; height:42px; padding:0; cursor:pointer;
+  display:flex; width:42px; height:42px; padding:0; cursor:pointer;
   background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px;
   flex-direction:column; align-items:center; justify-content:center; gap:5px;
 }
@@ -597,7 +598,6 @@ body.nav-open{overflow:hidden}
 
 @media (max-width:1080px){
   .navlinks{display:none}
-  .burger{display:flex}
 }
 @media (max-width:520px){
   .navright .btn-primary{display:none}   /* the drawer carries the CTA */
@@ -696,7 +696,7 @@ body.nav-open{overflow:hidden}
 <code>AverPlayerController</code>, <code>AverGameMode</code> and <code>AverGameInstance</code> are all abstract lineage anchors — none of the
 five spawns on its own, so a <code>[AverGameMode]</code> that leaves <code>PlayerControllerClass</code> at its own default,
 <code>"PlayerController"</code>, with no subclass of its own gets a controller that refuses to spawn, and possession silently
-never happens. <code>AverCharacter</code> is the one exception: as of 0.3.0 it's concrete on its own, registered as
+never happens. <code>AverCharacter</code> is the one exception: as of 0.3 it's concrete on its own, registered as
 <code>"Character"</code> — a <code>[AverGameMode]</code> can set <code>DefaultPawnClass = "Character"</code> directly, with no C# subclass
 required. Earlier releases needed a project's own concrete subclass for every base here, this one included.</p>
 <h2 id="5-actors-pawns-characters-controllers-gamemode">5. Actors, Pawns, Characters, Controllers, GameMode<a class="hlink" href="#5-actors-pawns-characters-controllers-gamemode" aria-label="Link to this section">#</a></h2>
@@ -707,7 +707,7 @@ assign it). See <a href="api-session.html#9-spawning-and-destroying">Spawning</a
 <p>Adds possession. <code>public Entity Controller</code>, <code>public T? ControllerAs&lt;T&gt;()</code>, <code>public bool IsPossessed</code>, and
 the <code>OnPossessed</code>/<code>OnUnpossessed</code> hooks.</p>
 <h3 id="avercharacter--averpawn"><code>AverCharacter : AverPawn</code><a class="hlink" href="#avercharacter--averpawn" aria-label="Link to this section">#</a></h3>
-<p>A first/third-person walking character. As of 0.3.0 it's <strong>concrete</strong> — before, it was abstract like every
+<p>A first/third-person walking character. As of 0.3 it's <strong>concrete</strong> — before, it was abstract like every
 other base on this page, and a project had to write its own subclass just to reach the capsule and view
 machinery below. It now registers directly under the name <code>"Character"</code>, so that machinery is reachable
 with no C# file at all.</p>
@@ -883,9 +883,9 @@ assumed, and what makes "put it on the ground" mean setting <code>z</code> to th
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  // Widening past the breakpoint must not leave a hidden drawer holding focus.
+  // The burger is shown at every width now, and the drawer it opens is legitimately
+  // usable at desktop width too, so widening past the old breakpoint no longer force-closes it.
   addEventListener('resize', function(){
-    if (isOpen() && innerWidth > 1080) close();
   }, {passive:true});
 })();
 

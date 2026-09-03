@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Voxi, the engine&#x27;s own renderer — Aver Engine</title>
+<link rel="canonical" href="https://vectoric-core-systems.github.io/aver-engine/v0.2.0/rendering.html">
 <meta name="description" content="Aver&#x27;s render module: voxel cone-traced global illumination, inline ray-traced sun shadows and four cascades of shadow map — driving a generic RHI, and naming no backend anywhere in its source.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
@@ -550,7 +551,7 @@ a:focus-visible, .btn:focus-visible{
 .oldver a svg{width:14px; height:14px}
 .oldver a:hover{color:var(--orange-hi)}
 .burger{
-  display:none; width:42px; height:42px; padding:0; cursor:pointer;
+  display:flex; width:42px; height:42px; padding:0; cursor:pointer;
   background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px;
   flex-direction:column; align-items:center; justify-content:center; gap:5px;
 }
@@ -606,7 +607,6 @@ body.nav-open{overflow:hidden}
 
 @media (max-width:1080px){
   .navlinks{display:none}
-  .burger{display:flex}
 }
 @media (max-width:520px){
   .navright .btn-primary{display:none}   /* the drawer carries the CTA */
@@ -656,8 +656,8 @@ body.nav-open{overflow:hidden}
 
 <div class="oldver">
   <div class="wrap">
-    <span>You’re viewing the archived <b>0.2.0</b> documentation — it no longer matches the current build.</span>
-    <a href="../rendering.html">See the latest — 0.3.0
+    <span>You’re viewing the archived <b>0.2</b> documentation — it no longer matches the current build.</span>
+    <a href="../rendering.html">See the latest — 0.3
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
     </a>
   </div>
@@ -828,9 +828,9 @@ int32_t aver_voxi_set_mesh_shaders(int32_t on);</pre></div></div>
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  // Widening past the breakpoint must not leave a hidden drawer holding focus.
+  // The burger is shown at every width now, and the drawer it opens is legitimately
+  // usable at desktop width too, so widening past the old breakpoint no longer force-closes it.
   addEventListener('resize', function(){
-    if (isOpen() && innerWidth > 1080) close();
   }, {passive:true});
 })();
 

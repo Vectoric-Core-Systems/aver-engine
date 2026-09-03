@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Worked examples and limits — Aver Engine docs</title>
+<link rel="canonical" href="https://vectoric-core-systems.github.io/aver-engine/v0.3.0/api-examples.html">
 <meta name="description" content="Complete classes that compile, and an honest list of what a script still cannot reach.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
@@ -541,7 +542,7 @@ a:focus-visible, .btn:focus-visible{
 .navright{display:flex; align-items:center; gap:12px; margin-left:auto}
 
 .burger{
-  display:none; width:42px; height:42px; padding:0; cursor:pointer;
+  display:flex; width:42px; height:42px; padding:0; cursor:pointer;
   background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px;
   flex-direction:column; align-items:center; justify-content:center; gap:5px;
 }
@@ -597,7 +598,6 @@ body.nav-open{overflow:hidden}
 
 @media (max-width:1080px){
   .navlinks{display:none}
-  .burger{display:flex}
 }
 @media (max-width:520px){
   .navright .btn-primary{display:none}   /* the drawer carries the CTA */
@@ -715,7 +715,7 @@ public sealed class MyGameMode : AverGameMode
 <p><code>DefaultPawnClass</code>/<code>PlayerControllerClass</code> above set the same native class fields an Aver Node graph
 sets with a <code>CLASS &lt;Name&gt; GameMode pawn=&lt;className&gt; controller=&lt;className&gt;</code> line, and begin-play
 possesses through the same path either way — C# and graphs are two writers to one mechanism, not two
-different ones. As of 0.3.0 the graph path actually possesses what it names; before, a graph-only
+different ones. As of 0.3 the graph path actually possesses what it names; before, a graph-only
 GameMode could declare a pawn and controller and still render from a default camera. The engine now
 ships a game built entirely that way — <strong>First Person</strong>, five graphs and one map, no <code>.cs</code> file
 anywhere in it.</p>
@@ -857,9 +857,9 @@ stated as absences rather than left to be discovered:</p>
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  // Widening past the breakpoint must not leave a hidden drawer holding focus.
+  // The burger is shown at every width now, and the drawer it opens is legitimately
+  // usable at desktop width too, so widening past the old breakpoint no longer force-closes it.
   addEventListener('resize', function(){
-    if (isOpen() && innerWidth > 1080) close();
   }, {passive:true});
 })();
 

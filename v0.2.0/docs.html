@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Documentation — Aver Engine</title>
+<link rel="canonical" href="https://vectoric-core-systems.github.io/aver-engine/v0.2.0/docs.html">
 <meta name="description" content="The Aver Engine C# scripting API: actors, the play lifecycle, Entity, input, physics, the HUD and materials authored in C#.">
 <meta name="theme-color" content="#0C0E12">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
@@ -592,7 +593,7 @@ a:focus-visible, .btn:focus-visible{
   .vsel summary span.vlabel{display:none}
 }
 .burger{
-  display:none; width:42px; height:42px; padding:0; cursor:pointer;
+  display:flex; width:42px; height:42px; padding:0; cursor:pointer;
   background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px;
   flex-direction:column; align-items:center; justify-content:center; gap:5px;
 }
@@ -648,7 +649,6 @@ body.nav-open{overflow:hidden}
 
 @media (max-width:1080px){
   .navlinks{display:none}
-  .burger{display:flex}
 }
 @media (max-width:520px){
   .navright .btn-primary{display:none}   /* the drawer carries the CTA */
@@ -698,8 +698,8 @@ body.nav-open{overflow:hidden}
 
 <div class="oldver">
   <div class="wrap">
-    <span>You’re viewing the archived <b>0.2.0</b> documentation — it no longer matches the current build.</span>
-    <a href="../docs.html">See the latest — 0.3.0
+    <span>You’re viewing the archived <b>0.2</b> documentation — it no longer matches the current build.</span>
+    <a href="../docs.html">See the latest — 0.3
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
     </a>
   </div>
@@ -747,14 +747,14 @@ body.nav-open{overflow:hidden}
         <kbd>/</kbd>
       </div>
       <details class="vsel">
-        <summary aria-label="Documentation version: 0.2.0">
+        <summary aria-label="Documentation version: 0.2">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
-          <span class="vlabel">0.2.0</span>
+          <span class="vlabel">0.2</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="vsel-menu">
-          <span class="vsel-cur">0.2.0<em>&#10003;</em></span>
-          <a href="../docs.html">0.3.0<em>latest</em></a>
+          <span class="vsel-cur">0.2<em>&#10003;</em></span>
+          <a href="../docs.html">0.3<em>latest</em></a>
         </div>
       </details>
     </div>
@@ -933,9 +933,9 @@ body.nav-open{overflow:hidden}
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  // Widening past the breakpoint must not leave a hidden drawer holding focus.
+  // The burger is shown at every width now, and the drawer it opens is legitimately
+  // usable at desktop width too, so widening past the old breakpoint no longer force-closes it.
   addEventListener('resize', function(){
-    if (isOpen() && innerWidth > 1080) close();
   }, {passive:true});
 })();
 
