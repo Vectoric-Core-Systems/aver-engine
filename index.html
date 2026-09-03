@@ -737,8 +737,10 @@ body.nav-open{overflow:hidden}
         <div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 18v3"/></svg></div>
         <h3>Voxi, the engine's renderer</h3>
         <p>Aver's own render module. Voxel cone-traced
-          global illumination, inline ray-traced sun shadows, four cascades of shadow map and runtime
-          MSAA — driving a generic RHI, and naming no backend anywhere in its source.</p>
+          global illumination, inline ray-traced sun shadows, four cascades of shadow map, runtime
+          MSAA, and — in ray-driven mode, the shipped default — a 4096-entry bindless texture table, so a
+          ray hit samples real base colour, normal and roughness instead of a flat per-draw tint. Driving
+          a generic RHI, and naming no backend anywhere in its source.</p>
       <span class="more">Inside Voxi <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
       <a class="card rv" href="scripting.html">
@@ -752,21 +754,26 @@ body.nav-open{overflow:hidden}
         <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M3.6 8h16.8"/><path d="M3.6 16h16.8"/></svg></div>
         <h3>Physics you can trust</h3>
         <p>Jolt is vendored as the rigid-body backend, wrapped in the engine's own plain-C interface — so the
-          solver is swappable and the gameplay layer never sees a third-party type.</p>
+          solver is swappable and the gameplay layer never sees a third-party type. 125 bound functions reach
+          it: forces and impulses, twelve joint types, collision layers, and a character controller that
+          climbs stairs, not just a position setter and a flat velocity.</p>
       <span class="more">The physics seam <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
       <a class="card rv" href="editor.html">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 18V9a2 2 0 0 1 2-2h3l2-3h4l2 3h3a2 2 0 0 1 2 2v9"/><circle cx="12" cy="13" r="3.2"/></svg></div>
         <h3>The editor is the runtime</h3>
         <p>One executable. A docked ImGui shell composited straight over the live D3D12 viewport, with a
-          project browser, asset and actor editors, a Details panel and one-key script compilation.</p>
+          project browser, asset and actor editors, a Details panel, one-key script compilation, four
+          editor modes — Select, Landscape, Foliage, Simulate — and a standalone crash reporter built to
+          keep running when the engine itself cannot.</p>
       <span class="more">Tour the editor <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
       <a class="card rv" href="audio.html">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg></div>
         <h3>Audio down to the buffer</h3>
         <p>A Core-only mixer — voices, buses, 3D pan and distance attenuation — that fills a buffer you supply,
-          with a WASAPI device behind a separate seam. Testable with no sound card in the machine.</p>
+          with a WASAPI device behind a separate seam and opened at startup, so a <code>PlaySound</code> call
+          reaches real output. Testable with no sound card in the machine.</p>
       <span class="more">Inside the mixer <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
 
       <a class="card rv" href="materials.html">
@@ -873,7 +880,7 @@ body.nav-open{overflow:hidden}
           <tr><td class="mod">render.actorpreview</td><td class="tgt">Aver.Render.ActorPreview</td><td class="desc">The actor editor's 3D preview: its own colour and depth target, pipeline, mesh registry and camera.</td></tr>
           <tr><td class="mod">scene</td><td class="tgt">Aver.Scene</td><td class="desc">Entities, packed component pools, hierarchy, and fields addressed by name.</td></tr>
           <tr><td class="mod">framework</td><td class="tgt">Aver.Framework</td><td class="desc">The gameplay vocabulary — class registry, defaults, spawn, possess, begin/end play — as data, not an inheritance tree.</td></tr>
-          <tr><td class="mod">physics</td><td class="tgt">Aver.Physics</td><td class="desc">Jolt behind the engine's own plain-C seam.</td></tr><tr><td class="mod">fluids</td><td class="tgt">Aver.Fluids</td><td class="desc">Real-unit fluid volumes &mdash; density in kg/m&sup3;, viscosity in Pa&middot;s &mdash; over an XPBD solver, with the raw knobs still reachable underneath. Also drives a level's own <code>WATER ... SIMULATED</code>.</td></tr>
+          <tr><td class="mod">physics</td><td class="tgt">Aver.Physics</td><td class="desc">Jolt behind the engine's own plain-C seam.</td></tr><tr><td class="mod">fluids</td><td class="tgt">Aver.Fluids</td><td class="desc">Real-unit fluid volumes &mdash; density in kg/m&sup3;, viscosity in Pa&middot;s &mdash; over an XPBD solver, with the raw knobs still reachable underneath. Also drives a level's own <code>WATER ... SIMULATED</code>, which now draws through the same material and lighting pipeline as everything else &mdash; absorption, refraction, total internal reflection and caustics &mdash; rather than a bespoke shader of its own.</td></tr>
           <tr><td class="mod">scripting</td><td class="tgt">Aver.Scripting.Host</td><td class="desc">In-process CoreCLR via nethost/hostfxr; collectible load context, reflection discovery, hot reload.</td></tr>
           <tr><td class="mod">ui</td><td class="tgt">Aver.UI</td><td class="desc">The retained game UI draw list — layers, batching, clip intersection, premultiplied alpha. Core-only.</td></tr>
           <tr><td class="mod">audio</td><td class="tgt">Aver.Audio</td><td class="desc">The mixer — voices, buses, 3D pan and attenuation. Fills a buffer the caller supplies.</td></tr>
